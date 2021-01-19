@@ -1,0 +1,24 @@
+textarea,
+input[type='date'],
+input[type='email'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='time'],
+input[type='url'] {
+  @apply bg-white border border-gray3 text-grayPrimary text-small flex items-center rounded px-4 h-8 duration-200 ease-linear transition-all leading-none w-full;
+
+  &:focus,
+  &:active {
+    @apply bg-gray1 outline-none;
+  }
+}
+
+.error-label {
+  @apply text-red2 text-slight mt-1 block;
+}
+
+textarea {
+  @apply py-3 resize-none;
+}

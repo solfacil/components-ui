@@ -1,0 +1,19 @@
+table {
+  @apply min-w-full;
+
+  th {
+    @apply px-6 py-3 bg-gray1 text-left text-slight leading-tight font-medium uppercase tracking-wider;
+  }
+
+  tbody {
+    @apply bg-white;
+
+    tr {
+      @apply border-t-2 border-gray2;
+    }
+  }
+
+  td {
+    @apply px-6 py-4 whitespace-no-wrap text-small leading-normal;
+  }
+}

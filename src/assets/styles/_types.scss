@@ -1,0 +1,45 @@
+//
+// Headings
+//
+
+%heading {
+  @apply font-medium leading-tight font-rubik;
+}
+
+h1 {
+  @extend %heading;
+  @apply text-large;
+
+  @screen sm {
+    @apply text-giant;
+  }
+}
+
+h2 {
+  @extend %heading;
+  @apply text-moderate;
+
+  @screen sm {
+    @apply text-large;
+  }
+}
+
+h3 {
+  @extend %heading;
+  @apply text-moderate;
+}
+
+h4 {
+  @extend %heading;
+  @apply text-medium;
+}
+
+h5 {
+  @extend %heading;
+  @apply text-medium;
+}
+
+h6 {
+  @extend %heading;
+  @apply text-modest;
+}
