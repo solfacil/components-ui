@@ -1,13 +1,13 @@
 <p align="center">
-  <img src="public/logo-solfacil-white.svg" />
+  <img src="https://raw.githubusercontent.com/solfacil/components-ui/main/public/logo-solfacil-color.svg" />
 </p>
 
-# Solfacil Components for VueJS
+<p>Component library based on Vue and Tailwind</p>
 
-## Installation and Usage:
+## Documentation
 
-Just use `npm install --save @solfacil/components-ui` or `yarn add @solfacil/components-ui`
+📘 For full documentation, visit [Documentation](#).
 
-```
-import { SolButton, SolRadioButton, SolSwitch } from '@solfacil/components-ui';
-```
+<h2 align="center">License</h2>
+
+Released under the MIT [License](https://opensource.org/licenses/MIT). Copyright (c) Solfácil.
