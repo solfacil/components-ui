@@ -132,26 +132,26 @@ module.exports = {
   plugins: [
     function ({ addComponents }) {
       addComponents({
-        // '.container': {
-        //   paddingLeft: '16px',
-        //   paddingRight: '16px',
-        //   marginLeft: 'auto',
-        //   marginRight: 'auto',
-        //   maxWidth: '1172px',
-        //   width: '100%',
-        //   '@screen sm': {
-        //     paddingLeft: '32px',
-        //     paddingRight: '32px',
-        //   },
-        //   '@screen md': {
-        //     paddingLeft: '40px',
-        //     paddingRight: '40px',
-        //   },
-        //   '@screen lg': {
-        //     paddingLeft: '32px',
-        //     paddingRight: '32px',
-        //   },
-        // },
+        '.container': {
+          paddingLeft: '16px',
+          paddingRight: '16px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: '360px',
+          width: '100%',
+          '@screen sm': {
+            maxWidth: '540px',
+          },
+          '@screen md': {
+            maxWidth: '720px',
+          },
+          '@screen lg': {
+            maxWidth: '960px',
+          },
+          '@screen xl': {
+            maxWidth: '1140px',
+          },
+        },
       });
     },
   ],

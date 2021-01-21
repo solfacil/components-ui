@@ -1,10 +1,10 @@
 {
   "name": "@solfacil/components-ui",
-  "author": "Fernando Jesus",
-  "version": "0.1.8",
+  "author": "Solfacil - Fernando Jesus",
+  "version": "0.1.13",
   "private": false,
   "license": "MIT",
-  "description": "Components",
+  "description": "Component library based on Vue and Tailwind",
   "homepage": "https://github.com/solfacil/components-ui#readme",
   "scripts": {
     "start": "vue-cli-service serve",

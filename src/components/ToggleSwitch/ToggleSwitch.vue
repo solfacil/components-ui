@@ -1,5 +1,5 @@
 <template>
-  <label>
+  <label class="toggle-switch">
     <input
       :id="id"
       v-model="value"
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'SolSwitch',
+  name: 'ToggleSwitch',
 
   props: {
     /** Specify whether the is currently checked */
@@ -94,75 +94,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-label {
-  @apply relative;
-
-  > span {
-    @apply relative flex items-center cursor-pointer text-modest leading-tight;
-    min-height: 20px;
-    padding-left: 38px;
-
-    &:before {
-      @apply bg-white absolute left-0 rounded-full border border-solid border-gray3 shadow-sm duration-200 ease-linear transition-all z-0;
-      content: '';
-      top: 50%;
-      transform: translateY(-50%);
-      width: 38px;
-      height: 20px;
-    }
-
-    &:after {
-      @apply bg-gray3 absolute rounded-full duration-200 ease-linear transition-all z-10;
-      content: '';
-      left: 4px;
-      top: 50%;
-      width: 12px;
-      height: 12px;
-      transform: translateY(-50%);
-    }
-
-    &:hover {
-      &:before {
-        @apply bg-gray1;
-      }
-    }
-
-    &.error {
-      @apply m-0 text-grayPrimary;
-
-      &:before {
-        @apply border-red2;
-      }
-
-      &:after {
-        @apply bg-red2;
-      }
-    }
-
-    span {
-      @apply ml-2;
-    }
-  }
-
-  input {
-    @apply absolute opacity-0;
-
-    &:disabled + span:before {
-      @apply bg-gray2;
-    }
-
-    &:checked {
-      & + span {
-        &:before {
-          @apply bg-orangePrimary border-orangePrimary;
-        }
-
-        &:after {
-          @apply bg-white;
-          left: 22px;
-        }
-      }
-    }
-  }
-}
+@import '@scss/_toggle-switch';
 </style>

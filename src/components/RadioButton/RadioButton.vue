@@ -1,5 +1,5 @@
 <template>
-  <label>
+  <label class="radio-button">
     <input
       type="radio"
       :name="name"
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'SolRadioButton',
+  name: 'RadioButton',
 
   props: {
     /** Specify whether the is currently checked */
@@ -79,54 +79,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-label {
-  @apply relative;
-  user-select: none;
-
-  > span {
-    @apply relative pl-7 cursor-pointer text-small min-h-6 flex;
-
-    &:before {
-      @apply bg-white absolute left-0 w-6 h-6 rounded-full border border-solid border-gray3 shadow-sm duration-200 ease-linear transition-all z-0;
-      content: '';
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    &:after {
-      @apply bg-orangePrimary absolute w-4 h-4 rounded-full duration-200 ease-linear transition-all opacity-0 z-10;
-      content: '';
-      left: 4px;
-      top: 50%;
-      transform: translateY(-50%) scale(0);
-    }
-
-    &:hover {
-      &:before {
-        @apply bg-gray1;
-      }
-    }
-
-    &.error {
-      @apply m-0 text-grayPrimary;
-
-      &:before {
-        @apply border-red2;
-      }
-    }
-  }
-
-  input {
-    @apply absolute opacity-0;
-
-    &:disabled + span:before {
-      @apply bg-gray2;
-    }
-
-    &:checked + span:after {
-      opacity: 1;
-      transform: translateY(-50%) scale(1);
-    }
-  }
-}
+@import '@scss/_radio-button';
 </style>

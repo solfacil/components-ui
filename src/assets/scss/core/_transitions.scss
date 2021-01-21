@@ -1,0 +1,22 @@
+// animate fade
+.fade-enter-active,
+.fade-leave-active {
+  @apply duration-300 ease-out transition-opacity;
+}
+
+.fade-enter,
+.fade-leave-to {
+  @apply opacity-0;
+}
+
+// animate fade and scale zoom
+.fade-shrink-in-enter-active,
+.fade-shrink-in-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fade-shrink-in-enter,
+.fade-shrink-in-leave-to {
+  opacity: 0;
+  transform: scale(1.1);
+}

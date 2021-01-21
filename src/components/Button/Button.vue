@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: 'SolButton',
+  name: 'Button',
 
   props: {
     /** Specify whether the Button should be disabled, or not */
@@ -76,52 +76,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.btn,
-button {
-  @apply inline-block bg-orangePrimary font-rubik cursor-pointer text-gray7 font-medium text-small px-4 rounded text-center duration-200 ease-linear transition-all uppercase leading-tight;
-  padding-top: 14px;
-  padding-bottom: 10px;
-
-  &:hover {
-    @apply bg-orange3;
-  }
-
-  &:focus {
-    outline: 0;
-  }
-
-  &.disabled,
-  &:disabled {
-    @apply bg-gray2 text-gray4 cursor-default;
-  }
-
-  &.btn-secondary {
-    @apply bg-transparent border border-orangePrimary;
-
-    &:hover {
-      @apply bg-transparent border-orange3;
-    }
-
-    &:disabled {
-      @apply bg-transparent border border-gray2 cursor-default;
-    }
-  }
-
-  &.btn-exception {
-    @apply bg-gray7 text-white;
-
-    &:hover {
-      @apply bg-gray7 text-white;
-    }
-  }
-
-  &.btn-small {
-    padding-top: 10px;
-    padding-bottom: 6px;
-  }
-
-  &.btn-large {
-    @apply text-modest leading-tight;
-  }
-}
+@import '@scss/_buttons.scss';
 </style>

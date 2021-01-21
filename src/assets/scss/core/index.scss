@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Rubik:wght@400;500;700&display=swap');
 
+// Tailwindcss
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 
+// base styles
 @import 'global';
-@import 'buttons';
 @import 'forms';
-@import 'types';
-@import 'spinners';
 @import 'tables';
+@import 'type';
+@import 'transitions';
 
+// Tailwindcss utilities
 @import 'tailwindcss/utilities';

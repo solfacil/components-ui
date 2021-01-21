@@ -1,0 +1,49 @@
+.radio-button {
+  @apply relative inline-block;
+  user-select: none;
+
+  > span {
+    @apply font-rubik relative  text-grayPrimary cursor-pointer text-small min-h-6 flex items-center;
+    line-height: 17px;
+
+    &:before {
+      @apply bg-white w-6 h-6 rounded-full border border-solid border-gray3 shadow-sm duration-200 ease-linear transition-all z-0 mr-2;
+      content: '';
+    }
+
+    &:after {
+      @apply bg-orangePrimary absolute w-4 h-4 rounded-full duration-200 ease-linear transition-all opacity-0 z-10;
+      content: '';
+      left: 4px;
+      top: 50%;
+      transform: translateY(-50%) scale(0);
+    }
+
+    &:hover {
+      &:before {
+        @apply bg-gray1;
+      }
+    }
+
+    &.error {
+      @apply m-0 text-grayPrimary;
+
+      &:before {
+        @apply border-red2;
+      }
+    }
+  }
+
+  input {
+    @apply absolute opacity-0;
+
+    &:disabled + span:before {
+      @apply bg-gray2;
+    }
+
+    &:checked + span:after {
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+    }
+  }
+}

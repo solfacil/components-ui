@@ -18,14 +18,15 @@ button {
   }
 
   &.btn-secondary {
-    @apply bg-transparent border border-orangePrimary;
+    @apply bg-transparent text-grayPrimary border border-orangePrimary;
 
     &:hover {
       @apply bg-transparent border-orange3;
     }
 
+    &.disabled,
     &:disabled {
-      @apply bg-transparent border border-gray2 cursor-default;
+      @apply bg-transparent text-gray4 border border-gray2 cursor-default;
     }
   }
 

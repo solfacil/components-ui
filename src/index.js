@@ -1,3 +1,3 @@
-export { default as SolButton } from './components/SolButton/SolButton';
-export { default as SolRadioButton } from './components/SolRadioButton/SolRadioButton';
-export { default as SolSwitch } from './components/SolSwitch/SolSwitch';
+export { default as Button } from '@components/Button/Button';
+export { default as RadioButton } from '@components/RadioButton/RadioButton';
+export { default as ToggleSwitch } from '@components/ToggleSwitch/ToggleSwitch';

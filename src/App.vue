@@ -15,17 +15,17 @@
         <div class="grid grid-cols-3 gap-8">
           <div class="p-6 bg-gray1 rounded shadow-sm">
             <h3 class="mb-2">Buttom</h3>
-            <sol-button>Button</sol-button>
+            <Button>Button</Button>
           </div>
 
           <div class="p-6 bg-gray1 rounded-lg shadow-sm">
             <h3 class="mb-2">RadioButton</h3>
-            <SolRadioButton label="label" :checked="true" />
+            <RadioButton label="label" :checked="true" />
           </div>
 
           <div class="p-6 bg-gray1 rounded-lg shadow-sm">
             <h3 class="mb-2">Switch</h3>
-            <SolSwitch label="label" :checked="true" />
+            <ToggleSwitch label="label" :checked="true" />
           </div>
         </div>
       </div>
@@ -34,15 +34,15 @@
 </template>
 
 <script>
-import { SolButton, SolRadioButton, SolSwitch } from './index';
+import { Button, RadioButton, ToggleSwitch } from './index';
 
 export default {
   name: 'App',
 
   components: {
-    SolButton,
-    SolRadioButton,
-    SolSwitch,
+    Button,
+    RadioButton,
+    ToggleSwitch,
   },
 };
 </script>
