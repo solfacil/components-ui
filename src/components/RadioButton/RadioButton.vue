@@ -12,13 +12,6 @@
     <span :class="{ error: invalid && !checked && !disabled }">
       <span v-if="label">{{ label }}</span>
     </span>
-
-    <small
-      v-if="invalid && invalidText && !checked && !disabled"
-      class="error-label"
-    >
-      {{ invalidText }}
-    </small>
   </label>
 </template>
 
@@ -43,12 +36,6 @@ export default {
     invalid: {
       type: Boolean,
       default: false,
-    },
-
-    /** Provide the text that is displayed when the control is in an invalid state */
-    invalidText: {
-      type: String,
-      default: null,
     },
 
     /** Provide label text to be read by screen readers when interacting with the control */
