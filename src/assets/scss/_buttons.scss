@@ -1,8 +1,7 @@
 .btn,
 button {
-  @apply inline-block bg-orangePrimary font-rubik cursor-pointer text-gray7 font-medium text-small px-4 rounded text-center duration-200 ease-linear transition-all uppercase leading-tight;
-  padding-top: 14px;
-  padding-bottom: 10px;
+  @apply flex items-center bg-orangePrimary font-rubik cursor-pointer text-gray7 font-medium text-small px-6 py-2 rounded text-center duration-200 ease-linear transition-all uppercase h-8 border border-orangePrimary;
+  line-height: 1.1;
 
   &:hover {
     @apply bg-orange3;
@@ -31,19 +30,23 @@ button {
   }
 
   &.btn-exception {
-    @apply bg-gray7 text-white;
+    @apply bg-gray7 text-white border-gray7;
 
     &:hover {
-      @apply bg-gray7 text-white;
+      @apply bg-transparent text-grayPrimary border border-gray7;
+    }
+
+    &.disabled,
+    &:disabled {
+      @apply bg-transparent text-gray4  border-gray2 cursor-default;
     }
   }
 
   &.btn-small {
-    padding-top: 10px;
-    padding-bottom: 6px;
+    @apply px-4 h-7;
   }
 
   &.btn-large {
-    @apply text-modest leading-tight;
+    @apply text-modest h-9;
   }
 }
