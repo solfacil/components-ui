@@ -4,8 +4,8 @@
     :href="to"
     :disabled="disabled"
     :class="[
-      `btn-${size}`,
-      `btn-${variant}`,
+      size,
+      variantClass,
       { btn: tag === 'a' },
       { disabled: disabled && tag === 'a' },
     ]"
@@ -28,12 +28,10 @@ export default {
       default: false,
     },
 
-    /** Specify whether the Button should be a small variant: <br/> "large" | "medium" | "small" */
+    /** Specify whether the Button should be a small variant, use prefix for responsive (xs:, sm:, md:, lg:, xl:): <br/> "btn-large" | "btn-medium | "btn-small" */
     size: {
-      default: 'medium',
+      default: null,
       type: String,
-      validator: (value) =>
-        ['large', 'medium', 'small'].includes(value.toLowerCase()),
     },
 
     /** "a" | "button" */
@@ -64,12 +62,18 @@ export default {
       type: String,
     },
 
-    /** Specify the kind of Button you want to create: <br/> "primary" | "secondary" | "exception" */
+    /** Specify the kind of Button you want to create: <br/> secondary" | "exception" */
     variant: {
-      default: 'primary',
+      default: null,
       type: String,
       validator: (value) =>
-        ['primary', 'secondary', 'exception'].includes(value.toLowerCase()),
+        ['secondary', 'exception'].includes(value.toLowerCase()),
+    },
+  },
+
+  computed: {
+    variantClass() {
+      return this.variant ? `btn-${this.variant}` : null;
     },
   },
 };

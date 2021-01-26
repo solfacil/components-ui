@@ -41,12 +41,20 @@ button {
       @apply bg-transparent text-gray4  border-gray2 cursor-default;
     }
   }
+}
 
-  &.btn-small {
-    @apply px-4 h-7;
-  }
+@layer utilities {
+  @variants responsive {
+    &.btn-small {
+      @apply px-4 h-7;
+    }
 
-  &.btn-large {
-    @apply text-modest h-9;
+    &.btn-medium {
+      @apply px-6 h-8;
+    }
+
+    &.btn-large {
+      @apply text-modest h-9;
+    }
   }
 }
