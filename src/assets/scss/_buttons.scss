@@ -1,7 +1,8 @@
 .btn,
 button {
-  @apply flex items-center justify-center bg-orangePrimary font-rubik cursor-pointer text-gray7 font-medium text-small px-6 py-2 rounded text-center duration-200 ease-linear transition-all uppercase h-8 border border-orangePrimary;
-  line-height: 1.1;
+  @apply flex items-center justify-center bg-orangePrimary font-rubik cursor-pointer text-gray7 font-medium text-small px-6 rounded text-center duration-200 ease-linear transition-all uppercase h-8 border border-orangePrimary leading-tight;
+  padding-top: 13px;
+  padding-bottom: 9px;
 
   &:hover {
     @apply bg-orange3;
@@ -47,6 +48,8 @@ button {
   @variants responsive {
     &.btn-small {
       @apply px-4 h-7;
+      padding-top: 8px;
+      padding-bottom: 6px;
     }
 
     &.btn-medium {
@@ -55,6 +58,8 @@ button {
 
     &.btn-large {
       @apply text-modest h-9;
+      padding-top: 12px;
+      padding-bottom: 9px;
     }
   }
 }
