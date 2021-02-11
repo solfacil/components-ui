@@ -1,6 +1,6 @@
 .btn,
 button {
-  @apply flex items-center bg-orangePrimary font-rubik cursor-pointer text-gray7 font-medium text-small px-6 py-2 rounded text-center duration-200 ease-linear transition-all uppercase h-8 border border-orangePrimary;
+  @apply flex items-center justify-center bg-orangePrimary font-rubik cursor-pointer text-gray7 font-medium text-small px-6 py-2 rounded text-center duration-200 ease-linear transition-all uppercase h-8 border border-orangePrimary;
   line-height: 1.1;
 
   &:hover {
