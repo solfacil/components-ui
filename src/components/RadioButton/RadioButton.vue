@@ -52,7 +52,7 @@ export default {
 
     /** Specify the value of the */
     val: {
-      type: String,
+      type: [String, Object, Array],
       required: true,
     },
   },

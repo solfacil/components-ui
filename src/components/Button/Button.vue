@@ -11,6 +11,7 @@
     ]"
     :type="type"
     :target="target"
+    class="sol-button"
     v-on="$listeners"
   >
     <slot>Button</slot>

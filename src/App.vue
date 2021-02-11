@@ -20,7 +20,7 @@
 
           <div class="p-6 bg-gray1 rounded-lg shadow-sm">
             <h3 class="mb-2">RadioButton</h3>
-            <RadioButton label="label" :checked="true" />
+            <RadioButton label="label" name="test" val="name" :checked="true" />
           </div>
 
           <div class="p-6 bg-gray1 rounded-lg shadow-sm">
