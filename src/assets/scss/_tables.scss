@@ -1,0 +1,118 @@
+.scroll-table {
+  @apply overflow-x-auto;
+
+  // custom scroll
+  &::-webkit-scrollbar {
+    @apply w-2;
+    right: 16px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    @apply bg-gray2;
+    border-radius: 25px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    @apply bg-gray4;
+    border-radius: 25px;
+
+    &:hover {
+      @apply bg-grayPrimary;
+    }
+  }
+
+  &::-webkit-scrollbar-button {
+    @apply hidden;
+  }
+}
+
+table {
+  @apply min-w-full;
+    border-collapse: separate!important;
+    border-spacing: 0 8px;
+
+  tr {
+    th {
+      @apply bg-gray3 align-middle text-left font-rubik text-small p-4;
+      filter: drop-shadow(0px 1px 0px #FFB600);
+
+      strong {
+        @apply inline-flex items-center font-medium;
+      }
+
+      &:first-child {
+        @apply rounded-tl rounded-bl;
+      }
+
+      &:last-child {
+        @apply rounded-tr rounded-br;
+      }
+
+      .arrow-sort {
+        @apply flex-col ml-2 inline-flex;
+
+        &:before,
+        &:after {
+          @apply block w-0 h-0 border-solid duration-200 ease-linear transition-all;
+          content: '';
+        }
+
+        &:before {
+          border-width: 0 4px 4px 4px;
+          border-color: transparent transparent #ffffff transparent;
+          margin-bottom: 4px;
+        }
+
+        &:after {
+          border-width: 4px 4px 0 4px;
+          border-color: #ffffff transparent transparent transparent;
+        }
+
+        &.asc {
+          &:before {
+            border-color: transparent transparent #666 transparent;
+          }
+        }
+
+        &.desc {
+          &:after {
+            border-color: #666 transparent transparent transparent;
+          }
+        }
+      }
+    }
+
+    td {
+      @apply bg-white text-small leading-normal p-4 border-t border-b border-gray3 border-solid;
+
+
+      &:first-child {
+        @apply rounded-tl rounded-bl border-solid border-l border-gray3;
+      }
+
+      &:last-child {
+        @apply rounded-tr rounded-br border-solid border-r border-gray3;
+      }
+    }
+  }
+
+  &.last-item-right {
+    tr {
+      th, td {
+        &:last-child {
+          text-align: right
+        }
+      }
+    }
+  }
+
+  @screen lg {
+    tr {
+      th {
+        @apply text-modest;
+      }
+    }
+  }
+}

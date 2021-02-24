@@ -28,13 +28,48 @@
             <ToggleSwitch label="label" :checked="true" />
           </div>
         </div>
+
+        <div class="mt-6">
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">SortedTable</h3>
+
+            <SortedTable
+              :fields="fields"
+              order-by="asc"
+              last-right
+              @sort="teste"
+            >
+              <template #thead-th>
+                <th><strong>teste</strong></th>
+              </template>
+
+              <template #tbody>
+                <tr role="row">
+                  <td role="cell">teste</td>
+                  <td role="cell">teste</td>
+                  <td role="cell">teste</td>
+                  <td role="cell">teste</td>
+                  <td role="cell">teste</td>
+                </tr>
+
+                <tr role="row">
+                  <td role="cell">teste</td>
+                  <td role="cell">teste</td>
+                  <td role="cell">teste</td>
+                  <td role="cell">teste</td>
+                  <td role="cell">teste</td>
+                </tr>
+              </template>
+            </SortedTable>
+          </div>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import { Button, RadioButton, ToggleSwitch } from './index';
+import { Button, RadioButton, ToggleSwitch, SortedTable } from './index';
 
 export default {
   name: 'App',
@@ -43,6 +78,24 @@ export default {
     Button,
     RadioButton,
     ToggleSwitch,
+    SortedTable,
+  },
+
+  data() {
+    return {
+      fields: [
+        { key: 'nome_cliente', title: 'Nome do cliente', sortable: true },
+        { key: 'valor_financiado', title: 'Valor financiado', sortable: true },
+        { key: 'valor_bruto', title: 'Valor bruto' },
+        { key: 'valor_aquisicao', title: 'Valor de aquisição', sortable: true },
+      ],
+    };
+  },
+
+  methods: {
+    teste(key) {
+      console.log(key);
+    },
   },
 };
 </script>

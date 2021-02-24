@@ -81,5 +81,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@scss/_buttons.scss';
+@import '@scss/_buttons';
 </style>
