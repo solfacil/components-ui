@@ -34,6 +34,8 @@
 
 <script>
 export default {
+  name: 'SortedTable',
+
   props: {
     /**
      * Provide the content for the `<thead />`
