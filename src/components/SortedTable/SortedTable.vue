@@ -66,8 +66,9 @@ export default {
      * Align text last item right thead an tbody`
      */
     lastRight: {
-      required: true,
+      required: false,
       type: Boolean,
+      default: false,
     },
   },
 

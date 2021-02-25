@@ -37,6 +37,7 @@
               :fields="fields"
               order-by="asc"
               last-right
+              class="mb-3"
               @sort="teste"
             >
               <template #thead-th>
@@ -61,6 +62,14 @@
                 </tr>
               </template>
             </SortedTable>
+
+            <Pagination
+              v-model="page"
+              :page-count="10"
+              :items-count="440"
+              align-right
+              @clickHandler="teste"
+            />
           </div>
         </div>
       </div>
@@ -69,7 +78,13 @@
 </template>
 
 <script>
-import { Button, RadioButton, ToggleSwitch, SortedTable } from './index';
+import {
+  Button,
+  RadioButton,
+  ToggleSwitch,
+  SortedTable,
+  Pagination,
+} from './index';
 
 export default {
   name: 'App',
@@ -79,10 +94,12 @@ export default {
     RadioButton,
     ToggleSwitch,
     SortedTable,
+    Pagination,
   },
 
   data() {
     return {
+      page: 1,
       fields: [
         { key: 'nome_cliente', title: 'Nome do cliente', sortable: true },
         { key: 'valor_financiado', title: 'Valor financiado', sortable: true },

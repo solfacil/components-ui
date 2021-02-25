@@ -1,0 +1,61 @@
+.pagination {
+  @apply flex items-center;
+  user-select: none;
+
+  > span {
+    @apply text-small leading-normal;
+  }
+
+  div {
+    @apply flex items-center ml-6;
+
+    a {
+      @apply flex items-center justify-center w-7 h-7 rounded-full border-gray3 border-solid cursor-pointer duration-200 ease-linear transition-all;
+      border-width: 2px;
+
+      &:hover,
+      &:active {
+        @apply border-gray4;
+      }
+
+      &:before {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 12px;
+        background: url(~@/assets/img/arrow-left.svg) no-repeat center
+          center/cover;
+      }
+
+      &.next {
+        @apply ml-2;
+
+        &:before {
+          transform: rotate(180deg);
+        }
+      }
+
+      &.disabled {
+        @apply cursor-default;
+        opacity: 0.32;
+
+        &:hover,
+        &:active {
+          @apply border-gray3;
+        }
+      }
+
+      span {
+        @apply hidden;
+      }
+    }
+  }
+
+  @screen lg {
+    div {
+      a {
+        @apply w-8 h-8;
+      }
+    }
+  }
+}
