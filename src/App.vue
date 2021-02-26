@@ -15,16 +15,25 @@
         <div class="grid grid-cols-3 gap-8">
           <div class="p-6 bg-gray1 rounded shadow-sm">
             <h3 class="mb-2">Buttom</h3>
+
+            <hr class="my-4" />
+
             <Button>Button</Button>
           </div>
 
           <div class="p-6 bg-gray1 rounded-lg shadow-sm">
             <h3 class="mb-2">RadioButton</h3>
+
+            <hr class="my-4" />
+
             <RadioButton label="label" name="test" val="name" :checked="true" />
           </div>
 
           <div class="p-6 bg-gray1 rounded-lg shadow-sm">
             <h3 class="mb-2">Switch</h3>
+
+            <hr class="my-4" />
+
             <ToggleSwitch label="label" :checked="true" />
           </div>
         </div>
@@ -32,6 +41,8 @@
         <div class="mt-6">
           <div class="p-6 bg-gray1 rounded shadow-sm">
             <h3 class="mb-2">SortedTable</h3>
+
+            <hr class="my-4" />
 
             <SortedTable
               :fields="fields"

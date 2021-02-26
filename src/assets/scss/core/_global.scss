@@ -3,3 +3,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+hr {
+  @apply w-full h-0 border-t border-solid border-gray3;
+}
