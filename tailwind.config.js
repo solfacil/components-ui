@@ -8,6 +8,7 @@ module.exports = {
   purge: ['./public/**/*.html', './src/**/*.vue'],
   theme: {
     borderRadius: {
+      initial: 'initial',
       default: '0.25rem',
       full: '9999px',
     },

@@ -1,0 +1,86 @@
+.badge {
+  @apply inline-flex items-center rounded font-rubik font-bold text-tiny uppercase h-5 px-2;
+  line-height: 1.4;
+
+  &:before {
+    @apply w-2 h-2 rounded-full block mr-2;
+    content: '';
+  }
+
+  &.done {
+    @apply bg-green3 text-white;
+
+    &:before {
+      @apply h-2 block mr-2 rounded-initial;
+      width: 10px;
+      background: url(~@/assets/img/icon-ok.png) no-repeat center center/cover;
+      content: '';
+    }
+  }
+
+  &.denied {
+    @apply bg-red1;
+
+    &:before {
+      @apply bg-red2;
+    }
+  }
+
+  &.review {
+    @apply bg-orange1;
+
+    &:before {
+      @apply bg-orangePrimary;
+    }
+  }
+
+  &.in-progress {
+    @apply bg-blue1;
+
+    &:before {
+      @apply bg-blue2;
+    }
+  }
+
+  &.approved {
+    @apply bg-green1;
+
+    &:before {
+      @apply bg-green2;
+    }
+  }
+
+  &.message  {
+    @apply bg-gray2;
+
+    &:before {
+      @apply bg-gray4;
+    }
+  }
+
+  &.message-line {
+    @apply border border-solid border-gray3;
+
+    &:before {
+      @apply bg-gray4;
+    }
+  }
+
+  &.hidden-ico {
+    &:after,
+    &:before {
+      @apply hidden;
+    }
+  }
+}
+
+
+
+
+// done,
+// denied,
+// review,
+// in-progress,
+// approved,
+// message,
+// message-line,

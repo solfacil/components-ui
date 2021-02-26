@@ -83,6 +83,90 @@
             />
           </div>
         </div>
+
+        <div class="mt-8">
+          <h1 class="text-large">Badge</h1>
+          <h3 class="text-medium mt-3">Rounded</h3>
+        </div>
+
+        <div class="grid grid-cols-3 gap-8 mt-6">
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Done</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Badge variant="done">Concluido</Badge>
+              <Badge hidden-icon variant="done">Concluido</Badge>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded-lg shadow-sm">
+            <h3 class="mb-2">Denied</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Badge variant="denied">REPROVADO</Badge>
+              <Badge hidden-icon variant="denied">REPROVADO</Badge>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded-lg shadow-sm">
+            <h3 class="mb-2">Review</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Badge variant="review">Em análise</Badge>
+              <Badge hidden-icon variant="review">Em análise</Badge>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">In Progress</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Badge variant="in-progress">Em andamento</Badge>
+              <Badge hidden-icon variant="in-progress">Em andamento</Badge>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded-lg shadow-sm">
+            <h3 class="mb-2">Approved</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Badge variant="approved">Aprovado</Badge>
+              <Badge hidden-icon variant="approved">Aprovado</Badge>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded-lg shadow-sm">
+            <h3 class="mb-2">Message</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Badge variant="message">Message</Badge>
+              <Badge hidden-icon variant="message">Message</Badge>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded-lg shadow-sm">
+            <h3 class="mb-2">Message Line</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Badge variant="message-line">Message Line</Badge>
+              <Badge hidden-icon variant="message-line">Message Line</Badge>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -95,6 +179,7 @@ import {
   ToggleSwitch,
   SortedTable,
   Pagination,
+  Badge,
 } from './index';
 
 export default {
@@ -106,6 +191,7 @@ export default {
     ToggleSwitch,
     SortedTable,
     Pagination,
+    Badge,
   },
 
   data() {
