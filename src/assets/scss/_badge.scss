@@ -13,7 +13,7 @@
     &:before {
       @apply h-2 block mr-2 rounded-initial;
       width: 10px;
-      background: url(~@/assets/img/icon/icon-ok.png) no-repeat center center/cover;
+      background: url(~@img/icon/icon-ok.svg) no-repeat center center/cover;
       content: '';
     }
   }
