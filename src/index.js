@@ -4,3 +4,4 @@ export { default as ToggleSwitch } from '@components/ToggleSwitch/ToggleSwitch';
 export { default as SortedTable } from '@components/SortedTable/SortedTable';
 export { default as Pagination } from '@components/Pagination/Pagination';
 export { default as Badge } from '@components/Badge/Badge';
+export { default as Input } from '@components/Input/Input';

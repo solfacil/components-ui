@@ -166,6 +166,21 @@
               <Badge hidden-icon variant="message-line">Message Line</Badge>
             </div>
           </div>
+
+          <div class="p-6 bg-gray1 rounded-lg shadow-sm">
+            <h3 class="mb-2">Message Line</h3>
+
+            <hr class="my-4" />
+
+            <Input
+              id="search"
+              v-model="search"
+              type="search"
+              name="search"
+              placeholder="busca"
+              @eventHandler="teste"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -180,6 +195,7 @@ import {
   SortedTable,
   Pagination,
   Badge,
+  Input,
 } from './index';
 
 export default {
@@ -192,10 +208,12 @@ export default {
     SortedTable,
     Pagination,
     Badge,
+    Input,
   },
 
   data() {
     return {
+      search: null,
       page: 1,
       fields: [
         { key: 'nome_cliente', title: 'Nome do cliente', sortable: true },
