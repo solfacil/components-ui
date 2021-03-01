@@ -93,5 +93,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@scss/core/_input-text';
+@import '@scss/_input-text';
 </style>
