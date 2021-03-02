@@ -193,6 +193,7 @@
               type="search"
               name="search"
               placeholder="busca"
+              @clear="clearData"
               @eventHandler="teste"
             />
           </div>
@@ -247,6 +248,10 @@ export default {
   methods: {
     teste(key) {
       console.log(key);
+    },
+
+    clearData() {
+      console.log('reset');
     },
   },
 };
