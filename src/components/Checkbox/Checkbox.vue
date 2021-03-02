@@ -1,9 +1,10 @@
 <template>
-  <label class="radio-button">
+  <label class="checkbox">
     <input
-      type="radio"
+      :id="id"
+      type="checkbox"
       :name="name"
-      :value="val"
+      :value="value"
       :checked="checked"
       :disabled="disabled"
       @input="updateValue($event.target.value)"
@@ -17,7 +18,7 @@
 
 <script>
 export default {
-  name: 'RadioButton',
+  name: 'Checkbox',
 
   props: {
     /** Specify whether the is currently checked */
@@ -57,7 +58,7 @@ export default {
     },
 
     /** Specify the value of the */
-    val: {
+    value: {
       type: [String, Boolean, Number, Object, Array, Function],
       default: undefined,
     },
@@ -72,5 +73,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@scss/_radio-button';
+@import '@scss/_checkbox';
 </style>

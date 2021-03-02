@@ -1,0 +1,43 @@
+.checkbox {
+  @apply relative inline-block;
+  user-select: none;
+
+  > span {
+    @apply font-rubik relative  text-grayPrimary cursor-pointer text-small min-h-6 flex items-center;
+    line-height: 17px;
+
+    &:before {
+      @apply bg-white rounded border border-solid border-gray3 shadow-sm duration-200 ease-linear transition-all z-0 mr-2;
+      background: url(~@img/icon/icon-check-white.svg) no-repeat center center;
+      content: '';
+      width: 22px;
+      height: 22px;
+    }
+
+    &:hover {
+      &:before {
+        @apply bg-gray1;
+      }
+    }
+
+    &.error {
+      @apply m-0 text-grayPrimary;
+
+      &:before {
+        @apply border-red2;
+      }
+    }
+  }
+
+  input {
+    @apply absolute opacity-0;
+
+    &:disabled + span:before {
+      @apply bg-gray2;
+    }
+
+    &:checked + span:before {
+      @apply bg-orangePrimary;
+    }
+  }
+}

@@ -26,7 +26,22 @@
 
             <hr class="my-4" />
 
-            <RadioButton label="label" name="test" val="name" :checked="true" />
+            <RadioButton
+              v-model="radio"
+              label="label"
+              name="test"
+              val="teste"
+            />
+          </div>
+
+          <div class="p-6 bg-gray1 rounded-lg shadow-sm">
+            <h3 class="mb-2">Checkbox</h3>
+
+            {{ check }}
+
+            <hr class="my-4" />
+
+            <Checkbox v-model="check" label="label 2" value="b" name="e" />
           </div>
 
           <div class="p-6 bg-gray1 rounded-lg shadow-sm">
@@ -34,7 +49,7 @@
 
             <hr class="my-4" />
 
-            <ToggleSwitch label="label" :checked="true" />
+            <ToggleSwitch v-model="valSwitch" label="label" :checked="true" />
           </div>
         </div>
 
@@ -192,6 +207,7 @@ import {
   Button,
   RadioButton,
   ToggleSwitch,
+  Checkbox,
   SortedTable,
   Pagination,
   Badge,
@@ -204,6 +220,7 @@ export default {
   components: {
     Button,
     RadioButton,
+    Checkbox,
     ToggleSwitch,
     SortedTable,
     Pagination,
@@ -213,6 +230,9 @@ export default {
 
   data() {
     return {
+      valSwitch: null,
+      radio: null,
+      check: null,
       search: null,
       page: 1,
       fields: [
