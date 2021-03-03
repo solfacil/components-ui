@@ -58,6 +58,38 @@
 
             <ToggleSwitch v-model="valSwitch" label="label" :checked="true" />
           </div>
+
+          <div class="p-6 bg-gray1 rounded-lg shadow-sm">
+            <h3 class="mb-2">Message Line</h3>
+
+            <hr class="my-4" />
+
+            <Input
+              id="search"
+              v-model="search"
+              type="search"
+              name="search"
+              placeholder="busca"
+              @clear="clearData"
+              @eventHandler="teste"
+            />
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Tabs</h3>
+
+            <hr class="my-4" />
+
+            {{ currentTab }}
+            <Tabs
+              v-model="currentTab"
+              :items="items"
+              active="aba3"
+              @changed="getDataTab"
+            />
+          </div>
         </div>
 
         <div class="mt-6">
@@ -188,22 +220,6 @@
               <Badge hidden-icon variant="message-line">Message Line</Badge>
             </div>
           </div>
-
-          <div class="p-6 bg-gray1 rounded-lg shadow-sm">
-            <h3 class="mb-2">Message Line</h3>
-
-            <hr class="my-4" />
-
-            <Input
-              id="search"
-              v-model="search"
-              type="search"
-              name="search"
-              placeholder="busca"
-              @clear="clearData"
-              @eventHandler="teste"
-            />
-          </div>
         </div>
       </div>
     </section>
@@ -220,6 +236,7 @@ import {
   Pagination,
   Badge,
   Input,
+  Tabs,
 } from './index';
 
 export default {
@@ -234,6 +251,7 @@ export default {
     Pagination,
     Badge,
     Input,
+    Tabs,
   },
 
   data() {
@@ -249,6 +267,21 @@ export default {
         { key: 'valor_bruto', title: 'Valor bruto' },
         { key: 'valor_aquisicao', title: 'Valor de aquisição', sortable: true },
       ],
+      currentTab: null,
+      items: [
+        {
+          name: 'aba1',
+          label: 'Aba 1',
+        },
+        {
+          name: 'aba2',
+          label: 'Aba 2',
+        },
+        {
+          name: 'aba3',
+          label: 'Aba 3',
+        },
+      ],
     };
   },
 
@@ -259,6 +292,10 @@ export default {
 
     clearData() {
       console.log('reset');
+    },
+
+    getDataTab(tab) {
+      console.log(tab);
     },
   },
 };
