@@ -1,12 +1,20 @@
 <template>
-  <div class="pagination" :class="{ 'justify-end': alignRight }">
-    <span>{{ innerValue }} - {{ pageCount }} de {{ itemsCount }}</span>
+  <div v-if="toggle" class="pagination" :class="{ 'justify-end': alignRight }">
+    <span>{{ initLimit }} - {{ endLimit }} de {{ data.count }}</span>
 
     <div>
-      <a class="prev" :class="{ disabled: firstPage() }" @click="prevPage()">
+      <a
+        class="prev"
+        :class="{ disabled: prevPage }"
+        @click="getPage({ beforeCursor: data.beforeCursor }, 'prev')"
+      >
         <span>Anterior</span>
       </a>
-      <a class="next" :class="{ disabled: lastPage() }" @click="nextPage()">
+      <a
+        class="next"
+        :class="{ disabled: nextPage }"
+        @click="getPage({ afterCursor: data.afterCursor }, 'next')"
+      >
         <span>Próximo</span>
       </a>
     </div>
@@ -18,14 +26,17 @@ export default {
   name: 'Pagination',
 
   props: {
-    pageCount: {
-      type: Number,
+    data: {
       required: true,
-    },
-
-    itemsCount: {
-      type: Number,
-      required: true,
+      type: Object,
+      validator: function (obj) {
+        return (
+          'afterCursor' in obj &&
+          'beforeCursor' in obj &&
+          'count' in obj &&
+          'size' in obj
+        );
+      },
     },
 
     alignRight: {
@@ -37,48 +48,59 @@ export default {
 
   data() {
     return {
+      initLimit: 1,
+      endLimit: null,
       innerValue: 1,
+      remainder: null,
     };
   },
 
   computed: {
-    selected: {
-      get: function () {
-        return this.value || this.innerValue;
-      },
-      set: function (newValue) {
-        this.innerValue = newValue;
-      },
-    },
-  },
-
-  methods: {
-    handlePageSelected(selected) {
-      if (this.selected === selected) return;
-
-      this.innerValue = selected;
-      this.$emit('input', selected);
-      this.$emit('clickHandler', selected);
+    toggle() {
+      return this.data.count > this.data.size;
     },
 
     prevPage() {
-      if (this.selected <= 1) return;
-
-      this.handlePageSelected(this.selected - 1);
+      return !this.data.beforeCursor || this.initLimit === 1;
     },
 
     nextPage() {
-      if (this.selected >= this.pageCount) return;
-
-      this.handlePageSelected(this.selected + 1);
+      return !this.data.afterCursor || this.endLimit >= this.data.count;
     },
+  },
 
-    firstPage() {
-      return this.selected === 1;
-    },
+  mounted() {
+    this.endLimit = this.data.size;
+    this.remainder = this.data.count % this.data.size;
+  },
 
-    lastPage() {
-      return this.selected === this.pageCount || this.pageCount === 0;
+  methods: {
+    getPage(cursor, type) {
+      if (type === 'prev' && !this.prevPage) {
+        this.initLimit -= this.data.size;
+
+        if (this.nextPage) {
+          this.endLimit -= this.remainder;
+        } else {
+          this.endLimit -= this.data.size;
+        }
+
+        this.$emit('clickHandler', cursor);
+
+        return;
+      }
+
+      if (type === 'next' && !this.nextPage) {
+        this.initLimit += this.data.size;
+        this.endLimit =
+          this.endLimit + this.data.size > this.data.count
+            ? this.endLimit + (this.data.count - this.endLimit)
+            : (this.endLimit += this.data.size);
+
+        this.$emit('clickHandler', cursor);
+
+        return;
+      }
     },
   },
 };

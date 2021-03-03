@@ -43,12 +43,11 @@ export default {
     fields: {
       required: true,
       type: Array,
-      validator: (valueAccordion) => {
-        if (!(valueAccordion && valueAccordion.constructor === Array))
-          return false;
+      validator: (table) => {
+        if (!(table && table.constructor === Array)) return false;
         const accordionProperties = ['title'].filter(
           (property) =>
-            !Object.prototype.hasOwnProperty.call(valueAccordion[0], property),
+            !Object.prototype.hasOwnProperty.call(table[0], property),
         );
         return accordionProperties.length === 0;
       },

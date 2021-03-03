@@ -128,13 +128,7 @@
               </template>
             </SortedTable>
 
-            <Pagination
-              v-model="page"
-              :page-count="10"
-              :items-count="440"
-              align-right
-              @clickHandler="teste"
-            />
+            <Pagination :data="paginator" align-right @clickHandler="teste" />
           </div>
         </div>
 
@@ -282,6 +276,14 @@ export default {
           label: 'Aba 3',
         },
       ],
+
+      paginator: {
+        afterCursor: 'g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls',
+        beforeCursor:
+          'g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls',
+        count: 31,
+        size: 10,
+      },
     };
   },
 
