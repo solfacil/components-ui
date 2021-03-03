@@ -18,7 +18,14 @@
 
             <hr class="my-4" />
 
-            <Button>Button</Button>
+            <div class="grid grid-cols-2 gap-2">
+              <Button>Button</Button>
+              <Button disabled>Button</Button>
+              <Button variant="secondary">Button</Button>
+              <Button variant="secondary" disabled>Button</Button>
+              <Button variant="exception">Button</Button>
+              <Button variant="exception" disabled>Button</Button>
+            </div>
           </div>
 
           <div class="p-6 bg-gray1 rounded-lg shadow-sm">
