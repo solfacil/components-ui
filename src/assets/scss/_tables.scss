@@ -74,13 +74,13 @@ table {
           border-color: #ffffff transparent transparent transparent;
         }
 
-        &.asc {
+        &.desc {
           &:before {
             border-color: transparent transparent #666 transparent;
           }
         }
 
-        &.desc {
+        &.asc {
           &:after {
             border-color: #666 transparent transparent transparent;
           }
