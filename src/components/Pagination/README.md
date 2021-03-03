@@ -2,10 +2,13 @@
 
 ```html
 <Pagination
-  v-model="page"
-  :page-count="10"
-  :items-count="440"
+  :data="paginator"
   align-right
   @clickHandler="triggerFunction"
 />
+```
+
+**Return object afterCursor or beforeCursor - @clickHandler**
+```js
+  {afterCursor: "g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls"}
 ```
