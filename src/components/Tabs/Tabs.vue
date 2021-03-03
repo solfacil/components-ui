@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="sol-tabs">
     <li
       v-for="(item, index) in items"
       :key="index"
@@ -24,10 +24,10 @@ export default {
     items: {
       type: Array,
       required: true,
-      validator: (tab) => {
-        if (!(tab && tab.constructor === Array)) return false;
+      validator: (obj) => {
+        if (!(obj && obj.constructor === Array)) return false;
         const accordionProperties = ['name', 'label'].filter(
-          (property) => !Object.prototype.hasOwnProperty.call(tab[0], property),
+          (property) => !Object.prototype.hasOwnProperty.call(obj[0], property),
         );
         return accordionProperties.length === 0;
       },
@@ -41,8 +41,7 @@ export default {
   },
 
   beforeMount() {
-    this.activeItem = this.active;
-    if (this.active) this.$emit('changed', this.active);
+    this.activeItem = this.active ? this.active : this.items[0].name;
   },
 
   methods: {
@@ -51,6 +50,7 @@ export default {
     },
 
     setActive(item) {
+      if (this.activeItem === item) return;
       this.activeItem = item;
       this.$emit('input', item);
       this.$emit('changed', item);

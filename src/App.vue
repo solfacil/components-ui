@@ -82,11 +82,10 @@
 
             <hr class="my-4" />
 
-            {{ currentTab }}
             <Tabs
               v-model="currentTab"
               :items="items"
-              active="aba3"
+              active="formalizacao"
               @changed="getDataTab"
             />
           </div>
@@ -264,16 +263,16 @@ export default {
       currentTab: null,
       items: [
         {
-          name: 'aba1',
-          label: 'Aba 1',
+          name: 'upload',
+          label: 'Upload de documentos',
         },
         {
-          name: 'aba2',
-          label: 'Aba 2',
+          name: 'formalizacao',
+          label: 'Formalização',
         },
         {
-          name: 'aba3',
-          label: 'Aba 3',
+          name: 'cancelar_aprovar',
+          label: 'Cancelar/Aprovar',
         },
       ],
 

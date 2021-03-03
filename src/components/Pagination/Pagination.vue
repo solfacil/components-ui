@@ -94,7 +94,7 @@ export default {
         this.initLimit += this.data.size;
         this.endLimit =
           this.endLimit + this.data.size > this.data.count
-            ? this.endLimit + (this.data.count - this.endLimit)
+            ? this.endLimit + this.remainder
             : (this.endLimit += this.data.size);
 
         this.$emit('clickHandler', cursor);
