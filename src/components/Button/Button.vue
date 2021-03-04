@@ -1,6 +1,7 @@
 <template>
   <component
     :is="tag"
+    :id="id || `button-${_uid}`"
     :href="to"
     :disabled="disabled"
     :class="[
@@ -27,6 +28,12 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+
+    /** Specify a custom id */
+    id: {
+      type: String,
+      default: '',
     },
 
     /** Specify whether the Button should be a small variant, use prefix for responsive (xs:, sm:, md:, lg:, xl:): <br/> "btn-large" | "btn-medium | "btn-small" */

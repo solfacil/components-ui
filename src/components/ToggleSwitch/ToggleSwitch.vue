@@ -1,7 +1,6 @@
 <template>
-  <label class="toggle-switch">
+  <label :id="id || `switch-${_uid}`" class="toggle-switch">
     <input
-      :id="id"
       v-model="value"
       type="checkbox"
       :checked="checked"
@@ -36,7 +35,7 @@ export default {
       default: false,
     },
 
-    /** Specify a custom id for the <input> */
+    /** Specify a custom id */
     id: {
       type: String,
       default: '',

@@ -1,7 +1,6 @@
 <template>
-  <label class="checkbox">
+  <label :id="id || `checkbox-${_uid}`" class="checkbox">
     <input
-      :id="id"
       type="checkbox"
       :name="name"
       :value="value"
@@ -39,7 +38,7 @@ export default {
       default: false,
     },
 
-    /** Specify a custom id for the <input> */
+    /** Specify a custom id */
     id: {
       type: String,
       default: '',

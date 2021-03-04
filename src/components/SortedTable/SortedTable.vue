@@ -1,6 +1,10 @@
 <template>
   <div class="scroll-table">
-    <table class="sort-table" :class="{ 'last-item-right': lastRight }">
+    <table
+      :id="id || `table-${_uid}`"
+      class="sort-table"
+      :class="{ 'last-item-right': lastRight }"
+    >
       <thead role="rowgroup">
         <tr role="row">
           <th v-for="(field, index) in fields" :key="index" role="columnheader">
@@ -53,11 +57,11 @@ export default {
     },
 
     /**
-     * Active arrow by order 'asc' or 'desc'
+     * Specify a custom id
      */
-    orderBy: {
-      required: true,
+    id: {
       type: String,
+      default: '',
     },
 
     /**
@@ -67,6 +71,14 @@ export default {
       required: false,
       type: Boolean,
       default: false,
+    },
+
+    /**
+     * Active arrow by order 'asc' or 'desc'
+     */
+    orderBy: {
+      required: true,
+      type: String,
     },
   },
 

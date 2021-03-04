@@ -1,5 +1,10 @@
 <template>
-  <div v-if="toggle" class="pagination" :class="{ 'justify-end': alignRight }">
+  <div
+    v-if="toggle"
+    :id="id || `pagination-${_uid}`"
+    class="pagination"
+    :class="{ 'justify-end': alignRight }"
+  >
     <span>{{ initLimit }} - {{ endLimit }} de {{ data.count }}</span>
 
     <div>
@@ -26,6 +31,18 @@ export default {
   name: 'Pagination',
 
   props: {
+    alignRight: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
+
+    /** Specify a custom id */
+    id: {
+      type: String,
+      default: '',
+    },
+
     data: {
       required: true,
       type: Object,
@@ -37,12 +54,6 @@ export default {
           'size' in obj
         );
       },
-    },
-
-    alignRight: {
-      required: false,
-      type: Boolean,
-      default: false,
     },
   },
 

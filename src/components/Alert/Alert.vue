@@ -1,6 +1,6 @@
 <template>
   <span
-    :id="id || `badge-${_uid}`"
+    :id="id || `checkbox-${_uid}`"
     :class="[variant, { 'hidden-ico': hiddenIcon }]"
     class="badge"
   >
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'Badge',
+  name: 'Alert',
 
   props: {
     /** Specify a custom id */
