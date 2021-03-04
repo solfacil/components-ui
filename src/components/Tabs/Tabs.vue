@@ -3,8 +3,8 @@
     <li
       v-for="(item, index) in items"
       :key="index"
-      :class="{ active: isActive(item.name) }"
-      @click="setActive(item.name)"
+      :class="{ active: isActive(item.name), disabled: item.disabled }"
+      @click="setActive(item)"
     >
       {{ item.label }}
     </li>
@@ -41,7 +41,7 @@ export default {
   },
 
   beforeMount() {
-    this.activeItem = this.active ? this.active : this.items[0].name;
+    this.setActiveLoad();
   },
 
   methods: {
@@ -50,10 +50,15 @@ export default {
     },
 
     setActive(item) {
-      if (this.activeItem === item) return;
-      this.activeItem = item;
-      this.$emit('input', item);
-      this.$emit('changed', item);
+      if (this.activeItem === item.name || item.disabled) return;
+      this.activeItem = item.name;
+      this.$emit('input', item.name);
+      this.$emit('changed', item.name);
+    },
+
+    setActiveLoad() {
+      const active = this.items.find((obj) => !obj.disabled);
+      this.activeItem = this.active ? this.active : active.name;
     },
   },
 };

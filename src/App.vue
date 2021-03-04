@@ -85,7 +85,7 @@
             <Tabs
               v-model="currentTab"
               :items="items"
-              active="formalizacao"
+              active="cancelar_aprovar"
               @changed="getDataTab"
             />
           </div>
@@ -265,6 +265,7 @@ export default {
         {
           name: 'upload',
           label: 'Upload de documentos',
+          disabled: true,
         },
         {
           name: 'formalizacao',

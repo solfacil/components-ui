@@ -8,6 +8,10 @@
     &.active {
       @apply border-orangePrimary text-orangePrimary cursor-default;
     }
+
+    &.disabled {
+      @apply cursor-default opacity-75;
+    }
   }
 
   @screen lg {

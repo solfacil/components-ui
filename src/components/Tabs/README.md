@@ -23,6 +23,7 @@ items: [
   {
     name: 'cancelar_aprovar',
     label: 'Cancelar/Aprovar',
+    disabled: true //optional
   },
 ],
 ```
