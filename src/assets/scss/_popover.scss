@@ -1,0 +1,68 @@
+.sol-popover {
+  @apply relative inline-block z-50;
+
+  .popover {
+    @apply bg-white overflow-hidden rounded text-small shadow absolute opacity-0 duration-200 ease-linear transition-all;
+    min-width: 240px;
+    visibility: hidden;
+
+    .header-popover {
+      @apply bg-orangePrimary font-rubik text-gray7 font-medium py-4 px-6;
+    }
+
+    .content-popover {
+      @apply py-4 px-6;
+    }
+
+    &.popover-top {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &.popover-right {
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.popover-bottom {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &.popover-left {
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.disabled {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .popover {
+      @apply opacity-100;
+      visibility: visible;
+
+      &.popover-top {
+        bottom: calc(100% + 8px);
+      }
+
+      &.popover-right {
+        left: calc(100% + 8px);
+      }
+
+      &.popover-bottom {
+        top: calc(100% + 8px);
+      }
+
+      &.popover-left {
+        right: calc(100% + 8px);
+      }
+    }
+  }
+}

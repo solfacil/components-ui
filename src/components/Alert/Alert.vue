@@ -11,7 +11,7 @@
       ]"
     >
       <i v-if="iconNumber">{{ iconNumber }}</i>
-      <span class="txt" :class="{ 'pr-6': close }"><slot>Alert</slot></span>
+      <span class="txt" :class="{ 'pr-6': close }"><slot /></span>
       <span v-if="close" class="alert-close" @click="hiddenAlert">
         <em>Fechar</em>
       </span>

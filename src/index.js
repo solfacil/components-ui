@@ -8,3 +8,4 @@ export { default as RadioButton } from '@components/RadioButton/RadioButton';
 export { default as SortedTable } from '@components/SortedTable/SortedTable';
 export { default as Tabs } from '@components/Tabs/Tabs';
 export { default as ToggleSwitch } from '@components/ToggleSwitch/ToggleSwitch';
+export { default as Popover } from '@components/Popover/Popover';

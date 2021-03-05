@@ -104,6 +104,20 @@
               @eventHandler="teste"
             />
           </div>
+
+          <div class="p-6 bg-gray1 rounded-lg shadow-sm">
+            <h3 class="mb-2">Popover</h3>
+
+            <hr class="my-4" />
+
+            <Popover title="Teste de titulo">
+              <Button>Hover Popover</Button>
+
+              <template slot="popover">
+                Vivamus sagittis lacus vel augue laoreet rutrum faucibus.
+              </template>
+            </Popover>
+          </div>
         </div>
 
         <div class="mt-8">
@@ -257,6 +271,7 @@ import {
   Checkbox,
   Input,
   Pagination,
+  Popover,
   RadioButton,
   SortedTable,
   Tabs,
@@ -273,6 +288,7 @@ export default {
     Checkbox,
     Input,
     Pagination,
+    Popover,
     RadioButton,
     SortedTable,
     Tabs,

@@ -15,7 +15,7 @@
     class="sol-button"
     v-on="$listeners"
   >
-    <slot>Button</slot>
+    <slot />
   </component>
 </template>
 

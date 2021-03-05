@@ -3,7 +3,7 @@
     :id="id || `badge-${_uid}`"
     :class="['sol-badge', variant, { 'hidden-ico': hiddenIcon }]"
   >
-    <slot>Badge</slot>
+    <slot />
   </span>
 </template>
 
