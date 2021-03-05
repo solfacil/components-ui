@@ -1,5 +1,5 @@
 <template>
-  <label :id="id || `checkbox-${_uid}`" class="checkbox">
+  <label :id="id || `checkbox-${_uid}`" class="sol-checkbox">
     <input
       type="checkbox"
       :name="name"

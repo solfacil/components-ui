@@ -12,7 +12,37 @@
 
     <section class="py-10">
       <div class="container">
-        <div class="grid grid-cols-3 gap-8">
+        <div class="p-6 bg-gray1 rounded shadow-sm">
+          <h3 class="mb-2">Alert</h3>
+
+          <hr class="my-4" />
+
+          <div class="grid grid-cols-2 gap-4">
+            <Alert variant="success" close icon-number="22">Success</Alert>
+            <Alert variant="error" icon close>Error</Alert>
+            <Alert variant="warning" icon>Warning</Alert>
+            <Alert variant="info" close>Info</Alert>
+            <Alert icon>Default</Alert>
+            <Alert variant="info-line" icon close count="22">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+              orci mi, porttitor nec orci eu, tristique feugiat sapien.
+            </Alert>
+
+            <div class="flex flex-col">
+              <Alert variant="success" size="md">Success - MD</Alert>
+            </div>
+
+            <div class="flex flex-col">
+              <Alert variant="error" size="lg">Error - LG</Alert>
+            </div>
+
+            <div class="flex flex-col">
+              <Alert variant="warning" size="xl" icon>Warning - XL</Alert>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-8 mt-8">
           <div class="p-6 bg-gray1 rounded shadow-sm">
             <h3 class="mb-2">Buttom</h3>
 
@@ -60,7 +90,7 @@
           </div>
 
           <div class="p-6 bg-gray1 rounded-lg shadow-sm">
-            <h3 class="mb-2">Message Line</h3>
+            <h3 class="mb-2">Input search</h3>
 
             <hr class="my-4" />
 
@@ -76,7 +106,7 @@
           </div>
         </div>
 
-        <div class="mt-6">
+        <div class="mt-8">
           <div class="p-6 bg-gray1 rounded shadow-sm">
             <h3 class="mb-2">Tabs</h3>
 
@@ -91,7 +121,7 @@
           </div>
         </div>
 
-        <div class="mt-6">
+        <div class="mt-8">
           <div class="p-6 bg-gray1 rounded shadow-sm">
             <h3 class="mb-2">SortedTable</h3>
 
@@ -136,7 +166,7 @@
           <h3 class="text-medium mt-3">Rounded</h3>
         </div>
 
-        <div class="grid grid-cols-3 gap-8 mt-6">
+        <div class="grid grid-cols-3 gap-8 mt-4">
           <div class="p-6 bg-gray1 rounded shadow-sm">
             <h3 class="mb-2">Done</h3>
 
@@ -221,30 +251,32 @@
 
 <script>
 import {
-  Button,
-  RadioButton,
-  ToggleSwitch,
-  Checkbox,
-  SortedTable,
-  Pagination,
+  Alert,
   Badge,
+  Button,
+  Checkbox,
   Input,
+  Pagination,
+  RadioButton,
+  SortedTable,
   Tabs,
+  ToggleSwitch,
 } from './index';
 
 export default {
   name: 'App',
 
   components: {
-    Button,
-    RadioButton,
-    Checkbox,
-    ToggleSwitch,
-    SortedTable,
-    Pagination,
+    Alert,
     Badge,
+    Button,
+    Checkbox,
     Input,
+    Pagination,
+    RadioButton,
+    SortedTable,
     Tabs,
+    ToggleSwitch,
   },
 
   data() {

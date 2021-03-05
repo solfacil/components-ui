@@ -1,5 +1,5 @@
 <template>
-  <label :id="id || `radio-${_uid}`" class="radio-button">
+  <label :id="id || `radio-${_uid}`" class="sol-radio-button">
     <input
       type="radio"
       :name="name"

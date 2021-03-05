@@ -1,8 +1,7 @@
 <template>
   <span
     :id="id || `badge-${_uid}`"
-    :class="[variant, { 'hidden-ico': hiddenIcon }]"
-    class="badge"
+    :class="['sol-badge', variant, { 'hidden-ico': hiddenIcon }]"
   >
     <slot>Badge</slot>
   </span>

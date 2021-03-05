@@ -2,7 +2,7 @@
   <div
     v-if="toggle"
     :id="id || `pagination-${_uid}`"
-    class="pagination"
+    class="sol-pagination"
     :class="{ 'justify-end': alignRight }"
   >
     <span>{{ initLimit }} - {{ endLimit }} de {{ data.count }}</span>
