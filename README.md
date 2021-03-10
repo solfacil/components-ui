@@ -12,7 +12,7 @@ For full documentation, visit [Documentation](#).
 
 ## Quick start
 
-### 1 Install via npm
+### 1 Install npm
 
 ```bash
 npm install @solfacil/components-ui
