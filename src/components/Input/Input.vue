@@ -85,7 +85,7 @@ export default {
     },
 
     handleEvent(value) {
-      if (!value) return;
+      if (!value && value!=='') return;
 
       this.$emit('eventHandler', value);
     },
