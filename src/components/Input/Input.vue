@@ -79,13 +79,13 @@ export default {
 
   methods: {
     reset() {
-      this.$emit('input', null);
+      this.$emit('input', '');
 
       this.$emit('clear');
     },
 
     handleEvent(value) {
-      if (!value && value!=='') return;
+      if (!value && value !== '') return;
 
       this.$emit('eventHandler', value);
     },
