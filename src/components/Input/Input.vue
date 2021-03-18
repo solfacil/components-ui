@@ -79,9 +79,9 @@ export default {
 
   methods: {
     reset() {
-      this.$emit('input', null);
+      this.$emit('input', '');
 
-      this.$emit('clear');
+      this.$emit('eventHandler','');
     },
 
     handleEvent(value) {

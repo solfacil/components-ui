@@ -7,7 +7,6 @@
   type="search"
   name="search"
   placeholder="Busque por"
-  @clear="triggerClear"
   @eventHandler="triggerFunction"
 />
 ```
