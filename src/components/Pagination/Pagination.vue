@@ -10,14 +10,14 @@
     <div>
       <a
         class="prev"
-        :class="{ disabled: prevPage }"
+        :class="{ disabled: !hasPrevPage }"
         @click="getPage({ beforeCursor: data.beforeCursor }, 'prev')"
       >
         <span>Anterior</span>
       </a>
       <a
         class="next"
-        :class="{ disabled: nextPage }"
+        :class="{ disabled: !hasNextPage }"
         @click="getPage({ afterCursor: data.afterCursor }, 'next')"
       >
         <span>Próximo</span>
@@ -81,7 +81,7 @@ export default {
       return Boolean(this.data.beforeCursor);
     },
 
-    nextPage() {
+    hasNextPage() {
       return Boolean(this.data.afterCursor);
     },
   },
@@ -93,10 +93,15 @@ export default {
 
   methods: {
     getPage(cursor, type) {
+      console.log('testano ne kkkkk');
       if (type === 'prev' && this.hasPrevPage) {
         this.initLimit -= this.pageSize;
 
-        this.endLimit -= this.data.size;
+        if (this.hasNextPage) {
+          this.endLimit -= this.pageSize;
+        } else {
+          this.endLimit -= this.remainder;
+        }
 
         this.$emit('clickHandler', cursor);
 
