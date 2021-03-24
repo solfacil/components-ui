@@ -81,7 +81,7 @@ export default {
     reset() {
       this.$emit('input', '');
 
-      this.$emit('eventHandler','');
+      this.$emit('eventHandler', '');
     },
 
     handleEvent(value) {
