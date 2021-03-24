@@ -10,14 +10,14 @@
     <div>
       <a
         class="prev"
-        :class="{ disabled: prevPage }"
+        :class="{ disabled: !hasPrevPage }"
         @click="getPage({ beforeCursor: data.beforeCursor }, 'prev')"
       >
         <span>Anterior</span>
       </a>
       <a
         class="next"
-        :class="{ disabled: nextPage }"
+        :class="{ disabled: !hasNextPage }"
         @click="getPage({ afterCursor: data.afterCursor }, 'next')"
       >
         <span>Próximo</span>
@@ -55,6 +55,12 @@ export default {
         );
       },
     },
+
+    pageSize: {
+      required: false,
+      type: Number,
+      default: 10,
+    },
   },
 
   data() {
@@ -71,12 +77,12 @@ export default {
       return this.data.count > this.data.size;
     },
 
-    prevPage() {
-      return !this.data.beforeCursor || this.initLimit === 1;
+    hasPrevPage() {
+      return Boolean(this.data.beforeCursor);
     },
 
-    nextPage() {
-      return !this.data.afterCursor || this.endLimit >= this.data.count;
+    hasNextPage() {
+      return Boolean(this.data.afterCursor);
     },
   },
 
@@ -87,13 +93,14 @@ export default {
 
   methods: {
     getPage(cursor, type) {
-      if (type === 'prev' && !this.prevPage) {
-        this.initLimit -= this.data.size;
+      console.log('testano ne kkkkk');
+      if (type === 'prev' && this.hasPrevPage) {
+        this.initLimit -= this.pageSize;
 
-        if (this.nextPage) {
-          this.endLimit -= this.remainder;
+        if (this.hasNextPage) {
+          this.endLimit -= this.pageSize;
         } else {
-          this.endLimit -= this.data.size;
+          this.endLimit -= this.remainder;
         }
 
         this.$emit('clickHandler', cursor);
@@ -101,12 +108,12 @@ export default {
         return;
       }
 
-      if (type === 'next' && !this.nextPage) {
-        this.initLimit += this.data.size;
+      if (type === 'next' && this.hasNextPage) {
+        this.initLimit += this.pageSize;
         this.endLimit =
-          this.endLimit + this.data.size > this.data.count
+          this.endLimit + this.pageSize > this.data.count
             ? this.endLimit + this.remainder
-            : (this.endLimit += this.data.size);
+            : (this.endLimit += this.pageSize);
 
         this.$emit('clickHandler', cursor);
 
