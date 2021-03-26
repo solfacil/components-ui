@@ -28,6 +28,7 @@
 ```
 
 **example fields**
+
 ```js
 fields: [
   { key: 'nome_cliente', title: 'Nome do cliente', sortable: true },

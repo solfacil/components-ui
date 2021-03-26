@@ -7,7 +7,8 @@
   }
 
   .alert-close {
-    background: url(~@img/icon/icon-close-black.svg) no-repeat center center/12px 12px;
+    background: url(~@img/icon/icon-close-black.svg) no-repeat center
+      center/12px 12px;
     @apply rounded w-6 h-6 block ml-auto flex-none bg-gray4 cursor-pointer;
 
     em {

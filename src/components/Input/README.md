@@ -1,7 +1,7 @@
 **Demo**
 
 ```html
-<Input
+<input
   id="search"
   v-model="search"
   type="search"

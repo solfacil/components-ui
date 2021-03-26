@@ -6,6 +6,7 @@
 ```
 
 **Variants**
+
 ```js
 [
   'done',
@@ -15,5 +16,5 @@
   'approved',
   'message',
   'message-line',
-]
+];
 ```

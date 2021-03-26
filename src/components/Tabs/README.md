@@ -10,6 +10,7 @@
 ```
 
 **example items**
+
 ```js
 items: [
   {
