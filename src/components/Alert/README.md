@@ -9,17 +9,11 @@
 ```
 
 **props**
+
 ```js
-size: ['sm', 'md', 'lg', 'xl']
-variant: [
-  'success',
-  'error',
-  'warning',
-  'info',
-  'info-neutral',
-  'info-line',
-]
-close
-icon
-iconNumber
+size: ['sm', 'md', 'lg', 'xl'];
+variant: ['success', 'error', 'warning', 'info', 'info-neutral', 'info-line'];
+close;
+icon;
+iconNumber;
 ```
