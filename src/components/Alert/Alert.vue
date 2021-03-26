@@ -27,13 +27,13 @@ export default {
     /** Optionally specify close alert */
     close: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
 
     /** Optionally icon number */
-    iconNumber: {
+    iconNumber :{
       default: null,
-      type: [String, Number],
+      type: [String, Number]
     },
 
     /** Specify whether the Icon should be enabled or not */
