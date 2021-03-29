@@ -1,6 +1,7 @@
 <template>
-  <label :id="id || `checkbox-${_uid}`" class="sol-checkbox">
+  <label class="sol-checkbox">
     <input
+      :id="id || `checkbox-${_uid}`"
       type="checkbox"
       :name="name"
       :value="value"

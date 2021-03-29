@@ -1,6 +1,7 @@
 <template>
-  <div :id="id || `input-${_uid}`" class="sol-input">
+  <div class="sol-input">
     <input
+      :id="id || `input-${_uid}`"
       ref="solInput"
       :class="[invalid, type]"
       :disabled="disabled"
