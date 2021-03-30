@@ -1,30 +1,74 @@
 <template>
-  <label class="sol-checkbox">
-    <input
-      :id="id || `checkbox-${_uid}`"
-      type="checkbox"
-      :name="name"
-      :value="value"
-      :checked="checked"
-      :disabled="disabled"
-      @input="updateValue($event.target.value)"
-    />
+  <div class="checkbox-root">
+    <span v-if="label" class="title-label">{{ label }}</span>
+    <label :id="id || `checkbox-${_uid}`">
+      <input
+        type="checkbox"
+        :name="name"
+        :disabled="disabled"
+        :checked="value"
+        @input="handleToggle"
+      />
+      <div
+        :class="{
+          'custom-checkbox': true,
+          checked: value && !disabled,
+          disabled: disabled,
+          invalid: invalid,
+        }"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            d="M1.73 12.91l6.37 6.37L22.79 4.59"
+          />
+        </svg>
+      </div>
 
-    <span :class="{ error: invalid && !checked && !disabled }">
-      <span v-if="label">{{ label }}</span>
-    </span>
-  </label>
+      <span
+        :class="{
+          disabled: disabled,
+        }"
+      >
+        {{ text }}
+      </span>
+    </label>
+    <span v-if="invalid" class="error">{{ errorMsg }}</span>
+    <checkmark />
+  </div>
 </template>
 
 <script>
+import checkmark from '../../assets/img/icon/icon-check-white.svg';
 export default {
-  name: 'Checkbox',
+  name: 'CheckBox',
+
+  components: { checkmark },
 
   props: {
-    /** Specify whether the is currently checked */
-    checked: {
-      type: Boolean,
-      default: false,
+    errorMsg: {
+      type: String,
+      required: false,
+      default: '',
+    },
+
+    text: {
+      type: String,
+      required: false,
+      default: '',
+    },
+
+    label: {
+      type: String,
+      required: false,
+      default: '',
     },
 
     /** Specify whether the control is disabled */
@@ -45,28 +89,23 @@ export default {
       default: '',
     },
 
-    /** Provide label text to be read by screen readers when interacting with the control */
-    label: {
-      type: String,
-      default: null,
-    },
-
     /** Provide a name for the underlying input node */
     name: {
       type: String,
-      required: true,
+      required: false,
+      default: '',
     },
 
     /** Specify the value of the */
     value: {
-      type: [String, Boolean, Number, Object, Array, Function],
-      default: undefined,
+      type: Boolean,
+      default: false,
     },
   },
 
   methods: {
-    updateValue(value) {
-      this.$emit('input', value);
+    handleToggle(e) {
+      this.$emit('input', e.target.checked);
     },
   },
 };
