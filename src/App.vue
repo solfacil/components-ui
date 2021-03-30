@@ -106,6 +106,15 @@
                   name="e"
                 />
               </div>
+              <div class="border rounded p-2 border-gray3">
+                <Checkbox
+                  v-model="check"
+                  text="This is a rtl checkbox"
+                  value="b"
+                  name="e"
+                  rtl
+                />
+              </div>
             </div>
           </div>
 

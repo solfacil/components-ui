@@ -1,11 +1,19 @@
 .checkbox-root {
   @apply gap-1 font-rubik inline-flex flex-col items-start;
+  &.rtl {
+    @apply items-end;
+  }
 }
 .title-label {
   @apply text-small;
 }
 label {
   @apply select-none inline-flex items-center gap-2 text-small;
+
+  &.rtl {
+    @apply flex-row-reverse;
+  }
+
   input {
     // hide the default browser checkbox, but keep with a size for accessibility
     @apply opacity-0 w-1 h-1 absolute;

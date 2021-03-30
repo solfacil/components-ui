@@ -1,7 +1,7 @@
 <template>
-  <div class="checkbox-root">
+  <div :class="{ 'checkbox-root': true, rtl: rtl }">
     <span v-if="label" class="title-label">{{ label }}</span>
-    <label :id="id || `checkbox-${_uid}`">
+    <label :id="id || `checkbox-${_uid}`" :class="{ rtl: rtl }">
       <input
         type="checkbox"
         :name="name"
@@ -98,6 +98,12 @@ export default {
 
     /** Specify the value of the */
     value: {
+      type: Boolean,
+      default: false,
+    },
+
+    // Adds a Right-to-left interface
+    rtl: {
       type: Boolean,
       default: false,
     },
