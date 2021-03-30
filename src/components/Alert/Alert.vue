@@ -2,7 +2,7 @@
   <transition name="fade" appear>
     <div
       v-if="!hidden"
-      :id="id || `checkbox-${_uid}`"
+      :id="id || `alert-${_uid}`"
       :class="[
         'sol-alert',
         { [`alert-${variant}`]: variant },

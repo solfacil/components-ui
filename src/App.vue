@@ -259,6 +259,30 @@
           </div>
         </div>
       </div>
+      <div class="container mt-5">
+        <div class="p-6 bg-gray1 rounded shadow-sm">
+          <h3 class="mb-2">List</h3>
+          <hr class="my-4" />
+          <List>
+            Lorem ipsum dolor
+            <template slot="listItem">
+              Vivamus luctus ipsum sed sapien tristique
+            </template>
+          </List>
+          <List>
+            Lorem ipsum dolor
+            <template slot="listItem">
+              Vivamus luctus ipsum sed sapien tristique
+            </template>
+          </List>
+          <List>
+            Lorem ipsum dolor
+            <template slot="listItem">
+              Vivamus luctus ipsum sed sapien tristique
+            </template>
+          </List>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -276,6 +300,7 @@ import {
   SortedTable,
   Tabs,
   ToggleSwitch,
+  List,
 } from './index';
 
 export default {
@@ -293,6 +318,7 @@ export default {
     SortedTable,
     Tabs,
     ToggleSwitch,
+    List,
   },
 
   data() {

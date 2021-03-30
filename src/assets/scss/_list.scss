@@ -1,0 +1,46 @@
+.sol-list {
+  @apply flex flex-col items-start pb-2;
+
+  .list {
+    @apply px-4 pt-4 w-full;
+
+    background: linear-gradient(180deg, #EEEEEE 0%, #FFFFFF 100%);
+    border-radius: 4px 4px 0px 0px;
+  }
+  .list-item {
+    @apply px-4 pb-4 w-full;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 0px #EEEEEE;
+    border-radius: 0px 0px 4px 4px;
+
+  }
+
+  @screen sm {
+    @apply flex flex-row items-start;
+
+    .list {
+      @apply p-4;
+      background: linear-gradient(90deg, #EEEEEE 0%, #FFFFFF 100%);
+      box-shadow: 0px 1px 0px #EEEEEE;
+      border-radius: 4px 0px 0px 4px;
+      width: 32%
+    }
+    .list-item {
+      @apply p-4;
+      background: #FFFFFF;
+      box-shadow: 0px 1px 0px #EEEEEE;
+      border-radius: 0px 4px 4px 0px;
+      width: 68%;
+    }
+  }
+
+  @screen lg {
+    .list {
+      width: 20%
+    }
+    .list-item {
+      width: 80%;
+    }
+  }
+}
+
