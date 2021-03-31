@@ -17,19 +17,7 @@
           invalid: invalid,
         }"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-width="3"
-            d="M1.73 12.91l6.37 6.37L22.79 4.59"
-          />
-        </svg>
+        <checkmark />
       </div>
 
       <span
@@ -41,12 +29,11 @@
       </span>
     </label>
     <span v-if="invalid" class="error">{{ errorMsg }}</span>
-    <checkmark />
   </div>
 </template>
 
 <script>
-import checkmark from '../../assets/img/icon/icon-check-white.svg';
+import checkmark from '@/assets/img/icon/icon-check.vue';
 export default {
   name: 'CheckBox',
 
