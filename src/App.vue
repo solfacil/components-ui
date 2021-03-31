@@ -335,16 +335,16 @@ export default {
       ],
       itemsList: [
         {
-          list: 'Lorem ipsum dolor',
-          listItem: 'Vivamus luctus ipsum sed sapien tristique',
+          title: 'Lorem ipsum dolor',
+          description: 'Vivamus luctus ipsum sed sapien tristique',
         },
         {
-          list: 'Lorem ipsum dolor',
-          listItem: 'Vivamus luctus ipsum sed sapien tristique',
+          title: 'Lorem ipsum dolor',
+          description: 'Vivamus luctus ipsum sed sapien tristique',
         },
         {
-          list: 'Lorem ipsum dolor',
-          listItem: 'Vivamus luctus ipsum sed sapien tristique',
+          title: 'Lorem ipsum dolor',
+          description: 'Vivamus luctus ipsum sed sapien tristique',
         },
       ],
 

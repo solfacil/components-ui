@@ -2,10 +2,10 @@
   <div :id="id || `list-${_uid}`">
     <div v-for="(items, index) in itemsList" :key="index" class="sol-list">
       <div class="list">
-        {{ items.list }}
+        {{ items.title }}
       </div>
       <div class="list-item">
-        {{ items.listItem }}
+        {{ items.description }}
       </div>
     </div>
   </div>
@@ -24,13 +24,15 @@ export default {
       default: '',
     },
 
+    /**
+     * Provides the contents of the list
+     */
     itemsList: {
       type: Array,
       required: true,
       validator: (obj) => {
-        console.log(obj);
         if (!(obj && obj.constructor === Array)) return false;
-        const ListProperties = ['list', 'listItem'].filter(
+        const ListProperties = ['title', 'description'].filter(
           (property) => !Object.prototype.hasOwnProperty.call(obj[0], property),
         );
         return ListProperties.length === 0;
