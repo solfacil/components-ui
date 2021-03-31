@@ -93,7 +93,6 @@ export default {
 
   methods: {
     getPage(cursor, type) {
-      console.log('testano ne kkkkk');
       if (type === 'prev' && this.hasPrevPage) {
         this.initLimit -= this.pageSize;
 
