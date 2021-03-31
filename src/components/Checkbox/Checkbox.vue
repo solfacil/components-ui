@@ -53,21 +53,21 @@ export default {
   components: { checkmark },
 
   props: {
+    /** Error message which appears only if invalid is true */
     errorMsg: {
       type: String,
-      required: false,
       default: '',
     },
 
+    /** The text besides the checkbox */
     text: {
       type: String,
-      required: false,
       default: '',
     },
 
+    /** The text that hangs over the checkbox */
     label: {
       type: String,
-      required: false,
       default: '',
     },
 
@@ -92,7 +92,6 @@ export default {
     /** Provide a name for the underlying input node */
     name: {
       type: String,
-      required: false,
       default: '',
     },
 
@@ -102,7 +101,7 @@ export default {
       default: false,
     },
 
-    // Adds a Right-to-left interface
+    /**  Adds a Right-to-left interface */
     rtl: {
       type: Boolean,
       default: false,
