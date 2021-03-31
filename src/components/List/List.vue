@@ -1,10 +1,12 @@
 <template>
-  <div :id="id || `list-${_uid}`" class="sol-list">
-    <div class="list">
-      <slot />
-    </div>
-    <div class="list-item">
-      <slot name="listItem" />
+  <div :id="id || `list-${_uid}`">
+    <div v-for="(items, index) in itemsList" :key="index" class="sol-list">
+      <div class="list">
+        {{ items.list }}
+      </div>
+      <div class="list-item">
+        {{ items.listItem }}
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +22,19 @@ export default {
     id: {
       type: String,
       default: '',
+    },
+
+    itemsList: {
+      type: Array,
+      required: true,
+      validator: (obj) => {
+        console.log(obj);
+        if (!(obj && obj.constructor === Array)) return false;
+        const ListProperties = ['list', 'listItem'].filter(
+          (property) => !Object.prototype.hasOwnProperty.call(obj[0], property),
+        );
+        return ListProperties.length === 0;
+      },
     },
   },
 };

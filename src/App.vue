@@ -263,24 +263,7 @@
         <div class="p-6 bg-gray1 rounded shadow-sm">
           <h3 class="mb-2">List</h3>
           <hr class="my-4" />
-          <List>
-            Lorem ipsum dolor
-            <template slot="listItem">
-              Vivamus luctus ipsum sed sapien tristique
-            </template>
-          </List>
-          <List>
-            Lorem ipsum dolor
-            <template slot="listItem">
-              Vivamus luctus ipsum sed sapien tristique
-            </template>
-          </List>
-          <List>
-            Lorem ipsum dolor
-            <template slot="listItem">
-              Vivamus luctus ipsum sed sapien tristique
-            </template>
-          </List>
+          <List :items-list="itemsList" />
         </div>
       </div>
     </section>
@@ -348,6 +331,20 @@ export default {
         {
           name: 'cancelar_aprovar',
           label: 'Cancelar/Aprovar',
+        },
+      ],
+      itemsList: [
+        {
+          list: 'Lorem ipsum dolor',
+          listItem: 'Vivamus luctus ipsum sed sapien tristique',
+        },
+        {
+          list: 'Lorem ipsum dolor',
+          listItem: 'Vivamus luctus ipsum sed sapien tristique',
+        },
+        {
+          list: 'Lorem ipsum dolor',
+          listItem: 'Vivamus luctus ipsum sed sapien tristique',
         },
       ],
 
