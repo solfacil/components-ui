@@ -4,6 +4,7 @@
     @apply items-end;
   }
 }
+
 .title-label {
   @apply text-small;
 }
@@ -25,10 +26,6 @@ label {
 
     &.checked {
       @apply bg-orangePrimary;
-
-      svg {
-        transform: scale(1);
-      }
     }
 
     &.disabled {
@@ -37,13 +34,6 @@ label {
 
     &.invalid {
       @apply border-red2;
-    }
-
-    svg {
-      @apply w-3 text-white;
-      transition: transform 0.1s ease-in 25ms;
-      transform: scale(0);
-      transform-origin: bottom left;
     }
   }
 

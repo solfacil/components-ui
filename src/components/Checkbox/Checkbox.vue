@@ -17,7 +17,10 @@
           invalid: invalid,
         }"
       >
-        <checkmark />
+        <img
+          v-if="value && !disabled"
+          src="../../assets/img/icon/icon-check.svg"
+        />
       </div>
 
       <span
@@ -33,11 +36,8 @@
 </template>
 
 <script>
-import checkmark from '@/assets/img/icon/icon-check.vue';
 export default {
   name: 'CheckBox',
-
-  components: { checkmark },
 
   props: {
     /** Error message which appears only if invalid is true */
