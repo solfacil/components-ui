@@ -1,0 +1,47 @@
+.sol-tooltip {
+  @apply relative inline-block;
+}
+.content-tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: #666;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.content-tooltip {
+  &.tooltip-top::after {
+    transform: translateX(-50%);
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #666 transparent transparent transparent;
+  }
+  &.tooltip-right::after {
+    transform: translateY(-50%);
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 100%; /* To the right of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+  }
+}
+
+.sol-tooltip:hover .content-tooltip {
+  visibility: visible;
+}
+

@@ -258,6 +258,18 @@
             </div>
           </div>
         </div>
+
+        <div class="p-6 mt-5 bg-gray1 rounded-lg shadow-sm">
+          <h3 class="mb-2">Tooltip</h3>
+
+          <hr class="my-4" />
+
+          <Tooltip>
+            <Button>Hover Tooltip</Button>
+
+            <template slot="tooltip">Lorem ipsum</template>
+          </Tooltip>
+        </div>
       </div>
     </section>
   </div>
@@ -276,6 +288,7 @@ import {
   SortedTable,
   Tabs,
   ToggleSwitch,
+  Tooltip,
 } from './index';
 
 export default {
@@ -293,6 +306,7 @@ export default {
     SortedTable,
     Tabs,
     ToggleSwitch,
+    Tooltip,
   },
 
   data() {
