@@ -2,54 +2,67 @@
   @apply relative inline-block;
 }
 .content-tooltip {
+  @apply opacity-0 bg-grayPrimary p-2 absolute;
+  transition: opacity 1s;
   visibility: hidden;
   width: 120px;
-  background-color: #666;
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
 
-  &.content-tooltip-top {
+  &.top {
     z-index: 1;
     bottom: 150%;
     left: 50%;
     margin-left: -60px;
   }
-  &.content-tooltip-bottom {
+  &.bottom {
     z-index: 1;
     top: 150%;
     left: 50%;
     margin-left: -60px;
   }
-  &.content-tooltip-right {
-    z-index: 1;
-    top: 150%;
-    left: 150%;
-    margin-left: -60px;
-  }
-  &.content-tooltip-top-right {
+  &.right-top {
     z-index: 1;
     top: 0%;
     left: 150%;
     margin-left: -60px;
   }
-  &.content-tooltip-right {
+  &.right-middle {
     z-index: 1;
-    top: 15%;
+    top: 10%;
     left: 150%;
     margin-left: -60px;
   }
 
-  &.content-tooltip-right-bottom {
+  &.right-bottom {
     z-index: 1;
     top: 25%;
     left: 150%;
     margin-left: -60px;
   }
 
-  &.tooltip-top-center::after {
+  &.left-top {
+    z-index: 1;
+    top: 0%;
+    right: 110%;
+    margin-left: -60px;
+  }
+  &.left-middle {
+    z-index: 1;
+    top: 10%;
+    right: 110%;
+    margin-left: -60px;
+  }
+
+  &.left-bottom {
+    z-index: 1;
+    top: 25%;
+    right: 110%;
+    margin-left: -60px;
+  }
+
+  &.top-center::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -59,7 +72,7 @@
     border-style: solid;
     border-color: #666 transparent transparent transparent;
   }
-  &.tooltip-top-right::after {
+  &.top-right::after {
     transform: translateX(-50%);
     content: "";
     position: absolute;
@@ -70,7 +83,7 @@
     border-style: solid;
     border-color: #666 transparent transparent transparent;
   }
-  &.tooltip-top-left::after {
+  &.top-left::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -80,7 +93,7 @@
     border-style: solid;
     border-color: #666 transparent transparent transparent;
   }
-  &.tooltip-bottom-center::after {
+  &.bottom-center::after {
     transform: translateX(-50%);
     content: "";
     position: absolute;
@@ -91,18 +104,18 @@
     border-style: solid;
     border-color: transparent transparent  #666 transparent;
   }
-  &.tooltip-bottom-right::after {
+  &.bottom-right::after {
     content: "";
     position: absolute;
     bottom: 100%;
-    left: 95%;
+    left: 90%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
     border-color:  transparent transparent #666 transparent;
   }
 
-  &.tooltip-bottom-left::after {
+  &.bottom-left::after {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -112,7 +125,7 @@
     border-style: solid;
     border-color: transparent transparent #666 transparent;
   }
-  &.tooltip-left-center::after {
+  &.left-center::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -122,7 +135,7 @@
     border-style: solid;
     border-color: transparent #666 transparent transparent;
   }
-  &.tooltip-right-top::after {
+  &.right-center::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -132,20 +145,21 @@
     border-style: solid;
     border-color: transparent #666 transparent transparent;
   }
-  &.tooltip-right-center::after {
+  &.left-center::after {
     content: "";
     position: absolute;
-    top: 70%;
-    right: 100%;
+    top: 50%;
+    left: 100%;
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent #666 transparent transparent;
+    border-color: transparent transparent transparent #666 ;
   }
 }
 
 
 .sol-tooltip:hover .content-tooltip {
+  @apply opacity-100;
   visibility: visible;
 }
 

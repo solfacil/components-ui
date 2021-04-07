@@ -4,13 +4,7 @@
       <slot />
       <div
         class="content-tooltip"
-        :class="[
-          {
-            [`tooltip-${position}`]: position,
-            disabled: disabled,
-            [`content-tooltip-${align}`]: align,
-          },
-        ]"
+        :class="['content-tooltip', position, align, { disabled: disabled }]"
       >
         <slot name="tooltip" />
       </div>
@@ -35,8 +29,9 @@ export default {
       default: '',
     },
 
-    position: {
-      default: 'right-center',
+    /** Align of the indicative arrow */
+    align: {
+      default: 'top-center',
       type: String,
       validator: (value) =>
         [
@@ -46,19 +41,27 @@ export default {
           'bottom-center',
           'bottom-right',
           'bottom-left',
-          'left-center',
-          'left-top',
-          'right-top',
           'right-center',
+          'left-center',
         ].includes(value.toLowerCase()),
     },
-    align: {
-      default: 'top-right',
+
+    /** Tooltip position */
+    position: {
+      default: 'top',
       type: String,
       validator: (value) =>
-        ['top', 'bottom', 'right', 'top-right', 'top-right-bottom'].includes(
-          value.toLowerCase(),
-        ),
+        [
+          'top',
+          'bottom',
+          'left',
+          'right-top',
+          'right-middle',
+          'right-bottom',
+          'left-top',
+          'left-middle',
+          'left-bottom',
+        ].includes(value.toLowerCase()),
     },
   },
 

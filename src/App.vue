@@ -259,16 +259,165 @@
           </div>
         </div>
 
-        <div class="p-6 mt-5 bg-gray1 rounded-lg shadow-sm">
-          <h3 class="mb-2">Tooltip</h3>
+        <div class="mt-8">
+          <h1 class="text-large">Tooltip</h1>
+        </div>
+        <div class="grid grid-cols-3 gap-8 mt-4">
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Top-Right</h3>
 
-          <hr class="my-4" />
+            <hr class="my-4" />
 
-          <Tooltip>
-            <Button>Hover Tooltip</Button>
+            <div class="flex justify-around">
+              <Tooltip align="top-right" position="top">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
 
-            <template slot="tooltip">Lorem ipsum</template>
-          </Tooltip>
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Top-Center</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="top-center" position="top">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Top-Left</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="top-left" position="top">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Bottom-Right</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="bottom-right" position="bottom">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Bottom-Center</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="bottom-center" position="bottom">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Bottom-Left</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="bottom-left" position="bottom">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Right-top</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="right-center" position="right-top">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Right-Middle</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="right-center" position="right-middle">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Right-Bottom</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="right-center" position="right-bottom">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Left-top</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="left-center" position="left-top">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Left-Middle</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="left-center" position="left-middle">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Left-Bottom</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip align="left-center" position="left-bottom">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
         </div>
       </div>
     </section>
