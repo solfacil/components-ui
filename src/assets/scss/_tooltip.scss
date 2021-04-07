@@ -2,13 +2,15 @@
   @apply relative inline-block;
 }
 .content-tooltip {
-  @apply opacity-0 bg-grayPrimary p-2 absolute;
+  @apply opacity-0 bg-grayPrimary absolute text-small text-white font-rubik;
   transition: opacity 1s;
   visibility: hidden;
-  width: 120px;
-  color: #fff;
+  width: max-content;
+  max-width: 320px;
   text-align: center;
-  border-radius: 6px;
+  border-radius: 4px;
+  padding: 8px 16px 8px 16px;
+  line-height: 16px;
 
   &.top {
     z-index: 1;
