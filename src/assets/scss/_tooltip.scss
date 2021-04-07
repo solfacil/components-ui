@@ -10,15 +10,46 @@
   border-radius: 6px;
   padding: 5px 0;
   position: absolute;
-  z-index: 1;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -60px;
-}
 
-.content-tooltip {
-  &.tooltip-top::after {
-    transform: translateX(-50%);
+  &.content-tooltip-top {
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  &.content-tooltip-bottom {
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  &.content-tooltip-right {
+    z-index: 1;
+    top: 150%;
+    left: 150%;
+    margin-left: -60px;
+  }
+  &.content-tooltip-top-right {
+    z-index: 1;
+    top: 0%;
+    left: 150%;
+    margin-left: -60px;
+  }
+  &.content-tooltip-right {
+    z-index: 1;
+    top: 15%;
+    left: 150%;
+    margin-left: -60px;
+  }
+
+  &.content-tooltip-right-bottom {
+    z-index: 1;
+    top: 25%;
+    left: 150%;
+    margin-left: -60px;
+  }
+
+  &.tooltip-top-center::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -28,18 +59,91 @@
     border-style: solid;
     border-color: #666 transparent transparent transparent;
   }
-  &.tooltip-right::after {
-    transform: translateY(-50%);
-    content: " ";
+  &.tooltip-top-right::after {
+    transform: translateX(-50%);
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 95%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #666 transparent transparent transparent;
+  }
+  &.tooltip-top-left::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 15%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #666 transparent transparent transparent;
+  }
+  &.tooltip-bottom-center::after {
+    transform: translateX(-50%);
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent  #666 transparent;
+  }
+  &.tooltip-bottom-right::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 95%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  transparent transparent #666 transparent;
+  }
+
+  &.tooltip-bottom-left::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 15%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #666 transparent;
+  }
+  &.tooltip-left-center::after {
+    content: "";
     position: absolute;
     top: 50%;
-    left: 100%; /* To the right of the tooltip */
+    right: 100%;
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent transparent black;
+    border-color: transparent #666 transparent transparent;
+  }
+  &.tooltip-right-top::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #666 transparent transparent;
+  }
+  &.tooltip-right-center::after {
+    content: "";
+    position: absolute;
+    top: 70%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #666 transparent transparent;
   }
 }
+
 
 .sol-tooltip:hover .content-tooltip {
   visibility: visible;

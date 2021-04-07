@@ -4,7 +4,13 @@
       <slot />
       <div
         class="content-tooltip"
-        :class="[{ [`tooltip-${position}`]: position, disabled: disabled }]"
+        :class="[
+          {
+            [`tooltip-${position}`]: position,
+            disabled: disabled,
+            [`content-tooltip-${align}`]: align,
+          },
+        ]"
       >
         <slot name="tooltip" />
       </div>
@@ -30,10 +36,29 @@ export default {
     },
 
     position: {
-      default: 'top',
+      default: 'right-center',
       type: String,
       validator: (value) =>
-        ['top', 'right', 'bottom', 'left'].includes(value.toLowerCase()),
+        [
+          'top-center',
+          'top-right',
+          'top-left',
+          'bottom-center',
+          'bottom-right',
+          'bottom-left',
+          'left-center',
+          'left-top',
+          'right-top',
+          'right-center',
+        ].includes(value.toLowerCase()),
+    },
+    align: {
+      default: 'top-right',
+      type: String,
+      validator: (value) =>
+        ['top', 'bottom', 'right', 'top-right', 'top-right-bottom'].includes(
+          value.toLowerCase(),
+        ),
     },
   },
 
