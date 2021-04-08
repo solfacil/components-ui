@@ -83,7 +83,6 @@
                   v-model="check"
                   label="This checkbox has a label"
                   text="this is some text"
-                  value="b"
                   name="e"
                 />
               </div>
@@ -99,11 +98,11 @@
               <div class="border rounded p-2 border-gray3">
                 <Checkbox
                   v-model="check"
-                  text="This checkbox has an error"
-                  invalid
-                  error-msg="Hey! Listen to me! I'm an error!"
-                  value="b"
+                  label="This checkbox has a label"
+                  text="this is some text"
                   name="e"
+                  :invalid="!check"
+                  error-msg="This value must be true"
                 />
               </div>
               <div class="border rounded p-2 border-gray3">

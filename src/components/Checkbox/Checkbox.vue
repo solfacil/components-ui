@@ -82,7 +82,7 @@ export default {
       default: '',
     },
 
-    /** Specify the value of the */
+    /** Specify checkbox value */
     value: {
       type: Boolean,
       default: false,
