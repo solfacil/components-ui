@@ -1,14 +1,10 @@
 <template>
-  <div :id="id || `list-${_uid}`">
-    <div v-for="(items, index) in itemsList" :key="index" class="sol-list">
-      <div class="list">
-        {{ items.title }}
-      </div>
-      <div class="list-item">
-        {{ items.description }}
-      </div>
-    </div>
-  </div>
+  <table :id="id || `list-${_uid}`" class="sol-table-list">
+    <tr v-for="(items, index) in itemsList" :key="index">
+      <th>{{ items.title }}</th>
+      <td>{{ items.description }}</td>
+    </tr>
+  </table>
 </template>
 
 <script>

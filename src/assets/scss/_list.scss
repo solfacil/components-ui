@@ -1,46 +1,49 @@
-.sol-list {
-  @apply flex flex-col items-start pb-2;
+.sol-table-list {
+  @apply min-w-full;
+  border-collapse: separate !important;
 
-  .list {
-    @apply px-4 pt-4 w-full;
+  tr {
+    @apply flex flex-col text-left mt-2;
 
-    background: linear-gradient(180deg, #EEEEEE 0%, #FFFFFF 100%);
-    border-radius: 4px 4px 0px 0px;
-  }
-  .list-item {
-    @apply px-4 pb-4 w-full;
-    background: #FFFFFF;
-    box-shadow: 0px 1px 0px #EEEEEE;
-    border-radius: 0px 0px 4px 4px;
-
-  }
-
-  @screen sm {
-    @apply flex flex-row items-start;
-
-    .list {
-      @apply p-4;
-      background: linear-gradient(90deg, #EEEEEE 0%, #FFFFFF 100%);
-      box-shadow: 0px 1px 0px #EEEEEE;
-      border-radius: 4px 0px 0px 4px;
-      width: 32%
+    &:first-child {
+      @apply mt-0;
     }
-    .list-item {
-      @apply p-4;
-      background: #FFFFFF;
-      box-shadow: 0px 1px 0px #EEEEEE;
-      border-radius: 0px 4px 4px 0px;
-      width: 68%;
+
+    th {
+      @apply p-4 pb-0;
+      background: linear-gradient(180deg, #eeeeee 0%, #ffffff 100%);
+      border-radius: 4px 4px 0px 0px;
+    }
+
+    td {
+      @apply p-4 pt-0 bg-white leading-normal;
+      border-radius: 0px 0px 4px 4px;
+      box-shadow: 0px 1px 0px #eee;
     }
   }
 
-  @screen lg {
-    .list {
-      width: 20%
-    }
-    .list-item {
-      width: 80%;
+  @screen md {
+    border-spacing: 0 8px;
+
+    tr {
+      @apply m-0;
+      display: revert;
+
+      th,
+      td {
+        @apply p-4 align-middle text-small;
+      }
+
+      th {
+        background: linear-gradient(90deg, #eeeeee 0%, #ffffff 100%);
+        box-shadow: 0px 1px 0px #eeeeee;
+        border-radius: 4px 0px 0px 4px;
+        min-width: 150px;
+      }
+
+      td {
+        @apply bg-white shadow-none rounded-initial;
+      }
     }
   }
 }
-
