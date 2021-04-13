@@ -10,3 +10,4 @@ export { default as Tabs } from '@components/Tabs/Tabs';
 export { default as ToggleSwitch } from '@components/ToggleSwitch/ToggleSwitch';
 export { default as Popover } from '@components/Popover/Popover';
 export { default as Tooltip } from '@components/Tooltip/Tooltip';
+export { default as List } from '@components/List/List';

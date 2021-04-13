@@ -1,0 +1,49 @@
+.sol-table-list {
+  @apply min-w-full;
+  border-collapse: separate !important;
+
+  tr {
+    @apply flex flex-col text-left mt-2;
+
+    &:first-child {
+      @apply mt-0;
+    }
+
+    th {
+      @apply p-4 pb-0;
+      background: linear-gradient(180deg, #eeeeee 0%, #ffffff 100%);
+      border-radius: 4px 4px 0px 0px;
+    }
+
+    td {
+      @apply p-4 pt-0 bg-white leading-normal;
+      border-radius: 0px 0px 4px 4px;
+      box-shadow: 0px 1px 0px #eee;
+    }
+  }
+
+  @screen md {
+    border-spacing: 0 8px;
+
+    tr {
+      @apply m-0;
+      display: revert;
+
+      th,
+      td {
+        @apply p-4 align-middle text-small;
+      }
+
+      th {
+        background: linear-gradient(90deg, #eeeeee 0%, #ffffff 100%);
+        box-shadow: 0px 1px 0px #eeeeee;
+        border-radius: 4px 0px 0px 4px;
+        min-width: 150px;
+      }
+
+      td {
+        @apply bg-white shadow-none rounded-initial;
+      }
+    }
+  }
+}

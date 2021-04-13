@@ -77,8 +77,44 @@
             {{ check }}
 
             <hr class="my-4" />
-
-            <Checkbox v-model="check" label="label 2" value="b" name="e" />
+            <div class="flex gap-3 flex-col">
+              <div class="border rounded p-2 border-gray3">
+                <Checkbox
+                  v-model="check"
+                  label="This checkbox has a label"
+                  text="this is some text"
+                  name="e"
+                />
+              </div>
+              <div class="border rounded p-2 border-gray3">
+                <Checkbox
+                  v-model="check"
+                  text="This is a disabled checkbox"
+                  disabled
+                  value="b"
+                  name="e"
+                />
+              </div>
+              <div class="border rounded p-2 border-gray3">
+                <Checkbox
+                  v-model="check"
+                  label="This checkbox has a label"
+                  text="this is some text"
+                  name="e"
+                  :invalid="!check"
+                  error-msg="This value must be true"
+                />
+              </div>
+              <div class="border rounded p-2 border-gray3">
+                <Checkbox
+                  v-model="check"
+                  text="This is a rtl checkbox"
+                  value="b"
+                  name="e"
+                  rtl
+                />
+              </div>
+            </div>
           </div>
 
           <div class="p-6 bg-gray1 rounded-lg shadow-sm">
@@ -420,6 +456,13 @@
           </div>
         </div>
       </div>
+      <div class="container mt-5">
+        <div class="p-6 bg-gray1 rounded shadow-sm">
+          <h3 class="mb-2">List</h3>
+          <hr class="my-4" />
+          <List :items-list="itemsList" />
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -438,6 +481,7 @@ import {
   Tabs,
   ToggleSwitch,
   Tooltip,
+  List,
 } from './index';
 
 export default {
@@ -456,6 +500,7 @@ export default {
     Tabs,
     ToggleSwitch,
     Tooltip,
+    List,
   },
 
   data() {
@@ -485,6 +530,20 @@ export default {
         {
           name: 'cancelar_aprovar',
           label: 'Cancelar/Aprovar',
+        },
+      ],
+      itemsList: [
+        {
+          title: 'Lorem ipsum dolor',
+          description: 'Vivamus luctus ipsum sed sapien tristique',
+        },
+        {
+          title: 'Lorem ipsum dolor',
+          description: 'Vivamus luctus ipsum sed sapien tristique',
+        },
+        {
+          title: 'Lorem ipsum dolor',
+          description: 'Vivamus luctus ipsum sed sapien tristique',
         },
       ],
 

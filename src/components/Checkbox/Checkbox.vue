@@ -1,30 +1,61 @@
 <template>
-  <label class="sol-checkbox">
-    <input
-      :id="id || `checkbox-${_uid}`"
-      type="checkbox"
-      :name="name"
-      :value="value"
-      :checked="checked"
-      :disabled="disabled"
-      @input="updateValue($event.target.value)"
-    />
+  <div :class="{ 'checkbox-root': true, rtl: rtl }">
+    <span v-if="label" class="title-label">{{ label }}</span>
+    <label :id="id || `checkbox-${_uid}`" :class="{ rtl: rtl }">
+      <input
+        type="checkbox"
+        :name="name"
+        :disabled="disabled"
+        :checked="value"
+        @input="handleToggle"
+      />
+      <div
+        :class="{
+          'custom-checkbox': true,
+          checked: value && !disabled,
+          disabled: disabled,
+          invalid: invalid,
+        }"
+      >
+        <img
+          v-if="value && !disabled"
+          src="../../assets/img/icon/icon-check.svg"
+        />
+      </div>
 
-    <span :class="{ error: invalid && !checked && !disabled }">
-      <span v-if="label">{{ label }}</span>
-    </span>
-  </label>
+      <span
+        :class="{
+          disabled: disabled,
+        }"
+      >
+        {{ text }}
+      </span>
+    </label>
+    <span v-if="invalid" class="error">{{ errorMsg }}</span>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Checkbox',
+  name: 'CheckBox',
 
   props: {
-    /** Specify whether the is currently checked */
-    checked: {
-      type: Boolean,
-      default: false,
+    /** Error message which appears only if invalid is true */
+    errorMsg: {
+      type: String,
+      default: '',
+    },
+
+    /** The text besides the checkbox */
+    text: {
+      type: String,
+      default: '',
+    },
+
+    /** The text that hangs over the checkbox */
+    label: {
+      type: String,
+      default: '',
     },
 
     /** Specify whether the control is disabled */
@@ -45,28 +76,28 @@ export default {
       default: '',
     },
 
-    /** Provide label text to be read by screen readers when interacting with the control */
-    label: {
-      type: String,
-      default: null,
-    },
-
     /** Provide a name for the underlying input node */
     name: {
       type: String,
-      required: true,
+      default: '',
     },
 
-    /** Specify the value of the */
+    /** Specify checkbox value */
     value: {
-      type: [String, Boolean, Number, Object, Array, Function],
-      default: undefined,
+      type: Boolean,
+      default: false,
+    },
+
+    /**  Adds a Right-to-left interface */
+    rtl: {
+      type: Boolean,
+      default: false,
     },
   },
 
   methods: {
-    updateValue(value) {
-      this.$emit('input', value);
+    handleToggle(e) {
+      this.$emit('input', e.target.checked);
     },
   },
 };
