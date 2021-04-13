@@ -53,7 +53,9 @@ export default {
       validator: (value) =>
         [
           'top',
+          'top-right',
           'bottom',
+          'bottom-right ',
           'left',
           'right-top',
           'right-middle',
@@ -65,21 +67,9 @@ export default {
     },
   },
 
-  data() {
-    return {
-      hidden: false,
-    };
-  },
-
   computed: {
     variantClass() {
       return this.variant ? `btn-${this.variant}` : null;
-    },
-  },
-
-  methods: {
-    hiddenAlert() {
-      this.hidden = true;
     },
   },
 };

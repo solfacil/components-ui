@@ -18,10 +18,22 @@
     left: 50%;
     margin-left: -60px;
   }
+  &.top-right {
+    z-index: 1;
+    bottom: 150%;
+    right: 0;
+    margin-left: -60px;
+  }
   &.bottom {
     z-index: 1;
     top: 150%;
     left: 50%;
+    margin-left: -60px;
+  }
+  &.bottom-right {
+    z-index: 1;
+    top: 150%;
+    right: 0;
     margin-left: -60px;
   }
   &.right-top {

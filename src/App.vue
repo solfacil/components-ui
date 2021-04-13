@@ -305,7 +305,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="top-right" position="top">
+              <Tooltip align="top-right" position="top-right">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -344,7 +344,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="bottom-right" position="bottom">
+              <Tooltip align="bottom-right" position="bottom-right">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
