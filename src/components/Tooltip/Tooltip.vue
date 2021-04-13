@@ -55,7 +55,7 @@ export default {
           'top',
           'top-right',
           'bottom',
-          'bottom-right ',
+          'bottom-right',
           'left',
           'right-top',
           'right-middle',
