@@ -52,9 +52,11 @@ export default {
       type: String,
       validator: (value) =>
         [
-          'top',
+          'top-left',
+          'top-center',
           'top-right',
-          'bottom',
+          'bottom-center',
+          'bottom-left',
           'bottom-right',
           'left',
           'right-top',

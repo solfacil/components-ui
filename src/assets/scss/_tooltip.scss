@@ -11,162 +11,136 @@
   border-radius: 4px;
   padding: 8px 16px 8px 16px;
   line-height: 16px;
+  z-index: 1;
 
-  &.top {
-    z-index: 1;
+  &::after {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 5px;
+  }
+
+  &.top-left {
     bottom: 150%;
     left: 50%;
     margin-left: -60px;
+    &::after {
+      top: 100%;
+      left: 10px;
+      margin-left: -5px;
+      border-color: #666 transparent transparent transparent;
+    }
   }
   &.top-right {
-    z-index: 1;
     bottom: 150%;
     right: 0;
     margin-left: -60px;
+    &::after {
+      transform: translateX(-50%);
+      top: 100%;
+      right: 4px;
+      margin-left: -5px;
+      border-color: #666 transparent transparent transparent;
+    }
   }
-  &.bottom {
-    z-index: 1;
+  &.top-center {
+    bottom: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    &::after {
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-color: #666 transparent transparent transparent;
+    }
+  }
+  &.bottom-center {
     top: 150%;
     left: 50%;
-    margin-left: -60px;
+    transform: translateX(-50%);
+    &::after {
+      transform: translateX(-50%);
+      bottom: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-color: transparent transparent  #666 transparent;
+    }
   }
   &.bottom-right {
     z-index: 1;
     top: 150%;
     right: 0;
     margin-left: -60px;
+    &::after {
+      bottom: 100%;
+      right: 10px;
+      margin-left: -5px;
+      border-color:  transparent transparent #666 transparent;
+    }
+  }
+  &.bottom-left {
+    z-index: 1;
+    top: 150%;
+    right: 20%;
+    margin-left: -60px;
+    &::after {
+      bottom: 100%;
+      left: 10%;
+      margin-left: -5px;
+      border-color: transparent transparent #666 transparent;
+    }
   }
   &.right-top {
-    z-index: 1;
     top: 0%;
     left: 150%;
     margin-left: -60px;
   }
   &.right-middle {
-    z-index: 1;
     top: 10%;
     left: 150%;
     margin-left: -60px;
   }
 
   &.right-bottom {
-    z-index: 1;
     top: 25%;
     left: 150%;
     margin-left: -60px;
   }
 
   &.left-top {
-    z-index: 1;
     top: 0%;
     right: 110%;
     margin-left: -60px;
   }
   &.left-middle {
-    z-index: 1;
     top: 10%;
     right: 110%;
     margin-left: -60px;
   }
 
   &.left-bottom {
-    z-index: 1;
     top: 25%;
     right: 110%;
     margin-left: -60px;
   }
 
-  &.top-center::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #666 transparent transparent transparent;
-  }
-  &.top-right::after {
-    transform: translateX(-50%);
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 95%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #666 transparent transparent transparent;
-  }
-  &.top-left::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 15%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #666 transparent transparent transparent;
-  }
-  &.bottom-center::after {
-    transform: translateX(-50%);
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent  #666 transparent;
-  }
-  &.bottom-right::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 90%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color:  transparent transparent #666 transparent;
-  }
-
-  &.bottom-left::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 15%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent #666 transparent;
-  }
   &.left-center::after {
-    content: "";
-    position: absolute;
     top: 50%;
     right: 100%;
     margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
     border-color: transparent #666 transparent transparent;
   }
   &.right-center::after {
-    content: "";
-    position: absolute;
     top: 50%;
     right: 100%;
     margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
     border-color: transparent #666 transparent transparent;
   }
   &.left-center::after {
-    content: "";
-    position: absolute;
     top: 50%;
     left: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-style: solid;
     border-color: transparent transparent transparent #666 ;
   }
 }
