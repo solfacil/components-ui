@@ -5,8 +5,8 @@
       :id="id || `alert-${_uid}`"
       :class="[
         'sol-alert',
-        { [`alert-${variant}`]: variant },
-        { [`alert-${size}`]: size },
+        size,
+        variant,
         { 'alert-icon': icon && !iconNumber },
       ]"
     >
@@ -45,20 +45,22 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
-    /** Specify whether the Button should be a small variant, use prefix for responsive (xs:, sm:, md:, lg:, xl:): <br/> "btn-large" | "btn-medium | "btn-small" */
+    /** Specify whether the Alert should be a small variant, use prefix for responsive (xs:, sm:, md:, lg:, xl:): <br/> "small" | "medium | "large | "extra-large" */
     size: {
-      default: 'sm',
+      default: 'small',
       type: String,
       validator: (value) =>
-        ['sm', 'md', 'lg', 'xl'].includes(value.toLowerCase()),
+        ['small', 'medium', 'large', 'extra-large'].includes(
+          value.toLowerCase(),
+        ),
     },
 
-    /** Specify the kind of Button you want to create: <br/> done" | "denied"   | "review"  | "in-progress"  | "approved"  | "message" | "message-line" */
+    /** Specify the kind of Alert you want to create: <br/> done" | "denied"   | "review"  | "in-progress"  | "approved"  | "message" | "message-line" */
     variant: {
-      default: 'info-neutral',
+      default: 'sucess',
       type: String,
       validator: (value) =>
         [
@@ -76,12 +78,6 @@ export default {
     return {
       hidden: false,
     };
-  },
-
-  computed: {
-    variantClass() {
-      return this.variant ? `btn-${this.variant}` : null;
-    },
   },
 
   methods: {

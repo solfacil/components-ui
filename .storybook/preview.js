@@ -4,7 +4,7 @@ import '../src/stories/assets/scss/global.scss';
 import { addDecorator, addParameters } from '@storybook/vue';
 
 addDecorator(() => ({
-  template: '<div class="p-8 bg-white rounded"><story/></div>',
+  template: '<div class="content-component"><story/></div>',
 }));
 
 export const parameters = {

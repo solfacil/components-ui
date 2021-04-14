@@ -12,7 +12,7 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@/': path.resolve(__dirname, '../src'),
+      '@/': path.dirname(path.resolve(__dirname, '../src')),
       '@img': path.resolve(__dirname, '../src/assets/img'),
       '@scss': path.resolve(__dirname, '../src/assets/scss'),
       '@components': path.resolve(__dirname, '../src/components'),
@@ -25,27 +25,27 @@ module.exports = {
       include: path.resolve(__dirname, '../'),
     });
 
-    config.module.rules.push({
-      test: /\.(png|jpg|gif|svg)$/,
-      use: ['file-loader'],
-      include: path.resolve(__dirname, '../'),
-    });
-
     // config.module.rules.push({
-    //   test: /\.svg$/,
-    //   use: [
-    //     {
-    //       loader: 'svg-url-loader',
-    //     },
-    //     {
-    //       loader: 'svg-url-loader',
-    //       // options: {
-    //       //   jsx: true,
-    //       // },
-    //     },
-    //   ],
+    //   test: /\.(png|jpg|gif|svg)$/,
+    //   use: ['file-loader', 'url-loader', 'svg-url-loader'],
     //   include: path.resolve(__dirname, '../'),
     // });
+
+    // // config.module.rules.push({
+    // //   test: /\.svg$/,
+    // //   use: [
+    // //     {
+    // //       loader: 'svg-url-loader',
+    // //     },
+    // //     {
+    // //       loader: 'svg-url-loader',
+    // //       // options: {
+    // //       //   jsx: true,
+    // //       // },
+    // //     },
+    // //   ],
+    // //   include: path.resolve(__dirname, '../'),
+    // // });
 
     return config;
   },

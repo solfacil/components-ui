@@ -15,6 +15,7 @@
     class="sol-button"
     v-on="$listeners"
   >
+    <!-- slot -->
     <slot>Button</slot>
   </component>
 </template>
@@ -33,7 +34,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /** Specify whether the Button should be a small variant, use prefix for responsive (xs:, sm:, md:, lg:, xl:): <br/> "small" | "medium | "large" */
@@ -51,7 +52,7 @@ export default {
 
     /** "_blank" | "_self" */
     target: {
-      default: '_self',
+      default: null,
       type: String,
       validator: (value) => ['_blank', '_self'].includes(value.toLowerCase()),
     },

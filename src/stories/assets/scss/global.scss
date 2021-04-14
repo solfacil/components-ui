@@ -15,3 +15,7 @@ body {
     @apply mb-6;
   }
 }
+
+.content-component {
+  @apply p-8 bg-white rounded;
+}

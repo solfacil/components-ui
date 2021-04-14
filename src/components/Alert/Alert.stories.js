@@ -7,9 +7,9 @@ export default {
     size: {
       control: {
         type: 'select',
-        options: ['sm', 'md', 'lg', 'xl'],
+        options: ['small', 'medium', 'large', 'extra-large'],
       },
-      defaultValue: 'md',
+      defaultValue: 'small',
     },
 
     variant: {
@@ -42,36 +42,42 @@ const Template = (args, { argTypes }) => ({
 
 export const Success = Template.bind({});
 Success.args = {
-  variant: 'success',
+  icon: true,
   label: 'Success',
+  variant: 'success',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  variant: 'error',
+  icon: true,
   label: 'Error',
+  variant: 'error',
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
-  variant: 'warning',
+  icon: true,
   label: 'Warning',
+  variant: 'warning',
 };
 
 export const Info = Template.bind({});
 Info.args = {
-  variant: 'info',
+  icon: true,
   label: 'Info',
+  variant: 'info',
 };
 
 export const infoNeutral = Template.bind({});
 infoNeutral.args = {
-  variant: 'info-neutral',
+  icon: true,
   label: 'Info Neutral',
+  variant: 'info-neutral',
 };
 
 export const infoLine = Template.bind({});
 infoLine.args = {
-  variant: 'info-line',
+  icon: true,
   label: 'Info Line',
+  variant: 'info-line',
 };

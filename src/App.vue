@@ -29,15 +29,17 @@
             </Alert>
 
             <div class="flex flex-col">
-              <Alert variant="success" size="md">Success - MD</Alert>
+              <Alert variant="success" size="medium" icon>Success - MD</Alert>
             </div>
 
             <div class="flex flex-col">
-              <Alert variant="error" size="lg">Error - LG</Alert>
+              <Alert variant="error" size="large" icon>Error - LG</Alert>
             </div>
 
             <div class="flex flex-col">
-              <Alert variant="warning" size="xl" icon>Warning - XL</Alert>
+              <Alert variant="warning" size="extra-large" icon
+                >Warning - XL</Alert
+              >
             </div>
           </div>
         </div>
