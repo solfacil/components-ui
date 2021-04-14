@@ -5,7 +5,7 @@
     :href="to"
     :disabled="disabled"
     :class="[
-      size,
+      variantSize,
       variantClass,
       { btn: tag === 'a' },
       { disabled: disabled && tag === 'a' },
@@ -15,7 +15,7 @@
     class="sol-button"
     v-on="$listeners"
   >
-    <slot />
+    <slot>Button</slot>
   </component>
 </template>
 
@@ -36,7 +36,7 @@ export default {
       default: '',
     },
 
-    /** Specify whether the Button should be a small variant, use prefix for responsive (xs:, sm:, md:, lg:, xl:): <br/> "btn-large" | "btn-medium | "btn-small" */
+    /** Specify whether the Button should be a small variant, use prefix for responsive (xs:, sm:, md:, lg:, xl:): <br/> "small" | "medium | "large" */
     size: {
       default: null,
       type: String,
@@ -82,6 +82,10 @@ export default {
   computed: {
     variantClass() {
       return this.variant ? `btn-${this.variant}` : null;
+    },
+
+    variantSize() {
+      return this.size ? `btn-${this.size}` : null;
     },
   },
 };

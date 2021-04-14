@@ -1,0 +1,17 @@
+html,
+body {
+  @apply bg-transparent;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply block;
+  }
+
+  #stories {
+    @apply mb-6;
+  }
+}
