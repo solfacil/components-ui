@@ -45,9 +45,9 @@ const Template = (args, { argTypes }) => ({
   },
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Default',
+export const Basic = Template.bind({});
+Basic.args = {
+  label: 'Basic',
 };
 
 export const Secondary = Template.bind({});

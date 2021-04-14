@@ -1,8 +1,8 @@
 <template>
   <table :id="id || `list-${_uid}`" class="sol-table-list">
-    <tr v-for="(items, index) in itemsList" :key="index">
-      <th>{{ items.title }}</th>
-      <td>{{ items.description }}</td>
+    <tr v-for="(item, index) in items" :key="index">
+      <th>{{ item.title }}</th>
+      <td>{{ item.description }}</td>
     </tr>
   </table>
 </template>
@@ -17,13 +17,13 @@ export default {
      */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /**
      * Provides the contents of the list
      */
-    itemsList: {
+    items: {
       type: Array,
       required: true,
       validator: (obj) => {

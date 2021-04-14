@@ -9,7 +9,7 @@
         :checked="value"
         @input="handleToggle"
       />
-      <div
+      <span
         :class="{
           'custom-checkbox': true,
           checked: value && !disabled,
@@ -17,11 +17,8 @@
           invalid: invalid,
         }"
       >
-        <img
-          v-if="value && !disabled"
-          src="../../assets/img/icon/icon-check.svg"
-        />
-      </div>
+        <img v-if="value && !disabled" src="@img/icon/icon-check.svg" />
+      </span>
 
       <span
         :class="{

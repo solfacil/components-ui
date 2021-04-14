@@ -40,7 +40,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
     data: {

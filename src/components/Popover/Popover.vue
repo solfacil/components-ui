@@ -22,7 +22,7 @@ export default {
   name: 'Popover',
 
   props: {
-    /** Specify whether the Button should be disabled, or not */
+    /** Specify whether the Popover should be disabled, or not */
     disabled: {
       type: Boolean,
       default: false,
@@ -31,9 +31,10 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
+    /** Position popover */
     position: {
       default: 'top',
       type: String,
@@ -41,6 +42,7 @@ export default {
         ['top', 'right', 'bottom', 'left'].includes(value.toLowerCase()),
     },
 
+    /** Custom title */
     title: {
       default: null,
       type: String,

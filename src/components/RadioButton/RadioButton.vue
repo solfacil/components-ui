@@ -41,7 +41,7 @@ export default {
     /** Specify a custom id for the <input> */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /** Provide label text to be read by screen readers when interacting with the control */

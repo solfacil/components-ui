@@ -16,6 +16,7 @@ export default {
   name: 'Tabs',
 
   props: {
+    /** Set name tab active */
     active: {
       type: String,
       default: null,
@@ -24,9 +25,10 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
+    /** Provide the content */
     items: {
       type: Array,
       required: true,

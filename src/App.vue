@@ -301,7 +301,7 @@
         <div class="p-6 bg-gray1 rounded shadow-sm">
           <h3 class="mb-2">List</h3>
           <hr class="my-4" />
-          <List :items-list="itemsList" />
+          <List :items="itemsList" />
         </div>
       </div>
     </section>

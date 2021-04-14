@@ -9,7 +9,7 @@
   @apply text-small;
 }
 label {
-  @apply select-none inline-flex items-center gap-2 text-small;
+  @apply select-none inline-flex items-center gap-2 text-small cursor-pointer;
 
   &.rtl {
     @apply flex-row-reverse;
@@ -20,7 +20,7 @@ label {
     @apply opacity-0 w-1 h-1 absolute;
   }
   .custom-checkbox {
-    @apply inline-grid place-items-center border border-gray3 rounded shadow-sm bg-white;
+    @apply inline-grid place-items-center border border-gray3 rounded shadow-sm bg-white duration-200 ease-linear transition-all;
     min-width: 22px;
     min-height: 22px;
 

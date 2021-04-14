@@ -38,7 +38,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /** Specify whether the control is currently invalid */
@@ -50,19 +50,19 @@ export default {
     /** Provide the text that is displayed when the control is in an invalid state */
     invalidText: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /** Provide label text to be read by screen readers when interacting with the control */
     label: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /** Provide a name for the underlying input node */
     name: {
       type: String,
-      default: '',
+      default: null,
     },
   },
 
