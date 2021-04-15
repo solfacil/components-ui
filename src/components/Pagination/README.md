@@ -13,8 +13,9 @@
 | ----------- | ------------------- | -------- | ------- |
 | data        | `Object<Paginator>` | `true`   | ---     |
 | align-right | `Boolean`           | `false`  | `false` |
-| page-size   | `Number`            | `false`  | `10`    |
-| id          | `String`            | `false`  | `''`    |
+| page-size   | `Number`            | `true`   | ---     |
+| id          | `String`            | `true`   | ---     |
+| resize      | `Boolean`           | `false`  | `false` |
 
 **Return object afterCursor or beforeCursor - @clickHandler**
 

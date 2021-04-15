@@ -16,7 +16,7 @@ const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { Pagination },
   template:
-    '<Pagination v-bind="$props" :data="paginator" @clickHandler="triggerFunction"/>',
+    '<Pagination v-bind="$props" :data="paginator" id="pagination" page-size="10" @clickHandler="triggerFunction"/>',
   data() {
     return {
       paginator: {
