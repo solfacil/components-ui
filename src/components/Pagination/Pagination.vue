@@ -31,15 +31,14 @@ export default {
   name: 'Pagination',
 
   props: {
+    /** Set position right */
     alignRight: {
-      required: false,
       type: Boolean,
       default: false,
     },
 
     /** Reset to initial values (useful on changing sorting) */
     reset: {
-      required: false,
       type: Boolean,
       default: false,
     },
