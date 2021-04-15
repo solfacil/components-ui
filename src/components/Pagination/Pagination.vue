@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="toggle"
-    :id="id || `pagination-${_uid}`"
+    :id="id"
     class="sol-pagination"
     :class="{ 'justify-end': alignRight }"
   >
@@ -31,8 +31,14 @@ export default {
   name: 'Pagination',
 
   props: {
+    /** Set position right */
     alignRight: {
-      required: false,
+      type: Boolean,
+      default: false,
+    },
+
+    /** Reset to initial values (useful on changing sorting) */
+    reset: {
       type: Boolean,
       default: false,
     },
@@ -40,7 +46,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: null,
+      required: true,
     },
 
     data: {
@@ -56,10 +62,10 @@ export default {
       },
     },
 
+    /** Size of response array */
     pageSize: {
-      required: false,
+      required: true,
       type: Number,
-      default: 10,
     },
   },
 
@@ -86,8 +92,19 @@ export default {
     },
   },
 
+  watch: {
+    reset: function (val) {
+      if (val) {
+        this.initLimit = 1;
+        this.innerValue = 1;
+        this.endLimit = this.pageSize;
+        this.remainder = this.data.count % this.data.size;
+      }
+    },
+  },
+
   mounted() {
-    this.endLimit = this.data.size;
+    this.endLimit = this.pageSize;
     this.remainder = this.data.count % this.data.size;
   },
 
