@@ -3,8 +3,9 @@
     <div :id="id || `tooltip-${_uid}`" class="sol-tooltip">
       <slot />
       <div
+        v-if="!disabled"
         class="content-tooltip"
-        :class="['content-tooltip', position, { disabled: disabled }]"
+        :class="['content-tooltip', position]"
       >
         <slot name="tooltip" />
       </div>

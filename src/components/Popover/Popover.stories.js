@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions';
 import Popover from './Popover.vue';
 import Button from '../Button/Button.vue';
 
@@ -31,9 +30,6 @@ const Template = (args, { argTypes }) => ({
         Vivamus sagittis lacus vel augue laoreet rutrum faucibus.
       </template>
     </Popover>`,
-  methods: {
-    someMethod: action('clicked'),
-  },
 });
 
 export const Top = Template.bind({});

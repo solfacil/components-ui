@@ -7,33 +7,21 @@
 </Tooltip>
 ```
 
-**Align**
-
-```js
-[
-  'top-center',
-  'top-right',
-  'top-left',
-  'bottom-center',
-  'bottom-right',
-  'bottom-left',
-  'right-center',
-  'left-center',
-];
-```
-
 **Positions**
 
 ```js
 [
   'top',
+  'topleft',
+  'topright',
+  'right',
+  'righttop',
+  'rightbottom',
   'bottom',
+  'bottomleft',
+  'bottomright',
   'left',
-  'right-top',
-  'right-middle',
-  'right-bottom',
-  'left-top',
-  'left-middle',
-  'left-bottom',
+  'lefttop',
+  'leftbottom',
 ];
 ```
