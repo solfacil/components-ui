@@ -3,7 +3,7 @@
     <input
       :id="id || `input-${_uid}`"
       ref="solInput"
-      :class="[invalid, type]"
+      :class="{ invalid }"
       :disabled="disabled"
       :name="name"
       :placeholder="placeholder"
@@ -38,25 +38,25 @@ export default {
     /** Provide a name for the underlying input node */
     name: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /** Specify a custom `id` for the input */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /** Specify the value of the input */
     value: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /** Specify the placeholder attribute for the input */
     placeholder: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /** Specify the type of the Input: <br/> "date" | "email" | "password"  | "search"  | "tel"  | "text"  | "time" | "url" | "number" */

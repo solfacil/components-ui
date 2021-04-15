@@ -11,7 +11,7 @@
 
     th {
       @apply p-4 pb-0;
-      background: linear-gradient(180deg, #eeeeee 0%, #ffffff 100%);
+      background: linear-gradient(180deg, #eee 0%, #fff 100%);
       border-radius: 4px 4px 0px 0px;
     }
 
@@ -35,14 +35,14 @@
       }
 
       th {
-        background: linear-gradient(90deg, #eeeeee 0%, #ffffff 100%);
-        box-shadow: 0px 1px 0px #eeeeee;
+        background: linear-gradient(90deg, #eee 0%, #fff 100%);
+        box-shadow: 0px 1px 0px #eee;
         border-radius: 4px 0px 0px 4px;
         min-width: 150px;
       }
 
       td {
-        @apply bg-white shadow-none rounded-initial;
+        @apply bg-white rounded-initial;
       }
     }
   }

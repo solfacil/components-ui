@@ -5,7 +5,10 @@ module.exports = {
   variants: {
     extend: {},
   },
-  purge: ['./public/**/*.html', './src/**/*.vue'],
+  purge: {
+    enabled: true,
+    content: ['./public/**/*.html', './src/**/*.vue'],
+  },
   theme: {
     borderRadius: {
       initial: 'initial',

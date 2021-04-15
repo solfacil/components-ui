@@ -61,14 +61,13 @@ export default {
      */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
     /**
      * Align text last item right thead an tbody`
      */
     lastRight: {
-      required: false,
       type: Boolean,
       default: false,
     },

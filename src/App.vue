@@ -29,15 +29,17 @@
             </Alert>
 
             <div class="flex flex-col">
-              <Alert variant="success" size="md">Success - MD</Alert>
+              <Alert variant="success" size="medium" icon>Success - MD</Alert>
             </div>
 
             <div class="flex flex-col">
-              <Alert variant="error" size="lg">Error - LG</Alert>
+              <Alert variant="error" size="large" icon>Error - LG</Alert>
             </div>
 
             <div class="flex flex-col">
-              <Alert variant="warning" size="xl" icon>Warning - XL</Alert>
+              <Alert variant="warning" size="extra-large" icon
+                >Warning - XL</Alert
+              >
             </div>
           </div>
         </div>
@@ -294,12 +296,173 @@
             </div>
           </div>
         </div>
+
+        <div class="mt-8">
+          <h1 class="text-large">Tooltip</h1>
+        </div>
+        <div class="grid grid-cols-3 gap-8 mt-4">
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Top-Right</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="topright">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Top-Center</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="top">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Top-Left</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="topleft">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Bottom-Right</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="bottomright">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Bottom-Center</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="bottom">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Bottom-Left</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="bottomleft">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Right-top</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="righttop">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Right-Middle</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="right">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Right-Bottom</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="rightbottom">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Left-top</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="lefttop">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Left-Middle</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="left">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div class="p-6 bg-gray1 rounded shadow-sm">
+            <h3 class="mb-2">Left-Bottom</h3>
+
+            <hr class="my-4" />
+
+            <div class="flex justify-around">
+              <Tooltip position="leftbottom">
+                <Button>Hover Tooltip</Button>
+                <template slot="tooltip">Lorem ipsum</template>
+              </Tooltip>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="container mt-5">
         <div class="p-6 bg-gray1 rounded shadow-sm">
           <h3 class="mb-2">List</h3>
           <hr class="my-4" />
-          <List :items-list="itemsList" />
+          <List :items="itemsList" />
         </div>
       </div>
     </section>
@@ -319,6 +482,7 @@ import {
   SortedTable,
   Tabs,
   ToggleSwitch,
+  Tooltip,
   List,
 } from './index';
 
@@ -337,6 +501,7 @@ export default {
     SortedTable,
     Tabs,
     ToggleSwitch,
+    Tooltip,
     List,
   },
 

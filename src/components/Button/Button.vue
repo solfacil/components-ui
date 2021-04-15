@@ -5,7 +5,7 @@
     :href="to"
     :disabled="disabled"
     :class="[
-      size,
+      variantSize,
       variantClass,
       { btn: tag === 'a' },
       { disabled: disabled && tag === 'a' },
@@ -15,7 +15,8 @@
     class="sol-button"
     v-on="$listeners"
   >
-    <slot />
+    <!-- slot -->
+    <slot>Button</slot>
   </component>
 </template>
 
@@ -33,10 +34,10 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: '',
+      default: null,
     },
 
-    /** Specify whether the Button should be a small variant, use prefix for responsive (xs:, sm:, md:, lg:, xl:): <br/> "btn-large" | "btn-medium | "btn-small" */
+    /** Specify whether the Button should be a small variant, use prefix for responsive (xs:, sm:, md:, lg:, xl:): <br/> "small" | "medium | "large" */
     size: {
       default: null,
       type: String,
@@ -51,7 +52,7 @@ export default {
 
     /** "_blank" | "_self" */
     target: {
-      default: '_self',
+      default: null,
       type: String,
       validator: (value) => ['_blank', '_self'].includes(value.toLowerCase()),
     },
@@ -82,6 +83,10 @@ export default {
   computed: {
     variantClass() {
       return this.variant ? `btn-${this.variant}` : null;
+    },
+
+    variantSize() {
+      return this.size ? `btn-${this.size}` : null;
     },
   },
 };

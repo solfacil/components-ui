@@ -56,6 +56,10 @@ input[type='url'] {
     }
   }
 
+  &.invalid {
+    @apply border-red2;
+  }
+
   &.search {
     padding-right: 88px;
   }

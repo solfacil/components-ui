@@ -24,7 +24,7 @@ export default {
       type: Boolean,
     },
 
-    /** Specify the kind of Button you want to create: <br/> done" | "denied"   | "review"  | "in-progress"  | "approved"  | "message" | "message-line" */
+    /** Specify the kind of Badge you want to create: <br/> done" | "denied"   | "review"  | "in-progress"  | "approved"  | "message" | "message-line" */
     variant: {
       default: 'message-line',
       type: String,
@@ -38,12 +38,6 @@ export default {
           'message',
           'message-line',
         ].includes(value.toLowerCase()),
-    },
-  },
-
-  computed: {
-    variantClass() {
-      return this.variant ? `btn-${this.variant}` : null;
     },
   },
 };
