@@ -4,7 +4,7 @@
       <slot />
       <div
         class="content-tooltip"
-        :class="['content-tooltip', position, align, { disabled: disabled }]"
+        :class="['content-tooltip', position, { disabled: disabled }]"
       >
         <slot name="tooltip" />
       </div>
@@ -29,49 +29,25 @@ export default {
       default: '',
     },
 
-    /** Align of the indicative arrow */
-    align: {
-      default: 'top-center',
-      type: String,
-      validator: (value) =>
-        [
-          'top-center',
-          'top-right',
-          'top-left',
-          'bottom-center',
-          'bottom-right',
-          'bottom-left',
-          'right-center',
-          'left-center',
-        ].includes(value.toLowerCase()),
-    },
-
     /** Tooltip position */
     position: {
       default: 'top',
       type: String,
       validator: (value) =>
         [
-          'top-left',
-          'top-center',
-          'top-right',
-          'bottom-center',
-          'bottom-left',
-          'bottom-right',
+          'top',
+          'topleft',
+          'topright',
+          'right',
+          'righttop',
+          'rightbottom',
+          'bottom',
+          'bottomleft',
+          'bottomright',
           'left',
-          'right-top',
-          'right-middle',
-          'right-bottom',
-          'left-top',
-          'left-middle',
-          'left-bottom',
+          'lefttop',
+          'leftbottom',
         ].includes(value.toLowerCase()),
-    },
-  },
-
-  computed: {
-    variantClass() {
-      return this.variant ? `btn-${this.variant}` : null;
     },
   },
 };

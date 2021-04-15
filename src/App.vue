@@ -307,7 +307,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="top-right" position="top-right">
+              <Tooltip position="topright">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -320,7 +320,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="top-center" position="top-center">
+              <Tooltip position="top">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -333,7 +333,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="top-left" position="top-left">
+              <Tooltip position="topleft">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -346,7 +346,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="bottom-right" position="bottom-right">
+              <Tooltip position="bottomright">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -359,7 +359,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="bottom-center" position="bottom-center">
+              <Tooltip position="bottom">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -372,7 +372,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="bottom-left" position="bottom-left">
+              <Tooltip position="bottomleft">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -385,7 +385,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="right-center" position="right-top">
+              <Tooltip position="righttop">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -398,7 +398,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="right-center" position="right-middle">
+              <Tooltip position="right">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -411,7 +411,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="right-center" position="right-bottom">
+              <Tooltip position="rightbottom">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -424,7 +424,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="left-center" position="left-top">
+              <Tooltip position="lefttop">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -437,7 +437,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="left-center" position="left-middle">
+              <Tooltip position="left">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
@@ -450,7 +450,7 @@
             <hr class="my-4" />
 
             <div class="flex justify-around">
-              <Tooltip align="left-center" position="left-bottom">
+              <Tooltip position="leftbottom">
                 <Button>Hover Tooltip</Button>
                 <template slot="tooltip">Lorem ipsum</template>
               </Tooltip>
