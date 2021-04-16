@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'checkbox-root': true, rtl: rtl }">
     <span v-if="label" class="title-label">{{ label }}</span>
-    <label :id="id || `checkbox-${_uid}`" :class="{ rtl: rtl }">
+    <label :id="id" :class="{ rtl: rtl }">
       <input
         type="checkbox"
         :name="name"
@@ -70,7 +70,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: '',
+      required: true,
     },
 
     /** Provide a name for the underlying input node */

@@ -20,6 +20,7 @@ const Template = (args, { argTypes }) => ({
       v-bind="$props"
       :items="itemsTabs"
       @changed="getDataTab"
+      id="tab-1"
     />`,
   data() {
     return {

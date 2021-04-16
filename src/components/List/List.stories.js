@@ -14,7 +14,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { List },
-  template: '<List v-bind="$props" :items="itemsList" />',
+  template: '<List v-bind="$props" :items="itemsList" id="list-1" />',
   data() {
     return {
       itemsList: [

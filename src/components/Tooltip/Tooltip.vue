@@ -1,6 +1,6 @@
 <template>
   <transition name="fade" appear>
-    <div :id="id || `tooltip-${_uid}`" class="sol-tooltip">
+    <div :id="id" class="sol-tooltip">
       <slot />
       <div
         v-if="!disabled"
@@ -27,7 +27,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: '',
+      required: true,
     },
 
     /** Tooltip position */

@@ -36,8 +36,8 @@ const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { Tooltip, Button },
   template: `
-    <Tooltip v-bind="$props">
-      <Button>Hover Tooltip</Button>
+    <Tooltip v-bind="$props" id="tip-1">
+      <Button id="button">Hover Tooltip</Button>
       <template slot="tooltip">Lorem ipsum</template>
     </Tooltip>`,
 });

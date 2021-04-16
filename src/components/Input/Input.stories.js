@@ -39,26 +39,31 @@ Template.bind({});
 export const Data = Template.bind({});
 Data.args = {
   type: 'date',
+  id: 'input-1',
 };
 
 export const Password = Template.bind({});
 Password.args = {
   type: 'password',
   placeholder: 'Senha',
+  id: 'input-2',
 };
 
 export const Search = Template.bind({});
 Search.args = {
   type: 'search',
   placeholder: 'Buscar',
+  id: 'input-3',
 };
 
 export const Text = Template.bind({});
 Text.args = {
   type: 'Text',
+  id: 'input-4',
 };
 
 export const Time = Template.bind({});
 Time.args = {
   type: 'time',
+  id: 'input-5',
 };

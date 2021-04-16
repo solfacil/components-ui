@@ -1,5 +1,5 @@
 <template>
-  <label :id="id || `radio-${_uid}`" class="sol-radio-button">
+  <label :id="id" class="sol-radio-button">
     <input
       type="radio"
       :name="name"
@@ -41,7 +41,7 @@ export default {
     /** Specify a custom id for the <input> */
     id: {
       type: String,
-      default: null,
+      required: true,
     },
 
     /** Provide label text to be read by screen readers when interacting with the control */
@@ -53,7 +53,7 @@ export default {
     /** Provide a name for the underlying input node */
     name: {
       type: String,
-      required: true,
+      default: null,
     },
 
     /** Specify the value of the */

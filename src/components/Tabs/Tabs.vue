@@ -1,5 +1,5 @@
 <template>
-  <ul :id="id || `tabs-${_uid}`" class="sol-tabs">
+  <ul :id="id" class="sol-tabs">
     <li
       v-for="(item, index) in items"
       :key="index"
@@ -25,7 +25,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: null,
+      required: true,
     },
 
     /** Provide the content */

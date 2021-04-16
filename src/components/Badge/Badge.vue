@@ -1,8 +1,5 @@
 <template>
-  <span
-    :id="id || `badge-${_uid}`"
-    :class="['sol-badge', variant, { 'hidden-ico': hiddenIcon }]"
-  >
+  <span :id="id" :class="['sol-badge', variant, { 'hidden-ico': hiddenIcon }]">
     <slot />
   </span>
 </template>
@@ -15,7 +12,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: '',
+      required: true,
     },
 
     /** Specify whether the Icon should be disabled, or not */

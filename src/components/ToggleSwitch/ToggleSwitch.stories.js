@@ -25,4 +25,5 @@ const Template = (args, { argTypes }) => ({
 export const Basic = Template.bind({});
 Basic.args = {
   label: 'label',
+  id: 'switch-1',
 };

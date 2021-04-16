@@ -1,7 +1,7 @@
 <template>
   <div class="sol-input">
     <input
-      :id="id || `input-${_uid}`"
+      :id="id"
       ref="solInput"
       :class="{ invalid }"
       :disabled="disabled"
@@ -44,7 +44,7 @@ export default {
     /** Specify a custom `id` for the input */
     id: {
       type: String,
-      default: null,
+      required: true,
     },
 
     /** Specify the value of the input */

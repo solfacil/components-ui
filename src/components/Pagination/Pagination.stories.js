@@ -39,4 +39,5 @@ Template.bind({});
 export const Basic = Template.bind({});
 Basic.args = {
   pageSize: 10,
+  id: 'pag-1',
 };

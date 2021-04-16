@@ -27,4 +27,5 @@ Basic.args = {
   label: 'This checkbox has a label',
   text: 'this is some text',
   errorMsg: 'This value must be true',
+  id: 'check-1',
 };
