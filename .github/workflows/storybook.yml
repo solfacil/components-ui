@@ -2,7 +2,7 @@ name: Deploy Storybook
 on:
   push:
     branches:
-      - feature/required-id
+      dev
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
