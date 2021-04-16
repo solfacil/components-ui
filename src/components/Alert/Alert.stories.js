@@ -45,6 +45,7 @@ Success.args = {
   icon: true,
   label: 'Success',
   variant: 'success',
+  id: 'alert-1',
 };
 
 export const Error = Template.bind({});
@@ -52,6 +53,7 @@ Error.args = {
   icon: true,
   label: 'Error',
   variant: 'error',
+  id: 'alert-2',
 };
 
 export const Warning = Template.bind({});
@@ -59,6 +61,7 @@ Warning.args = {
   icon: true,
   label: 'Warning',
   variant: 'warning',
+  id: 'alert-3',
 };
 
 export const Info = Template.bind({});
@@ -66,6 +69,7 @@ Info.args = {
   icon: true,
   label: 'Info',
   variant: 'info',
+  id: 'alert-4',
 };
 
 export const infoNeutral = Template.bind({});
@@ -73,6 +77,7 @@ infoNeutral.args = {
   icon: true,
   label: 'Info Neutral',
   variant: 'info-neutral',
+  id: 'alert-5',
 };
 
 export const infoLine = Template.bind({});
@@ -80,4 +85,5 @@ infoLine.args = {
   icon: true,
   label: 'Info Line',
   variant: 'info-line',
+  id: 'alert-6',
 };

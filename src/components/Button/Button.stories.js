@@ -16,9 +16,9 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: ['default', 'secondary', 'exception'],
+        options: [null, 'secondary', 'exception'],
       },
-      defaultValue: 'default',
+      defaultValue: null,
     },
 
     tag: {
@@ -48,16 +48,19 @@ const Template = (args, { argTypes }) => ({
 export const Basic = Template.bind({});
 Basic.args = {
   label: 'Basic',
+  id: 'button-1',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: 'secondary',
   label: 'Secondary',
+  id: 'button-2',
 };
 
 export const Exception = Template.bind({});
 Exception.args = {
   variant: 'exception',
   label: 'Exception',
+  id: 'button-3',
 };

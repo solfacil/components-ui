@@ -24,7 +24,7 @@ const Template = (args, { argTypes }) => ({
   components: { Popover, Button },
   template: `
     <Popover v-bind="$props">
-      <Button>Hover Popover</Button>
+      <Button id="popover">Hover Popover</Button>
 
       <template slot="popover">
         Vivamus sagittis lacus vel augue laoreet rutrum faucibus.
@@ -36,22 +36,26 @@ export const Top = Template.bind({});
 Top.args = {
   position: 'top',
   title: 'Title Top',
+  id: 'pop-1',
 };
 
 export const Right = Template.bind({});
 Right.args = {
   position: 'right',
   title: 'Title Right',
+  id: 'pop-2',
 };
 
 export const Bottom = Template.bind({});
 Bottom.args = {
   position: 'bottom',
   title: 'Title Bottom',
+  id: 'pop-3',
 };
 
 export const Left = Template.bind({});
 Left.args = {
   position: 'left',
   title: 'Title Left',
+  id: 'pop-4',
 };

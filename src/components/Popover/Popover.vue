@@ -1,6 +1,6 @@
 <template>
   <transition name="fade" appear>
-    <div :id="id || `popover-${_uid}`" class="sol-popover">
+    <div :id="id" class="sol-popover">
       <slot />
 
       <div
@@ -31,7 +31,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: null,
+      required: true,
     },
 
     /** Position popover */

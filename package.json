@@ -1,7 +1,7 @@
 {
   "name": "@solfacil/components-ui",
   "author": "Solfacil - Fernando Jesus",
-  "version": "0.1.40",
+  "version": "0.1.41",
   "private": false,
   "license": "MIT",
   "description": "Component library based on Vue and Tailwind",
@@ -16,8 +16,7 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
-    "deploy-storybook": "build-storybook && gh-pages -d storybook-static"
+    "build-storybook": "build-storybook -s public"
   },
   "files": [
     "dist/*",
@@ -81,6 +80,7 @@
     "component",
     "components",
     "tailwind",
-    "javascript"
+    "javascript",
+    "storybook"
   ]
 }

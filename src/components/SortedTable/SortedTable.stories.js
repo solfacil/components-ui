@@ -16,7 +16,7 @@ const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { SortedTable },
   template: `
-    <SortedTable v-bind="$props" :fields="titleTHead" order-by="asc" @sort="sortBy">
+    <SortedTable v-bind="$props" :fields="titleTHead" order-by="asc" @sort="sortBy" id="table-1">
       <template #thead-th>
         <th><strong>Last</strong></th>
       </template>

@@ -2,7 +2,7 @@
   <transition name="fade" appear>
     <div
       v-if="!hidden"
-      :id="id || `alert-${_uid}`"
+      :id="id"
       :class="[
         'sol-alert',
         size,
@@ -45,7 +45,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: null,
+      required: true,
     },
 
     /** Specify whether the Alert should be a small variant, use prefix for responsive (xs:, sm:, md:, lg:, xl:): <br/> "small" | "medium | "large | "extra-large" */

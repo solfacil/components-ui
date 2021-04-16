@@ -1,5 +1,5 @@
 <template>
-  <table :id="id || `list-${_uid}`" class="sol-table-list">
+  <table :id="id" class="sol-table-list">
     <tr v-for="(item, index) in items" :key="index">
       <th>{{ item.title }}</th>
       <td>{{ item.description }}</td>
@@ -17,7 +17,7 @@ export default {
      */
     id: {
       type: String,
-      default: null,
+      required: true,
     },
 
     /**

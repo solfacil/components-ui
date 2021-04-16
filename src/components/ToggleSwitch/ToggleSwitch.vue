@@ -1,5 +1,5 @@
 <template>
-  <label :id="id || `switch-${_uid}`" class="toggle-switch">
+  <label :id="id" class="toggle-switch">
     <input
       v-model="value"
       type="checkbox"
@@ -38,7 +38,7 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      default: null,
+      required: true,
     },
 
     /** Specify whether the control is currently invalid */

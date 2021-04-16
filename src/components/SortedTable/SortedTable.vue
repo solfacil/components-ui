@@ -1,7 +1,7 @@
 <template>
   <div class="scroll-table">
     <table
-      :id="id || `table-${_uid}`"
+      :id="id"
       class="sort-table"
       :class="{ 'last-item-right': lastRight }"
     >
@@ -61,7 +61,7 @@ export default {
      */
     id: {
       type: String,
-      default: null,
+      required: true,
     },
 
     /**
