@@ -16,8 +16,8 @@ jobs:
           npm install
           npm run build-storybook
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.6.2
+        uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: gh-pages
-          dir: storybook-static
+          folder: storybook-static
           token: ${{ secrets.ACCESS_TOKEN }}
