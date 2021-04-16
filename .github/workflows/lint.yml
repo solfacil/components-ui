@@ -1,6 +1,6 @@
-name: Lint and Prettier
+name: Lint/Prettier Code Base
 
-on: push
+on: pull_request
 
 jobs:
   run-linters:
@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: 12
 
-      # ESLint and Prettier must be in `package.json`
       - name: Install Node.js dependencies
         run: npm ci
 
