@@ -2,6 +2,8 @@ name: Deploy Storybook
 on:
   push:
     paths: ["stories/**", "src/components/**"] # Trigger the action only when files change in the folders defined here
+    branches:
+      - eature/required-id
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -17,8 +19,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: feature/required-id
-          FOLDER: storybook-static # The folder that the build-storybook script generates files.
-          CLEAN: true # Automatically remove deleted files from the deploy branch
-          TARGET_FOLDER: docs # The folder that we serve our Storybook files from
+          branch: gh-pages
+          dir: storybook-static
+          token: ${{ secrets.ACCESS_TOKEN }}
