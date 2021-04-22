@@ -3,7 +3,7 @@ name: Publish NPM 🚀
 on:
   push:
     branches:
-      feature/chart-circle
+      dev
 
 jobs:
   build:
