@@ -1,7 +1,7 @@
 import ChartCircle from './ChartCircle.vue';
 
 export default {
-  title: 'Components/UI Elements/Chart Circle',
+  title: 'Components/UI Elements/Charts/Circle',
   component: ChartCircle,
   argTypes: {},
 

@@ -1,7 +1,7 @@
 import Input from './Input.vue';
 
 export default {
-  title: 'Components/UI Elements/Inputs',
+  title: 'Components/UI Elements/forms/Inputs',
   component: Input,
   argTypes: {
     type: {

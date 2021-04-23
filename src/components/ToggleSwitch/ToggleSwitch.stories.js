@@ -1,7 +1,7 @@
 import ToggleSwitch from './ToggleSwitch.vue';
 
 export default {
-  title: 'Components/UI Elements/ToggleSwitch',
+  title: 'Components/UI Elements/Forms/ToggleSwitch',
   component: ToggleSwitch,
   argTypes: {},
 

@@ -11,4 +11,4 @@ export { default as ToggleSwitch } from '@components/ToggleSwitch/ToggleSwitch';
 export { default as Popover } from '@components/Popover/Popover';
 export { default as Tooltip } from '@components/Tooltip/Tooltip';
 export { default as List } from '@components/List/List';
-export { default as ChartCircle } from '@components/ChartCircle/ChartCircle';
+export { default as ChartCircle } from '@components/Charts/Circle/ChartCircle';
