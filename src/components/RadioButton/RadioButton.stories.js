@@ -1,7 +1,7 @@
 import RadioButton from './RadioButton.vue';
 
 export default {
-  title: 'Components/UI Elements/RadioButton',
+  title: 'Components/UI Elements/forms/RadioButton',
   component: RadioButton,
   argTypes: {},
 

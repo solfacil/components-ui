@@ -1,7 +1,7 @@
 import Checkbox from './Checkbox.vue';
 
 export default {
-  title: 'Components/UI Elements/Checkboxs',
+  title: 'Components/UI Elements/Forms/Checkboxs',
   component: Checkbox,
   argTypes: {},
 

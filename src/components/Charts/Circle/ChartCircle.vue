@@ -98,9 +98,9 @@ svg {
 }
 
 .circle-chart__circle {
-  animation: circle-chart-fill 2s reverse; /* 1 */
-  transform: rotate(-90deg); /* 2, 3 */
-  transform-origin: center; /* 4 */
+  animation: circle-chart-fill 2s reverse cubic-bezier(0, 0, 1, 0.2);
+  transform: rotate(-90deg);
+  transform-origin: center;
 }
 
 .info {
