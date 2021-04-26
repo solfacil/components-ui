@@ -8,7 +8,7 @@ Component library based on Vue and Tailwind
 
 ## Documentation
 
-For full documentation, visit [Documentation](#).
+For full documentation, visit [Documentation](https://solfacil.github.io/components-ui/?path=/story/getting-started-installation--page).
 
 ## Quick start
 
