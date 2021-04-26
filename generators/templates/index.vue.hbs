@@ -1,0 +1,27 @@
+<template>
+  <div :id="id" class="{{lowerCase name}}">{{pascalCase name}}</div>
+</template>
+
+<script>
+export default {
+  name: '{{pascalCase name}}',
+
+  props: {
+    /** Specify a custom id */
+    id: {
+      type: String,
+      required: true,
+    },
+  },
+
+  data() {
+    return {};
+  },
+
+  methods: {},
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@scss/_{{lowerCase name}}';
+</style>

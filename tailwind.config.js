@@ -39,7 +39,7 @@ module.exports = {
       orangePrimary: '#FFB600',
       orange3: '#FF8A00',
 
-      gray1: '#F8F8F8',
+      gray1: '#F8F8F6',
       gray2: '#EEEEEE',
       gray3: '#E0E0E0',
       gray4: '#999999',
