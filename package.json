@@ -31,7 +31,11 @@
   "dependencies": {
     "chart.js": "2.9.4",
     "core-js": "^3.12.1",
+<<<<<<< HEAD
     "html2canvas": "^1.0.0-rc.7",
+=======
+    "chart.js": "2.9.4",
+>>>>>>> dcdd2dd... feat: init chart bar
     "tailwindcss": "^1.9.6",
     "vue": "^2.6.12",
     "vue-chartjs": "^3.5.1"
