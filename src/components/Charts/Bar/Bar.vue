@@ -2,7 +2,7 @@
 import { Bar } from 'vue-chartjs';
 
 export default {
-  name: 'Teste',
+  name: 'Bar',
 
   extends: Bar,
 
@@ -121,12 +121,6 @@ export default {
       ],
     },
 
-    defaults: {
-      global: {
-        defaultFont: 'Lato, sans-serif',
-      },
-    },
-
     options: {
       responsive: true,
       legend: {
@@ -138,10 +132,17 @@ export default {
           {
             gridLines: {
               display: false,
+              gridLines: true,
+              offsetGridLines: true,
             },
             ticks: {
               beginAtZero: true,
+              fontColor: '#666',
+              fontSize: '12',
+              fontFamily: 'Lato, sans-serif',
+              padding: 8,
             },
+            // stacked: true,
           },
         ],
         yAxes: [
@@ -151,6 +152,14 @@ export default {
               labelString: 'KWH',
               fontFamily: 'Lato, sans-serif',
               fontSize: '12',
+              fontColor: '#999',
+              padding: 0,
+            },
+            ticks: {
+              fontColor: '#666',
+              fontSize: '12',
+              fontFamily: 'Lato, sans-serif',
+              padding: 8,
             },
           },
         ],
@@ -161,10 +170,28 @@ export default {
         },
       },
       hover: {
-        // animationDuration: 0,
+        animationDuration: 0,
       },
       tooltips: {
-        filter: (tooltipItem) => tooltipItem.datasetIndex == 0,
+        // filter: (tooltipItem) => tooltipItem.datasetIndex == 0,
+        callbacks: {
+          title: function (tooltipItem, data) {
+            // return data['labels'][tooltipItem[0]['index']];
+            return '';
+          },
+          label: function (tooltipItem, data) {
+            return data['datasets'][0]['data'][tooltipItem['index']];
+          },
+          // afterLabel: function (tooltipItem, data) {
+          //   var dataset = data['datasets'][0];
+          //   var percent = Math.round(
+          //     (dataset['data'][tooltipItem['index']] /
+          //       dataset['_meta'][0]['total']) *
+          //       100,
+          //   );
+          //   return '(' + percent + '%)';
+          // },
+        },
       },
       animation: {
         duration: 1,

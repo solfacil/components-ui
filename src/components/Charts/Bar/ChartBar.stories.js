@@ -3,15 +3,7 @@ import ChartBar from './ChartBar.vue';
 export default {
   title: 'Components/UI Elements/Charts/Bar',
   component: ChartBar,
-  argTypes: {
-    demo: {
-      control: {
-        type: 'select',
-        options: ['1', '2', '3', '4'],
-      },
-      defaultValue: '1',
-    },
-  },
+  argTypes: {},
 
   parameters: {
     componentSubtitle: '',
