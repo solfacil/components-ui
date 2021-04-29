@@ -42,8 +42,9 @@ export default {
       ],
       datasets: [
         {
-          label: 'Online',
           backgroundColor: '#FFB600',
+          type: 'bar',
+          order: 2,
           data: [
             46,
             40,
@@ -77,11 +78,60 @@ export default {
             20,
           ],
         },
+        {
+          type: 'line',
+          borderColor: '#7DD0FF',
+          fill: false,
+          // cubicInterpolationMode: 'monotone',
+          lineTension: 0,
+          order: 1,
+          data: [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            30,
+            40,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+          ],
+        },
       ],
+    },
+
+    defaults: {
+      global: {
+        defaultFont: 'Lato, sans-serif',
+      },
     },
 
     options: {
       responsive: true,
+      legend: {
+        display: false,
+      },
       maintainAspectRatio: false,
       scales: {
         xAxes: [
@@ -94,28 +144,47 @@ export default {
             },
           },
         ],
+        yAxes: [
+          {
+            scaleLabel: {
+              display: true,
+              labelString: 'KWH',
+              fontFamily: 'Lato, sans-serif',
+              fontSize: '12',
+            },
+          },
+        ],
+      },
+      elements: {
+        point: {
+          radius: 0,
+        },
       },
       hover: {
-        animationDuration: 0,
+        // animationDuration: 0,
+      },
+      tooltips: {
+        filter: (tooltipItem) => tooltipItem.datasetIndex == 0,
       },
       animation: {
         duration: 1,
         onComplete: function () {
-          var chartInstance = this.chart,
+          const chartInstance = this.chart,
             ctx = chartInstance.ctx;
 
-          // ctx.font = Chart.helpers.fontString(
-          //   Chart.defaults.global.defaultFontSize,
-          //   Chart.defaults.global.defaultFontStyle,
-          //   Chart.defaults.global.defaultFontFamily,
-          // );
+          ctx.font = '10px Lato, sans-serif';
+          ctx.fillStyle = '#666666';
+
           ctx.textAlign = 'center';
           ctx.textBaseline = 'bottom';
 
           this.data.datasets.forEach(function (dataset, i) {
-            var meta = chartInstance.controller.getDatasetMeta(i);
+            if (dataset.type === 'line') return;
+
+            let meta = chartInstance.controller.getDatasetMeta(i);
             meta.data.forEach(function (bar, index) {
-              var data = dataset.data[index];
+              let data = dataset.data[index];
+
               ctx.fillText(data, bar._model.x, bar._model.y - 5);
             });
           });
