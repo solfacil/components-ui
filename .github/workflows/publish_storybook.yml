@@ -3,7 +3,7 @@ name: Publish Storybook 🚀
 on:
   push:
     branches:
-      dev
+      feature/line-series
 
 jobs:
   build-and-deploy:

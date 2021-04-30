@@ -29,8 +29,10 @@
   "main": "./dist/solfacil.common.js",
   "dependencies": {
     "core-js": "^3.12.1",
+    "chart.js": "2.9.4",
     "tailwindcss": "^1.9.6",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vue-chartjs": "^3.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
