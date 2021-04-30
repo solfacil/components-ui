@@ -175,10 +175,10 @@ export default {
       tooltips: {
         // filter: (tooltipItem) => tooltipItem.datasetIndex == 0,
         callbacks: {
-          title: function (tooltipItem, data) {
-            // return data['labels'][tooltipItem[0]['index']];
-            return '';
-          },
+          // title: function (tooltipItem, data) {
+          //   // return data['labels'][tooltipItem[0]['index']];
+          //   return '';
+          // },
           label: function (tooltipItem, data) {
             return data['datasets'][0]['data'][tooltipItem['index']];
           },
