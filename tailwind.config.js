@@ -130,6 +130,8 @@ module.exports = {
       12: '72px',
       13: '80px',
       15: '120px',
+      screen: '100vh',
+      full: '100%',
     },
   },
 

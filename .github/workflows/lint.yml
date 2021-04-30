@@ -15,9 +15,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
+          registry-url: https://registry.npmjs.org/
 
-      - name: Install Node.js dependencies
-        run: npm ci
+      - name: Install dependencies
+        run: yarn install
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
