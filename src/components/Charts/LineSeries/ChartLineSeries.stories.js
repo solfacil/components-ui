@@ -1,4 +1,4 @@
-import ChartLineSeries from './ChartChartLineSeries';
+import ChartLineSeries from './ChartLineSeries';
 
 export default {
   title: 'Components/UI Elements/Charts/Line Series',
@@ -25,4 +25,6 @@ const Template = (args, { argTypes }) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  id: 'lineSeries',
+};

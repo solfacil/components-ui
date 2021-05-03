@@ -17,7 +17,8 @@
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "generate": "yarn plop --plopfile ./generators/plopfile.js"
+    "generate": "yarn plop --plopfile ./generators/plopfile.js",
+    "proxy": "ngrok http 6006"
   },
   "files": [
     "dist/*",
@@ -30,6 +31,7 @@
   "dependencies": {
     "core-js": "^3.12.1",
     "chart.js": "2.9.4",
+    "ngrok": "^4.0.1",
     "tailwindcss": "^1.9.6",
     "vue": "^2.6.12",
     "vue-chartjs": "^3.5.1"
