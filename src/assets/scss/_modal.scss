@@ -4,6 +4,7 @@
   z-index: 9999;
 
   .icon-close {
+    @apply ml-auto;
     background: url(~@img/icon/icon-close.svg) no-repeat center center;
     height: 28px;
     width: 28px;
