@@ -1,14 +1,14 @@
-.icon-close {
-  background: url(~@img/icon/icon-close.svg) no-repeat center center;
-  height: 28px;
-  width: 28px;
-  cursor: pointer;
-}
-
 .sol-modal {
   @apply fixed flex justify-center items-center h-full left-0 top-0 w-full;
   background: rgba(51, 51, 51, 0.8);
   z-index: 9999;
+
+  .icon-close {
+    background: url(~@img/icon/icon-close.svg) no-repeat center center;
+    height: 28px;
+    width: 28px;
+    cursor: pointer;
+  }
 
   .wrapper {
     @apply w-full mx-auto bg-white rounded  z-10;
