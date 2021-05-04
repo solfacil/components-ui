@@ -11,18 +11,18 @@
     cursor: pointer;
   }
 
+  header,
+  footer,
+  main {
+    @apply p-6;
+  }
+
   .wrapper {
     @apply w-full mx-auto bg-white rounded  z-10;
     width: calc(100vw - 32px);
 
-    header,
-    footer,
     main {
-      @apply p-4;
-    }
-
-    main {
-      @apply pr-2;
+      @apply text-small text-grayPrimary;
 
       .overflow {
         @apply pr-2 overflow-y-auto;
@@ -57,7 +57,7 @@
   }
 
   header {
-    @apply flex justify-between items-center border-b border-gray3 border-solid text-modest font-rubik;
+    @apply flex justify-between items-center border-b border-gray3 border-solid text-modest py-2 font-rubik font-medium h-12;
   }
 
   footer {
@@ -66,7 +66,7 @@
 
     .btn,
     button {
-      @apply ml-3;
+      @apply ml-2;
 
       &:first-child {
         @apply ml-0;
@@ -77,28 +77,49 @@
 
 @screen lg {
   .sol-modal {
+    header,
+    footer,
+    main {
+      @apply p-7;
+    }
+
     .wrapper {
       max-width: 600px;
 
-      header,
-      footer,
       main {
-        @apply p-5;
-      }
-
-      main {
-        @apply pr-2;
-
         .overflow {
-          @apply pr-3;
-
           max-height: calc(100vh - 334px);
         }
       }
     }
 
     header {
-      @apply text-medium;
+      @apply text-medium py-2;
+      height: 88px;
+    }
+  }
+}
+
+@screen xl {
+  .sol-modal {
+    header,
+    footer,
+    main {
+      @apply p-8;
+    }
+
+    header {
+      @apply py-2;
+    }
+
+    .wrapper {
+      max-width: 600px;
+
+      main {
+        .overflow {
+          max-height: calc(100vh - 334px);
+        }
+      }
     }
   }
 }
