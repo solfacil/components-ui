@@ -15,7 +15,9 @@
         </header>
 
         <main>
-          <slot></slot>
+          <div class="overflow">
+            <slot></slot>
+          </div>
         </main>
 
         <footer>
@@ -24,6 +26,7 @@
           <Button
             v-show="buttonClose"
             id="btn-close-modal"
+            :variant="buttonClose"
             @click.prevent="close"
             >Fechar</Button
           >
@@ -64,10 +67,12 @@ export default {
       required: true,
     },
 
-    /** Specify whether the Button should be disabled */
+    /** Specify the kind of Butoon/Close you want to create: <br/> primary | secondary" | "exception" */
     buttonClose: {
-      type: Boolean,
-      default: true,
+      default: null,
+      type: String,
+      validator: (value) =>
+        ['primary', 'secondary', 'exception'].includes(value.toLowerCase()),
     },
 
     /** Close modal click overlay  */
