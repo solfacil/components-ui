@@ -17,7 +17,7 @@
     @apply flex pr-3 items-center border border-gray3 duration-200 ease-linear transition-all h-8 rounded;
 
     span {
-      @apply text-small overflow-hidden whitespace-no-wrap pl-3;
+      @apply text-small overflow-hidden whitespace-no-wrap pl-4;
       text-overflow: ellipsis;
       max-width: calc(100% - 32px);
 
