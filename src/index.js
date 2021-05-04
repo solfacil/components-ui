@@ -12,4 +12,5 @@ export { default as Popover } from '@components/Popover/Popover';
 export { default as Tooltip } from '@components/Tooltip/Tooltip';
 export { default as List } from '@components/List/List';
 export { default as Modal } from '@components/Modal/Modal';
+export { default as SelectInput } from '@components/SelectInput/SelectInput';
 export { default as ChartCircle } from '@components/Charts/Circle/ChartCircle';
