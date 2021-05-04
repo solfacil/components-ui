@@ -31,7 +31,12 @@ export default {
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { Input },
-  template: '<Input v-bind="$props" />',
+  data() {
+    return {
+      inputModel: null,
+    };
+  },
+  template: '<Input v-bind="$props" v-model="inputModel" />',
 });
 
 Template.bind({});

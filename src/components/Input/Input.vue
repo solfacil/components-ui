@@ -1,9 +1,14 @@
 <template>
   <div class="sol-input">
+    <span v-if="!!$slots['icon']" class="icon">
+      <!-- @slot Use this slot icon AddOns -->
+      <slot name="icon"></slot>
+    </span>
+
     <input
       :id="id"
       ref="solInput"
-      :class="{ invalid }"
+      :class="{ invalid, 'is-icon': $slots['icon'] }"
       :disabled="disabled"
       :name="name"
       :placeholder="placeholder"
@@ -47,7 +52,7 @@ export default {
       required: true,
     },
 
-    /** Specify the value of the input */
+    /** Specify the value of the input - v-model */
     value: {
       type: String,
       default: null,

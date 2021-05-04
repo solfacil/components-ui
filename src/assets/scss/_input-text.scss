@@ -3,6 +3,14 @@
 
   input {
     @apply relative z-0;
+
+    &.is-icon {
+      padding-left: 56px;
+    }
+  }
+
+  .icon {
+    @apply w-8 h-8 border-gray3 border-r border-solid flex items-center justify-center absolute z-10 top-0 left-0;
   }
 
   i.reset-search {
