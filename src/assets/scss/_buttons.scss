@@ -26,7 +26,7 @@ button {
 
     &.disabled,
     &:disabled {
-      @apply bg-transparent text-gray4 border border-gray2 cursor-default;
+      @apply bg-transparent text-gray4 border border-gray3 cursor-default;
     }
   }
 
@@ -39,7 +39,7 @@ button {
 
     &.disabled,
     &:disabled {
-      @apply bg-transparent text-gray4  border-gray2 cursor-default;
+      @apply bg-transparent text-gray4  border-gray3 cursor-default;
     }
   }
 }
