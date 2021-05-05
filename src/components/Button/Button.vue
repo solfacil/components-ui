@@ -73,10 +73,10 @@ export default {
 
     /** Specify the kind of Button you want to create: <br/> secondary" | "exception" */
     variant: {
-      default: null,
+      default: 'primary',
       type: String,
       validator: (value) =>
-        ['secondary', 'exception'].includes(value.toLowerCase()),
+        ['primary', 'secondary', 'exception'].includes(value.toLowerCase()),
     },
   },
 

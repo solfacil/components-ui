@@ -16,9 +16,9 @@ export default {
     variant: {
       control: {
         type: 'select',
-        options: [null, 'secondary', 'exception'],
+        options: ['primary', 'secondary', 'exception'],
       },
-      defaultValue: null,
+      defaultValue: 'primary',
     },
 
     tag: {
