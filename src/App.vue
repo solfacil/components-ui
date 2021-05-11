@@ -15,6 +15,12 @@
 <script>
 export default {
   name: 'App',
+
+  mounted() {
+    console.log(this.$toaster);
+    // ...
+    // this.$toaster.success('Your toaster success message.');
+  },
 };
 </script>
 
