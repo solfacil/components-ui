@@ -7,6 +7,10 @@
     &.is-icon {
       padding-left: 56px;
     }
+
+    &.search {
+      @apply shadow-none;
+    }
   }
 
   .icon {

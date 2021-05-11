@@ -8,7 +8,7 @@
     <input
       :id="id"
       ref="solInput"
-      :class="{ invalid, 'is-icon': $slots['icon'] }"
+      :class="{ invalid, 'is-icon': $slots['icon'], search: type === 'search' }"
       :disabled="disabled"
       :name="name"
       :placeholder="placeholder"
