@@ -1,0 +1,71 @@
+name: "Flow Publish"
+
+on:
+  push:
+    branches:
+      dev
+
+jobs:
+  bump-version:
+    name: "Bump Version on master"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout source code"
+        uses: "actions/checkout@v2"
+        with:
+          ref: ${{ github.ref }}
+      - name: "cat package.json"
+        run: cat ./package.json
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v1"
+        with:
+          node-version: 12
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        with:
+          default: minor
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "cat package.json"
+        run: cat ./package.json
+
+  build:
+    name: Publish NPM 🚀
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+
+      - run: yarn install
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+  build-and-deploy:
+    name: Publish Storybook 🚀
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+
+      - name: Install and Build 🔧
+        run: | # Install npm packages and build the Storybook files
+          yarn install
+          yarn build-storybook
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: storybook-static # The folder that the build-storybook script generates files.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
+          TARGET_FOLDER: .
