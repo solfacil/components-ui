@@ -39,7 +39,20 @@ export default {
       default: 'top',
       type: String,
       validator: (value) =>
-        ['top', 'right', 'bottom', 'left'].includes(value.toLowerCase()),
+        [
+          'top',
+          'topright',
+          'topleft',
+          'righttop',
+          'right',
+          'rightbottom',
+          'bottom',
+          'bottomleft',
+          'bottomright',
+          'left',
+          'leftbottom',
+          'lefttop',
+        ].includes(value.toLowerCase()),
     },
 
     /** Custom title */
