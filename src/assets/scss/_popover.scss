@@ -21,18 +21,18 @@
     }
 
     &.popover-topright {
-      bottom: calc(100% + 10px);
+      bottom: 100%;
       right: 0;
     }
 
     &.popover-topleft {
-      bottom: calc(100% + 10px);
+      bottom: 100%;
       left: 0;
     }
 
     &.popover-righttop {
       top: 0;
-      left: calc(100% + 10px);
+      left: 100%;
     }
 
     &.popover-right {
@@ -43,7 +43,7 @@
 
     &.popover-rightbottom {
       bottom: 0;
-      left: calc(100% + 10px);
+      left: 100%;
     }
 
     &.popover-bottom {
@@ -53,18 +53,18 @@
     }
 
     &.popover-bottomleft {
-      top: calc(100% + 10px);
+      top: 100%;
       left: 0;
     }
 
     &.popover-bottomright {
-      top: calc(100% + 10px);
+      top: 100%;
       right: 0;
     }
 
     &.popover-lefttop {
       top: 0;
-      right: calc(100% + 10px);
+      right: 100%;
     }
 
     &.popover-left {
@@ -75,7 +75,7 @@
 
     &.popover-leftbottom {
       bottom: 0;
-      right: calc(100% + 10px);
+      right: 100%;
     }
 
     &.disabled {
@@ -88,50 +88,26 @@
       @apply opacity-100;
       visibility: visible;
 
-      &.popover-top {
-        bottom: calc(100% + 8px);
-      }
-
-      &.popover-topleft {
-        bottom: calc(100% + 8px);
-      }
-
+      &.popover-top,
+      &.popover-topleft,
       &.popover-topright {
         bottom: calc(100% + 8px);
       }
 
-      &.popover-right {
-        left: calc(100% + 8px);
-      }
-
-      &.popover-righttop {
-        left: calc(100% + 8px);
-      }
-
+      &.popover-right,
+      &.popover-righttop,
       &.popover-rightbottom {
         left: calc(100% + 8px);
       }
 
-      &.popover-bottom {
-        top: calc(100% + 8px);
-      }
-
-      &.popover-bottomleft {
-        top: calc(100% + 8px);
-      }
-
+      &.popover-bottom,
+      &.popover-bottomleft,
       &.popover-bottomright {
         top: calc(100% + 8px);
       }
 
-      &.popover-left {
-        right: calc(100% + 8px);
-      }
-
-      &.popover-lefttop {
-        right: calc(100% + 8px);
-      }
-
+      &.popover-left,
+      &.popover-lefttop,
       &.popover-leftbottom {
         right: calc(100% + 8px);
       }
