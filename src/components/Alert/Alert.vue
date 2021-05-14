@@ -1,7 +1,7 @@
 <template>
   <transition name="fade" appear>
     <div
-      v-if="!hidden"
+      v-if="value"
       :id="id"
       :class="[
         'sol-alert',
@@ -28,6 +28,12 @@ export default {
     close: {
       default: false,
       type: Boolean,
+    },
+
+    /** Specify whether the Alert should be visible or hidden */
+    value: {
+      type: Boolean,
+      required: true,
     },
 
     /** Optionally icon number */
@@ -74,15 +80,9 @@ export default {
     },
   },
 
-  data() {
-    return {
-      hidden: false,
-    };
-  },
-
   methods: {
     hiddenAlert() {
-      this.hidden = true;
+      this.$emit('input', false);
     },
   },
 };
