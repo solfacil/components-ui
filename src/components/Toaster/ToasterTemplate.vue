@@ -1,13 +1,15 @@
 <template>
-  <div :id="id" class="v-toaster">
-    <transition-group name="v-toast">
+  <div :id="id" class="sol-toaster">
+    <transition-group name="sol-toast">
       <div
         v-for="t in items"
-        :key="t.key"
+        :key="t.id"
         class="v-toast"
         :class="{ [t.theme]: t.theme }"
       >
-        <a class="v-toast-btn-clear" @click="remove(t)"></a>{{ t.message }}
+        <pre>{{ t }}</pre>
+        <a class="v-toast-btn-clear" @click="remove(t)"></a>
+        {{ t.message }}
       </div>
     </transition-group>
   </div>
@@ -21,12 +23,29 @@ export default {
     /** Specify a custom id */
     id: {
       type: String,
-      required: true,
+      default: '',
+      // required: true,
     },
 
+    /** Position */
     timeout: {
       type: Number,
-      default: 10000,
+      default: 500000,
+    },
+
+    /** Position */
+    position: {
+      default: 'topright',
+      type: String,
+      validator: (value) =>
+        [
+          'top',
+          'topright',
+          'topleft',
+          'bottom',
+          'bottomleft',
+          'bottomright',
+        ].includes(value.toLowerCase()),
     },
   },
   data() {
@@ -37,29 +56,51 @@ export default {
 
   methods: {
     success(message, option = {}) {
-      this.add(message, { theme: 'v-toast-success', timeout: option.timeout });
+      this.add(message, {
+        theme: 'v-toast-success',
+        timeout: option.timeout,
+        id: option.id,
+        position: option.position || this.position,
+      });
     },
 
     info(message, option = {}) {
-      this.add(message, { theme: 'v-toast-info', timeout: option.timeout });
+      this.add(message, {
+        theme: 'v-toast-info',
+        timeout: option.timeout,
+        id: option.id,
+        osition: option.position || this.position,
+      });
     },
 
     warning(message, option = {}) {
-      this.add(message, { theme: 'v-toast-warning', timeout: option.timeout });
+      this.add(message, {
+        theme: 'v-toast-warning',
+        timeout: option.timeout,
+        id: option.id,
+        osition: option.position || this.position,
+      });
     },
 
     error(message, option = {}) {
-      this.add(message, { theme: 'v-toast-error', timeout: option.timeout });
+      this.add(message, {
+        theme: 'v-toast-error',
+        timeout: option.timeout,
+        id: option.id,
+        osition: option.position || this.position,
+      });
     },
 
-    add(message, { theme, timeout }) {
+    add(message, { theme, timeout, id, position }) {
       if (!this.$parent) {
         this.$mount();
         document.body.appendChild(this.$el);
       }
-      let item = { message, theme, key: `${Date.now()}-${Math.random()}` };
+      let item = { message, theme, id, position };
       this.items.push(item);
       setTimeout(() => this.remove(item), timeout || this.timeout);
+
+      console.log(this.items);
     },
 
     remove(item) {
@@ -75,14 +116,10 @@ export default {
 <style lang="scss" scoped>
 @import '@scss/_toaster';
 
-.v-toaster {
-  position: fixed;
-  top: 50px;
-  right: 0;
-  z-index: 10000;
-  width: 300px;
-  padding-left: 10px;
-  padding-right: 10px;
+.sol-toaster {
+  @apply fixed z-50 w-full;
+  max-width: 336px;
+
   .v-toast {
     margin-bottom: 10px;
     transition: all 0.3s ease;
@@ -130,8 +167,9 @@ export default {
     }
   }
 }
-.v-toaster .v-toast.v-toast-enter,
-.v-toaster .v-toast.v-toast-leave-to {
+
+.sol-toaster .sol-toast.sol-toast-enter,
+.sol-toaster .sol-toast.sol-toast-leave-to {
   -webkit-transform: translate(100%);
   transform: translate(100%);
 }

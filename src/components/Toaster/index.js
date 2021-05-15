@@ -1,10 +1,21 @@
-const Toaster = require('./Toaster.vue');
+import ToasterTemplate from './ToasterTemplate.vue';
 
-Toaster.install = (Vue, options) => {
-  Vue.prototype.$toaster = new (Vue.extend(Toaster))({ propsData: options });
-  Vue.toaster = Vue.prototype.$toaster;
-  if (process.env.NODE_ENV === 'development')
-    window.$toaster = Vue.prototype.$toaster;
+// Toaster.install = (Vue, options) => {
+//   Vue.prototype.$toaster = new (Vue.extend(Toaster))({ propsData: options });
+//   Vue.toaster = Vue.prototype.$toaster;
+//   if (process.env.NODE_ENV === 'development')
+//     window.$toaster = Vue.prototype.$toaster;
+// };
+
+const Toaster = {
+  install(Vue, options = {}) {
+    Vue.prototype.$toaster = new (Vue.extend(ToasterTemplate))({
+      propsData: options,
+    });
+    Vue.toaster = Vue.prototype.$toaster;
+    if (process.env.NODE_ENV === 'development')
+      window.$toaster = Vue.prototype.$toaster;
+  },
 };
 
-module.exports = Toaster;
+export default Toaster;

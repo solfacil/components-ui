@@ -9,6 +9,8 @@
         />
       </div>
     </header>
+
+    <button @click="teste">teste</button>
   </div>
 </template>
 
@@ -16,10 +18,15 @@
 export default {
   name: 'App',
 
-  mounted() {
-    console.log(this.$toaster);
-    // ...
-    // this.$toaster.success('Your toaster success message.');
+  mounted() {},
+
+  methods: {
+    teste() {
+      this.$toaster.success('Your toaster success message.', { id: 'teste' });
+      // this.$toaster.info('Your toaster info message.');
+      // this.$toaster.error('Your toaster error message.');
+      // this.$toaster.warning('Your toaster warning message.');
+    },
   },
 };
 </script>
