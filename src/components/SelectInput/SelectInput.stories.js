@@ -24,6 +24,13 @@ const Template = (args, { argTypes }) => ({
           value: 'Sou um integrador e quero tirar dúvidas',
           name: 'Sou um integrador e quero tirar dúvidas',
         },
+<<<<<<< HEAD
+=======
+        {
+          value: `Tenho interesse em trabalhar na Solfácil e quero tirar dúvidas`,
+          name: `Tenho interesse em trabalhar na Solfácil e quero tirar dúvidas`,
+        },
+>>>>>>> 8141de0... bump version
       ],
     };
   },

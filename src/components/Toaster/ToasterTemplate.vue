@@ -99,8 +99,6 @@ export default {
       let item = { message, theme, id, position };
       this.items.push(item);
       setTimeout(() => this.remove(item), timeout || this.timeout);
-
-      console.log(this.items);
     },
 
     remove(item) {
