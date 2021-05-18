@@ -2,14 +2,20 @@
   <div :id="id" class="sol-toaster">
     <transition-group name="sol-toast">
       <div
-        v-for="t in items"
-        :key="t.id"
+        v-for="item in items"
+        :key="item.id"
         class="v-toast"
-        :class="{ [t.theme]: t.theme }"
+        :class="{ [item.theme]: item.theme }"
       >
-        <pre>{{ t }}</pre>
-        <a class="v-toast-btn-clear" @click="remove(t)"></a>
-        {{ t.message }}
+        <div>
+          <img
+            :src="require(`@img/icon/icon-${item.theme}.svg`)"
+            class="inline"
+            :alt="item.message"
+          />
+          {{ item.message }}
+          <span @click="remove(t)">fechar</span>
+        </div>
       </div>
     </transition-group>
   </div>
@@ -27,13 +33,19 @@ export default {
       // required: true,
     },
 
-    /** Position */
-    timeout: {
+    /** Timeout close Toaster */
+    autoHideDelay: {
       type: Number,
-      default: 500000,
+      default: 500099,
     },
 
-    /** Position */
+    /** Disabled auto hide */
+    noAutoHide: {
+      type: Boolean,
+      default: false,
+    },
+
+    /** Position Toaster */
     position: {
       default: 'topright',
       type: String,
@@ -48,6 +60,7 @@ export default {
         ].includes(value.toLowerCase()),
     },
   },
+
   data() {
     return {
       items: [],
@@ -57,8 +70,9 @@ export default {
   methods: {
     success(message, option = {}) {
       this.add(message, {
-        theme: 'v-toast-success',
-        timeout: option.timeout,
+        theme: 'success',
+        autoHideDelay: option.autoHideDelay,
+        noAutoHide: option.noAutoHide,
         id: option.id,
         position: option.position || this.position,
       });
@@ -66,39 +80,48 @@ export default {
 
     info(message, option = {}) {
       this.add(message, {
-        theme: 'v-toast-info',
-        timeout: option.timeout,
+        theme: 'info',
+        autoHideDelay: option.autoHideDelay,
+        noAutoHide: option.noAutoHide,
         id: option.id,
-        osition: option.position || this.position,
+        position: option.position || this.position,
       });
     },
 
     warning(message, option = {}) {
       this.add(message, {
-        theme: 'v-toast-warning',
-        timeout: option.timeout,
+        theme: 'warning',
+        autoHideDelay: option.autoHideDelay,
+        noAutoHide: option.noAutoHide,
         id: option.id,
-        osition: option.position || this.position,
+        position: option.position || this.position,
       });
     },
 
     error(message, option = {}) {
       this.add(message, {
-        theme: 'v-toast-error',
-        timeout: option.timeout,
+        theme: 'error',
+        autoHideDelay: option.autoHideDelay,
+        noAutoHide: option.noAutoHide,
         id: option.id,
-        osition: option.position || this.position,
+        position: option.position || this.position,
       });
     },
 
-    add(message, { theme, timeout, id, position }) {
+    add(message, { theme, autoHideDelay, noAutoHide = false, id, position }) {
       if (!this.$parent) {
         this.$mount();
         document.body.appendChild(this.$el);
       }
       let item = { message, theme, id, position };
       this.items.push(item);
-      setTimeout(() => this.remove(item), timeout || this.timeout);
+
+      if (!noAutoHide) {
+        setTimeout(
+          () => this.remove(item),
+          autoHideDelay || this.autoHideDelay,
+        );
+      }
     },
 
     remove(item) {
