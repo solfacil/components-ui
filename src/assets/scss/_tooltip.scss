@@ -2,7 +2,7 @@
   @apply relative inline-block;
 }
 .content-tooltip {
-  @apply opacity-0 bg-grayPrimary absolute text-small text-white font-rubik rounded text-center z-10 py-2 px-4 duration-200 ease-linear transition-all leading-tight;
+  @apply opacity-0 bg-grayPrimary absolute text-small text-white font-rubik rounded z-10 py-2 px-4 duration-200 ease-linear transition-all leading-tight;
   max-width: 320px;
   visibility: hidden;
   width: max-content;
