@@ -12,17 +12,17 @@ module.exports = function (plop) {
     actions: [
       {
         type: 'add',
-        path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.vue',
+        path: `../src/components/{{pascalCase name}}/{{pascalCase name}}.vue`,
         templateFile: 'templates/index.vue.hbs',
       },
       {
         type: 'add',
-        path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.stories.js',
+        path: `../src/components/{{pascalCase name}}/{{pascalCase name}}.stories.js`,
         templateFile: 'templates/stories.js.hbs',
       },
       {
         type: 'add',
-        path: '../src/assets/scss/_{{lowerCase name}}.scss',
+        path: `../src/assets/scss/_{{lowerCase name}}.scss`,
         templateFile: 'templates/style.scss.hbs',
       },
     ],
