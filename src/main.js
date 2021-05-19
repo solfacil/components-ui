@@ -3,9 +3,6 @@ import App from './App.vue';
 
 import '@scss/core/index.scss';
 
-import { Toaster } from './index';
-Vue.use(Toaster);
-
 Vue.config.productionTip = false;
 
 new Vue({
