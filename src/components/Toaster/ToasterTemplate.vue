@@ -30,7 +30,7 @@ export default {
     id: {
       type: String,
       default: '',
-      // required: true,
+      required: true,
     },
 
     /** Timeout close Toaster */

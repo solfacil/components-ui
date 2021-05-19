@@ -3,7 +3,7 @@ import ToasterTemplate from './ToasterTemplate';
 import Button from '../Button/Button.vue';
 import Vue from 'vue';
 
-Vue.use(Toaster);
+Vue.use(Toaster, { id: 'toaster' });
 
 export default {
   title: 'Components/UI Elements/Toaster',
@@ -38,11 +38,11 @@ const Template = (args, { argTypes }) => ({
     };
   },
   methods: {
-    teste() {
+    triggerToaster() {
       this.count++;
 
       this.$toaster.success('Your toaster success message.' + this.count, {
-        id: 'teste-' + this.count,
+        id: 'toaster-' + this.count,
         autoHideDelay: this.autoHideDelay,
         noAutoHide: this.noAutoHide,
         position: this.position,
@@ -50,7 +50,7 @@ const Template = (args, { argTypes }) => ({
     },
   },
   template:
-    '<Button id="button" @click="teste" class="btn">Trigger Toaster</Button>',
+    '<Button id="button" @click="triggerToaster" class="btn">Trigger Toaster</Button>',
 });
 
 export const Default = Template.bind({});
@@ -63,7 +63,7 @@ Usage
 
 import Vue from 'vue'
 import { Toaster } from '@solfacil/components-ui';
-Vue.use(Toaster, {timeout: 5000})
+Vue.use(Toaster, { timeout: 5000, id: 'toaster' })
 
 // in your component this.$toaster
 // ...
