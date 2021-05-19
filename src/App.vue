@@ -22,13 +22,26 @@ export default {
 
   methods: {
     teste() {
+      this.$toaster.$slots = '<p>xxxxxxxx</p>';
+      console.log(this.$toaster.$slots);
       this.$toaster.success('Your toaster success message.', {
         id: 'teste',
         noAutoHide: true,
+        position: 'top',
       });
-      this.$toaster.info('Your toaster info message.', { id: 'info' });
-      this.$toaster.error('Your toaster error message.', { id: 'error' });
-      this.$toaster.warning('Your toaster warning message.', { id: 'warning' });
+      // this.$toaster.info('Your toaster info message.', {
+      //   id: 'info',
+      //   noAutoHide: true,
+
+      // });
+      // this.$toaster.error('Your toaster error message.', {
+      //   id: 'error',
+      //   noAutoHide: true,
+      // });
+      // this.$toaster.warning('Your toaster warning message.', {
+      //   id: 'warning',
+      //   noAutoHide: true,
+      // });
     },
   },
 };
