@@ -33,7 +33,7 @@ export default {
     /** Specify whether the Alert should be visible or hidden */
     value: {
       type: Boolean,
-      required: true,
+      default: true,
     },
 
     /** Optionally icon number */
