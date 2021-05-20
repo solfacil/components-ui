@@ -40,10 +40,6 @@ table {
   tr {
     @apply cursor-pointer;
 
-    &:hover {
-      @apply ease-out duration-300 shadow;
-    }
-
     &:hover td {
       @apply border-t border-b border-orangePrimary;
     }
@@ -118,6 +114,10 @@ table {
         @apply rounded-tr rounded-br border-solid border-r border-gray3;
       }
     }
+  }
+
+  tbody tr:hover {
+    @apply ease-out duration-300 shadow;
   }
 
   &.last-item-right {
