@@ -124,6 +124,12 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    /** Specify the value of the input - v-model */
+    value: {
+      type: String,
+      default: null,
+    },
   },
 
   data: () => ({
@@ -136,6 +142,14 @@ export default {
     options() {
       this.selected = null;
     },
+  },
+
+  created() {
+    if (this.value) {
+      this.options.map((item) => {
+        if (item.value === this.value) this.selected = item;
+      });
+    }
   },
 
   methods: {

@@ -1,5 +1,5 @@
 .sol-select-input {
-  @apply bg-white shadow-sm cursor-pointer select-none relative;
+  @apply shadow-sm cursor-pointer select-none relative;
 
   * {
     @apply font-rubik;
@@ -14,7 +14,7 @@
   }
 
   .select-main {
-    @apply flex pr-3 items-center border border-gray3 duration-200 ease-linear transition-all h-8 rounded;
+    @apply bg-white flex pr-3 items-center border border-gray3 duration-200 ease-linear transition-all h-8 rounded;
 
     span {
       @apply text-small overflow-hidden whitespace-no-wrap pl-4;
