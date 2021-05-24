@@ -17,18 +17,19 @@ const Template = (args, { argTypes }) => ({
     return {
       subjectTypes: [
         {
-          value: 'Sou um cliente e quero tirar dúvidas',
+          value: '1',
           name: 'Sou um cliente e quero tirar dúvidas',
         },
         {
-          value: 'Sou um integrador e quero tirar dúvidas',
+          value: '2',
           name: 'Sou um integrador e quero tirar dúvidas',
         },
       ],
+      inputModel: '2',
     };
   },
   template:
-    '<div style="width:300px; min-height: 200px"><SelectInput v-bind="$props" :options="subjectTypes"></SelectInput></div>',
+    '<div style="width:300px; min-height: 200px"><SelectInput v-bind="$props" :options="subjectTypes" v-model="inputModel" /></div>',
 });
 
 export const Default = Template.bind({});
