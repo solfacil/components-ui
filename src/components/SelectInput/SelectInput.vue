@@ -45,6 +45,7 @@
       v-if="showOptions && !disabled"
       ref="optionList"
       class="options-container"
+      :class="position"
     >
       <input
         v-if="searchable"
@@ -116,6 +117,13 @@ export default {
     placeholder: {
       type: String,
       default: '',
+    },
+
+    /** Position items */
+    position: {
+      default: 'bottom',
+      type: String,
+      validator: (value) => ['top', 'bottom'].includes(value.toLowerCase()),
     },
 
     /** Specify whether the control is currently invalid */

@@ -68,8 +68,15 @@
 
   .options-container {
     @apply p-3 absolute w-full left-0 bg-white border border-gray3 z-50 shadow-sm rounded;
-    top: 100%;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+
+    &.top {
+      bottom: 100%;
+    }
+
+    &.bottom {
+      top: 100%;
+    }
 
     input {
       @apply text-small pr-8;

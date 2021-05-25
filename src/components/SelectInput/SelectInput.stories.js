@@ -3,7 +3,15 @@ import SelectInput from './SelectInput.vue';
 export default {
   title: 'Components/UI Elements/Forms/SelectInput',
   component: SelectInput,
-  argTypes: {},
+  argTypes: {
+    position: {
+      control: {
+        type: 'select',
+        options: ['top', 'bottom'],
+      },
+      defaultValue: 'bottom',
+    },
+  },
 
   parameters: {
     componentSubtitle: '',
@@ -34,6 +42,7 @@ const Template = (args, { argTypes }) => ({
 
 export const Default = Template.bind({});
 Default.args = {
+  position: 'bottom',
   id: 'select',
   searchable: true,
   placeholder: 'Selecione',
