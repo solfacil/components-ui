@@ -140,7 +140,7 @@ export default {
 
     /** Specify the value of the input - v-model */
     value: {
-      type: String,
+      type: [String, Number],
       default: null,
     },
   },
