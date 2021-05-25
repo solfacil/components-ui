@@ -1,5 +1,10 @@
 <template>
-  <div ref="root" v-click-outside="closeSelect" class="sol-select-input">
+  <div
+    :id="id"
+    ref="root"
+    v-click-outside="closeSelect"
+    class="sol-select-input"
+  >
     <div
       class="select-main"
       :class="{
