@@ -2,6 +2,7 @@
   <span class="page-size">
     itens
     <SelectInput
+      v-if="currentValue"
       :id="id"
       v-model="currentValue"
       :options="options"
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import SelectInput from './../SelectInput/SelectInput';
+import SelectInput from '@components/SelectInput/SelectInput';
 
 export default {
   name: 'PageSize',
@@ -30,13 +31,14 @@ export default {
     /** Specify a value */
     value: {
       type: Number,
-      required: true,
+      default: 10,
+      validator: (value) => [10, 20, 50, 100].includes(value),
     },
   },
 
   data() {
     return {
-      currentValue: 10,
+      currentValue: null,
       options: [
         {
           value: 10,
@@ -56,6 +58,12 @@ export default {
         },
       ],
     };
+  },
+
+  watch: {
+    value: function (value) {
+      this.currentValue = value;
+    },
   },
 
   methods: {
