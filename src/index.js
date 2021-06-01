@@ -15,3 +15,4 @@ export { default as Modal } from '@components/Modal/Modal';
 export { default as SelectInput } from '@components/SelectInput/SelectInput';
 export { default as Toaster } from '@components/Toaster';
 export { default as ChartCircle } from '@components/Charts/Circle/ChartCircle';
+export { default as PageSize } from '@components/PageSize/PageSize';
