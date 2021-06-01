@@ -80,7 +80,7 @@ export default {
 
 <style lang="scss" scoped>
 .page-size {
-  @apply inline-flex items-center text-small leading-tight;
+  @apply inline-flex items-center text-small leading-tight font-rubik;
 }
 
 .sol-select-input {
