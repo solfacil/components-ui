@@ -29,7 +29,7 @@
         </tr>
       </thead>
 
-      <tbody role="rowgroup">
+      <tbody role="rowgroup" :class="{ 'no-hover': noHover }">
         <slot name="tbody" />
       </tbody>
     </table>
@@ -78,6 +78,14 @@ export default {
     orderBy: {
       required: true,
       type: String,
+    },
+
+    /**
+     * desabled hover line
+     */
+    noHover: {
+      type: Boolean,
+      default: false,
     },
   },
 
