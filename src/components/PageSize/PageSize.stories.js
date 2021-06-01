@@ -24,6 +24,11 @@ const Template = (args, { argTypes }) => ({
   methods: {
     handleChange: action('size'),
   },
+  data() {
+    return {
+      value: 10,
+    };
+  },
   template:
     '<PageSize id="page-size" v-model="value" @change="handleChange" />',
 });
@@ -33,4 +38,5 @@ Template.bind({});
 export const Basic = Template.bind({});
 Basic.args = {
   id: 'pg-size-1',
+  value: 10,
 };

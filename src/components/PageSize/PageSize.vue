@@ -2,7 +2,6 @@
   <span class="page-size">
     itens
     <SelectInput
-      v-if="currentValue"
       :id="id"
       v-model="currentValue"
       :options="options"
@@ -64,6 +63,10 @@ export default {
     value: function (value) {
       this.currentValue = value;
     },
+  },
+
+  created() {
+    this.currentValue = this.value;
   },
 
   methods: {
