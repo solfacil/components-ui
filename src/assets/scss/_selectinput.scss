@@ -31,6 +31,7 @@
 
       &.icon {
         @apply w-8 h-8 flex items-center justify-center p-0 border-r border-solid border-gray3;
+        overflow: initial;
       }
     }
 
