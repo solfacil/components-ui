@@ -21,12 +21,20 @@
     @apply w-full mx-auto bg-white rounded  z-10;
     width: calc(100vw - 32px);
 
+    &.size-lg {
+      max-width: 600px;
+    }
+
     main {
       @apply text-small text-grayPrimary;
 
       .overflow {
-        @apply pr-2 overflow-y-auto;
+        @apply pr-2 overflow-hidden overflow-y-auto;
         max-height: calc(100vh - 286px);
+
+        &.no-croll {
+          @apply overflow-hidden;
+        }
 
         /* width */
         &::-webkit-scrollbar {
@@ -102,18 +110,12 @@
 
 @screen xl {
   .sol-modal {
-    header,
-    footer,
-    main {
-      @apply p-8;
-    }
-
     header {
       @apply py-2;
     }
 
     .wrapper {
-      max-width: 600px;
+      max-width: 900px;
 
       main {
         .overflow {

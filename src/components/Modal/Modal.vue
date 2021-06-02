@@ -7,7 +7,7 @@
       class="sol-modal"
       @click.self="closeSelf"
     >
-      <div class="wrapper" @click.stop>
+      <div class="wrapper" :class="{ 'size-lg': sizeLg }" @click.stop>
         <header>
           {{ title }}
 
@@ -15,7 +15,7 @@
         </header>
 
         <main>
-          <div class="overflow">
+          <div class="overflow" :class="{ 'no-croll': noScroll }">
             <slot></slot>
           </div>
         </main>
@@ -79,6 +79,18 @@ export default {
     selfClose: {
       type: Boolean,
       default: true,
+    },
+
+    /** set max width LG / 600px  */
+    sizeLg: {
+      default: false,
+      type: Boolean,
+    },
+
+    /** desabled scroll content  */
+    noScroll: {
+      default: false,
+      type: Boolean,
     },
   },
 
