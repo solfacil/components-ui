@@ -33,7 +33,7 @@
         max-height: calc(100vh - 286px);
 
         &.no-croll {
-          @apply overflow-hidden;
+          overflow: initial;
         }
 
         /* width */
