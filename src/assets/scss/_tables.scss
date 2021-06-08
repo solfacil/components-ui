@@ -90,7 +90,7 @@ table {
     }
 
     td {
-      @apply bg-white text-small leading-normal p-4 border-t border-b border-gray3 border-solid;
+      @apply bg-white text-small leading-normal p-4 border-t border-b border-gray3 border-solid duration-300 ease-out transition-all;
 
       &:first-child {
         @apply rounded-tl rounded-bl border-solid border-l border-gray3;
