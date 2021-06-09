@@ -23,7 +23,7 @@ const Template = (args, { argTypes }) => ({
         afterCursor: 'g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls',
         beforeCursor:
           'g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls',
-        count: 31,
+        count: 30,
         size: 10,
       },
     };

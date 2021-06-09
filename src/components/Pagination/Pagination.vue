@@ -1,13 +1,8 @@
 <template>
-  <div
-    v-if="toggle"
-    :id="id"
-    class="sol-pagination"
-    :class="{ 'justify-end': alignRight }"
-  >
+  <div :id="id" class="sol-pagination" :class="{ 'justify-end': alignRight }">
     <span>{{ initLimit }} - {{ endLimit }} de {{ data.count }}</span>
 
-    <div>
+    <div v-if="toggle">
       <a
         class="prev"
         :class="{ disabled: !hasPrevPage }"
@@ -104,7 +99,8 @@ export default {
   },
 
   mounted() {
-    this.endLimit = this.pageSize;
+    this.endLimit =
+      this.pageSize > this.data.count ? this.data.count : this.pageSize;
     this.remainder = this.data.count % this.data.size;
   },
 
