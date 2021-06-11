@@ -7,23 +7,36 @@
     >
       <thead role="rowgroup">
         <tr role="row">
-          <th v-for="(field, index) in fields" :key="index" role="columnheader">
-            <strong
-              :class="{ 'cursor-pointer': field.sortable }"
-              @click="bind(field.key, field.sortable)"
-            >
-              {{ field.title }}
+          <template v-for="(field, index) in fields">
+            <th v-if="!field.disabled" :key="index" role="columnheader">
+              <strong
+                :class="{ 'cursor-pointer': field.sortable }"
+                @click="bind(field.key, field.sortable)"
+              >
+                {{ field.title }}
 
-              <i
-                v-if="field.sortable && field.key"
-                class="arrow-sort"
-                :class="{
-                  asc: isActiveAsc(field.key),
-                  desc: isActiveDesc(field.key),
-                }"
-              />
-            </strong>
-          </th>
+                <i
+                  v-if="field.sortable && field.key"
+                  class="arrow-sort"
+                  :class="{
+                    asc: isActiveAsc(field.key),
+                    desc: isActiveDesc(field.key),
+                  }"
+                />
+                <Tooltip
+                  v-if="field.tooltip"
+                  :id="field.key"
+                  class="ml-2"
+                  :position="field.tooltip.position"
+                >
+                  <img src="@img/icon/icon-question.svg" />
+                  <template slot="tooltip">{{
+                    field.tooltip.message
+                  }}</template>
+                </Tooltip>
+              </strong>
+            </th>
+          </template>
 
           <slot name="thead-th" />
         </tr>
@@ -37,8 +50,14 @@
 </template>
 
 <script>
+import Tooltip from '@components/Tooltip/Tooltip';
+
 export default {
   name: 'SortedTable',
+
+  components: {
+    Tooltip,
+  },
 
   props: {
     /**
@@ -116,4 +135,16 @@ export default {
 
 <style lang="scss" scoped>
 @import '@scss/_tables';
+</style>
+
+<style lang="scss">
+.scroll-table {
+  table {
+    .sol-tooltip {
+      .content-tooltip {
+        max-width: 210px;
+      }
+    }
+  }
+}
 </style>
