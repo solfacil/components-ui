@@ -2,11 +2,7 @@
   <transition name="fade" appear>
     <div :id="id" class="sol-tooltip">
       <slot />
-      <div
-        v-if="!disabled"
-        class="content-tooltip"
-        :class="['content-tooltip', position]"
-      >
+      <div v-if="!disabled" :class="['content-tooltip', position]">
         <slot name="tooltip" />
       </div>
     </div>
