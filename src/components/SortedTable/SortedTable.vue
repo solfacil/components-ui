@@ -8,7 +8,7 @@
       <thead role="rowgroup">
         <tr role="row">
           <template v-for="(field, index) in fields">
-            <th v-if="!field.disabled" :key="index" role="columnheader">
+            <th v-if="field.visibled" :key="index" role="columnheader">
               <strong
                 :class="{ 'cursor-pointer': field.sortable }"
                 @click="bind(field.key, field.sortable)"
