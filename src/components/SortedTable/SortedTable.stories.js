@@ -52,6 +52,7 @@ const Template = (args, { argTypes }) => ({
           key: 'valor_bruto',
           title: 'Valor bruto',
           sortable: true,
+          visibled: true,
           tooltip: {
             position: 'left',
             message: 'Produção do sistema sobre a produção estimada',
