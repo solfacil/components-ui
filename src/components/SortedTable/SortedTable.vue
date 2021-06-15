@@ -143,11 +143,7 @@ export default {
 
 <style lang="scss">
 .scroll-table {
-  @apply contents;
-
   table {
-    @apply z-10;
-
     .sol-tooltip {
       .content-tooltip {
         max-width: 210px;

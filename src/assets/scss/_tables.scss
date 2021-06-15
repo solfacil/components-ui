@@ -26,6 +26,10 @@
   &::-webkit-scrollbar-button {
     @apply hidden;
   }
+
+  @screen md {
+    overflow: inherit;
+  }
 }
 
 table {
