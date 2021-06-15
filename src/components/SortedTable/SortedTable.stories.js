@@ -22,7 +22,7 @@ const Template = (args, { argTypes }) => ({
       </template>
 
       <template #tbody>
-        <tr role="row">
+        <tr role="row" class="hover">
           <td role="cell">teste</td>
           <td role="cell">teste</td>
           <td role="cell">teste</td>
