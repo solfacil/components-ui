@@ -46,3 +46,19 @@ fields: [
   { key: 'valor_aquisicao', title: 'Valor de aquisição', sortable: true },
 ],
 ```
+
+**class: `hover`**
+
+> Applies the shading effects to the line, border and cursor pointer on mouseover.
+
+```js
+<template #tbody>
+  <tr role="row" class="hover">
+    <td role="cell">teste</td>
+    <td role="cell">teste</td>
+    <td role="cell">teste</td>
+    <td role="cell">teste</td>
+    <td role="cell">teste</td>
+  </tr>
+</template>
+```
