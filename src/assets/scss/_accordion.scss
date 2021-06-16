@@ -1,3 +1,30 @@
 .accordion {
+  @apply flex flex-col justify-center mx-auto;
 
+  &__arrow {
+    @apply flex items-center justify-center w-6 h-6 border-2 border-solid border-grayPrimary rounded-full duration-200 ease-linear transition-all;
+  }
+
+  &__arrow_down {
+    @apply bg-grayPrimary;
+    transform: rotate(180deg);
+
+    svg {
+      path {
+        stroke: #fff;
+      }
+    }
+  }
+
+  .description {
+    @apply flex flex-row justify-between cursor-pointer m-2;
+
+    h2 {
+      @apply font-medium text-medium font-rubik;
+    }
+  }
+
+  hr {
+    @apply my-4 text-gray3;
+  }
 }
