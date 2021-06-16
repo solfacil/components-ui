@@ -20,10 +20,12 @@ const Template = (args, { argTypes }) => ({
       v-bind="$props"
       :items="itemsTabs"
       @changed="getDataTab"
+      v-model="currentTab"
       id="tab-1"
     />`,
   data() {
     return {
+      currentTab: 'formalizacao',
       itemsTabs: [
         {
           name: 'upload',

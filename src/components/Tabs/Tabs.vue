@@ -16,12 +16,6 @@ export default {
   name: 'Tabs',
 
   props: {
-    /** Set name tab active */
-    active: {
-      type: String,
-      default: null,
-    },
-
     /** Specify a custom id */
     id: {
       type: String,
@@ -39,6 +33,12 @@ export default {
         );
         return accordionProperties.length === 0;
       },
+    },
+
+    /** Specify the value of the input - v-model */
+    value: {
+      type: [String, Number],
+      default: null,
     },
   },
 
@@ -66,7 +66,7 @@ export default {
 
     setActiveLoad() {
       const active = this.items.find((obj) => !obj.disabled);
-      this.activeItem = this.active ? this.active : active.name;
+      this.activeItem = this.value ? this.value : active.name;
     },
   },
 };
