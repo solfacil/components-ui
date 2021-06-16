@@ -1,5 +1,5 @@
 <template>
-  <ul :id="id" class="sol-tabs">
+  <ul :id="id" class="sol-tabs" :class="{ small }">
     <li
       v-for="(item, index) in items"
       :key="index"
@@ -33,6 +33,12 @@ export default {
         );
         return accordionProperties.length === 0;
       },
+    },
+
+    /** Specify the small size */
+    small: {
+      type: Boolean,
+      default: false,
     },
 
     /** Specify the value of the input - v-model */

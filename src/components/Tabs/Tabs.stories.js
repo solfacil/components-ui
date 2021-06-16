@@ -29,7 +29,7 @@ const Template = (args, { argTypes }) => ({
       itemsTabs: [
         {
           name: 'upload',
-          label: 'Upload de documentos',
+          label: 'Upload',
         },
         {
           name: 'formalizacao',

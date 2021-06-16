@@ -15,8 +15,10 @@
   }
 
   @screen lg {
-    li {
-      @apply py-6 text-medium;
+    &:not(.small) {
+      li {
+        @apply py-6 text-medium;
+      }
     }
   }
 }
