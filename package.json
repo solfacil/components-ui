@@ -34,7 +34,11 @@
     "html2canvas": "^1.0.0-rc.7",
     "tailwindcss": "^1.9.6",
     "vue": "^2.6.12",
+<<<<<<< HEAD
     "vue-chartjs": "^3.5.1"
+=======
+    "vue-functional-calendar": "^2.9.4"
+>>>>>>> 771c4f2... feat: style
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",

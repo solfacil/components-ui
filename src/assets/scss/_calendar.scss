@@ -1,0 +1,112 @@
+.calendar {
+  .vfc-popover-container {
+    .vfc-main-container {
+      @apply shadow-sm border border-solid border-gray3 rounded font-rubik;
+
+      .vfc-content {
+        @apply m-0 p-4 text-slight leading-tight uppercase;
+
+        .vfc-top-date {
+          @apply m-0 mb-4 h-6 flex justify-center items-center;
+
+          &.vfc-center {
+            span {
+              @apply text-grayPrimary text-modest leading-tight font-medium;
+              text-transform: initial;
+
+              &:last-child {
+                &:before {
+                  content: '/';
+                }
+              }
+            }
+          }
+        }
+
+        .vfc-dayNames {
+          @apply mb-1;
+
+          .vfc-day {
+            @apply mr-2 text-gray4;
+
+            &:last-child {
+              @apply m-0;
+            }
+          }
+        }
+
+        .vfc-week {
+          margin: 0 -4px;
+          .vfc-day {
+            @apply m-0 p-1;
+
+            span {
+              &.vfc-span-day {
+                @apply rounded text-grayPrimary;
+                width: 26px;
+                line-height: 22px;
+
+                &:after {
+                  @apply rounded;
+                }
+
+                &.vfc-today {
+                  @apply bg-grayPrimary text-white;
+
+                  &.vfc-marked {
+                    @apply bg-orange1 text-grayPrimary;
+                  }
+                }
+              }
+            }
+
+            // span.vfc-span-day.vfc-hovered
+
+            .vfc-base-start,
+            .vfc-base-end {
+              @apply hidden;
+            }
+
+            .vfc-marked {
+              @apply bg-orange1 text-grayPrimary;
+
+              &.vfc-start-marked,
+              &.vfc-end-marked {
+                @apply bg-orangePrimary #{!important};
+              }
+
+              &:before {
+                @apply hidden;
+              }
+            }
+          }
+        }
+      }
+
+      .vfc-navigation-buttons,
+      .vfc-separately-navigation-buttons {
+        @apply m-0 px-4 absolute w-full;
+        top: 16px;
+
+        div {
+          @apply text-gray4 border-gray4;
+
+          &.vfc-cursor-pointer {
+            @apply w-6 h-6 flex items-center justify-center m-0;
+
+            div {
+              @apply m-0 ml-1;
+              width: 10px;
+              height: 10px;
+              margin-left: 4px;
+
+              &.vfc-arrow-right {
+                @apply ml-0 mr-1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -42,21 +42,37 @@ button {
       @apply bg-transparent text-gray4  border-gray3 cursor-default;
     }
   }
+
+  &.btn-small {
+    @apply px-4 h-7;
+    padding-top: 8px;
+    padding-bottom: 6px;
+  }
+
+  &.btn-medium {
+    @apply px-6 h-8;
+  }
+
+  &.btn-large {
+    @apply text-modest h-9;
+    padding-top: 12px;
+    padding-bottom: 9px;
+  }
 }
 
 @layer utilities {
   @variants responsive {
-    &.btn-small {
+    .btn-small {
       @apply px-4 h-7;
       padding-top: 8px;
       padding-bottom: 6px;
     }
 
-    &.btn-medium {
+    .btn-medium {
       @apply px-6 h-8;
     }
 
-    &.btn-large {
+    .btn-large {
       @apply text-modest h-9;
       padding-top: 12px;
       padding-bottom: 9px;
