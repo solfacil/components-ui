@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" class="circle-bar">
+  <div :id="id" class="chart-bar">
     <Bar />
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.circle-bar {
+.chart-bar {
   width: 1000px;
 }
 @import '@scss/_bar';
