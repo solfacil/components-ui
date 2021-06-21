@@ -3,7 +3,7 @@
     {{ calendarData }}
     <FunctionalCalendar v-model="calendarData" :configs="calendarConfigs">
       <template #footer>
-        <Button :id="`confirm-${id}`" size="small">ok</Button>
+        <Button :id="`confirm-${id}`" class="mr-2" size="small">ok</Button>
         <Button :id="`cancel-${id}`" size="small">cancelar</Button>
       </template>
     </FunctionalCalendar>
