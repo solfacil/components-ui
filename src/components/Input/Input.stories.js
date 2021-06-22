@@ -36,7 +36,7 @@ const Template = (args, { argTypes }) => ({
       inputModel: null,
     };
   },
-  template: '<Input v-bind="$props" v-model="inputModel" ></Input>',
+  template: '<Input v-bind="$props" v-model="inputModel" />',
 });
 
 Template.bind({});
