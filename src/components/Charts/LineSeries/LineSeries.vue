@@ -151,140 +151,24 @@ export default {
           type: 'line',
           order: 2,
           data: [
-            1.58,
-            0,
-            32.17,
-            130.41,
-            152.04,
-            219.25,
-            315.12,
-            355.18,
-            340.2,
-            384.2,
-            440.88,
-            570.94,
-            666.36,
-            728.67,
-            830.4,
-            910.6,
-            1053.48,
-            1238.45,
-            1434.0,
-            1603.63,
-            1641.0,
-            2050.56,
-            1976.66,
-            2030.88,
-            2115.69,
-            2220.6,
-            2372.27,
-            2477.52,
-            2546.01,
-            3023.88,
-            2469.67,
-            3296.04,
-            2617.04,
-            2585.28,
-            1763.4,
-            3900.0,
-            4298.69,
-            4201.99,
-            5008.92,
-            5083.34,
-            5471.16,
-            3449.02,
-            3016.56,
-            4365.27,
-            5618.64,
-            3973.61,
-            6084.24,
-            6173.22,
-            4879.32,
-            5627.32,
-            6508.92,
-            6198.5,
-            5076.6,
-            4448.35,
-            4306.17,
-            6917.16,
-            6582.7,
-            5364.24,
-            4537.69,
-            7593.6,
-            7423.71,
-            5655.12,
-            7373.86,
-            7680.72,
-            7092.6,
-            7877.52,
-            3505.61,
-            8016.12,
-            7103.68,
-            6443.76,
-            7365.48,
-            7766.73,
-            7965.84,
-            7419.61,
-            6157.08,
-            6525.51,
-            5015.76,
-            2655.09,
-            3865.92,
-            7358.93,
-            7781.88,
-            8215.83,
-            7939.32,
-            7405.77,
-            7129.91,
-            7610.16,
-            6672.52,
-            7426.92,
-            7000.74,
-            3681.24,
-            7058.05,
-            4632.48,
-            7234.43,
-            7169.76,
-            7083.45,
-            7164.84,
-            7009.53,
-            6734.76,
-            6835.06,
-            5748.44,
-            6464.28,
-            7041.79,
-            2805.12,
-            2283.17,
-            3211.68,
-            5297.78,
-            5661.84,
-            6750.06,
-            6218.52,
-            5852.59,
-            3534.44,
-            1330.32,
-            725.66,
-            609.6,
-            742.88,
-            1111.32,
-            1465.16,
-            1599.72,
-            1672.62,
-            1637.88,
-            1456.62,
-            964.32,
-            515.92,
-            378.72,
-            202.76,
-            62.23,
-            80.52,
-            88.62,
-            96.84,
-            96.92,
-            75.36,
-            61.53,
-            56.28,
-            19.81,
+            1.58, 0, 32.17, 130.41, 152.04, 219.25, 315.12, 355.18, 340.2,
+            384.2, 440.88, 570.94, 666.36, 728.67, 830.4, 910.6, 1053.48,
+            1238.45, 1434.0, 1603.63, 1641.0, 2050.56, 1976.66, 2030.88,
+            2115.69, 2220.6, 2372.27, 2477.52, 2546.01, 3023.88, 2469.67,
+            3296.04, 2617.04, 2585.28, 1763.4, 3900.0, 4298.69, 4201.99,
+            5008.92, 5083.34, 5471.16, 3449.02, 3016.56, 4365.27, 5618.64,
+            3973.61, 6084.24, 6173.22, 4879.32, 5627.32, 6508.92, 6198.5,
+            5076.6, 4448.35, 4306.17, 6917.16, 6582.7, 5364.24, 4537.69, 7593.6,
+            7423.71, 5655.12, 7373.86, 7680.72, 7092.6, 7877.52, 3505.61,
+            8016.12, 7103.68, 6443.76, 7365.48, 7766.73, 7965.84, 7419.61,
+            6157.08, 6525.51, 5015.76, 2655.09, 3865.92, 7358.93, 7781.88,
+            8215.83, 7939.32, 7405.77, 7129.91, 7610.16, 6672.52, 7426.92,
+            7000.74, 3681.24, 7058.05, 4632.48, 7234.43, 7169.76, 7083.45,
+            7164.84, 7009.53, 6734.76, 6835.06, 5748.44, 6464.28, 7041.79,
+            2805.12, 2283.17, 3211.68, 5297.78, 5661.84, 6750.06, 6218.52,
+            5852.59, 3534.44, 1330.32, 725.66, 609.6, 742.88, 1111.32, 1465.16,
+            1599.72, 1672.62, 1637.88, 1456.62, 964.32, 515.92, 378.72, 202.76,
+            62.23, 80.52, 88.62, 96.84, 96.92, 75.36, 61.53, 56.28, 19.81,
           ],
         },
       ],
@@ -294,6 +178,11 @@ export default {
       responsive: true,
       legend: {
         display: false,
+      },
+      layout: {
+        padding: {
+          bottom: 28,
+        },
       },
       maintainAspectRatio: false,
       scales: {
@@ -313,30 +202,35 @@ export default {
               offsetGridLines: true,
             },
             ticks: {
-              beginAtZero: true,
+              display: true,
+              beginAtZero: false,
               fontColor: '#666',
               fontSize: '12',
               fontFamily: 'Lato, sans-serif',
-              padding: 8,
+              padding: 5,
             },
-            stacked: true,
           },
         ],
         yAxes: [
           {
+            afterFit: function (scale) {
+              scale.width = 80;
+            },
             scaleLabel: {
               display: true,
-              labelString: 'KWH',
+              labelString: 'WATTS',
               fontFamily: 'Lato, sans-serif',
-              fontSize: '12',
+              fontSize: '10',
               fontColor: '#999',
-              padding: 0,
             },
             ticks: {
               fontColor: '#666',
               fontSize: '12',
               fontFamily: 'Lato, sans-serif',
-              padding: 8,
+              padding: 12,
+            },
+            gridLines: {
+              drawBorder: false,
             },
           },
         ],
@@ -398,7 +292,70 @@ export default {
   }),
 
   mounted() {
+    this.addPlugin({
+      afterDraw: (chart) => {
+        const ctx = chart.chart.ctx;
+        const xAxis = chart.scales['x-axis-0'];
+        const yAxis = chart.scales['y-axis-0'];
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.font = '22px Lato, sans-serif';
+
+        for (let i = 1; i < 24; i = i + 2) {
+          const oldHours = `${chart.data.labels[0].split(' ')[0]} ${this.pad(
+            i,
+          )}:00:00`;
+
+          const x = xAxis.getPixelForValue(oldHours);
+          ctx.fillStyle = '#FFB600';
+
+          chart.data.labels.map((item) => {
+            const hour = item.split(' ')[1];
+
+            if (hour === `${this.pad(i)}:00:00`) {
+              // const x = xAxis.getPixelForValue(item);
+
+              ctx.fillStyle = '#4CD89D';
+              if (chart.data.datasets[0].data[i] === 0) {
+                ctx.fillStyle = '#FF7771';
+              }
+            }
+          });
+          ctx.fillText('•', x, yAxis.bottom + 45);
+        }
+
+        ctx.restore();
+      },
+      beforeDraw: (chart) => {
+        const chartInstance = chart,
+          ctx = chartInstance.ctx;
+        ctx.font = '10px Lato, sans-serif';
+        ctx.fillStyle = '#666666';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        chart.data.datasets.forEach(function (dataset, i) {
+          if (dataset.type === 'line') return;
+          let meta = chartInstance.controller.getDatasetMeta(i);
+          meta.data.forEach(function (bar, index) {
+            let data = dataset.data[index];
+            ctx.fillText(data, bar._model.x, bar._model.y - 4);
+          });
+        });
+      },
+    });
+
     this.renderChart(this.chartdata, this.options);
+  },
+
+  methods: {
+    pad(num) {
+      let s = String(num);
+
+      if (s.length < 2) {
+        s = '0' + s;
+      }
+      return s;
+    },
   },
 };
 </script>

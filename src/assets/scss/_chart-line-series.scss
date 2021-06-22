@@ -1,2 +1,53 @@
 .chart-line-series {
+  .legend {
+    @apply flex;
+
+    li {
+      @apply relative flex items-center ml-6 text-slight text-grayPrimary;
+
+      &:first-child {
+        @apply m-0;
+      }
+
+      &:before {
+        content: '';
+        @apply block w-2 h-2 rounded-full mr-2;
+      }
+
+      &.online {
+        &:before {
+          @apply bg-green2;
+        }
+      }
+
+      &.offline {
+        &:before {
+          @apply bg-orangePrimary;
+        }
+      }
+
+      &.disconnected {
+        &:before {
+          @apply bg-red2;
+        }
+      }
+
+      &.production {
+        &:before {
+          @apply bg-blue2;
+          height: 2px;
+        }
+      }
+    }
+  }
+
+  .print {
+    @apply flex items-center uppercase cursor-pointer text-gray4 text-tiny leading-tight;
+
+    &:before {
+      content: '';
+      @apply w-6 h-6 block mr-1;
+      background: url(~@img/icon/print-image.svg) no-repeat center center;
+    }
+  }
 }
