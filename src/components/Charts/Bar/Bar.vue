@@ -128,6 +128,9 @@ export default {
           label: function (tooltipItem, data) {
             return data['datasets'][0]['data'][tooltipItem['index']] + ' kwh';
           },
+          footer: function (tooltipItem, data) {
+            return data['datasets'][0]['data'][tooltipItem['index']] + ' kwh';
+          },
           title: function (tooltipItem, data) {
             return data['labels'][tooltipItem[0]['index']];
           },
