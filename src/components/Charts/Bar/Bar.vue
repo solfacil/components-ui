@@ -133,9 +133,9 @@ export default {
   mounted() {
     this.addPlugin({
       afterDraw: (chart) => {
-        var ctx = chart.chart.ctx;
-        var xAxis = chart.scales['x-axis-0'];
-        var yAxis = chart.scales['y-axis-0'];
+        const ctx = chart.chart.ctx;
+        const xAxis = chart.scales['x-axis-0'];
+        const yAxis = chart.scales['y-axis-0'];
         ctx.save();
         ctx.textAlign = 'center';
         ctx.font = '22px Lato, sans-serif';
