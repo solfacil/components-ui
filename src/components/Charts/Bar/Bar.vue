@@ -15,6 +15,7 @@ export default {
       datasets: [
         {
           backgroundColor: 'rgba(255, 182, 0, 0.64)',
+          hoverBackgroundColor: 'rgba(102, 102, 102, 0.64)',
           type: 'bar',
           order: 2,
           data: [
@@ -68,19 +69,24 @@ export default {
         ],
         yAxes: [
           {
+            afterFit: function (scale) {
+              scale.width = 80;
+            },
             scaleLabel: {
               display: true,
               labelString: 'KWH',
               fontFamily: 'Lato, sans-serif',
               fontSize: '10',
               fontColor: '#999',
-              padding: 10,
             },
             ticks: {
               fontColor: '#666',
               fontSize: '12',
               fontFamily: 'Lato, sans-serif',
               padding: 12,
+            },
+            gridLines: {
+              drawBorder: false,
             },
           },
         ],
