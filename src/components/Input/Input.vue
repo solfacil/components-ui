@@ -1,25 +1,40 @@
 <template>
   <div class="sol-input">
-    <span v-if="!!$slots['icon']" class="icon">
-      <!-- @slot Use this slot icon AddOns -->
-      <slot name="icon"></slot>
-    </span>
+    <label v-if="label" :for="id">{{ label }}</label>
+    <div class="wrapper-input">
+      <span v-if="!!$slots['icon']" class="icon">
+        <!-- @slot Use this slot icon AddOns -->
+        <slot name="icon">ddd</slot>
+      </span>
 
-    <input
-      :id="id"
-      ref="solInput"
-      :class="{ invalid, 'is-icon': $slots['icon'], search: type === 'search' }"
-      :disabled="disabled"
-      :name="name"
-      :placeholder="placeholder"
-      :type="type"
-      :value="value"
-      @input="$emit('input', $event.target.value)"
-      @keyup.enter="handleEvent($event.target.value)"
-    />
+      <input
+        :id="id"
+        ref="solInput"
+        :class="{
+          invalid,
+          'is-icon': $slots['icon'],
+          search: type === 'search',
+        }"
+        :disabled="disabled"
+        :name="name"
+        :placeholder="placeholder"
+        :type="type"
+        :value="value"
+        @input="$emit('input', $event.target.value)"
+        @keyup.enter="handleEvent($event.target.value)"
+      />
 
-    <i v-if="type === 'search' && value" class="reset-search" @click="reset" />
-    <i v-if="type === 'search'" class="search" @click="handleEvent(value)" />
+      <i
+        v-if="type === 'search' && value"
+        class="reset-search"
+        @click="reset"
+      />
+      <i v-if="type === 'search'" class="search" @click="handleEvent(value)" />
+    </div>
+
+    <small v-if="invalid && msgInvalid" class="msg-error">
+      {{ msgInvalid }}
+    </small>
   </div>
 </template>
 
@@ -38,6 +53,18 @@ export default {
     invalid: {
       type: Boolean,
       default: false,
+    },
+
+    /** Provide label text to be read by screen readers when interacting with the control */
+    label: {
+      type: String,
+      default: null,
+    },
+
+    /** Specify message for invalid field */
+    msgInvalid: {
+      type: String,
+      default: null,
     },
 
     /** Provide a name for the underlying input node */

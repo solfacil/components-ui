@@ -36,7 +36,7 @@ const Template = (args, { argTypes }) => ({
       inputModel: null,
     };
   },
-  template: '<Input v-bind="$props" v-model="inputModel" />',
+  template: '<Input v-bind="$props" v-model="inputModel" ></Input>',
 });
 
 Template.bind({});
@@ -45,6 +45,7 @@ export const Data = Template.bind({});
 Data.args = {
   type: 'date',
   id: 'input-1',
+  label: 'Label',
 };
 
 export const Password = Template.bind({});
