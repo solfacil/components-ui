@@ -43,7 +43,7 @@ export default {
       },
       layout: {
         padding: {
-          bottom: 20,
+          bottom: 28,
         },
       },
       maintainAspectRatio: false,
