@@ -45,6 +45,7 @@ export const Data = Template.bind({});
 Data.args = {
   type: 'date',
   id: 'input-1',
+  label: 'Label',
 };
 
 export const Password = Template.bind({});

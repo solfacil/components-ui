@@ -69,6 +69,14 @@ textarea {
   @apply py-3 resize-none;
 }
 
+label {
+  @apply text-small leading-tight font-rubik block mb-1 text-grayPrimary;
+}
+
+.msg-error {
+  @apply block text-slight leading-tight text-red2 mt-1;
+}
+
 /* clears the ‘X’  */
 [type='search']::-webkit-search-cancel-button,
 [type='search']::-webkit-search-decoration {

@@ -5,6 +5,8 @@
     v-click-outside="closeSelect"
     class="sol-select-input"
   >
+    <label v-if="label">{{ label }}</label>
+
     <div
       class="select-main"
       :class="{
@@ -64,6 +66,10 @@
         </li>
       </ul>
     </div>
+
+    <small v-if="invalid && msgInvalid" class="msg-error">
+      {{ msgInvalid }}
+    </small>
   </div>
 </template>
 
@@ -126,10 +132,22 @@ export default {
       validator: (value) => ['top', 'bottom'].includes(value.toLowerCase()),
     },
 
+    /** Specify message for invalid field */
+    msgInvalid: {
+      type: String,
+      default: null,
+    },
+
     /** Specify whether the control is currently invalid */
     invalid: {
       type: Boolean,
       default: false,
+    },
+
+    /** Provide label text to be read by screen readers when interacting with the control */
+    label: {
+      type: String,
+      default: null,
     },
 
     /** Specify whether the control is disabled */
