@@ -9154,6 +9154,9 @@ html-webpack-plugin@^4.0.0:
     util.promisify "1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b6354b4... feat: print chart bar
 html2canvas@^1.0.0-rc.7:
   version "1.0.0-rc.7"
   resolved "https://registry.yarnpkg.com/html2canvas/-/html2canvas-1.0.0-rc.7.tgz#70c159ce0e63954a91169531894d08ad5627ac98"
@@ -9161,8 +9164,11 @@ html2canvas@^1.0.0-rc.7:
   dependencies:
     css-line-break "1.1.1"
 
+<<<<<<< HEAD
 =======
 >>>>>>> b02638c... feat: style chart bar
+=======
+>>>>>>> b6354b4... feat: print chart bar
 htmlparser2@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-6.1.0.tgz#c4d762b6c3371a05dbe65e94ae43a9f845fb8fb7"

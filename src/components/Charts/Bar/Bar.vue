@@ -9,8 +9,36 @@ export default {
   data: () => ({
     chartdata: {
       labels: [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-        21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+        '2021-06-01',
+        '2021-06-02',
+        '2021-06-03',
+        '2021-06-04',
+        '2021-06-05',
+        '2021-06-06',
+        '2021-06-07',
+        '2021-06-08',
+        '2021-06-09',
+        '2021-06-10',
+        '2021-06-11',
+        '2021-06-12',
+        '2021-06-13',
+        '2021-06-14',
+        '2021-06-15',
+        '2021-06-16',
+        '2021-06-17',
+        '2021-06-18',
+        '2021-06-19',
+        '2021-06-20',
+        '2021-06-21',
+        '2021-06-22',
+        '2021-06-23',
+        '2021-06-24',
+        '2021-06-25',
+        '2021-06-26',
+        '2021-06-27',
+        '2021-06-28',
+        '2021-06-29',
+        '2021-06-30',
       ],
       datasets: [
         {
@@ -44,7 +72,8 @@ export default {
       },
       layout: {
         padding: {
-          bottom: 28,
+          bottom: 29,
+          top: 24,
         },
       },
       maintainAspectRatio: false,
@@ -58,12 +87,11 @@ export default {
               offsetGridLines: true,
             },
             ticks: {
-              display: true,
+              display: false,
               beginAtZero: false,
               fontColor: '#666',
               fontSize: '12',
               fontFamily: 'Lato, sans-serif',
-              padding: 5,
             },
           },
         ],
@@ -83,7 +111,7 @@ export default {
               fontColor: '#666',
               fontSize: '12',
               fontFamily: 'Lato, sans-serif',
-              padding: 12,
+              padding: 26,
             },
             gridLines: {
               drawBorder: false,
@@ -111,13 +139,16 @@ export default {
         bodyFontStyle: '600',
         bodyFontFamily: 'Lato, sans-serif',
         displayColors: false,
-        position: 'nearest',
         titleFontSize: 10,
         titleAlign: 'center',
         titleFontColor: '#666',
         titleFontFamily: 'Lato, sans-serif',
         titleFontStyle: '400',
-        titleTextAlign: 'center',
+        footerFontSize: 10,
+        footerFontColor: '#30B4FF',
+        footerFontFamily: 'Lato, sans-serif',
+        footerFontStyle: '600',
+        footerTextAlign: 'center',
         yPadding: 8,
         xPadding: 16,
         custom: function (tooltip) {
@@ -126,13 +157,19 @@ export default {
         },
         callbacks: {
           label: function (tooltipItem, data) {
-            return data['datasets'][0]['data'][tooltipItem['index']] + ' kwh';
+            return `${data.datasets[0].data[tooltipItem['index']]} kwh`;
           },
           footer: function (tooltipItem, data) {
-            return data['datasets'][0]['data'][tooltipItem['index']] + ' kwh';
+            return `EST. ${data.datasets[1].data[tooltipItem[0].index]} KWH`;
           },
           title: function (tooltipItem, data) {
-            return data['labels'][tooltipItem[0]['index']];
+            const newDate = new Date(
+              `${data.labels[tooltipItem[0]['index']]} 00:00:00`,
+            );
+
+            return new Intl.DateTimeFormat('pt-BR', {
+              timeZone: 'America/Sao_Paulo',
+            }).format(newDate);
           },
         },
       },
@@ -147,17 +184,21 @@ export default {
         const yAxis = chart.scales['y-axis-0'];
         ctx.save();
         ctx.textAlign = 'center';
-        ctx.font = '22px Lato, sans-serif';
 
         chart.data.labels.forEach((l, i) => {
           const x = xAxis.getPixelForValue(l);
+          ctx.fillStyle = '#666';
+          ctx.font = '12px Lato, sans-serif';
+          ctx.fillText(i + 1, x, yAxis.bottom + 29);
+
           ctx.fillStyle = '#4CD89D';
 
           if (this.chartdata.datasets[0].data[i] === 0) {
             ctx.fillStyle = '#FF7771';
           }
 
-          ctx.fillText('•', x, yAxis.bottom + 45);
+          ctx.font = '22px Lato, sans-serif';
+          ctx.fillText('•', x, yAxis.bottom + 46);
         });
         ctx.restore();
       },
