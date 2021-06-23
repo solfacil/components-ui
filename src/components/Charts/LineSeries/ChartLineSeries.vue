@@ -41,10 +41,9 @@ export default {
   methods: {
     print() {
       html2canvas(this.$refs.line).then(function (canvas) {
-        console.log(canvas);
-        var link = document.createElement('a');
+        const link = document.createElement('a');
         link.href = canvas.toDataURL('image/jpeg');
-        link.download = 'producao-mes.jpeg';
+        link.download = 'producao-dia.jpeg';
         link.click();
       });
     },

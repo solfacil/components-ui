@@ -149,6 +149,7 @@ export default {
           backgroundColor: 'rgba(255, 182, 0, 0.64)',
           borderColor: 'transparent',
           type: 'line',
+          lineTension: 0,
           order: 2,
           data: [
             1.58, 0, 32.17, 130.41, 152.04, 219.25, 315.12, 355.18, 340.2,
@@ -181,7 +182,7 @@ export default {
       },
       layout: {
         padding: {
-          bottom: 29,
+          bottom: 28,
           top: 24,
         },
       },
@@ -244,6 +245,7 @@ export default {
         animationDuration: 1,
       },
       tooltips: {
+        intersect: false,
         yAlign: 'bottom',
         xAlign: 'center',
         borderWidth: 1,
@@ -275,40 +277,20 @@ export default {
           title: function (tooltipItem, data) {
             const newDate = new Date(data.labels[tooltipItem[0]['index']]);
 
-            return `${newDate.getHours()}:00`;
+            const pad = (num) => {
+              let s = String(num);
+
+              if (s.length < 2) {
+                s = '0' + s;
+              }
+              return s;
+            };
+
+            return `${newDate.getHours()}:${pad(newDate.getMinutes())}`;
           },
           label: function (tooltipItem, data) {
-            // return `${data.datasets[0].data[tooltipItem['index']]} kwh`;
-            return tooltipItem + data;
+            return `${data.datasets[0].data[tooltipItem['index']]} W`;
           },
-          footer: function (tooltipItem, data) {
-            // return `EST. ${data.datasets[1].data[tooltipItem[0].index]} KWH`;
-            return tooltipItem + data;
-          },
-        },
-      },
-      animation: {
-        duration: 1,
-        onComplete: function () {
-          const chartInstance = this.chart,
-            ctx = chartInstance.ctx;
-
-          ctx.font = '10px Lato, sans-serif';
-          ctx.fillStyle = '#666666';
-
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'bottom';
-
-          this.data.datasets.forEach(function (dataset, i) {
-            if (dataset.type === 'line') return;
-
-            let meta = chartInstance.controller.getDatasetMeta(i);
-            meta.data.forEach(function (bar, index) {
-              let data = dataset.data[index];
-
-              ctx.fillText(data, bar._model.x, bar._model.y - 5);
-            });
-          });
         },
       },
     },
@@ -328,42 +310,25 @@ export default {
           const oldHours = `${chart.data.labels[0].split(' ')[0]} ${this.pad(
             i,
           )}:00:00`;
-
           const x = xAxis.getPixelForValue(oldHours);
+
           ctx.fillStyle = '#FFB600';
 
           chart.data.labels.map((item) => {
             const hour = item.split(' ')[1];
 
             if (hour === `${this.pad(i)}:00:00`) {
-              // const x = xAxis.getPixelForValue(item);
-
               ctx.fillStyle = '#4CD89D';
               if (chart.data.datasets[0].data[i] === 0) {
                 ctx.fillStyle = '#FF7771';
               }
             }
           });
-          ctx.fillText('•', x, yAxis.bottom + 45);
+
+          ctx.fillText('•', x, yAxis.bottom + 36);
         }
 
         ctx.restore();
-      },
-      beforeDraw: (chart) => {
-        const chartInstance = chart,
-          ctx = chartInstance.ctx;
-        ctx.font = '10px Lato, sans-serif';
-        ctx.fillStyle = '#666666';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'bottom';
-        chart.data.datasets.forEach(function (dataset, i) {
-          if (dataset.type === 'line') return;
-          let meta = chartInstance.controller.getDatasetMeta(i);
-          meta.data.forEach(function (bar, index) {
-            let data = dataset.data[index];
-            ctx.fillText(data, bar._model.x, bar._model.y - 4);
-          });
-        });
       },
     });
 
