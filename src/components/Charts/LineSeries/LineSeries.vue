@@ -279,11 +279,11 @@ export default {
           },
           label: function (tooltipItem, data) {
             // return `${data.datasets[0].data[tooltipItem['index']]} kwh`;
-            return 'label';
+            return tooltipItem + data;
           },
           footer: function (tooltipItem, data) {
             // return `EST. ${data.datasets[1].data[tooltipItem[0].index]} KWH`;
-            return 'footer';
+            return tooltipItem + data;
           },
         },
       },
