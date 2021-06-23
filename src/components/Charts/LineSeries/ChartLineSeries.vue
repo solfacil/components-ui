@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" class="chart-line-series">
+  <div :id="id" ref="line" class="chart-line-series">
     <LineSeries />
 
     <div class="flex justify-between">
@@ -17,6 +17,7 @@
 
 <script>
 import LineSeries from './LineSeries';
+import html2canvas from 'html2canvas';
 
 export default {
   name: 'ChartLineSeries',
@@ -39,11 +40,13 @@ export default {
 
   methods: {
     print() {
-      var canvas = document.getElementById('bar-chart');
-      var a = document.createElement('a');
-      a.href = canvas.toDataURL();
-      a.download = 'producao-mes.png';
-      a.click();
+      html2canvas(this.$refs.line).then(function (canvas) {
+        console.log(canvas);
+        var link = document.createElement('a');
+        link.href = canvas.toDataURL('image/jpeg');
+        link.download = 'producao-mes.jpeg';
+        link.click();
+      });
     },
   },
 };
@@ -51,8 +54,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '@scss/_chart-line-series';
-
-.chart-line-series {
-  width: 1000px;
-}
 </style>

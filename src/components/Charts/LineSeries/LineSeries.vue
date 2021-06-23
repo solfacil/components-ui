@@ -181,7 +181,8 @@ export default {
       },
       layout: {
         padding: {
-          bottom: 28,
+          bottom: 29,
+          top: 24,
         },
       },
       maintainAspectRatio: false,
@@ -207,7 +208,6 @@ export default {
               fontColor: '#666',
               fontSize: '12',
               fontFamily: 'Lato, sans-serif',
-              padding: 5,
             },
           },
         ],
@@ -241,27 +241,50 @@ export default {
         },
       },
       hover: {
-        animationDuration: 0,
+        animationDuration: 1,
       },
       tooltips: {
-        // filter: (tooltipItem) => tooltipItem.datasetIndex == 0,
+        yAlign: 'bottom',
+        xAlign: 'center',
+        borderWidth: 1,
+        borderColor: '#E0E0E0',
+        backgroundColor: 'rgba(255, 255, 255, 1)',
+        bodyAlign: 'center',
+        bodyFontColor: '#666',
+        bodyFontSize: 14,
+        bodyFontStyle: '600',
+        bodyFontFamily: 'Lato, sans-serif',
+        displayColors: false,
+        titleFontSize: 10,
+        titleAlign: 'center',
+        titleFontColor: '#666',
+        titleFontFamily: 'Lato, sans-serif',
+        titleFontStyle: '400',
+        footerFontSize: 10,
+        footerFontColor: '#30B4FF',
+        footerFontFamily: 'Lato, sans-serif',
+        footerFontStyle: '600',
+        footerTextAlign: 'center',
+        yPadding: 8,
+        xPadding: 16,
+        custom: function (tooltip) {
+          if (!tooltip) return;
+          tooltip.displayColors = false;
+        },
         callbacks: {
-          // title: function (tooltipItem, data) {
-          //   // return data['labels'][tooltipItem[0]['index']];
-          //   return '';
-          // },
-          label: function (tooltipItem, data) {
-            return data['datasets'][0]['data'][tooltipItem['index']];
+          title: function (tooltipItem, data) {
+            const newDate = new Date(data.labels[tooltipItem[0]['index']]);
+
+            return `${newDate.getHours()}:00`;
           },
-          // afterLabel: function (tooltipItem, data) {
-          //   var dataset = data['datasets'][0];
-          //   var percent = Math.round(
-          //     (dataset['data'][tooltipItem['index']] /
-          //       dataset['_meta'][0]['total']) *
-          //       100,
-          //   );
-          //   return '(' + percent + '%)';
-          // },
+          label: function (tooltipItem, data) {
+            // return `${data.datasets[0].data[tooltipItem['index']]} kwh`;
+            return 'label';
+          },
+          footer: function (tooltipItem, data) {
+            // return `EST. ${data.datasets[1].data[tooltipItem[0].index]} KWH`;
+            return 'footer';
+          },
         },
       },
       animation: {
