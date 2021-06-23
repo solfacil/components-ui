@@ -55,8 +55,9 @@ export default {
           type: 'line',
           borderColor: '#7DD0FF',
           fill: false,
-          lineTension: 0,
+          lineTension: 0.15,
           order: 1,
+          borderWidth: 2,
           data: [
             50, 50, 50, 50, 50, 50, 50, 50, 42, 50, 50, 48, 45, 50, 50, 50, 50,
             50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
