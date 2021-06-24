@@ -32,6 +32,11 @@ export default {
       type: String,
       required: true,
     },
+
+    label: {
+      type: Array,
+      required: true,
+    },
   },
 
   data() {
