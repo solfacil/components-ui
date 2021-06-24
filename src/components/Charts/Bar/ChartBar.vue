@@ -4,9 +4,11 @@
 
     <div class="flex justify-between mt-6">
       <ul class="legend">
-        <li v-if="view === 'day'" class="online">Online</li>
-        <li v-if="view === 'day'" class="offline">Offline</li>
-        <li v-if="view === 'day'" class="disconnected">Desconectado na rede</li>
+        <li v-if="view === 'month'" class="online">Online</li>
+        <li v-if="view === 'month'" class="offline">Offline</li>
+        <li v-if="view === 'month'" class="disconnected">
+          Desconectado na rede
+        </li>
         <li class="production">Produção estimada</li>
       </ul>
 
@@ -42,11 +44,11 @@ export default {
       },
     },
 
-    /** Specify the view of the chart: <br/> "day" | "month" */
+    /** Specify the view of the chart: <br/> "month" | "year" */
     view: {
-      default: 'day',
+      default: 'month',
       type: String,
-      validator: (value) => ['day', 'month'].includes(value.toLowerCase()),
+      validator: (value) => ['month', 'year'].includes(value.toLowerCase()),
     },
   },
 
@@ -56,7 +58,7 @@ export default {
         var link = document.createElement('a');
         link.href = canvas.toDataURL('image/jpeg');
         link.download = `producao-${
-          window.viewChart === 'day' ? 'dia' : 'mes'
+          window.viewChart === 'month' ? 'mes' : 'ano'
         }.jpeg`;
         link.click();
       });

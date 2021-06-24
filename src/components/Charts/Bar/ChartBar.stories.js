@@ -7,9 +7,9 @@ export default {
     view: {
       control: {
         type: 'select',
-        options: ['day', 'month'],
+        options: ['month', 'year'],
       },
-      defaultValue: 'day',
+      defaultValue: 'month',
     },
   },
 
@@ -27,7 +27,7 @@ const Template = (args, { argTypes }) => ({
 export const Default = Template.bind({});
 Default.args = {
   id: 'chartbar',
-  view: 'day',
+  view: 'month',
   chartdata: {
     labels: [
       '2021-06-01',

@@ -16,11 +16,11 @@ export default {
       },
     },
 
-    /** Specify the view of the chart: <br/> "day" | "month" */
+    /** Specify the view of the chart: <br/> "month" | "year" */
     view: {
-      default: 'day',
+      default: 'month',
       type: String,
-      validator: (value) => ['day', 'month'].includes(value.toLowerCase()),
+      validator: (value) => ['month', 'year'].includes(value.toLowerCase()),
     },
   },
 
@@ -160,7 +160,7 @@ export default {
             return `EST. ${data.datasets[1].data[tooltipItem[0].index]} KWH`;
           },
           title: function (tooltipItem, data) {
-            if (window.viewChart === 'day') {
+            if (window.viewChart === 'month') {
               const newDate = new Date(
                 `${data.labels[tooltipItem[0]['index']]} 00:00:00`,
               );
@@ -207,7 +207,7 @@ export default {
           ctx.fillStyle = '#666';
           ctx.font = '12px Lato, sans-serif';
 
-          if (this.view === 'day') {
+          if (this.view === 'month') {
             ctx.fillText(i + 1, x, yAxis.bottom + 29);
 
             ctx.fillStyle = '#4CD89D';
@@ -261,9 +261,9 @@ export default {
       this.chartdata.datasets[1].data = this.dataChart.datasets[1];
 
       this.options.scales.xAxes[0].maxBarThickness =
-        this.view === 'day' ? 16 : 32;
+        this.view === 'month' ? 16 : 32;
 
-      this.options.layout.padding.bottom = this.view === 'day' ? 29 : 19;
+      this.options.layout.padding.bottom = this.view === 'month' ? 29 : 19;
     },
   },
 };
