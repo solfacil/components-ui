@@ -1,6 +1,6 @@
 <template>
   <div :id="id" ref="line" class="chart-line-series">
-    <LineSeries />
+    <LineSeries v-if="labels && datasets" :series="{ labels, datasets }" />
 
     <div class="flex justify-between">
       <ul class="legend">
@@ -33,14 +33,17 @@ export default {
       required: true,
     },
 
-    label: {
+    /** data label */
+    labels: {
       type: Array,
       required: true,
     },
-  },
 
-  data() {
-    return {};
+    /** data values  */
+    datasets: {
+      type: Array,
+      required: true,
+    },
   },
 
   methods: {
