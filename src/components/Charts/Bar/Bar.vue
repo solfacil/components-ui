@@ -6,50 +6,34 @@ export default {
 
   extends: Bar,
 
+  props: {
+    /** Data chart label and datasets */
+    dataChart: {
+      required: true,
+      type: Object,
+      validator: function (obj) {
+        return 'labels' in obj && 'datasets' in obj;
+      },
+    },
+
+    /** Specify the view of the chart: <br/> "day" | "month" */
+    view: {
+      default: 'day',
+      type: String,
+      validator: (value) => ['day', 'month'].includes(value.toLowerCase()),
+    },
+  },
+
   data: () => ({
     chartdata: {
-      labels: [
-        '2021-06-01',
-        '2021-06-02',
-        '2021-06-03',
-        '2021-06-04',
-        '2021-06-05',
-        '2021-06-06',
-        '2021-06-07',
-        '2021-06-08',
-        '2021-06-09',
-        '2021-06-10',
-        '2021-06-11',
-        '2021-06-12',
-        '2021-06-13',
-        '2021-06-14',
-        '2021-06-15',
-        '2021-06-16',
-        '2021-06-17',
-        '2021-06-18',
-        '2021-06-19',
-        '2021-06-20',
-        '2021-06-21',
-        '2021-06-22',
-        '2021-06-23',
-        '2021-06-24',
-        '2021-06-25',
-        '2021-06-26',
-        '2021-06-27',
-        '2021-06-28',
-        '2021-06-29',
-        '2021-06-30',
-      ],
+      labels: [],
       datasets: [
         {
           backgroundColor: 'rgba(255, 182, 0, 0.64)',
           hoverBackgroundColor: 'rgba(102, 102, 102, 0.64)',
           type: 'bar',
           order: 2,
-          data: [
-            46, 40, 37, 40, 50, 30, 40, 46, 30, 50, 0, 51, 40, 46, 50, 0, 40,
-            40, 20, 30, 0, 30, 20, 16, 10, 27, 30, 30, 20, 20,
-          ],
+          data: [],
         },
         {
           type: 'line',
@@ -58,13 +42,25 @@ export default {
           lineTension: 0.15,
           order: 1,
           borderWidth: 2,
-          data: [
-            50, 50, 50, 50, 50, 50, 50, 50, 42, 50, 50, 48, 45, 50, 50, 50, 50,
-            50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-          ],
+          data: [],
         },
       ],
     },
+
+    monthNames: [
+      'Jan',
+      'Fev',
+      'Mar',
+      'Abr',
+      'Mai',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Set',
+      'Out',
+      'Nov',
+      'Dez',
+    ],
 
     options: {
       responsive: true,
@@ -164,18 +160,38 @@ export default {
             return `EST. ${data.datasets[1].data[tooltipItem[0].index]} KWH`;
           },
           title: function (tooltipItem, data) {
-            const newDate = new Date(
-              `${data.labels[tooltipItem[0]['index']]} 00:00:00`,
-            );
+            if (window.viewChart === 'day') {
+              const newDate = new Date(
+                `${data.labels[tooltipItem[0]['index']]} 00:00:00`,
+              );
 
-            return new Intl.DateTimeFormat('pt-BR', {
-              timeZone: 'America/Sao_Paulo',
-            }).format(newDate);
+              return new Intl.DateTimeFormat('pt-BR', {
+                timeZone: 'America/Sao_Paulo',
+              }).format(newDate);
+            }
+
+            return window.monthNames[
+              new Date(`${tooltipItem[0].label} 00:00:00`).getMonth()
+            ];
           },
         },
       },
     },
   }),
+
+  watch: {
+    dataChart: function () {
+      this.setData();
+      this.renderChart(this.chartdata, this.options);
+    },
+  },
+
+  beforeMount() {
+    window.viewChart = this.view;
+    window.monthNames = this.monthNames;
+
+    this.setData();
+  },
 
   mounted() {
     this.addPlugin({
@@ -190,16 +206,26 @@ export default {
           const x = xAxis.getPixelForValue(l);
           ctx.fillStyle = '#666';
           ctx.font = '12px Lato, sans-serif';
-          ctx.fillText(i + 1, x, yAxis.bottom + 29);
 
-          ctx.fillStyle = '#4CD89D';
+          if (this.view === 'day') {
+            ctx.fillText(i + 1, x, yAxis.bottom + 29);
 
-          if (this.chartdata.datasets[0].data[i] === 0) {
-            ctx.fillStyle = '#FF7771';
+            ctx.fillStyle = '#4CD89D';
+
+            if (this.chartdata.datasets[0].data[i] === 0) {
+              ctx.fillStyle = '#FF7771';
+            }
+
+            ctx.font = '22px Lato, sans-serif';
+            ctx.fillText('•', x, yAxis.bottom + 46);
+            return;
           }
 
-          ctx.font = '22px Lato, sans-serif';
-          ctx.fillText('•', x, yAxis.bottom + 46);
+          ctx.fillText(
+            this.monthNames[new Date(`${l} 00:00:00`).getMonth()],
+            x,
+            yAxis.bottom + 29,
+          );
         });
         ctx.restore();
       },
@@ -226,6 +252,19 @@ export default {
     });
 
     this.renderChart(this.chartdata, this.options);
+  },
+
+  methods: {
+    setData() {
+      this.chartdata.labels = this.dataChart.labels;
+      this.chartdata.datasets[0].data = this.dataChart.datasets[0];
+      this.chartdata.datasets[1].data = this.dataChart.datasets[1];
+
+      this.options.scales.xAxes[0].maxBarThickness =
+        this.view === 'day' ? 16 : 32;
+
+      this.options.layout.padding.bottom = this.view === 'day' ? 29 : 19;
+    },
   },
 };
 </script>

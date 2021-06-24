@@ -1,12 +1,12 @@
 <template>
   <div :id="id" ref="bar" class="chart-bar">
-    <Bar />
+    <Bar :data-chart="chartdata" :view="view" />
 
     <div class="flex justify-between mt-6">
       <ul class="legend">
-        <li class="online">Online</li>
-        <li class="offline">Offline</li>
-        <li class="disconnected">Desconectado na rede</li>
+        <li v-if="view === 'day'" class="online">Online</li>
+        <li v-if="view === 'day'" class="offline">Offline</li>
+        <li v-if="view === 'day'" class="disconnected">Desconectado na rede</li>
         <li class="production">Produção estimada</li>
       </ul>
 
@@ -32,15 +32,32 @@ export default {
       type: String,
       required: true,
     },
+
+    /** Data chart label and datasets */
+    chartdata: {
+      required: true,
+      type: Object,
+      validator: function (obj) {
+        return 'labels' in obj && 'datasets' in obj;
+      },
+    },
+
+    /** Specify the view of the chart: <br/> "day" | "month" */
+    view: {
+      default: 'day',
+      type: String,
+      validator: (value) => ['day', 'month'].includes(value.toLowerCase()),
+    },
   },
 
   methods: {
     print() {
       html2canvas(this.$refs.bar).then(function (canvas) {
-        console.log(canvas);
         var link = document.createElement('a');
         link.href = canvas.toDataURL('image/jpeg');
-        link.download = 'producao-mes.jpeg';
+        link.download = `producao-${
+          window.viewChart === 'day' ? 'dia' : 'mes'
+        }.jpeg`;
         link.click();
       });
     },
@@ -49,9 +66,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.chart-bar {
-  width: 1000px;
-  padding: 20px;
-}
 @import '@scss/_bar';
 </style>
