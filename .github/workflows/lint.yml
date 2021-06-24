@@ -1,10 +1,6 @@
 name: Lint/Prettier Code Base
 
-# on: pull_request
-on:
-  push:
-    branches:
-      feature/line-series
+on: pull_request
 
 jobs:
   run-linters:
