@@ -7,8 +7,8 @@ export default {
   extends: Line,
 
   props: {
-    /** Data label and values */
-    series: {
+    /** Data chart label and datasets */
+    dataChart: {
       required: true,
       type: Object,
       validator: function (obj) {
@@ -155,15 +155,13 @@ export default {
 
   watch: {
     series: function () {
-      this.chartdata.labels = this.series.labels;
-      this.chartdata.datasets[0].data = this.series.datasets;
+      this.setData();
       this.renderChart(this.chartdata, this.options);
     },
   },
 
   beforeMount() {
-    this.chartdata.labels = this.series.labels;
-    this.chartdata.datasets[0].data = this.series.datasets;
+    this.setData();
   },
 
   mounted() {
@@ -205,6 +203,11 @@ export default {
   },
 
   methods: {
+    setData() {
+      this.chartdata.labels = this.dataChart.labels;
+      this.chartdata.datasets[0].data = this.dataChart.datasets;
+    },
+
     pad(num) {
       let s = String(num);
 

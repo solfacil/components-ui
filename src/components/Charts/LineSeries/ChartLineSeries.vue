@@ -1,6 +1,6 @@
 <template>
   <div :id="id" ref="line" class="chart-line-series">
-    <LineSeries v-if="labels && datasets" :series="{ labels, datasets }" />
+    <LineSeries :data-chart="chartdata" />
 
     <div class="flex justify-between">
       <ul class="legend">
@@ -33,16 +33,13 @@ export default {
       required: true,
     },
 
-    /** data label */
-    labels: {
-      type: Array,
+    /** Data chart label and datasets */
+    chartdata: {
       required: true,
-    },
-
-    /** data values  */
-    datasets: {
-      type: Array,
-      required: true,
+      type: Object,
+      validator: function (obj) {
+        return 'labels' in obj && 'datasets' in obj;
+      },
     },
   },
 
