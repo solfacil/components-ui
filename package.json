@@ -1,7 +1,11 @@
 {
   "name": "@solfacil/components-ui",
   "author": "Solfacil - Fernando Jesus",
+<<<<<<< HEAD
   "version": "0.1.90",
+=======
+  "version": "0.1.88",
+>>>>>>> 2a4eff7... feat: bump versio
   "private": false,
   "license": "MIT",
   "description": "Component library based on Vue and Tailwind",
