@@ -1,7 +1,7 @@
 {
   "name": "@solfacil/components-ui",
   "author": "Solfacil - Fernando Jesus",
-  "version": "0.1.87",
+  "version": "0.1.90",
   "private": false,
   "license": "MIT",
   "description": "Component library based on Vue and Tailwind",
@@ -17,7 +17,8 @@
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "generate": "yarn plop --plopfile ./generators/plopfile.js"
+    "generate": "yarn plop --plopfile ./generators/plopfile.js",
+    "proxy": "ngrok http 6006"
   },
   "files": [
     "dist/*",
@@ -28,9 +29,12 @@
   ],
   "main": "./dist/solfacil.common.js",
   "dependencies": {
+    "chart.js": "2.9.4",
     "core-js": "^3.12.1",
+    "html2canvas": "^1.0.0-rc.7",
     "tailwindcss": "^1.9.6",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vue-chartjs": "^3.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
@@ -66,6 +70,7 @@
     "plop": "^2.7.4",
     "prettier": "^2.3.0",
     "resolve-url-loader": "^3.1.2",
+    "ngrok": "^4.0.1",
     "sass-loader": "^8.0.2",
     "svg-url-loader": "^7.1.1",
     "vue-cli-plugin-webpack-bundle-analyzer": "~4.0.0",
