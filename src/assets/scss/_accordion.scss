@@ -1,8 +1,15 @@
 .accordion {
-  @apply flex flex-col justify-center mx-auto;
+  @apply flex flex-col justify-center;
 
   &__arrow {
     @apply flex items-center justify-center w-6 h-6 border-2 border-solid border-grayPrimary rounded-full duration-200 ease-linear transition-all;
+  }
+
+  &_title {
+    @apply font-medium font-rubik text-modest text-grayPrimary block;
+    @screen sm {
+      @apply text-medium;
+    }
   }
 
   &__arrow_down {
@@ -16,15 +23,71 @@
     }
   }
 
-  .description {
-    @apply flex flex-row justify-between cursor-pointer m-2;
+  @keyframes accordeonAni {
+    0% {
+      max-height: 0;
+    }
+  }
 
-    h2 {
-      @apply font-medium text-medium font-rubik;
+  .accordion-content {
+    &-enter {
+      max-height: 0;
+      display: block;
+    }
+
+    &-enter-active {
+      animation: accordeonAni 0.3s ease;
+      overflow: hidden;
+    }
+
+    &-leave {
+      display: block;
+    }
+
+    &-leave-to {
+      display: block;
+    }
+
+    &-leave-active {
+      animation: accordeonAni 0.3s ease;
+      animation-direction: reverse;
+      overflow: hidden;
     }
   }
 
   hr {
     @apply my-4 text-gray3;
+
+    &:last-of-type {
+      @apply hidden;
+    }
+  }
+
+  dl {
+    @screen sm {
+      @apply flex-row items-center;
+    }
+    dt {
+      @apply flex flex-row justify-between cursor-pointer py-4;
+
+      @screen sm {
+        @apply items-center;
+      }
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    dd {
+      @apply bg-white text-small text-grayPrimary;
+      @screen sm {
+        @apply text-modest;
+      }
+    }
   }
 }
+
