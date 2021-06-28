@@ -1,6 +1,6 @@
 <template>
   <div :id="id" class="accordion">
-    <dl class="">
+    <dl>
       <template v-for="(item, index) in data">
         <dt :key="`title-${index}`" @click="openItem(index)">
           <span class="accordion_title">{{ item.title }}</span>
@@ -56,6 +56,13 @@ export default {
       required: true,
     },
 
+    /** If the component begins with the first element open */
+    open: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+
     /** If the component have the bottom line separator */
     bottomLine: {
       type: Boolean,
@@ -81,7 +88,7 @@ export default {
 
   data() {
     return {
-      currentIndex: 0,
+      currentIndex: this.open ? 0 : -1,
     };
   },
 
