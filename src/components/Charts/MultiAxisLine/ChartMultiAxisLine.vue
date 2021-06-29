@@ -1,6 +1,6 @@
 <template>
   <div :id="id" ref="line" class="multi-axis-line">
-    <MultiAxisLine :data-chart="chartdata" />
+    <MultiAxisLine v-model="data" :data-chart="chartdata" />
 
     <div class="flex justify-end">
       <span class="print" @click="print">Salvar imagem</span>
@@ -33,6 +33,18 @@ export default {
       validator: function (obj) {
         return 'labels' in obj && 'datasets' in obj;
       },
+    },
+  },
+
+  data() {
+    return {
+      data: null,
+    };
+  },
+
+  watch: {
+    data: function (val) {
+      this.$emit('input', val);
     },
   },
 

@@ -46,28 +46,11 @@ export default {
   },
 
   data: () => ({
+    colors: ['#4CD89D', '#7DD0FF', '#FF8A00', '#FF7771', '#666666', '#000'],
     chartdata: {
       labels: [],
-      datasets: [
-        {
-          backgroundColor: 'transparent',
-          borderColor: '#4CD89D',
-          lineTension: 0,
-          order: 1,
-          data: [],
-          yAxisID: 'A',
-        },
-        {
-          backgroundColor: 'transparent',
-          borderColor: '#7DD0FF',
-          lineTension: 0,
-          order: 2,
-          data: [],
-          yAxisID: 'B',
-        },
-      ],
+      datasets: [],
     },
-
     options: {
       responsive: true,
       legend: {
@@ -95,8 +78,8 @@ export default {
               offsetGridLines: true,
             },
             ticks: {
-              min: new Date('2021-05-02 01:00:00'),
-              max: new Date('2021-05-02 21:00:00'),
+              min: new Date('2021-05-02 01:00'),
+              max: new Date('2021-05-02 21:00'),
               display: true,
               beginAtZero: false,
               fontColor: '#666',
@@ -108,11 +91,11 @@ export default {
         yAxes: [
           {
             afterFit: function (scale) {
-              scale.width = 80;
+              scale.width = 74;
             },
             scaleLabel: {
               display: true,
-              labelString: 'Tensão (V)',
+              labelString: 'TENSÃO (V)',
               fontFamily: 'Lato, sans-serif',
               fontSize: '10',
               fontColor: '#999',
@@ -126,7 +109,7 @@ export default {
             gridLines: {
               drawBorder: false,
             },
-            id: 'A',
+            // id: 'A',
           },
           {
             position: 'right',
@@ -135,7 +118,7 @@ export default {
             },
             scaleLabel: {
               display: true,
-              labelString: 'Tensão (V)',
+              labelString: 'TENSÃO (V)',
               fontFamily: 'Lato, sans-serif',
               fontSize: '10',
               fontColor: '#999',
@@ -151,7 +134,7 @@ export default {
               display: false,
               drawBorder: false,
             },
-            id: 'B',
+            // id: 'B',
           },
         ],
       },
@@ -160,26 +143,7 @@ export default {
           radius: 0,
         },
       },
-      hover: {
-        animationDuration: 1,
-      },
-      tooltips: {
-        intersect: false,
-        custom: function (tooltip) {
-          if (!tooltip) return;
-          tooltip.displayColors = false;
-          tooltip.opacity = 0;
-        },
-        callbacks: {
-          title: (tooltipItem, data) => {
-            console.log(this, tooltipItem, data);
-          },
-          label: (tooltipItem, data) => {
-            console.log(this);
-            return `${data.datasets[0].data[tooltipItem['index']]} W`;
-          },
-        },
-      },
+      tooltips: null,
     },
   }),
 
@@ -200,18 +164,36 @@ export default {
 
   methods: {
     setData() {
+      this.options.tooltips = {
+        mode: 'label',
+        intersect: false,
+        custom: (tooltip) => {
+          if (!tooltip || !tooltip.dataPoints) return;
+          tooltip.displayColors = false;
+          tooltip.opacity = 0;
+
+          const item = tooltip.dataPoints.map((obj, i) => {
+            return { ...obj, ...tooltip.labelColors[i] };
+          });
+
+          this.$emit('input', item);
+        },
+      };
+
       this.chartdata.labels = this.dataChart.labels;
-      this.chartdata.datasets[0].data = this.dataChart.datasets[0];
-      this.chartdata.datasets[1].data = this.dataChart.datasets[1];
-    },
 
-    pad(num) {
-      let s = String(num);
-
-      if (s.length < 2) {
-        s = '0' + s;
-      }
-      return s;
+      this.dataChart.datasets.map((item, i) => {
+        this.chartdata.datasets.push({
+          label: 'jesus-' + i,
+          backgroundColor: 'transparent',
+          borderColor: this.colors[i],
+          borderWidth: 2,
+          lineTension: 0,
+          // order: i,
+          data: item,
+          // yAxisID: 'A',
+        });
+      });
     },
   },
 };
