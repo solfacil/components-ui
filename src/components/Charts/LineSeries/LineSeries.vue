@@ -1,10 +1,38 @@
 <script>
-import { Line } from 'vue-chartjs';
+import Chart from 'chart.js';
+import { generateChart } from 'vue-chartjs';
+
+Chart.defaults.LineWithLine = Chart.defaults.line;
+Chart.controllers.LineWithLine = Chart.controllers.line.extend({
+  draw: function (ease) {
+    Chart.controllers.line.prototype.draw.call(this, ease);
+
+    if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
+      var activePoint = this.chart.tooltip._active[0],
+        ctx = this.chart.ctx,
+        x = activePoint.tooltipPosition().x,
+        topY = this.chart.legend.bottom,
+        bottomY = this.chart.chartArea.bottom;
+
+      // draw line
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x, topY);
+      ctx.lineTo(x, bottomY);
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(102, 102, 102, 0.64)';
+      ctx.stroke();
+      ctx.restore();
+    }
+  },
+});
+
+const CustomLine = generateChart('custom-line', 'LineWithLine');
 
 export default {
   name: 'LineSeries',
 
-  extends: Line,
+  extends: CustomLine,
 
   props: {
     /** Data chart label and datasets */
@@ -24,7 +52,6 @@ export default {
         {
           backgroundColor: 'rgba(255, 182, 0, 0.64)',
           borderColor: 'transparent',
-          type: 'line',
           lineTension: 0,
           order: 2,
           data: [],
@@ -98,9 +125,9 @@ export default {
           radius: 0,
         },
       },
-      hover: {
-        animationDuration: 1,
-      },
+      // hover: {
+      //   animationDuration: 1,
+      // },
       tooltips: {
         intersect: false,
         yAlign: 'bottom',

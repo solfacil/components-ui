@@ -1,15 +1,8 @@
 <template>
-  <div :id="id" ref="line" class="chart-line-series">
+  <div :id="id" ref="line" class="multi-axis-line">
     <MultiAxisLine :data-chart="chartdata" />
 
-    <div class="flex justify-between">
-      <ul class="legend">
-        <li class="online">Online</li>
-        <li class="offline">Offine</li>
-        <li class="disconnected">Desconectado na rede</li>
-        <li class="production">Produção estimada</li>
-      </ul>
-
+    <div class="flex justify-end">
       <span class="print" @click="print">Salvar imagem</span>
     </div>
   </div>
@@ -57,5 +50,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@scss/_multi-axis-line';
+@import '@scss/_chart_multi-axis-line';
 </style>
