@@ -125,9 +125,6 @@ export default {
           radius: 0,
         },
       },
-      // hover: {
-      //   animationDuration: 1,
-      // },
       tooltips: {
         intersect: false,
         yAlign: 'bottom',
