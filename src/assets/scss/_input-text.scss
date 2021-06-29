@@ -1,5 +1,7 @@
 .sol-input {
-  @apply relative;
+  .wrapper-input {
+    @apply relative;
+  }
 
   input {
     @apply relative z-0;

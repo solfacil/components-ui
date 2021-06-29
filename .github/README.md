@@ -31,6 +31,7 @@ $ start # Run the development environment
 $ build # Generates the production build
 $ lint # Perform eslint to check code error patterns
 $ generate {NameComponent} # Generates the base files of a components
+$ proxy # Generate a proxy with ngrok
 ```
 
 ## License <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/buefy.svg?logo=github" /></a>

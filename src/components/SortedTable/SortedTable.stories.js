@@ -22,7 +22,7 @@ const Template = (args, { argTypes }) => ({
       </template>
 
       <template #tbody>
-        <tr role="row">
+        <tr role="row" class="hover">
           <td role="cell">teste</td>
           <td role="cell">teste</td>
           <td role="cell">teste</td>
@@ -42,9 +42,22 @@ const Template = (args, { argTypes }) => ({
   data() {
     return {
       titleTHead: [
-        { key: 'nome_cliente', title: 'Nome do cliente', sortable: true },
+        {
+          key: 'nome_cliente',
+          title: 'Nome do cliente',
+          sortable: true,
+        },
         { key: 'valor_financiado', title: 'Valor financiado', sortable: true },
-        { key: 'valor_bruto', title: 'Valor bruto' },
+        {
+          key: 'valor_bruto',
+          title: 'Valor bruto',
+          sortable: true,
+          visibled: true,
+          tooltip: {
+            position: 'left',
+            message: 'Produção do sistema sobre a produção estimada',
+          },
+        },
         { key: 'valor_aquisicao', title: 'Valor de aquisição', sortable: true },
       ],
     };
