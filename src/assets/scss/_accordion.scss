@@ -6,7 +6,7 @@
   }
 
   &_title {
-    @apply font-medium font-rubik text-modest text-grayPrimary block;
+    @apply font-medium font-rubik text-modest pr-4 text-grayPrimary block;
     @screen sm {
       @apply text-medium;
     }
@@ -68,7 +68,7 @@
       @apply flex-row items-center;
     }
     dt {
-      @apply flex flex-row justify-between cursor-pointer py-4;
+      @apply flex flex-row justify-between cursor-pointer py-4 ;
 
       @screen sm {
         @apply items-center;
@@ -83,9 +83,12 @@
       }
     }
     dd {
-      @apply bg-white text-small text-grayPrimary;
-      @screen sm {
-        @apply text-modest;
+      &,
+      * {
+        @apply bg-white text-small text-grayPrimary font-rubik;
+        @screen sm {
+          @apply text-modest;
+        }
       }
     }
   }

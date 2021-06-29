@@ -1,12 +1,16 @@
 <template>
   <div :id="id" class="accordion">
     <dl>
-      <template v-for="(item, index) in data">
+      <template v-for="(item, index) in headers">
         <dt :key="`title-${index}`" @click="openItem(index)">
-          <span class="accordion_title">{{ item.title }}</span>
+          <div class="accordion_title">
+            {{ item }}
+          </div>
           <span
             class="accordion__arrow"
-            :class="{ accordion__arrow_down: currentIndex === index }"
+            :class="{
+              accordion__arrow_down: showContent(index),
+            }"
           >
             <svg
               width="10"
@@ -33,13 +37,11 @@
           @before-enter="beforeEnterCurrent"
           @enter="enterCurrent"
         >
-          <dd v-show="currentIndex === index" :key="`description-${index}`">
-            <!-- eslint-disable vue/no-v-html -->
-            <p v-html="item.description" />
-            <!--eslint-enable-->
+          <dd v-show="showContent(index)" :key="`description-${index}`">
+            <slot :name="`description-${index}`"></slot>
           </dd>
         </transition>
-        <hr v-show="bottomLine" :key="`bottom-line-${index}`" />
+        <hr :key="`bottom-line-${index}`" />
       </template>
     </dl>
   </div>
@@ -56,39 +58,28 @@ export default {
       required: true,
     },
 
-    /** If the component begins with the first element open */
+    /** If the component begins with an element opened. Elements begin with index 0. */
     open: {
-      type: Boolean,
-      required: false,
-      default: false,
+      type: Number,
+      default: -1,
     },
 
-    /** If the component have the bottom line separator */
-    bottomLine: {
-      type: Boolean,
-      default: false,
-    },
-
-    data: {
+    /** An array of titles for the accordion elements. Each header come with a slot named "description-indexOfHeader" to add content. */
+    headers: {
       type: Array,
       required: true,
       validator: (valueAccordion) => {
         if (!(valueAccordion && valueAccordion.constructor === Array))
           return false;
-
-        const accordionProperties = ['title', 'description', 'active'].filter(
-          (property) =>
-            !Object.prototype.hasOwnProperty.call(valueAccordion[0], property),
-        );
-
-        return accordionProperties.length === 0;
+        return true;
       },
     },
   },
 
   data() {
     return {
-      currentIndex: this.open ? 0 : -1,
+      currentIndex: -1,
+      hasOpened: 0,
     };
   },
 
@@ -99,6 +90,15 @@ export default {
       } else {
         this.currentIndex = current;
       }
+    },
+
+    showContent(index) {
+      if (this.hasOpened < 2 && this.open !== -1 && this.open === index) {
+        this.currentIndex = this.open;
+        this.hasOpened++;
+        return index === this.open;
+      }
+      return this.currentIndex === index;
     },
 
     beforeEnterCurrent: function (_t) {
