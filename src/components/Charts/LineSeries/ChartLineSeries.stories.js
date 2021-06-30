@@ -14,7 +14,7 @@ const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { ChartLineSeries },
   template:
-    '<div style="width: 1000px;"><ChartLineSeries v-bind="$props" /></div>',
+    '<div style="width: 900px;"><ChartLineSeries v-bind="$props" /></div>',
 });
 
 export const Default = Template.bind({});

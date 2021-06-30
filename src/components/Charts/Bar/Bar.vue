@@ -121,9 +121,6 @@ export default {
           radius: 0,
         },
       },
-      hover: {
-        animationDuration: 1,
-      },
       tooltips: {
         yAlign: 'bottom',
         xAlign: 'center',
