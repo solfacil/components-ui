@@ -68,7 +68,7 @@
       @apply flex-row items-center;
     }
     dt {
-      @apply flex flex-row justify-between cursor-pointer py-4 ;
+      @apply flex flex-row justify-between cursor-pointer py-4;
 
       @screen sm {
         @apply items-center;
@@ -93,4 +93,3 @@
     }
   }
 }
-
