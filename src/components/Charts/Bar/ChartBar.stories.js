@@ -21,7 +21,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { ChartBar },
-  template: '<div style="width: 1000px;"><ChartBar v-bind="$props" /></div>',
+  template: '<div style="width: 900px;"><ChartBar v-bind="$props" /></div>',
 });
 
 export const Default = Template.bind({});

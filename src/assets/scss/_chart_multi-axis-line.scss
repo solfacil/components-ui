@@ -1,0 +1,11 @@
+.multi-axis-line {
+  .print {
+    @apply flex items-center uppercase cursor-pointer text-gray4 text-tiny leading-tight;
+
+    &:before {
+      content: '';
+      @apply w-6 h-6 block mr-1;
+      background: url(~@img/icon/print-image.svg) no-repeat center center;
+    }
+  }
+}
