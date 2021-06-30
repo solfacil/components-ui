@@ -19,6 +19,29 @@ const Template = (args, { argTypes }) => ({
 });
 
 export const Default = Template.bind({});
+
+Default.parameters = {
+  docs: {
+    source: {
+      code: `
+  <Accordion id="accordion-example" :headers="headers" :open="0">
+    <!-- for each header we have a template with slot name 'description-indexOfHeader' -->
+    <template #description-0>
+      Example Description.
+    </template>
+    <template #description-1>
+      <p>This</p>
+      <p>Is</p>
+      <p>Another</p>
+      <p>Example</p>
+      <p>Description.</p>
+    </template>
+  </Accordion>
+      `,
+    },
+  },
+};
+
 Default.args = {
   id: 'accordion-example',
   open: 0,
