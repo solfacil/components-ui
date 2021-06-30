@@ -46,6 +46,7 @@ const Template = (args, { argTypes }) => ({
         autoHideDelay: this.autoHideDelay,
         noAutoHide: this.noAutoHide,
         position: this.position,
+        iconNumber: this.iconNumber,
       });
     },
   },
@@ -75,7 +76,8 @@ this.$toaster.success('Your toaster success message.',
     id: '<id>',
     autoHideDelay: 5000,
     noAutoHide: true,
-    position: '<position>'
+    position: '<position>',
+    iconNumber: '<iconNumber>'
   }
 )
 
@@ -90,4 +92,5 @@ this.$toaster.warning('Your toaster warning message.')
 Default.args = {
   id: 'toaster',
   position: 'topright',
+  iconNumber: 0,
 };
