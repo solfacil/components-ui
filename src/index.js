@@ -1,3 +1,4 @@
+export { default as Accordion } from '@components/Accordion/Accordion';
 export { default as Alert } from '@components/Alert/Alert';
 export { default as Badge } from '@components/Badge/Badge';
 export { default as Button } from '@components/Button/Button';
