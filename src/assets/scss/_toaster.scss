@@ -4,6 +4,12 @@
   transition: all 0.3s ease;
   z-index: 99999;
 
+  i {
+    @apply bg-gray7 w-7 h-7 mr-4 flex items-center justify-center text-white font-rubik text-tiny font-bold rounded-full flex-none;
+    font-style: initial;
+    line-height: 32px;
+  }
+
   .sol-toast-item {
     @apply py-6 px-5 rounded mb-2;
     transition: all 0.3s ease;
@@ -42,6 +48,10 @@
 
       .msg {
         @apply text-white;
+      }
+
+      i {
+        @apply bg-white text-gray7;
       }
     }
 

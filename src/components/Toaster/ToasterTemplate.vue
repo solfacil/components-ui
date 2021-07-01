@@ -8,7 +8,9 @@
         :class="[item.theme, item.position]"
       >
         <div>
+          <i v-if="item.iconNumber">{{ item.iconNumber }}</i>
           <img
+            v-else
             :src="require(`@img/icon/icon-${item.theme}.svg`)"
             class="inline"
             :alt="item.message"
@@ -37,6 +39,12 @@ export default {
     autoHideDelay: {
       type: Number,
       default: 5000,
+    },
+
+    /** Optionally icon number */
+    iconNumber: {
+      default: null,
+      type: Number,
     },
 
     /** Disabled auto hide */
@@ -76,6 +84,7 @@ export default {
         noAutoHide: option.noAutoHide,
         id: option.id,
         position: option.position || this.position,
+        iconNumber: option.iconNumber,
       });
     },
 
@@ -86,6 +95,7 @@ export default {
         noAutoHide: option.noAutoHide,
         id: option.id,
         position: option.position || this.position,
+        iconNumber: option.iconNumber,
       });
     },
 
@@ -96,6 +106,7 @@ export default {
         noAutoHide: option.noAutoHide,
         id: option.id,
         position: option.position || this.position,
+        iconNumber: option.iconNumber,
       });
     },
 
@@ -106,10 +117,14 @@ export default {
         noAutoHide: option.noAutoHide,
         id: option.id,
         position: option.position || this.position,
+        iconNumber: option.iconNumber,
       });
     },
 
-    add(message, { theme, autoHideDelay, noAutoHide = false, id, position }) {
+    add(
+      message,
+      { theme, autoHideDelay, noAutoHide = false, id, position, iconNumber },
+    ) {
       this.itemPosition = position;
 
       if (!this.$parent) {
@@ -117,7 +132,7 @@ export default {
         document.body.appendChild(this.$el);
       }
 
-      let item = { message, theme, id, position };
+      let item = { message, theme, id, position, iconNumber };
       this.items.push(item);
 
       if (!noAutoHide) {
