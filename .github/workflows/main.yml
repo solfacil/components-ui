@@ -66,5 +66,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
           FOLDER: storybook-static
-          CLEAN: true # Automatically remove deleted files from the deploy branch
+          CLEAN: true
           TARGET_FOLDER: . # The folder that we serve our Stoname: Build & deploy
