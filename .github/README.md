@@ -10,6 +10,14 @@ Component library based on Vue and Tailwind
 
 For full documentation, visit [Documentation](https://solfacil.github.io/components-ui/?path=/story/getting-started-installation--page).
 
+## Bumb version
+
+#### Given a version number MAJOR.MINOR.PATCH, increment the:
+
+- MAJOR: a commit that has the text BREAKING CHANGE: section introduces a breaking API change. A breaking change can be part of commits of any type. e.g., a fix:, feat: & chore: types would all be valid, in addition to any other type.
+- MINOR: a commit of the type ***feat*** introduces a new feature to the codebase
+- PATCH: a commit of the type ***fix*** patches a bug in your codebase
+
 ## Quick start
 
 ### 1 Install npm

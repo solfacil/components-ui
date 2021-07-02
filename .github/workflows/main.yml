@@ -1,0 +1,70 @@
+name: Build & deploy
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'package.json'
+      - 'CHANGELOG.md'
+
+jobs:
+  bump-version:
+    name: Bump version 🚀
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git repo
+        uses: actions/checkout@v2
+
+      - name: Automated Version Bump
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.TOKEN_ACTION }}
+          git-message: 'chore(release): {version}'
+          preset: 'angular'
+          release-count: 0
+          tag-prefix: ''
+          output-file: 'CHANGELOG.md'
+
+  publish-npm:
+    name: Publish NPM 🚀
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git repo
+        uses: actions/checkout@v2
+
+      - name: Install depends
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+
+      - run: yarn install
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+  publish-storybook:
+    name: Publish Storybook 🚀
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git repo
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install and Build
+        run: | # Install npm packages and build the Storybook files
+          yarn install
+          yarn build-storybook
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: storybook-static # The folder that the build-storybook script generates files.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
+          TARGET_FOLDER: . # The folder that we serve our Stoname: Build & deploy
