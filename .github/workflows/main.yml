@@ -23,6 +23,7 @@ jobs:
           git-message: 'chore(release): {version}'
           preset: 'angular'
           release-count: 0
+          skip-on-empty: false
           tag-prefix: ''
           output-file: 'CHANGELOG.md'
 
