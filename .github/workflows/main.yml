@@ -68,4 +68,4 @@ jobs:
           BRANCH: gh-pages
           FOLDER: storybook-static
           CLEAN: true
-          TARGET_FOLDER: . # The folder that we serve our Stoname: Build & deploy
+          TARGET_FOLDER: .
