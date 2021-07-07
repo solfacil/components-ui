@@ -1,0 +1,9 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 12V10H8V12H10Z" fill="#999999"/>
+<path d="M13 10V12H11V10H13Z" fill="#999999"/>
+<path d="M13 16V14H11V16H13Z" fill="#999999"/>
+<path d="M10 14V16H8V14H10Z" fill="#999999"/>
+<path d="M16 10V12H14V10H16Z" fill="#999999"/>
+<path d="M16 14V16H14V14H16Z" fill="#999999"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10 4H8V5H6C4.89543 5 4 5.89543 4 7V18C4 19.1046 4.89543 20 6 20H18C19.1046 20 20 19.1046 20 18V7C20 5.89543 19.1046 5 18 5H16V4H14V5H10V4ZM14 8V7H10V8H8V7H6V18H18V7H16V8H14Z" fill="#999999"/>
+</svg>
