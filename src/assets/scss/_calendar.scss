@@ -1,0 +1,243 @@
+@import '~vue2-datepicker/scss/index.scss';
+
+.calendar {
+  width: fit-content;
+}
+
+.mx-datepicker-main {
+  @apply font-rubik shadow-sm border border-solid border-gray3 rounded overflow-hidden;
+
+  .mx-calendar {
+    @apply px-4 pt-0 mt-4 mb-2 w-full;
+    width: 262px;
+
+    + .mx-calendar {
+      @apply border-none;
+    }
+
+    &.mx-calendar-panel-date {
+      .mx-btn-icon-double-left,
+      .mx-btn-icon-double-right {
+        @apply hidden;
+      }
+    }
+
+    .mx-calendar-header {
+      @apply h-6 px-2 mb-2;
+      line-height: 24px;
+
+      .mx-btn-text {
+        @apply p-0;
+      }
+
+      .mx-icon-double-right {
+        &:before {
+          @apply left-0;
+        }
+      }
+
+      button {
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .mx-icon-left,
+      .mx-icon-right,
+      .mx-icon-double-left,
+      .mx-icon-double-right,
+      .mx-icon-double-left,
+      .mx-icon-double-right {
+        &::after {
+          @apply hidden;
+        }
+
+        &::before {
+          @apply border-gray4 w-4 h-4;
+          border-width: 4px 0 0 4px;
+        }
+      }
+
+      .mx-calendar-header-label {
+        span,
+        button {
+          @apply text-grayPrimary text-modest leading-tight font-medium;
+
+          & + button {
+            &:before {
+              @apply ml-1;
+              content: '/';
+            }
+          }
+        }
+      }
+    }
+
+    .mx-calendar-content {
+      @apply h-auto;
+      margin: -4px;
+
+      .mx-table {
+        th {
+          @apply text-gray4 text-slight leading-tight uppercase font-normal py-2 pt-1 pb-0;
+        }
+
+        td {
+          @apply h-auto p-1;
+
+          &.not-current-month {
+            @apply p-0;
+
+            div {
+              @apply hidden;
+            }
+          }
+
+          div {
+            @apply rounded text-slight text-grayPrimary duration-200 ease-linear transition-all;
+            width: 26px;
+            height: 22px;
+            line-height: 22px;
+          }
+
+          &.active {
+            background: none;
+
+            div {
+              @apply bg-orangePrimary text-gray7;
+            }
+          }
+
+          &.today {
+            @apply bg-transparent;
+
+            div {
+              @apply bg-grayPrimary text-white;
+            }
+          }
+
+          &.hover-in-range,
+          &.in-range {
+            @apply bg-transparent;
+
+            div {
+              @apply bg-orange1;
+            }
+          }
+
+          &.disabled {
+            @apply bg-transparent;
+
+            div {
+              @apply opacity-50;
+            }
+
+            &:hover {
+              div {
+                @apply bg-transparent;
+              }
+            }
+          }
+
+          &:hover {
+            @apply bg-transparent;
+
+            div {
+              @apply bg-gray3;
+            }
+          }
+        }
+      }
+    }
+
+    &.mx-calendar-panel-year,
+    &.mx-calendar-panel-month {
+      width: 204px;
+
+      .mx-calendar-header,
+      .mx-time-header {
+        @apply mb-4;
+      }
+
+      .mx-calendar-content {
+        .mx-table {
+          th {
+          }
+
+          td {
+            div {
+              @apply inline-block px-4;
+              width: initial;
+            }
+          }
+
+          &.mx-table-year {
+            td {
+              @apply text-center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mx-range-wrapper {
+    .mx-calendar {
+      &:last-child {
+        @apply hidden;
+      }
+    }
+  }
+
+  &.mx-datepicker-popup {
+    @apply m-0;
+  }
+}
+
+.mx-datepicker-footer {
+  @apply mx-4 flex items-center px-0 pb-4 pt-2 border-t border-solid border-gray3 gap-2;
+}
+
+.mx-datepicker {
+  width: auto;
+
+  .mx-input-wrapper {
+    input {
+      @apply pr-8 pl-10;
+      max-width: 264px;
+
+      &:hover,
+      &:focus {
+        @apply border-gray3;
+      }
+    }
+
+    .mx-icon-clear {
+      @apply block;
+      right: 16px;
+    }
+
+    .mx-icon-calendar {
+      @apply w-8 h-8 border-gray3 border-r border-solid flex items-center justify-center absolute z-10 top-0 left-0;
+      right: auto;
+      transform: initial;
+    }
+
+    &:hover {
+      .mx-icon-clear + .mx-icon-calendar {
+        @apply flex;
+      }
+
+      .mx-icon-calendar {
+        transform: initial;
+      }
+    }
+  }
+}
+
+.view-month {
+}
+
+.footer-calendar {
+  @apply mx-4 flex items-center pb-4 pt-2 border-t border-solid border-gray3 gap-2;
+}
