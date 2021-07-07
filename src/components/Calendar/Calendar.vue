@@ -4,24 +4,38 @@
       v-model="time"
       :lang="lang"
       :format="format"
-      :type="type"
+      :type="view"
       :inline="inline"
       :range="range"
       :multiple="false"
-      range-separator="/"
+      range-separator=" - "
       :disabled-date="disabledDate"
+      :open="openCalendar"
+      :placeholder="placeholder"
+      @open="open"
+      @clear="clear"
     >
+      <template #icon-calendar>
+        <img src="@img/icon/icon-calendar.svg" />
+      </template>
+
+      <template #icon-clear>
+        <img src="@img/icon/icon-close.svg" />
+      </template>
+
       <template #footer>
-        <Button id="select-date" size="small" :disabled="!time" @click="select"
-          >Ok</Button
-        >
+        <Button id="select-date" size="small" :disabled="!time" @click="select">
+          Ok
+        </Button>
+
         <Button
           id="cancel-date"
           size="small"
           variant="secondary"
-          @click="cancel"
-          >Cancelar</Button
+          @click="clear"
         >
+          Cancelar
+        </Button>
       </template>
     </DatePicker>
   </div>
@@ -67,15 +81,21 @@ export default {
     /** Set format date */
     format: {
       type: String,
-      default: 'DD-MM-YYYY',
+      default: 'DD/MM/YYYY',
     },
 
-    /** Specify the kind of Calendar you want to create: <br/> secondary" | "exception" */
-    type: {
+    /** Specify the kind of Calendar you want to create: <br/> date" | "month" | "year" */
+    view: {
       default: 'date',
       type: String,
       validator: (value) =>
         ['date', 'month', 'year'].includes(value.toLowerCase()),
+    },
+
+    /** Input placeholder text */
+    placeholder: {
+      type: String,
+      default: null,
     },
   },
 
@@ -83,6 +103,7 @@ export default {
     return {
       time: null,
       initDate: null,
+      openCalendar: null,
       selectedDayPlus: null,
       lang: {
         formatLocale: {
@@ -133,11 +154,19 @@ export default {
   methods: {
     select() {
       this.$emit('input', this.time);
+      this.$emit('confirm', this.time);
+      this.openCalendar = null;
     },
 
-    cancel() {
+    clear() {
       this.time = null;
       this.initDate = null;
+      this.openCalendar = false;
+      this.$emit('clear');
+    },
+
+    open() {
+      this.openCalendar = true;
     },
 
     disabledDate(cellDate, selectedDate) {
@@ -147,7 +176,7 @@ export default {
         this.initDate = new Date(selectedDate[0]);
 
       const selectedDayPlus =
-        this.type === 'date'
+        this.view === 'date'
           ? new Date(
               this.initDate.getTime() +
                 (this.rangeLimit - 1) * 24 * 3600 * 1000,

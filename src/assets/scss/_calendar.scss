@@ -1,12 +1,11 @@
 @import '~vue2-datepicker/scss/index.scss';
 
 .calendar {
-  @apply shadow-sm border border-solid border-gray3 rounded overflow-hidden;
   width: fit-content;
 }
 
 .mx-datepicker-main {
-  @apply border-none font-rubik;
+  @apply font-rubik shadow-sm border border-solid border-gray3 rounded overflow-hidden;
 
   .mx-calendar {
     @apply px-4 pt-0 mt-4 mb-2 w-full;
@@ -190,6 +189,38 @@
 
 .mx-datepicker {
   width: auto;
+
+  .mx-input-wrapper {
+    input {
+      @apply pr-8 pl-10;
+
+      &:hover,
+      &:focus {
+        @apply border-gray3;
+      }
+    }
+
+    .mx-icon-clear {
+      @apply block;
+      right: 16px;
+    }
+
+    .mx-icon-calendar {
+      @apply w-8 h-8 border-gray3 border-r border-solid flex items-center justify-center absolute z-10 top-0 left-0;
+      right: auto;
+      transform: initial;
+    }
+
+    &:hover {
+      .mx-icon-clear + .mx-icon-calendar {
+        @apply flex;
+      }
+
+      .mx-icon-calendar {
+        transform: initial;
+      }
+    }
+  }
 }
 
 .view-month {
