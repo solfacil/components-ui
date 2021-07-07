@@ -1,3 +1,19 @@
+# [1.4.0](https://github.com/solfacil/components-ui/compare/1.3.0...1.4.0) (2021-07-07)
+
+
+### Features
+
+* config view calendar and props ([6b1161c](https://github.com/solfacil/components-ui/commit/6b1161c0b6dc8d4b0351c11f2dd33de65a5c40eb))
+* export calendar and alphabetial order exports ([798b981](https://github.com/solfacil/components-ui/commit/798b981aade2f7275ccb5c22b3781dda328935b7))
+* set placeholder ([515249e](https://github.com/solfacil/components-ui/commit/515249e49e718e86461ed18e442892b9dd898360))
+* set views storybook ([251e1c4](https://github.com/solfacil/components-ui/commit/251e1c40bbd22d9ffe3ff3ebdd0af58699ad97e3))
+* style ([315f400](https://github.com/solfacil/components-ui/commit/315f40098170d28580dbfe70ae4f4fcc92bf8d79))
+* style calendar ([c0fbcd7](https://github.com/solfacil/components-ui/commit/c0fbcd788cf62604b6d8dcc5fff5a0e396440a58))
+* temove comment ([cd006a9](https://github.com/solfacil/components-ui/commit/cd006a93e1243850086fe2277a724f2b2c9123f9))
+* update prettier ignore ([6871ce1](https://github.com/solfacil/components-ui/commit/6871ce10d8412505412eac3527606338186fbdf7))
+
+
+
 # [1.3.0](https://github.com/solfacil/components-ui/compare/1.0.0...1.3.0) (2021-07-02)
 
 
