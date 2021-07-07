@@ -1,118 +1,200 @@
+@import '~vue2-datepicker/scss/index.scss';
+
 .calendar {
-  .vfc-popover-container {
-    .vfc-main-container {
-      @apply shadow-sm border border-solid border-gray3 rounded font-rubik;
+  @apply shadow-sm border border-solid border-gray3 rounded overflow-hidden;
+  width: fit-content;
+}
 
-      .vfc-content {
-        @apply m-0 p-4 text-slight leading-tight uppercase;
+.mx-datepicker-main {
+  @apply border-none font-rubik;
 
-        .vfc-top-date {
-          @apply m-0 mb-4 h-6 flex justify-center items-center;
+  .mx-calendar {
+    @apply px-4 pt-0 mt-4 mb-2 w-full;
+    width: 262px;
 
-          &.vfc-center {
-            span {
-              @apply text-grayPrimary text-modest leading-tight font-medium;
-              text-transform: initial;
+    + .mx-calendar {
+      @apply border-none;
+    }
 
-              &:last-child {
-                &:before {
-                  content: '/';
-                }
-              }
-            }
-          }
+    &.mx-calendar-panel-date {
+      .mx-btn-icon-double-left,
+      .mx-btn-icon-double-right {
+        @apply hidden;
+      }
+    }
+
+    .mx-calendar-header {
+      @apply h-6 px-2 mb-2;
+      line-height: 24px;
+
+      .mx-btn-text {
+        @apply p-0;
+      }
+
+      .mx-icon-double-right {
+        &:before {
+          @apply left-0;
+        }
+      }
+
+      button {
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .mx-icon-left,
+      .mx-icon-right,
+      .mx-icon-double-left,
+      .mx-icon-double-right,
+      .mx-icon-double-left,
+      .mx-icon-double-right {
+        &::after {
+          @apply hidden;
         }
 
-        .vfc-dayNames {
-          @apply mb-1;
-
-          .vfc-day {
-            @apply mr-2 text-gray4;
-
-            &:last-child {
-              @apply m-0;
-            }
-          }
+        &::before {
+          @apply border-gray4 w-4 h-4;
+          border-width: 4px 0 0 4px;
         }
+      }
 
-        .vfc-week {
-          margin: 0 -4px;
-          .vfc-day {
-            @apply m-0 p-1;
+      .mx-calendar-header-label {
+        span,
+        button {
+          @apply text-grayPrimary text-modest leading-tight font-medium;
 
-            span {
-              &.vfc-span-day {
-                @apply rounded text-grayPrimary;
-                width: 26px;
-                line-height: 22px;
-
-                &:after {
-                  @apply rounded;
-                }
-
-                &.vfc-today {
-                  @apply bg-grayPrimary text-white;
-
-                  &.vfc-marked {
-                    @apply bg-orange1 text-grayPrimary;
-                  }
-                }
-              }
-            }
-
-            .vfc-base-start,
-            .vfc-base-end {
-              @apply hidden;
-            }
-
-            .vfc-marked {
-              @apply bg-orange1 text-grayPrimary;
-
-              &.vfc-start-marked,
-              &.vfc-end-marked {
-                @apply bg-orangePrimary #{!important};
-              }
-
-              &:before {
-                @apply hidden;
-              }
+          & + button {
+            &:before {
+              @apply ml-1;
+              content: '/';
             }
           }
         }
       }
+    }
 
-      .vfc-navigation-buttons,
-      .vfc-separately-navigation-buttons {
-        @apply m-0 px-4 absolute w-full;
-        top: 16px;
+    .mx-calendar-content {
+      @apply h-auto;
+      margin: -4px;
 
-        div {
-          @apply text-gray4 border-gray4;
+      .mx-table {
+        th {
+          @apply text-gray4 text-slight leading-tight uppercase font-normal py-2 pt-1 pb-0;
+        }
 
-          &.vfc-cursor-pointer {
-            @apply w-6 h-6 flex items-center justify-center m-0;
+        td {
+          @apply h-auto p-1;
+
+          &.not-current-month {
+            @apply p-0;
 
             div {
-              @apply m-0 ml-1;
-              width: 10px;
-              height: 10px;
-              margin-left: 4px;
+              @apply hidden;
+            }
+          }
 
-              &.vfc-arrow-right {
-                @apply ml-0 mr-1;
+          div {
+            @apply rounded text-slight text-grayPrimary duration-200 ease-linear transition-all;
+            width: 26px;
+            height: 22px;
+            line-height: 22px;
+          }
+
+          &.active {
+            background: none;
+
+            div {
+              @apply bg-orangePrimary text-gray7;
+            }
+          }
+
+          &.today {
+            @apply bg-transparent;
+
+            div {
+              @apply bg-grayPrimary text-white;
+            }
+          }
+
+          &.hover-in-range,
+          &.in-range {
+            @apply bg-transparent;
+
+            div {
+              @apply bg-orange1;
+            }
+          }
+
+          &.disabled {
+            @apply bg-transparent;
+
+            div {
+              @apply opacity-50;
+            }
+
+            &:hover {
+              div {
+                @apply bg-transparent;
               }
+            }
+          }
+
+          &:hover {
+            @apply bg-transparent;
+
+            div {
+              @apply bg-gray3;
             }
           }
         }
       }
+    }
 
-      .footerCon {
-        @apply justify-start;
+    &.mx-calendar-panel-year,
+    &.mx-calendar-panel-month {
+      width: 204px;
 
-        div {
-          @apply hidden;
+      .mx-calendar-header,
+      .mx-time-header {
+        @apply mb-4;
+      }
+
+      .mx-calendar-content {
+        .mx-table {
+          th {
+          }
+
+          td {
+            div {
+              width: 52px;
+            }
+          }
         }
       }
     }
   }
+
+  .mx-range-wrapper {
+    .mx-calendar {
+      &:last-child {
+        @apply hidden;
+      }
+    }
+  }
+}
+
+.mx-datepicker-footer {
+  @apply mx-4 flex items-center px-0 pb-4 pt-2 border-t border-solid border-gray3 gap-2;
+}
+
+.mx-datepicker {
+  width: auto;
+}
+
+.view-month {
+}
+
+.footer-calendar {
+  @apply mx-4 flex items-center pb-4 pt-2 border-t border-solid border-gray3 gap-2;
 }

@@ -4,12 +4,12 @@ export default {
   title: 'Components/UI Elements/Calendar',
   component: Calendar,
   argTypes: {
-    demo: {
+    type: {
       control: {
         type: 'select',
-        options: ['1', '2', '3', '4'],
+        options: ['date', 'month', 'year'],
       },
-      defaultValue: '1',
+      defaultValue: 'date',
     },
   },
 
@@ -27,4 +27,5 @@ const Template = (args, { argTypes }) => ({
 export const Default = Template.bind({});
 Default.args = {
   id: 'calendar',
+  inline: true,
 };
