@@ -166,7 +166,14 @@
 
           td {
             div {
-              width: 52px;
+              @apply inline-block px-4;
+              width: initial;
+            }
+          }
+
+          &.mx-table-year {
+            td {
+              @apply text-center;
             }
           }
         }
@@ -181,6 +188,10 @@
       }
     }
   }
+
+  &.mx-datepicker-popup {
+    @apply m-0;
+  }
 }
 
 .mx-datepicker-footer {
@@ -193,6 +204,7 @@
   .mx-input-wrapper {
     input {
       @apply pr-8 pl-10;
+      max-width: 264px;
 
       &:hover,
       &:focus {

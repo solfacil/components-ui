@@ -33,6 +33,7 @@ const Template = (args, { argTypes }) => ({
 export const Default = Template.bind({});
 Default.args = {
   id: 'calendar',
+  placeholder: 'Selecione',
 };
 
 export const Inline = Template.bind({});
