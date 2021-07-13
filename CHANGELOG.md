@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/solfacil/components-ui/compare/1.4.0...1.5.0) (2021-07-13)
+
+
+### Features
+
+* add callback delete tags filter ([dd4b159](https://github.com/solfacil/components-ui/commit/dd4b15997d5ef699913a14d4862ef8f84dc74458))
+
+
+
 # [1.4.0](https://github.com/solfacil/components-ui/compare/1.3.0...1.4.0) (2021-07-07)
 
 
