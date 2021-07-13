@@ -37,6 +37,7 @@ export default {
   watch: {
     tags(n) {
       this.$emit('input', n);
+      this.$emit('delete');
     },
   },
 
