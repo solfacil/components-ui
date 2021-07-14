@@ -1,3 +1,13 @@
+## [1.5.1](https://github.com/solfacil/components-ui/compare/1.5.0...1.5.1) (2021-07-14)
+
+
+### Bug Fixes
+
+* format code prettier ([545121e](https://github.com/solfacil/components-ui/commit/545121ebd39823d305cac06b7fa32c2d9c437ece))
+* update color chart and oder actions ([3b480e7](https://github.com/solfacil/components-ui/commit/3b480e77f3a2c01a1797c01433cba343743fd245))
+
+
+
 # [1.5.0](https://github.com/solfacil/components-ui/compare/1.4.0...1.5.0) (2021-07-13)
 
 
