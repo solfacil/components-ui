@@ -46,7 +46,24 @@ export default {
   },
 
   data: () => ({
-    colors: ['#4CD89D', '#7DD0FF', '#FF8A00', '#FF7771', '#666666', '#000'],
+    colors: [
+      '#FAC031',
+      '#9DD866',
+      '#8381E7',
+      '#F34BB2',
+      '#FF942F',
+      '#F08FD0',
+      '#8DDDD0',
+      '#DBCD6C',
+      '#7D06BF',
+      '#CA472F',
+      '#0B84A5',
+      '#688B00',
+      '#1C4E80',
+      '#B3C100',
+      '#B500B8',
+      '#FF6547',
+    ],
     chartdata: {
       labels: [],
       datasets: [],
