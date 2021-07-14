@@ -1,3 +1,12 @@
+## [1.5.5](https://github.com/solfacil/components-ui/compare/1.5.4...1.5.5) (2021-07-14)
+
+
+### Bug Fixes
+
+* config npm deploy ([226619a](https://github.com/solfacil/components-ui/commit/226619a9f69c56dfe0d9c330f6842fa22f0f2464))
+
+
+
 ## [1.5.4](https://github.com/solfacil/components-ui/compare/1.5.3...1.5.4) (2021-07-14)
 
 
