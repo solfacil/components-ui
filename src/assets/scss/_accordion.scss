@@ -1,28 +1,4 @@
 .accordion {
-  @apply flex flex-col justify-center;
-
-  &__arrow {
-    @apply flex items-center justify-center w-6 h-6 border-2 border-solid border-grayPrimary rounded-full duration-200 ease-linear transition-all;
-  }
-
-  &_title {
-    @apply font-medium font-rubik text-modest pr-4 text-grayPrimary block;
-    @screen sm {
-      @apply text-medium;
-    }
-  }
-
-  &__arrow_down {
-    @apply bg-grayPrimary;
-    transform: rotate(180deg);
-
-    svg {
-      path {
-        stroke: #fff;
-      }
-    }
-  }
-
   @keyframes accordeonAni {
     0% {
       max-height: 0;
@@ -55,40 +31,45 @@
     }
   }
 
-  hr {
-    @apply my-4 text-gray3;
+  dl {
+    dt,
+    dt.small {
+      @apply flex items-center justify-between cursor-pointer font-medium font-rubik text-modest text-grayPrimary leading-tight pt-4 mt-2 border-t border-gray3 border-solid;
 
-    &:last-of-type {
-      @apply hidden;
+      &:first-of-type {
+        @apply border-none pt-0 mt-0;
+      }
+
+      .arrow {
+        @apply flex items-center justify-center w-6 h-6 border-2 border-solid border-grayPrimary rounded-full duration-200 ease-linear transition-all ml-6;
+
+        &.arrow_down {
+          @apply bg-grayPrimary;
+          transform: rotate(180deg);
+
+          svg {
+            path {
+              stroke: #fff;
+            }
+          }
+        }
+      }
+    }
+
+    dd,
+    dd.small {
+      @apply my-2;
     }
   }
 
-  dl {
-    @screen sm {
-      @apply flex-row items-center;
-    }
-    dt {
-      @apply flex flex-row justify-between cursor-pointer py-4;
-
-      @screen sm {
-        @apply items-center;
+  @screen sm {
+    dl {
+      dt {
+        @apply text-medium pt-6 mt-4;
       }
 
-      &:first-of-type {
-        margin-top: 0;
-      }
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-    dd {
-      &,
-      * {
-        @apply bg-white text-small text-grayPrimary font-rubik;
-        @screen sm {
-          @apply text-modest;
-        }
+      dd {
+        @apply my-4;
       }
     }
   }
