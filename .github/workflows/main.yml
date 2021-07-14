@@ -45,7 +45,7 @@ jobs:
           TARGET_FOLDER: .
 
       - name: Checkout Git repo/update
-        uses: actions/checkout@v2
+        run: git pull
 
       - name: Install depends
         uses: actions/setup-node@v2
