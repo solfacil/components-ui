@@ -44,6 +44,9 @@ jobs:
           CLEAN: true
           TARGET_FOLDER: .
 
+      - name: Checkout Git repo/update
+        uses: actions/checkout@v2
+
       - name: Install depends
         uses: actions/setup-node@v2
         with:
