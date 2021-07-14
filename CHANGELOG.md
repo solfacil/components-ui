@@ -1,3 +1,12 @@
+## [1.5.2](https://github.com/solfacil/components-ui/compare/1.5.1...1.5.2) (2021-07-14)
+
+
+### Bug Fixes
+
+* change config workflow git action ([ff36762](https://github.com/solfacil/components-ui/commit/ff367626672dada2f6ebe4aa13c06ade1e9a9036))
+
+
+
 ## [1.5.1](https://github.com/solfacil/components-ui/compare/1.5.0...1.5.1) (2021-07-14)
 
 
