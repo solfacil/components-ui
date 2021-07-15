@@ -2,14 +2,13 @@
   <div :id="id" class="accordion">
     <dl>
       <template v-for="(item, index) in headers">
-        <dt :key="`title-${index}`" @click="openItem(index)">
-          <div class="accordion_title">
-            {{ item }}
-          </div>
+        <dt :key="`title-${index}`" :class="{ small }" @click="openItem(index)">
+          {{ item }}
+
           <span
-            class="accordion__arrow"
+            class="arrow"
             :class="{
-              accordion__arrow_down: showContent(index),
+              arrow_down: showContent(index),
             }"
           >
             <svg
@@ -37,11 +36,14 @@
           @before-enter="beforeEnterCurrent"
           @enter="enterCurrent"
         >
-          <dd v-show="showContent(index)" :key="`description-${index}`">
+          <dd
+            v-show="showContent(index)"
+            :key="`description-${index}`"
+            :class="{ small }"
+          >
             <slot :name="`description-${index}`"></slot>
           </dd>
         </transition>
-        <hr :key="`bottom-line-${index}`" />
       </template>
     </dl>
   </div>
@@ -73,6 +75,12 @@ export default {
           return false;
         return true;
       },
+    },
+
+    /** Specify the small size */
+    small: {
+      type: Boolean,
+      default: false,
     },
   },
 
