@@ -1,3 +1,13 @@
+## [1.5.6](https://github.com/solfacil/components-ui/compare/1.5.5...1.5.6) (2021-07-15)
+
+
+### Bug Fixes
+
+* format code ([13f16bf](https://github.com/solfacil/components-ui/commit/13f16bf7d597da77de30a5fbb1fc73eea3bf269a))
+* refactor and add props small style ([4ec60a0](https://github.com/solfacil/components-ui/commit/4ec60a01afb17d238b6f8a29702afd6d1e172635))
+
+
+
 ## [1.5.5](https://github.com/solfacil/components-ui/compare/1.5.4...1.5.5) (2021-07-14)
 
 
