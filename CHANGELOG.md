@@ -1,3 +1,12 @@
+## [1.5.9](https://github.com/solfacil/components-ui/compare/1.5.8...1.5.9) (2021-07-16)
+
+
+### Bug Fixes
+
+* watch data ([3ebdf79](https://github.com/solfacil/components-ui/commit/3ebdf79c7910b342f0b520eccc8cb122927a1660))
+
+
+
 ## [1.5.8](https://github.com/solfacil/components-ui/compare/1.5.7...1.5.8) (2021-07-16)
 
 
