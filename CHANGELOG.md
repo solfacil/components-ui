@@ -1,3 +1,12 @@
+## [1.5.7](https://github.com/solfacil/components-ui/compare/1.5.6...1.5.7) (2021-07-16)
+
+
+### Bug Fixes
+
+* set mix and max date range ([abacc0a](https://github.com/solfacil/components-ui/commit/abacc0aca925ee3d749825bea509e23804b252e3))
+
+
+
 ## [1.5.6](https://github.com/solfacil/components-ui/compare/1.5.5...1.5.6) (2021-07-15)
 
 
