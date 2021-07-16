@@ -1,3 +1,14 @@
+## [1.6.1](https://github.com/solfacil/components-ui/compare/1.6.0...1.6.1) (2021-07-16)
+
+
+### Bug Fixes
+
+* check curve type ([56ad5f3](https://github.com/solfacil/components-ui/commit/56ad5f3893e9325fb12cfac56b2864d0ff88c2b5))
+* format code prettier ([4955b9d](https://github.com/solfacil/components-ui/commit/4955b9d01ed38cf89902b64b0168bff5b25f7da1))
+* style calendar and suport object curve in chart ([a726738](https://github.com/solfacil/components-ui/commit/a726738dc427310bc49bd3a4a4331593824b4ceb))
+
+
+
 # [1.6.0](https://github.com/solfacil/components-ui/compare/1.5.9...1.6.0) (2021-07-16)
 
 
