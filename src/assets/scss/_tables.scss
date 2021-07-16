@@ -1,7 +1,5 @@
 .scroll-table {
-  @apply overflow-x-auto;
-
-  overflow-y: hidden;
+  @apply overflow-x-auto overflow-y-hidden;
 
   // custom scroll
   &::-webkit-scrollbar {
@@ -44,9 +42,7 @@ table {
       @apply bg-gray3 align-middle text-left font-rubik text-small p-4 border-b border-solid border-orangePrimary;
 
       strong {
-        @apply inline-flex items-center font-medium;
-
-        white-space: nowrap;
+        @apply inline-flex items-center font-medium whitespace-no-wrap;
       }
 
       &:first-child {
