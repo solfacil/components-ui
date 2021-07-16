@@ -175,6 +175,13 @@ export default {
     this.setData();
   },
 
+  created() {
+    this.options.scales.xAxes[0].ticks.min = new Date(this.dataChart.labels[0]);
+    this.options.scales.xAxes[0].ticks.max = new Date(
+      this.dataChart.labels[this.dataChart.labels.length - 1],
+    );
+  },
+
   mounted() {
     this.renderChart(this.chartdata, this.options);
   },
