@@ -199,5 +199,10 @@ Default.args = {
         5.12, 4.67, 4.28, 3.88, 3.47, 3.07,
       ],
     ],
+    type: [
+      { name: 'voltage', unit: 'V' },
+      { name: 'current', unit: 'A' },
+      { name: 'power', unit: 'W' },
+    ],
   },
 };

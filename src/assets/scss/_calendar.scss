@@ -103,6 +103,7 @@
           &.active {
             background: none;
 
+            &:hover div,
             div {
               @apply bg-orangePrimary text-gray7;
             }
@@ -113,6 +114,12 @@
 
             div {
               @apply bg-grayPrimary text-white;
+            }
+
+            &.active {
+              div {
+                @apply bg-orangePrimary text-gray7;
+              }
             }
           }
 

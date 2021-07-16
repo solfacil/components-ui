@@ -199,7 +199,11 @@ export default {
           tooltip.opacity = 0;
 
           const item = tooltip.dataPoints.map((obj, i) => {
-            return { ...obj, ...tooltip.labelColors[i] };
+            return {
+              ...obj,
+              ...tooltip.labelColors[i],
+              curve: this.dataChart.type ? this.dataChart.type[i] : '',
+            };
           });
 
           this.$emit('input', item);
@@ -210,6 +214,7 @@ export default {
 
       this.dataChart.datasets.map((item, i) => {
         this.chartdata.datasets.push({
+          curve: this.dataChart.type ? this.dataChart.type[i] : '',
           label: 'chart-' + i,
           backgroundColor: 'transparent',
           borderColor: this.colors[i],
