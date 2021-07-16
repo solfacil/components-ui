@@ -1,6 +1,8 @@
 <script>
 import Chart from 'chart.js';
-import { generateChart } from 'vue-chartjs';
+import { generateChart, mixins } from 'vue-chartjs';
+
+const { reactiveProp } = mixins;
 
 Chart.defaults.LineWithLine = Chart.defaults.line;
 Chart.controllers.LineWithLine = Chart.controllers.line.extend({
@@ -33,6 +35,8 @@ export default {
   name: 'MultiAxisLine',
 
   extends: CustomLine,
+
+  mixins: [reactiveProp],
 
   props: {
     /** Data chart label and datasets */
