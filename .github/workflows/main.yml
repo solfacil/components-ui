@@ -19,16 +19,12 @@ jobs:
           token: ${{ secrets.TOKEN_ACTION }}
           persist-credentials: false
 
-      - name: Automated Version Bump
+      - name: Conventional Changelog Action
+        id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.TOKEN_ACTION }}
           output-file: "false"
-
-      - name: Install and Build
-        run: |
-          yarn install
-          yarn build-storybook
 
       - name: Create Release
         uses: actions/create-release@v1
@@ -39,6 +35,11 @@ jobs:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
+
+      - name: Install and Build
+        run: |
+          yarn install
+          yarn build-storybook
 
       - name: Deploy Storybook
         uses: JamesIves/github-pages-deploy-action@3.6.2
