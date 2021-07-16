@@ -1,6 +1,7 @@
 html,
 body {
   @apply bg-transparent;
+
   h1,
   h2,
   h3,
@@ -9,16 +10,12 @@ body {
   h6 {
     @apply block;
   }
+
   #stories {
     @apply mb-6;
   }
 }
-#root {
-  @apply w-full;
-  @screen md {
-    @apply w-auto;
-  }
-}
+
 .content-component {
   @apply p-8 bg-white rounded;
 }
