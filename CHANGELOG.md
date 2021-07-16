@@ -1,3 +1,14 @@
+# [1.6.0](https://github.com/solfacil/components-ui/compare/1.5.9...1.6.0) (2021-07-16)
+
+
+### Features
+
+* improvement in mobile phone storybook ([b4cbcad](https://github.com/solfacil/components-ui/commit/b4cbcad65f112a4a53ee4ebb1348b5e2a717522c))
+* improvement scroll bar to mobile ([174b747](https://github.com/solfacil/components-ui/commit/174b747e72a33aec4d575d20bcb8c0e607f13d06))
+* lint error ([e06e543](https://github.com/solfacil/components-ui/commit/e06e543ff2fff52ce40d581b1fbd7d8db50f8904))
+
+
+
 ## [1.5.9](https://github.com/solfacil/components-ui/compare/1.5.8...1.5.9) (2021-07-16)
 
 
