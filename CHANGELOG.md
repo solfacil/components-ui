@@ -1,3 +1,14 @@
+# [1.7.0](https://github.com/solfacil/components-ui/compare/1.6.1...1.7.0) (2021-07-16)
+
+
+### Features
+
+* appointments ([853d60e](https://github.com/solfacil/components-ui/commit/853d60e9b4aad2ebb2c30b8e8f8906d533a6cedf))
+* lint error ([1154c88](https://github.com/solfacil/components-ui/commit/1154c88c7fcb5d70ec1cdcd94c62ec2a134a42f9))
+* prettier adjust ([d4851d8](https://github.com/solfacil/components-ui/commit/d4851d83f564d27b129b31f5278e394a97564d07))
+
+
+
 ## [1.6.1](https://github.com/solfacil/components-ui/compare/1.6.0...1.6.1) (2021-07-16)
 
 
