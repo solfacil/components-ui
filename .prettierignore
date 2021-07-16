@@ -2,3 +2,4 @@
 .storybook/*
 dist/*
 CHANGELOG.md
+package.json
