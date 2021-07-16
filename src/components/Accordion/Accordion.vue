@@ -91,6 +91,12 @@ export default {
     };
   },
 
+  watch: {
+    open(val) {
+      this.openItem(val);
+    },
+  },
+
   methods: {
     openItem(current) {
       if (current === this.currentIndex) {
