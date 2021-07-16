@@ -1,3 +1,12 @@
+## [1.5.8](https://github.com/solfacil/components-ui/compare/1.5.7...1.5.8) (2021-07-16)
+
+
+### Bug Fixes
+
+* config props ([3cff42d](https://github.com/solfacil/components-ui/commit/3cff42dcfb4062e579d22deeb3ca1d67cd1a1784))
+
+
+
 ## [1.5.7](https://github.com/solfacil/components-ui/compare/1.5.6...1.5.7) (2021-07-16)
 
 
