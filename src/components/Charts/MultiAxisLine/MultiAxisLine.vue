@@ -1,8 +1,6 @@
 <script>
 import Chart from 'chart.js';
-import { generateChart, mixins } from 'vue-chartjs';
-
-const { reactiveProp } = mixins;
+import { generateChart } from 'vue-chartjs';
 
 Chart.defaults.LineWithLine = Chart.defaults.line;
 Chart.controllers.LineWithLine = Chart.controllers.line.extend({
@@ -35,8 +33,6 @@ export default {
   name: 'MultiAxisLine',
 
   extends: CustomLine,
-
-  mixins: [reactiveProp],
 
   props: {
     /** Data chart label and datasets */
@@ -169,7 +165,7 @@ export default {
   }),
 
   watch: {
-    series: function () {
+    dataChart: function () {
       this.setData();
       this.renderChart(this.chartdata, this.options);
     },
@@ -192,6 +188,8 @@ export default {
 
   methods: {
     setData() {
+      this.chartdata.datasets = [];
+
       this.options.tooltips = {
         mode: 'label',
         intersect: false,
@@ -212,7 +210,7 @@ export default {
 
       this.dataChart.datasets.map((item, i) => {
         this.chartdata.datasets.push({
-          label: 'jesus-' + i,
+          label: 'chart-' + i,
           backgroundColor: 'transparent',
           borderColor: this.colors[i],
           borderWidth: 2,
