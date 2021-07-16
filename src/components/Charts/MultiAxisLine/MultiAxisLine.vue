@@ -214,7 +214,7 @@ export default {
 
       this.dataChart.datasets.map((item, i) => {
         this.chartdata.datasets.push({
-          curve: this.dataChart.type ?? this.dataChart.type[i],
+          curve: this.dataChart.type ? this.dataChart.type[i] : '',
           label: 'chart-' + i,
           backgroundColor: 'transparent',
           borderColor: this.colors[i],
