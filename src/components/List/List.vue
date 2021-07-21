@@ -1,5 +1,5 @@
 <template>
-  <table :id="id" class="sol-table-list">
+  <table v-if="items.length" :id="id" class="sol-table-list">
     <tr v-for="(item, index) in items" :key="index">
       <th>{{ item.title }}</th>
       <td>{{ item.description }}</td>
@@ -28,6 +28,7 @@ export default {
       required: true,
       validator: (obj) => {
         if (!(obj && obj.constructor === Array)) return false;
+        if (obj.length === 0) return true;
         const ListProperties = ['title', 'description'].filter(
           (property) => !Object.prototype.hasOwnProperty.call(obj[0], property),
         );
