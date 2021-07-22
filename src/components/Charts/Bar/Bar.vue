@@ -77,10 +77,10 @@ export default {
       scales: {
         xAxes: [
           {
-            maxBarThickness: 16,
             gridLines: {
               display: false,
               gridLines: true,
+              maxBarThickness: 16,
               offsetGridLines: true,
             },
             ticks: {
@@ -257,7 +257,7 @@ export default {
       this.chartdata.datasets[0].data = this.dataChart.datasets[0];
       this.chartdata.datasets[1].data = this.dataChart.datasets[1];
 
-      this.options.scales.xAxes[0].maxBarThickness =
+      this.chartdata.datasets[0].maxBarThickness =
         this.view === 'month' ? 16 : 32;
 
       this.options.layout.padding.bottom = this.view === 'month' ? 29 : 19;

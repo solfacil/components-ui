@@ -95,8 +95,8 @@ export default {
               offsetGridLines: true,
             },
             ticks: {
-              min: new Date('2021-05-02 01:00'),
-              max: new Date('2021-05-02 21:00'),
+              min: null,
+              max: null,
               display: true,
               beginAtZero: false,
               fontColor: '#666',

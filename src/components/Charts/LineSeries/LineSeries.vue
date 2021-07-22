@@ -76,8 +76,6 @@ export default {
           {
             type: 'time',
             time: {
-              min: new Date('2021-05-02 01:00:00'),
-              max: new Date('2021-05-02 23:00:00'),
               unit: 'hour',
               unitStepSize: 2,
               displayFormats: { hour: 'H:mm' },
@@ -88,6 +86,8 @@ export default {
               offsetGridLines: true,
             },
             ticks: {
+              min: null,
+              max: null,
               display: true,
               beginAtZero: false,
               fontColor: '#666',
@@ -182,6 +182,13 @@ export default {
       this.setData();
       this.renderChart(this.chartdata, this.options);
     },
+  },
+
+  created() {
+    this.options.scales.xAxes[0].ticks.min = new Date(this.dataChart.labels[0]);
+    this.options.scales.xAxes[0].ticks.max = new Date(
+      this.dataChart.labels[this.dataChart.labels.length - 1],
+    );
   },
 
   beforeMount() {
