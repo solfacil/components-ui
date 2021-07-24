@@ -1,7 +1,7 @@
 {
   "name": "@solfacil/components-ui",
   "author": "Solfacil - Fernando Jesus",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "private": false,
   "license": "MIT",
   "description": "Component library based on Vue and Tailwind",
