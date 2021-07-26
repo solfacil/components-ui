@@ -63,3 +63,19 @@ Year.args = {
   inline: true,
   view: 'year',
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  id: 'disabled',
+  inline: true,
+  disabledBefore: new Date('2021-07-20T00:00:00'),
+};
+
+export const RangeDisabled = Template.bind({});
+RangeDisabled.args = {
+  id: 'range',
+  inline: true,
+  range: true,
+  rangeLimit: 45,
+  disabledBefore: new Date('2021-07-20T00:00:00'),
+};
