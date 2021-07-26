@@ -4,7 +4,7 @@
       v-model="time"
       :lang="lang"
       :format="format"
-      :type="view"
+      :type="viewType"
       :inline="inline"
       :range="range"
       :multiple="false"
@@ -97,6 +97,12 @@ export default {
       type: String,
       default: null,
     },
+
+    /** Specify before date that cannot be selected:<br /> Tue Aug 31 2021 00:00:00 GMT-0300 (Brasilia Standard Time)  */
+    disabledBefore: {
+      type: [String, Object, Date],
+      default: null,
+    },
   },
 
   data() {
@@ -151,6 +157,12 @@ export default {
     };
   },
 
+  computed: {
+    viewType() {
+      return this.view;
+    },
+  },
+
   methods: {
     select() {
       this.$emit('input', this.time);
@@ -170,22 +182,30 @@ export default {
     },
 
     disabledDate(cellDate, selectedDate) {
-      if (!this.range || !selectedDate[0]) return;
+      if (!this.disabledBefore && !this.range) return;
+      let selectedDayPlus;
 
-      if (!this.initDate && selectedDate[0])
-        this.initDate = new Date(selectedDate[0]);
+      if (this.range && selectedDate[0]) {
+        if (!this.initDate && selectedDate[0]) {
+          this.initDate = new Date(selectedDate[0]);
+        }
 
-      const selectedDayPlus =
-        this.view === 'date'
-          ? new Date(
-              this.initDate.getTime() +
-                (this.rangeLimit - 1) * 24 * 3600 * 1000,
-            )
-          : new Date(this.initDate).setMonth(
-              this.initDate.getMonth() + this.rangeLimit - 1,
-            );
+        selectedDayPlus =
+          this.view === 'date'
+            ? new Date(
+                this.initDate.getTime() +
+                  (this.rangeLimit - 1) * 24 * 3600 * 1000,
+              )
+            : new Date(this.initDate).setMonth(
+                this.initDate.getMonth() + this.rangeLimit - 1,
+              );
+      }
 
-      return cellDate < this.initDate || cellDate > selectedDayPlus;
+      return (
+        (this.disabledBefore && cellDate < this.disabledBefore) ||
+        (this.range && cellDate < this.initDate) ||
+        (selectedDayPlus && cellDate > selectedDayPlus)
+      );
     },
   },
 };
