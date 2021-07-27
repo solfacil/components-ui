@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils';
 import Alert from './Alert.vue';
 
-// Initalizing wrapper variable
+// Initializing wrapper variable
 let wrapper = null;
 
 // Mount the component to make a wrapper before each test
@@ -14,7 +14,7 @@ beforeEach(() => {
 });
 
 describe('Alert - Unit', () => {
-  it('should mount the component ', () => {
+  it('should mount the component', () => {
     expect(wrapper.vm).toBeDefined();
   });
 
