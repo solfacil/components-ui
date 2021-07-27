@@ -27,6 +27,8 @@ jobs:
           prettier: true
 
   run-test:
+    runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
