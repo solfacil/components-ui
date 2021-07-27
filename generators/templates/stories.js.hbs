@@ -7,9 +7,8 @@ export default {
     demo: {
       control: {
         type: 'select',
-        options: ['1', '2', '3', '4'],
       },
-      defaultValue: '1',
+      options: ['1', '2', '3', '4'],
     },
   },
 
@@ -21,7 +20,7 @@ export default {
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { {{pascalCase name}} },
-  template: '<{{pascalCase name}} v-bind="$props">{{label}}</{{pascalCase name}}>',
+  template: '<{{pascalCase name}} v-bind="$props"></{{pascalCase name}}>',
 });
 
 export const Default = Template.bind({});

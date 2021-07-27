@@ -1,14 +1,20 @@
 import { shallowMount } from '@vue/test-utils';
 import {{pascalCase name}} from './{{pascalCase name}}.vue';
 
+// Initializing wrapper variable
+let wrapper = null;
+
+// Mount the component to make a wrapper before each test
+beforeEach(() => {
+  wrapper = shallowMount({{pascalCase name}}, {
+    propsData: {
+      id: '{{lowerCase name}}',
+    },
+  });
+});
+
 describe('{{pascalCase name}} - Unit', () => {
   it('should mount the component', () => {
-    const wrapper = shallowMount({{pascalCase name}}, {
-      propsData: {
-        id: '{{lowerCase name}}',
-      },
-    });
-
     expect(wrapper.vm).toBeDefined();
   });
 });
