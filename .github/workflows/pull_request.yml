@@ -27,6 +27,7 @@ jobs:
           prettier: true
 
   run-test:
+    name: Run unit test
     runs-on: ubuntu-latest
 
     steps:
