@@ -26,5 +26,11 @@ jobs:
           eslint: true
           prettier: true
 
-      - name: Run tests
-        run: yarn test
+  run-test:
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Run tests
+      run: yarn test
