@@ -26,14 +26,5 @@ jobs:
           eslint: true
           prettier: true
 
-  run-test:
-    name: Run unit test
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: yarn install
-
-    - name: Run tests
-      run: yarn test
+      - name: Run tests
+        run: yarn test
