@@ -12,6 +12,4 @@ requireModule.keys().forEach((fileName) => {
   modules[moduleName] = requireModule(fileName).default;
 });
 
-console.log('sss:', modules);
-
 export default modules;
