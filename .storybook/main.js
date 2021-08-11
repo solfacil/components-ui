@@ -16,6 +16,8 @@ module.exports = {
       '@img': path.resolve(__dirname, '../src/assets/img'),
       '@scss': path.resolve(__dirname, '../src/assets/scss'),
       '@components': path.resolve(__dirname, '../src/components'),
+      '@directives': path.resolve(__dirname, '../src/directives'),
+      '@filters': path.resolve(__dirname, '../src/filters'),
       '~': path.resolve(__dirname, '../node_modules'),
     };
 
