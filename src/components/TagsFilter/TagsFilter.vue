@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" class="tags-filter">
+  <div v-if="tags.length" :id="id" class="tags-filter">
     <template v-for="(tag, index) in tags">
       <span :key="index">
         {{ tag }}
@@ -38,6 +38,10 @@ export default {
     tags(n) {
       this.$emit('input', n);
       this.$emit('delete');
+    },
+
+    value() {
+      this.tags = this.value;
     },
   },
 
