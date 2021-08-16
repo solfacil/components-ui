@@ -18,18 +18,30 @@
         :disabled="disabled"
         :name="name"
         :placeholder="placeholder"
-        :type="type"
+        :type="inputType"
         :value="value"
         @input="$emit('input', $event.target.value)"
         @keyup.enter="handleEvent($event.target.value)"
       />
 
-      <i
-        v-if="type === 'search' && value"
-        class="reset-search"
-        @click="reset"
-      />
-      <i v-if="type === 'search'" class="search" @click="handleEvent(value)" />
+      <slot v-if="inputType === 'search'">
+        <i class="search" @click="handleEvent(value)" />
+        <i v-if="value" class="close" @click="reset" />
+      </slot>
+
+      <slot v-if="controlVisibility">
+        <i
+          v-if="inputType === 'password'"
+          class="show"
+          @click="handleVisibility()"
+        />
+
+        <i
+          v-if="inputType === 'text'"
+          class="hide"
+          @click="handleVisibility()"
+        />
+      </slot>
     </div>
 
     <small v-if="invalid && msgInvalid" class="msg-error">
@@ -108,7 +120,17 @@ export default {
           'url',
         ].includes(value.toLowerCase()),
     },
+
+    /** Allows control over field visibility for types text and password */
+    controlVisibility: {
+      type: Boolean,
+      default: false,
+    },
   },
+
+  data: (instance) => ({
+    inputType: instance.type,
+  }),
 
   methods: {
     reset() {
@@ -121,6 +143,12 @@ export default {
       if (!value && value !== '') return;
 
       this.$emit('eventHandler', value);
+    },
+
+    handleVisibility() {
+      const _type = ['password', 'text'][Number(this.inputType === 'password')];
+
+      this.inputType = _type;
     },
   },
 };
