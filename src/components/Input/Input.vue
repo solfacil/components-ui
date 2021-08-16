@@ -13,8 +13,9 @@
         :class="{
           invalid,
           'is-icon': $slots['icon'],
-          search: type === 'search',
+          search: inputType === 'search',
         }"
+        data-testid="input"
         :disabled="disabled"
         :name="name"
         :placeholder="placeholder"
@@ -26,19 +27,26 @@
 
       <slot v-if="inputType === 'search'">
         <i class="search" @click="handleEvent(value)" />
-        <i v-if="value" class="close" @click="reset" />
+        <i
+          v-if="value"
+          class="close"
+          data-testid="search_clear_icon"
+          @click="reset"
+        />
       </slot>
 
       <slot v-if="controlVisibility">
         <i
           v-if="inputType === 'password'"
           class="show"
+          data-testid="password_show_icon"
           @click="handleVisibility()"
         />
 
         <i
           v-if="inputType === 'text'"
           class="hide"
+          data-testid="password_hide_icon"
           @click="handleVisibility()"
         />
       </slot>
