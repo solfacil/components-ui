@@ -82,12 +82,19 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    /** Specify if elements can be opened simultaneously */
+    openAll: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
     return {
       currentIndex: -1,
       hasOpened: 0,
+      openedItems: [],
     };
   },
 
@@ -99,10 +106,20 @@ export default {
 
   methods: {
     openItem(current) {
-      if (current === this.currentIndex) {
-        this.currentIndex = -10;
+      if (this.openAll) {
+        if (this.openedItems.includes(current)) {
+          this.openedItems = this.openedItems.filter((e) => e !== current);
+        } else {
+          this.openedItems.push(current);
+        }
       } else {
-        this.currentIndex = current;
+        if (current === this.currentIndex) {
+          this.currentIndex = -10;
+          this.openedItems = this.openedItems.filter((e) => e !== current);
+        } else {
+          this.currentIndex = current;
+          this.openedItems.push(current);
+        }
       }
     },
 
@@ -112,15 +129,17 @@ export default {
         this.hasOpened++;
         return index === this.open;
       }
+
+      if (this.openAll) {
+        return this.openedItems.includes(index);
+      }
+
       return this.currentIndex === index;
     },
 
     beforeEnterCurrent: function (_t) {
       _t.style.display = 'block';
-      _t.style.maxHeight = null;
       _t.myHeight = _t.offsetHeight;
-      _t.style.maxHeight = 0;
-      _t.style.display = null;
     },
 
     enterCurrent: function (_t) {
