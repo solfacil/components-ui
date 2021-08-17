@@ -11,7 +11,11 @@
       ]"
     >
       <i v-if="iconNumber">{{ iconNumber }}</i>
-      <span class="txt" :class="{ 'pr-6': close }"><slot /></span>
+
+      <span class="txt" :class="{ 'pr-6': close }">
+        <slot />
+      </span>
+
       <span v-if="close" class="alert-close" @click="hiddenAlert">
         <em>Fechar</em>
       </span>
@@ -66,7 +70,7 @@ export default {
 
     /** Specify the kind of Alert you want to create: <br/> done" | "denied"   | "review"  | "in-progress"  | "approved"  | "message" | "message-line" */
     variant: {
-      default: 'sucess',
+      default: 'success',
       type: String,
       validator: (value) =>
         [

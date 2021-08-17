@@ -7,24 +7,22 @@ export default {
     size: {
       control: {
         type: 'select',
-        options: ['small', 'medium', 'large', 'extra-large'],
       },
-      defaultValue: 'small',
+      options: ['small', 'medium', 'large', 'extra-large'],
     },
 
     variant: {
       control: {
         type: 'select',
-        options: [
-          'success',
-          'error',
-          'warning',
-          'info',
-          'info-neutral',
-          'info-line',
-        ],
       },
-      defaultValue: 'success',
+      options: [
+        'success',
+        'error',
+        'warning',
+        'info',
+        'info-neutral',
+        'info-line',
+      ],
     },
   },
   parameters: {

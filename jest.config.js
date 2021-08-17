@@ -1,7 +1,12 @@
 module.exports = {
   preset: '@vue/cli-plugin-unit-jest',
-  setupFilesAfterEnv: ['<rootDir>/test/setupTestFramework.js'],
-  transform: {
-    '^.+\\.js?$': '<rootDir>/test/transform.js',
+  collectCoverageFrom: [
+    'src/components/**/*.{js,vue}',
+    '!src/**/*.stories.js',
+    '!**/node_modules/**',
+  ],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
+  testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
 };

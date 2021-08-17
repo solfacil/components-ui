@@ -1,3 +1,4 @@
+// Export components
 export { default as Accordion } from '@components/Accordion/Accordion';
 export { default as Alert } from '@components/Alert/Alert';
 export { default as Badge } from '@components/Badge/Badge';
@@ -22,3 +23,9 @@ export { default as TagsFilter } from '@components/TagsFilter/TagsFilter';
 export { default as Toaster } from '@components/Toaster';
 export { default as ToggleSwitch } from '@components/ToggleSwitch/ToggleSwitch';
 export { default as Tooltip } from '@components/Tooltip/Tooltip';
+
+// Export directives
+export { default as Directives } from '@directives/index';
+
+// Export filters
+export { default as Filters } from '@filters/index';

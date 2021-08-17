@@ -3,7 +3,7 @@
 
   .popover {
     @apply bg-white overflow-hidden rounded text-small shadow absolute opacity-0 duration-200 ease-linear transition-all;
-    min-width: 240px;
+    // min-width: 240px;
     visibility: hidden;
 
     .header-popover {
@@ -12,6 +12,7 @@
 
     .content-popover {
       @apply py-4 px-6;
+      width: max-content;
     }
 
     &.popover-top {

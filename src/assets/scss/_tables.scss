@@ -9,7 +9,6 @@
 
   /* Track */
   &::-webkit-scrollbar-track {
-    @apply bg-gray1;
     border-radius: 25px;
   }
 
@@ -23,7 +22,8 @@
     @apply hidden;
   }
 
-  @screen md {
+  // remove scroll table
+  @screen xl {
     overflow: inherit;
   }
 }
