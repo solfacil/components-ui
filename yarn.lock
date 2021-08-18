@@ -1719,20 +1719,6 @@
   resolved "https://registry.yarnpkg.com/@soda/get-current-script/-/get-current-script-1.0.2.tgz#a53515db25d8038374381b73af20bb4f2e508d87"
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
-"@solfacil/components-ui@^1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@solfacil/components-ui/-/components-ui-1.12.0.tgz#ba74a7557359cf81749673b4344fa008b09e9a05"
-  integrity sha512-Ls31SsDQ+71eHVh6ikbW2gQDO0QSuPILUN5n7hf+fmPd5fUT13GfDMWas5rRY/VMi6A9G2e+gRZ/WKw9fPvAxA==
-  dependencies:
-    chart.js "2.9.4"
-    core-js "^3.15.2"
-    html2canvas "^1.1.4"
-    lodash "^4.17.21"
-    tailwindcss "^1.9.6"
-    vue "^2.6.14"
-    vue-chartjs "^3.5.1"
-    vue2-datepicker "^3.9.1"
-
 "@storybook/addon-actions@6.3.6", "@storybook/addon-actions@^6.3.6":
   version "6.3.6"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-6.3.6.tgz#691d61d6aca9c4b3edba50c531cbe4d4139ed451"
