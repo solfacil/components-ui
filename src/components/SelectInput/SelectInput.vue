@@ -166,7 +166,6 @@ export default {
   },
 
   created() {
-    console.log(clickOutside);
     if (this.value) {
       this.options.map((item) => {
         if (item.value === this.value) this.selected = item;

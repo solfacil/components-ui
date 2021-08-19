@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-export default Vue.directive('clickOutside', {
+export default Vue.directive('click-outside', {
   bind: function (el, binding, vnode) {
     window.event = function (event) {
       if (!(el == event.target || el.contains(event.target))) {
