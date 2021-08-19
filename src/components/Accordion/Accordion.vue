@@ -115,10 +115,8 @@ export default {
       } else {
         if (current === this.currentIndex) {
           this.currentIndex = -10;
-          this.openedItems = this.openedItems.filter((e) => e !== current);
         } else {
           this.currentIndex = current;
-          this.openedItems.push(current);
         }
       }
     },
