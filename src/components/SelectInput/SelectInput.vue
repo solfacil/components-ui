@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import { clickOutside } from '@directives';
+import clickOutside from '@directives/clickOutside.js';
 
 export default {
   name: 'SelectInput',
@@ -166,6 +166,7 @@ export default {
   },
 
   created() {
+    console.log(clickOutside);
     if (this.value) {
       this.options.map((item) => {
         if (item.value === this.value) this.selected = item;
