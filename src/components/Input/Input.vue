@@ -25,7 +25,7 @@
         @keyup.enter="handleEvent($event.target.value)"
       />
 
-      <div v-if="inputType === 'search'">
+      <template v-if="inputType === 'search'">
         <i class="search" @click="handleEvent(value)" />
         <i
           v-if="value"
@@ -33,9 +33,9 @@
           data-testid="search_clear_icon"
           @click="reset"
         />
-      </div>
+      </template>
 
-      <div v-if="controlVisibility">
+      <template v-if="controlVisibility">
         <i
           v-if="inputType === 'password'"
           class="show"
@@ -49,7 +49,7 @@
           data-testid="password_hide_icon"
           @click="handleVisibility()"
         />
-      </div>
+      </template>
     </div>
 
     <small v-if="invalid && msgInvalid" class="msg-error">
