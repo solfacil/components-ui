@@ -2,32 +2,30 @@
   @keyframes accordeonAni {
     0% {
       max-height: 0;
+      opacity: 0;
+    }
+
+    25% {
+      max-height: 25%;
+    }
+
+    50% {
+      max-height: 50%;
+    }
+
+    75% {
+      max-height: 75%;
+    }
+
+    100% {
+      max-height: none;
+      opacity: 1;
     }
   }
 
   .accordion-content {
-    &-enter {
-      max-height: 0;
-      display: block;
-    }
-
-    &-enter-active {
-      animation: accordeonAni 0.3s ease;
-      overflow: hidden;
-    }
-
-    &-leave {
-      display: block;
-    }
-
-    &-leave-to {
-      display: block;
-    }
-
     &-leave-active {
-      animation: accordeonAni 0.3s ease;
       animation-direction: reverse;
-      overflow: hidden;
     }
   }
 
@@ -58,7 +56,8 @@
 
     dd,
     dd.small {
-      @apply my-2;
+      @apply my-2 block overflow-hidden;
+      animation: accordeonAni 0.2s ease-in;
     }
   }
 

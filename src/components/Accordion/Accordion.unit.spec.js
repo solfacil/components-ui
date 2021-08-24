@@ -18,6 +18,13 @@ beforeEach(() => {
       id: 'accordion-test',
       headers: ['Example 1', 'Example 2'],
     },
+    data() {
+      return {
+        currentIndex: -1,
+        hasOpened: 0,
+        openedItems: [],
+      };
+    },
     stubs: {
       transition: transitionStub(),
     },
@@ -31,10 +38,9 @@ describe('Accordion - Unit', () => {
 
   it('should enter component with first element open', async () => {
     await wrapper.setProps({ open: 0 });
-    const firstDescription = wrapper.find('dd');
+    await wrapper.find('dt').trigger('click');
 
-    expect(wrapper.props().open).toBeGreaterThanOrEqual(0);
-    expect(firstDescription.attributes().style).toBe('');
+    expect(wrapper.vm.currentIndex).not.toBe(0);
   });
 
   it('should size using prop', async () => {
@@ -47,17 +53,21 @@ describe('Accordion - Unit', () => {
 
   it('should openAll using prop', async () => {
     await wrapper.setProps({ openAll: true });
-    const firstDescription = wrapper.findAll('dd');
 
     await wrapper.findAll('dt').at(0).trigger('click');
     await wrapper.findAll('dt').at(1).trigger('click');
 
     expect(wrapper.props().openAll).toBe(true);
-    expect(firstDescription.at(0).attributes().style).toBe('');
-    expect(firstDescription.at(1).attributes().style).toBe('');
+    expect(wrapper.vm.openedItems).toHaveLength(2);
 
     await wrapper.findAll('dt').at(1).trigger('click');
 
-    expect(firstDescription.at(1).attributes().style).toBe('display: none;');
+    expect(wrapper.vm.openedItems).toHaveLength(1);
+  });
+
+  it('should open an element', async () => {
+    await wrapper.find('dt').trigger('click');
+
+    expect(wrapper.vm.currentIndex).toBe(0);
   });
 });

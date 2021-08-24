@@ -33,11 +33,9 @@
           :key="`transition-${index}`"
           mode="out-in"
           name="accordion-content"
-          @before-enter="beforeEnterCurrent"
-          @enter="enterCurrent"
         >
           <dd
-            v-show="showContent(index)"
+            v-if="showContent(index)"
             :key="`description-${index}`"
             :class="{ small }"
           >
@@ -114,7 +112,7 @@ export default {
         }
       } else {
         if (current === this.currentIndex) {
-          this.currentIndex = -10;
+          this.currentIndex = -1;
         } else {
           this.currentIndex = current;
         }
@@ -133,15 +131,6 @@ export default {
       }
 
       return this.currentIndex === index;
-    },
-
-    beforeEnterCurrent: function (_t) {
-      _t.style.display = 'block';
-      _t.myHeight = _t.offsetHeight;
-    },
-
-    enterCurrent: function (_t) {
-      _t.style.maxHeight = _t.myHeight + 'px';
     },
   },
 };
