@@ -137,6 +137,7 @@ export default {
       default: false,
     },
 
+    /** Specify whether to show a red * at the end of the label or not */
     isRequired: {
       type: Boolean,
       default: false,
