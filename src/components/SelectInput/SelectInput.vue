@@ -5,7 +5,9 @@
     v-click-outside="closeSelect"
     class="sol-select-input"
   >
-    <label v-if="label">{{ label }}</label>
+    <label v-if="label">
+      {{ label }}<span v-if="isRequired" class="required">*</span>
+    </label>
 
     <div
       class="select-main"
@@ -150,6 +152,12 @@ export default {
     value: {
       type: [String, Number],
       default: null,
+    },
+
+    /** Specify whether to show a red * at the end of the label or not */
+    isRequired: {
+      type: Boolean,
+      default: false,
     },
   },
 
