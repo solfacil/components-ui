@@ -154,6 +154,8 @@ export default {
             return `${data.datasets[0].data[tooltipItem['index']]} kwh`;
           },
           footer: function (tooltipItem, data) {
+            if (!data.datasets[1].data.length) return;
+
             return `EST. ${data.datasets[1].data[tooltipItem[0].index]} KWH`;
           },
           title: function (tooltipItem, data) {
