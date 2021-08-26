@@ -10,7 +10,9 @@
     />
 
     <span :class="{ error: invalid && !checked && !disabled }">
-      <span v-if="label">{{ label }}</span>
+      <span v-if="label">
+        {{ label }}<span v-if="isRequired" class="required">*</span>
+      </span>
     </span>
   </label>
 </template>
@@ -60,6 +62,12 @@ export default {
     val: {
       type: [String, Boolean, Number, Object, Array, Function],
       default: undefined,
+    },
+
+    /** Specify whether to show a red * at the end of the label or not */
+    isRequired: {
+      type: Boolean,
+      default: false,
     },
   },
 
