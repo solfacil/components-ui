@@ -19,19 +19,30 @@
     @apply w-8 h-8 border-gray3 border-r border-solid flex items-center justify-center absolute z-10 top-0 left-0;
   }
 
-  i.reset-search {
-    @apply h-6 w-6 block absolute z-10 cursor-pointer;
-    background: url(~@img/icon/icon-close.svg) no-repeat center center;
-    top: 50%;
-    transform: translateY(-50%);
-    left: calc(100% - 72px);
+  label {
+    span.required {
+      @apply text-red3;
+    }
   }
 
-  i.search {
+  i {
     @apply h-6 w-6 block absolute z-10 cursor-pointer;
-    background: url(~@img/icon/icon-search.svg) no-repeat center center;
     top: 50%;
     transform: translateY(-50%);
     left: calc(100% - 40px);
+
+    &.close {
+      background: url(~@img/icon/icon-close.svg) no-repeat center center;
+      left: calc(100% - 72px);
+    }
+    &.search {
+      background: url(~@img/icon/icon-search.svg) no-repeat center center;
+    }
+    &.show {
+      background: url(~@img/icon/icon-show.svg) no-repeat center center;
+    }
+    &.hide {
+      background: url(~@img/icon/icon-hide.svg) no-repeat center center;
+    }
   }
 }
