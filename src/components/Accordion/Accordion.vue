@@ -35,7 +35,7 @@
           name="accordion-content"
         >
           <dd
-            v-if="showContent(index)"
+            v-show="showContent(index)"
             :key="`description-${index}`"
             :class="{ small }"
           >
@@ -105,17 +105,13 @@ export default {
   methods: {
     openItem(current) {
       if (this.openAll) {
-        if (this.openedItems.includes(current)) {
-          this.openedItems = this.openedItems.filter((e) => e !== current);
-        } else {
-          this.openedItems.push(current);
-        }
+        this.openedItems.includes(current)
+          ? (this.openedItems = this.openedItems.filter((e) => e !== current))
+          : this.openedItems.push(current);
       } else {
-        if (current === this.currentIndex) {
-          this.currentIndex = -1;
-        } else {
-          this.currentIndex = current;
-        }
+        current === this.currentIndex
+          ? (this.currentIndex = -1)
+          : (this.currentIndex = current);
       }
     },
 

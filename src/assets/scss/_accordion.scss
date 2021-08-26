@@ -1,5 +1,5 @@
 .accordion {
-  @keyframes accordeonAni {
+  @keyframes accordeonAnimation {
     0% {
       max-height: 0;
       opacity: 0;
@@ -24,7 +24,11 @@
   }
 
   .accordion-content {
+    &-enter-active {
+      animation: accordeonAnimation 0.3s ease-in;
+    }
     &-leave-active {
+      animation: accordeonAnimation 0.3s ease-in;
       animation-direction: reverse;
     }
   }
@@ -57,7 +61,6 @@
     dd,
     dd.small {
       @apply my-2 block overflow-hidden;
-      animation: accordeonAni 0.2s ease-in;
     }
   }
 
