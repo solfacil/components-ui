@@ -32,7 +32,12 @@ or yarn
 yarn add @solfacil/components-ui
 ```
 
-### 2 Available commands
+### 2 Run storybook
+```bash
+yarn run storybook
+```
+
+### Available commands
 
 ```bash
 $ start # Run the development environment
