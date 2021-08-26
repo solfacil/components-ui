@@ -19,6 +19,12 @@
     @apply w-8 h-8 border-gray3 border-r border-solid flex items-center justify-center absolute z-10 top-0 left-0;
   }
 
+  label {
+    span.required {
+      @apply text-red3;
+    }
+  }
+
   i {
     @apply h-6 w-6 block absolute z-10 cursor-pointer;
     top: 50%;

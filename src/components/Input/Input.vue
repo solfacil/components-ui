@@ -1,6 +1,8 @@
 <template>
   <div class="sol-input">
-    <label v-if="label" :for="id">{{ label }}</label>
+    <label v-if="label" :for="id">
+      {{ label }} <span v-if="isRequired" class="required">*</span>
+    </label>
     <div class="wrapper-input">
       <span v-if="!!$slots['icon']" class="icon">
         <!-- @slot Use this slot icon AddOns -->
@@ -131,6 +133,12 @@ export default {
 
     /** Allows control over field visibility for types text and password */
     controlVisibility: {
+      type: Boolean,
+      default: false,
+    },
+
+    /** Specify whether to show a red * at the end of the label or not */
+    isRequired: {
       type: Boolean,
       default: false,
     },
