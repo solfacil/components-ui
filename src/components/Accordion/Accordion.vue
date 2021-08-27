@@ -2,7 +2,11 @@
   <div :id="id" class="accordion">
     <dl>
       <template v-for="(item, index) in headers">
-        <dt :key="`title-${index}`" :class="{ small }" @click="openItem(index)">
+        <dt
+          :key="`title-${index}`"
+          :class="{ small }"
+          @click="handleItem(index)"
+        >
           {{ item }}
 
           <span
@@ -58,8 +62,8 @@ export default {
       required: true,
     },
 
-    /** If the component begins with an element opened. Elements begin with index 0. */
-    open: {
+    /** Specify which if any components initialize open. Elements indexes begins at 0.*/
+    startOpen: {
       type: Number,
       default: -1,
     },
@@ -81,8 +85,8 @@ export default {
       default: false,
     },
 
-    /** Specify if elements can be opened simultaneously */
-    openAll: {
+    /** Specify if multiple elements can be opened simultaneously */
+    openMulti: {
       type: Boolean,
       default: false,
     },
@@ -90,43 +94,37 @@ export default {
 
   data() {
     return {
-      currentIndex: -1,
-      hasOpened: 0,
-      openedItems: [],
+      openItems: [],
     };
   },
 
-  watch: {
-    open(val) {
-      this.openItem(val);
-    },
+  mounted() {
+    if (this.startOpen > -1 && this.headers.length > this.startOpen - 1)
+      this.openItems = [...this.openItems, this.startOpen];
   },
 
   methods: {
-    openItem(current) {
-      if (this.openAll) {
-        this.openedItems.includes(current)
-          ? (this.openedItems = this.openedItems.filter((e) => e !== current))
-          : this.openedItems.push(current);
-      } else {
-        current === this.currentIndex
-          ? (this.currentIndex = -1)
-          : (this.currentIndex = current);
-      }
+    handleItem(index) {
+      const includesItem = this.openItems.includes(index);
+
+      const handleSingle = [
+        () => (this.openItems = [index]),
+        () => (this.openItems = []),
+      ][Number(includesItem)];
+
+      const handleMulti = [
+        () => (this.openItems = [...this.openItems, index]),
+        () =>
+          (this.openItems = this.openItems.filter((item) => item !== index)),
+      ][Number(includesItem)];
+
+      const handleType = [handleSingle, handleMulti][Number(this.openMulti)];
+
+      handleType();
     },
 
     showContent(index) {
-      if (this.hasOpened < 2 && this.open !== -1 && this.open === index) {
-        this.currentIndex = this.open;
-        this.hasOpened++;
-        return index === this.open;
-      }
-
-      if (this.openAll) {
-        return this.openedItems.includes(index);
-      }
-
-      return this.currentIndex === index;
+      return this.openItems.includes(index);
     },
   },
 };
