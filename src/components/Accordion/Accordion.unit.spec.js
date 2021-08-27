@@ -17,12 +17,12 @@ beforeEach(() => {
     propsData: {
       id: 'accordion-test',
       headers: ['Example 1', 'Example 2'],
+      startOpen: -1,
+      openMulti: false,
     },
     data() {
       return {
-        currentIndex: -1,
-        hasOpened: 0,
-        openedItems: [],
+        openItems: [],
       };
     },
     stubs: {
@@ -36,14 +36,24 @@ describe('Accordion - Unit', () => {
     expect(wrapper.vm).toBeDefined();
   });
 
-  it('should enter component with first element open', async () => {
-    await wrapper.setProps({ open: 0 });
-    await wrapper.find('dt').trigger('click');
+  it('Should enter component with first element open', async () => {
+    const _wrapper = shallowMount(Accordion, {
+      propsData: {
+        id: 'accordion-test',
+        headers: ['Example 1', 'Example 2'],
+        startOpen: 0,
+      },
+      data() {
+        return {
+          openItems: [],
+        };
+      },
+    });
 
-    expect(wrapper.vm.currentIndex).not.toBe(0);
+    expect(_wrapper.vm.openItems).toHaveLength(1);
   });
 
-  it('should size using prop', async () => {
+  it('Should apply size prop', async () => {
     await wrapper.setProps({ small: true });
     const firstTitle = wrapper.find('dt');
 
@@ -51,23 +61,28 @@ describe('Accordion - Unit', () => {
     expect(firstTitle.attributes().class).toBe('small');
   });
 
-  it('should openAll using prop', async () => {
-    await wrapper.setProps({ openAll: true });
+  it('Should allow multiple items to be open simultaneously', async () => {
+    await wrapper.setProps({ openMulti: true });
 
     await wrapper.findAll('dt').at(0).trigger('click');
     await wrapper.findAll('dt').at(1).trigger('click');
 
-    expect(wrapper.props().openAll).toBe(true);
-    expect(wrapper.vm.openedItems).toHaveLength(2);
+    expect(wrapper.vm.openItems).toHaveLength(2);
 
     await wrapper.findAll('dt').at(1).trigger('click');
 
-    expect(wrapper.vm.openedItems).toHaveLength(1);
+    expect(wrapper.vm.openItems).toHaveLength(1);
   });
 
-  it('should open an element', async () => {
-    await wrapper.find('dt').trigger('click');
+  it('Should handle openItems on dt click', async () => {
+    const dt = wrapper.find('dt');
 
-    expect(wrapper.vm.currentIndex).toBe(0);
+    await dt.trigger('click');
+
+    expect(wrapper.vm.openItems).toHaveLength(1);
+
+    await dt.trigger('click');
+
+    expect(wrapper.vm.openItems).toHaveLength(0);
   });
 });
