@@ -1,7 +1,7 @@
 <template>
   <div :id="id" class="calendar">
     <DatePicker
-      v-model="time"
+      v-model="dateTime"
       :lang="lang"
       :format="format"
       :type="viewType"
@@ -24,7 +24,12 @@
       </template>
 
       <template #footer>
-        <Button id="select-date" size="small" :disabled="!time" @click="select">
+        <Button
+          id="select-date"
+          size="small"
+          :disabled="!dateTime"
+          @click="select"
+        >
           Ok
         </Button>
 
@@ -58,6 +63,12 @@ export default {
     id: {
       type: String,
       required: true,
+    },
+
+    /** Specify the value - v-model */
+    value: {
+      type: [String, Array],
+      default: null,
     },
 
     /** Active range in calendar */
@@ -107,7 +118,7 @@ export default {
 
   data() {
     return {
-      time: null,
+      dateTime: null,
       initDate: null,
       openCalendar: null,
       selectedDayPlus: null,
@@ -163,15 +174,20 @@ export default {
     },
   },
 
+  mounted() {
+    console.log(this.value);
+    this.dateTime = this.value;
+  },
+
   methods: {
     select() {
-      this.$emit('input', this.time);
-      this.$emit('confirm', this.time);
+      this.$emit('input', this.dateTime);
+      this.$emit('confirm', this.dateTime);
       this.openCalendar = null;
     },
 
     clear() {
-      this.time = null;
+      this.dateTime = null;
       this.initDate = null;
       this.openCalendar = false;
       this.$emit('clear');
