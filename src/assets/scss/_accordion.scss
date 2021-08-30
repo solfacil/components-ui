@@ -1,33 +1,35 @@
 .accordion {
-  @keyframes accordeonAni {
+  @keyframes accordeonAnimation {
     0% {
       max-height: 0;
+      opacity: 0;
+    }
+
+    25% {
+      max-height: 25%;
+    }
+
+    50% {
+      max-height: 50%;
+    }
+
+    75% {
+      max-height: 75%;
+    }
+
+    100% {
+      max-height: none;
+      opacity: 1;
     }
   }
 
   .accordion-content {
-    &-enter {
-      max-height: 0;
-      display: block;
-    }
-
     &-enter-active {
-      animation: accordeonAni 0.3s ease;
-      overflow: hidden;
+      animation: accordeonAnimation 0.3s ease-in;
     }
-
-    &-leave {
-      display: block;
-    }
-
-    &-leave-to {
-      display: block;
-    }
-
     &-leave-active {
-      animation: accordeonAni 0.3s ease;
+      animation: accordeonAnimation 0.3s ease-in;
       animation-direction: reverse;
-      overflow: hidden;
     }
   }
 
@@ -58,7 +60,7 @@
 
     dd,
     dd.small {
-      @apply my-2;
+      @apply my-2 block overflow-hidden;
     }
   }
 
