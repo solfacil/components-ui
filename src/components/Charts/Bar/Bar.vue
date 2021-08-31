@@ -109,6 +109,7 @@ export default {
               fontSize: '12',
               fontFamily: 'Lato, sans-serif',
               padding: 26,
+              beginAtZero: true,
             },
             gridLines: {
               drawBorder: false,
