@@ -12,6 +12,7 @@
       :disabled-date="disabledDate"
       :open="openCalendar"
       :placeholder="placeholder"
+      @click.native="initDate = null"
       @open="open"
       @clear="clear"
     >
@@ -121,7 +122,7 @@ export default {
       dateTime: null,
       initDate: null,
       openCalendar: null,
-      selectedDayPlus: null,
+      limitRangeTop: null,
       lang: {
         formatLocale: {
           monthsShort: [
@@ -175,7 +176,6 @@ export default {
   },
 
   mounted() {
-    console.log(this.value);
     this.dateTime = this.value;
   },
 
@@ -198,29 +198,43 @@ export default {
     },
 
     disabledDate(cellDate, selectedDate) {
-      if (!this.disabledBefore && !this.range) return;
-      let selectedDayPlus;
+      if ((!this.disabledBefore && !this.range) || selectedDate.length !== 1) {
+        return;
+      }
 
-      if (this.range && selectedDate[0]) {
+      let limitRangeTop;
+      let limitRangeDown;
+
+      if (this.range && selectedDate.length === 1) {
         if (!this.initDate && selectedDate[0]) {
           this.initDate = new Date(selectedDate[0]);
         }
 
-        selectedDayPlus =
-          this.view === 'date'
-            ? new Date(
-                this.initDate.getTime() +
-                  (this.rangeLimit - 1) * 24 * 3600 * 1000,
-              )
-            : new Date(this.initDate).setMonth(
-                this.initDate.getMonth() + this.rangeLimit - 1,
-              );
+        if (this.view === 'date') {
+          limitRangeTop = new Date(
+            this.initDate.getTime() + (this.rangeLimit - 1) * 24 * 3600 * 1000,
+          );
+
+          limitRangeDown = new Date(
+            this.initDate.getTime() - (this.rangeLimit - 1) * 24 * 3600 * 1000,
+          );
+        }
+
+        if (this.view !== 'date') {
+          limitRangeTop = new Date(this.initDate).setMonth(
+            this.initDate.getMonth() + this.rangeLimit - 1,
+          );
+
+          limitRangeDown = new Date(this.initDate).setMonth(
+            this.initDate.getMonth() - this.rangeLimit - 1,
+          );
+        }
       }
 
       return (
         (this.disabledBefore && cellDate < this.disabledBefore) ||
-        (this.range && cellDate < this.initDate) ||
-        (selectedDayPlus && cellDate > selectedDayPlus)
+        (limitRangeDown && cellDate < limitRangeDown) ||
+        (limitRangeTop && cellDate > limitRangeTop)
       );
     },
   },
