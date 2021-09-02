@@ -54,6 +54,12 @@ export default {
     };
   },
 
+  watch: {
+    value(val) {
+      this.activeItem = val;
+    },
+  },
+
   beforeMount() {
     this.setActiveLoad();
   },
