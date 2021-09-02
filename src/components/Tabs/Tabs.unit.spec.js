@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
-import Accordion from './Tabs.vue';
+import Tabs from './Tabs.vue';
 
 // Initializing wrapper variable
 let wrapper = null;
 
 // Mount the component to make a wrapper before each test
 beforeEach(() => {
-  wrapper = shallowMount(Accordion, {
+  wrapper = shallowMount(Tabs, {
     propsData: {
       id: 'tabs-test',
       items: [
@@ -28,7 +28,7 @@ beforeEach(() => {
   });
 });
 
-describe('Accordion - Unit', () => {
+describe('Tabs - Unit', () => {
   it('should mount the component', () => {
     expect(wrapper.vm).toBeDefined();
   });
