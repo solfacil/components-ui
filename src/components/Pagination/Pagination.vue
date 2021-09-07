@@ -1,8 +1,8 @@
 <template>
   <div :id="id" class="sol-pagination" :class="{ 'justify-end': alignRight }">
-    <span>{{ initLimit }} - {{ endLimit }} de {{ data.count }}</span>
+    <span>{{ start }} - {{ end }} de {{ totalItems }}</span>
 
-    <div v-if="toggle">
+    <div v-if="isVisibleNav">
       <a
         class="prev"
         :class="{ disabled: !hasPrevPage }"
@@ -66,15 +66,19 @@ export default {
 
   data() {
     return {
-      initLimit: 1,
-      endLimit: null,
+      start: 1,
+      end: null,
       innerValue: 1,
       remainder: null,
     };
   },
 
   computed: {
-    toggle() {
+    totalItems() {
+      return this.data.count;
+    },
+
+    isVisibleNav() {
       return this.data.count > this.data.size;
     },
 
@@ -90,16 +94,16 @@ export default {
   watch: {
     reset: function (val) {
       if (val) {
-        this.initLimit = 1;
+        this.start = 1;
         this.innerValue = 1;
-        this.endLimit = this.pageSize;
+        this.end = this.pageSize;
         this.remainder = this.data.count % this.data.size;
       }
     },
   },
 
   mounted() {
-    this.endLimit =
+    this.end =
       this.pageSize > this.data.count ? this.data.count : this.pageSize;
     this.remainder = this.data.count % this.data.size;
   },
@@ -107,25 +111,23 @@ export default {
   methods: {
     getPage(cursor, type) {
       if (type === 'prev' && this.hasPrevPage) {
-        this.initLimit -= this.pageSize;
-
-        if (this.hasNextPage) {
-          this.endLimit -= this.pageSize;
-        } else {
-          this.endLimit -= this.remainder;
-        }
-
+        this.start -= this.pageSize;
         this.$emit('clickHandler', cursor);
+
+        this.end === this.totalItems
+          ? (this.end -= this.remainder)
+          : (this.end -= this.pageSize);
 
         return;
       }
 
       if (type === 'next' && this.hasNextPage) {
-        this.initLimit += this.pageSize;
-        this.endLimit =
-          this.endLimit + this.pageSize > this.data.count
-            ? this.endLimit + this.remainder
-            : (this.endLimit += this.pageSize);
+        this.start += this.pageSize;
+
+        this.end =
+          this.end + this.pageSize > this.totalItems
+            ? this.end + this.remainder
+            : (this.end += this.pageSize);
 
         this.$emit('clickHandler', cursor);
 
