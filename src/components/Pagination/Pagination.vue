@@ -92,13 +92,14 @@ export default {
   },
 
   watch: {
-    reset: function (val) {
+    reset(val) {
       if (val) {
-        this.start = 1;
-        this.innerValue = 1;
-        this.end = this.pageSize;
-        this.remainder = this.data.count % this.data.size;
+        this.resetAll();
       }
+    },
+
+    pageSize() {
+      this.resetAll();
     },
   },
 
@@ -133,6 +134,13 @@ export default {
 
         return;
       }
+    },
+
+    resetAll() {
+      this.start = 1;
+      this.innerValue = 1;
+      this.end = this.pageSize;
+      this.remainder = this.data.count % this.data.size;
     },
   },
 };
