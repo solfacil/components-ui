@@ -79,7 +79,7 @@ export default {
     },
 
     isVisibleNav() {
-      return this.data.count > this.data.size;
+      return this.data.count > this.pageSize;
     },
 
     hasPrevPage() {
@@ -94,19 +94,17 @@ export default {
   watch: {
     reset(val) {
       if (val) {
-        this.resetAll();
+        this.initialData();
       }
     },
 
     pageSize() {
-      this.resetAll();
+      this.initialData();
     },
   },
 
   mounted() {
-    this.end =
-      this.pageSize > this.data.count ? this.data.count : this.pageSize;
-    this.remainder = this.data.count % this.data.size;
+    this.initialData();
   },
 
   methods: {
@@ -136,11 +134,12 @@ export default {
       }
     },
 
-    resetAll() {
+    initialData() {
       this.start = 1;
       this.innerValue = 1;
-      this.end = this.pageSize;
-      this.remainder = this.data.count % this.data.size;
+      this.end =
+        this.pageSize > this.data.count ? this.data.count : this.pageSize;
+      this.remainder = this.data.count % this.pageSize;
     },
   },
 };

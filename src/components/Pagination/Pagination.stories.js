@@ -23,8 +23,8 @@ const Template = (args, { argTypes }) => ({
         afterCursor: 'g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls',
         beforeCursor:
           'g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls',
-        count: 77,
-        size: 20,
+        count: 37,
+        size: 10,
       },
     };
   },
@@ -38,6 +38,6 @@ Template.bind({});
 
 export const Basic = Template.bind({});
 Basic.args = {
-  pageSize: 20,
+  pageSize: 10,
   id: 'pag-1',
 };
