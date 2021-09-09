@@ -7,13 +7,20 @@ export default {
   extends: Bar,
 
   props: {
-    /** Data chart label and datasets */
-    dataChart: {
+    /** Data chart bar  */
+    dataBar: {
       required: true,
       type: Object,
       validator: function (obj) {
-        return 'labels' in obj && 'datasets' in obj;
+        return 'labels' in obj && 'datasets' in obj && 'status' in obj;
       },
+    },
+
+    /** Data chart Line  */
+    dataLine: {
+      default: () => [],
+      type: Array,
+      validator: (value) => value.constructor === Array,
     },
 
     /** Specify the view of the chart: <br/> "month" | "year" */
@@ -27,24 +34,7 @@ export default {
   data: () => ({
     chartdata: {
       labels: [],
-      datasets: [
-        {
-          backgroundColor: 'rgba(255, 182, 0, 0.64)',
-          hoverBackgroundColor: 'rgba(102, 102, 102, 0.64)',
-          type: 'bar',
-          order: 2,
-          data: [],
-        },
-        {
-          type: 'line',
-          borderColor: '#7DD0FF',
-          fill: false,
-          lineTension: 0.15,
-          order: 1,
-          borderWidth: 2,
-          data: [],
-        },
-      ],
+      datasets: [],
     },
 
     monthNames: [
@@ -180,8 +170,8 @@ export default {
   }),
 
   watch: {
-    dataChart: function () {
-      this.setData();
+    dataBar: function () {
+      this.setDataset();
       this.renderChart(this.chartdata, this.options);
     },
   },
@@ -190,7 +180,7 @@ export default {
     window.viewChart = this.view;
     window.monthNames = this.monthNames;
 
-    this.setData();
+    this.setDataset();
   },
 
   mounted() {
@@ -210,11 +200,11 @@ export default {
           if (this.view === 'month') {
             ctx.fillText(i + 1, x, yAxis.bottom + 29);
 
-            ctx.fillStyle = '#4CD89D';
-
-            if (this.chartdata.datasets[0].data[i] === 0) {
-              ctx.fillStyle = '#FF7771';
-            }
+            ctx.fillStyle = {
+              online: '#4CD89D',
+              offline: '#FFB600',
+              disconnected: '#FF7771',
+            }[this.dataBar.status[i]];
 
             ctx.font = '22px Lato, sans-serif';
             ctx.fillText('•', x, yAxis.bottom + 46);
@@ -227,6 +217,7 @@ export default {
             yAxis.bottom + 29,
           );
         });
+
         ctx.restore();
       },
 
@@ -255,14 +246,30 @@ export default {
   },
 
   methods: {
-    setData() {
-      this.chartdata.labels = this.dataChart.labels;
-      this.chartdata.datasets[0].data = this.dataChart.datasets[0];
-      this.chartdata.datasets[1].data = this.dataChart.datasets[1];
+    setDataset() {
+      this.chartdata.labels = this.dataBar.labels;
+      this.chartdata.datasets.push({
+        backgroundColor: 'rgba(255, 182, 0, 0.64)',
+        hoverBackgroundColor: 'rgba(102, 102, 102, 0.64)',
+        type: 'bar',
+        order: 2,
+        data: this.dataBar.datasets,
+      });
+
+      if (this.dataLine.length) {
+        this.chartdata.datasets.push({
+          type: 'line',
+          borderColor: '#7DD0FF',
+          fill: false,
+          lineTension: 0.15,
+          order: 1,
+          borderWidth: 2,
+          data: this.dataLine,
+        });
+      }
 
       this.chartdata.datasets[0].maxBarThickness =
         this.view === 'month' ? 16 : 32;
-
       this.options.layout.padding.bottom = this.view === 'month' ? 29 : 19;
     },
   },
