@@ -28,7 +28,7 @@ export const Default = Template.bind({});
 Default.args = {
   id: 'chartbar',
   view: 'month',
-  chartdata: {
+  dataBar: {
     labels: [
       '2021-06-01',
       '2021-06-02',
@@ -62,14 +62,44 @@ Default.args = {
       '2021-06-30',
     ],
     datasets: [
-      [
-        46, 40, 37, 40, 50, 30, 40, 46, 30, 50, 0, 51, 40, 46, 50, 0, 40, 40,
-        20, 30, 0, 30, 20, 16, 10, 27, 30, 30, 20, 20,
-      ],
-      [
-        50, 50, 50, 50, 50, 50, 50, 50, 42, 50, 50, 48, 45, 50, 50, 50, 50, 50,
-        50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
-      ],
+      46, 40, 37, 40, 50, 30, 40, 46, 30, 50, 0, 51, 40, 46, 50, 0, 40, 40, 20,
+      30, 0, 30, 20, 16, 10, 27, 30, 30, 20, 20,
+    ],
+    status: [
+      'online',
+      'offline',
+      'disconnected',
+      'online',
+      'offline',
+      'disconnected',
+      'online',
+      'offline',
+      'disconnected',
+      'online',
+      'offline',
+      'disconnected',
+      'online',
+      'offline',
+      'disconnected',
+      'online',
+      'offline',
+      'disconnected',
+      'online',
+      'offline',
+      'disconnected',
+      'online',
+      'offline',
+      'disconnected',
+      'online',
+      'offline',
+      'disconnected',
+      'online',
+      'offline',
+      'disconnected',
     ],
   },
+  dataLine: [
+    50, 50, 50, 50, 50, 50, 50, 50, 42, 50, 50, 48, 45, 50, 50, 50, 50, 50, 50,
+    50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
+  ],
 };

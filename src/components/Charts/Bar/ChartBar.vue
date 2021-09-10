@@ -1,6 +1,6 @@
 <template>
   <div :id="id" ref="bar" class="chart-bar">
-    <Bar :data-chart="chartdata" :view="view" />
+    <Bar :data-bar="dataBar" :data-line="dataLine" :view="view" />
 
     <div class="flex justify-between mt-6">
       <ul class="legend">
@@ -35,13 +35,20 @@ export default {
       required: true,
     },
 
-    /** Data chart label and datasets */
-    chartdata: {
+    /** Data chart bar  */
+    dataBar: {
       required: true,
       type: Object,
       validator: function (obj) {
-        return 'labels' in obj && 'datasets' in obj;
+        return 'labels' in obj && 'datasets' in obj && 'status' in obj;
       },
+    },
+
+    /** Data chart Line  */
+    dataLine: {
+      default: () => [],
+      type: Array,
+      validator: (value) => value.constructor === Array,
     },
 
     /** Specify the view of the chart: <br/> "month" | "year" */
