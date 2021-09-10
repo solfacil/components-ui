@@ -151,18 +151,14 @@ export default {
           },
           title: function (tooltipItem, data) {
             if (window.viewChart === 'month') {
-              const newDate = new Date(
-                `${data.labels[tooltipItem[0]['index']]} 00:00:00`,
-              );
+              const newDate = new Date(data.labels[tooltipItem[0]['index']]);
 
               return new Intl.DateTimeFormat('pt-BR', {
                 timeZone: 'America/Sao_Paulo',
               }).format(newDate);
             }
 
-            return window.monthNames[
-              new Date(`${tooltipItem[0].label} 00:00:00`).getMonth()
-            ];
+            return window.monthNames[new Date(tooltipItem[0].label).getMonth()];
           },
         },
       },
