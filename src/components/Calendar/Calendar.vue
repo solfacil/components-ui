@@ -15,6 +15,7 @@
       @click.native="initDate = null"
       @open="open"
       @clear="clear"
+      @change="handleChange"
     >
       <template #icon-calendar>
         <img src="@img/icon/icon-calendar.svg" />
@@ -28,7 +29,7 @@
         <Button
           id="select-date"
           size="small"
-          :disabled="!dateTime"
+          :disabled="!dateTime || disabledButton"
           @click="select"
         >
           Ok
@@ -123,6 +124,7 @@ export default {
       initDate: null,
       openCalendar: null,
       limitRangeTop: null,
+      disabledButton: true,
       lang: {
         formatLocale: {
           monthsShort: [
@@ -180,6 +182,10 @@ export default {
   },
 
   methods: {
+    handleChange() {
+      this.disabledButton = false;
+    },
+
     select() {
       this.$emit('input', this.dateTime);
       this.$emit('confirm', this.dateTime);
@@ -187,8 +193,7 @@ export default {
     },
 
     clear() {
-      this.dateTime = null;
-      this.initDate = null;
+      this.dateTime = this.value;
       this.openCalendar = false;
       this.$emit('clear');
     },
