@@ -208,7 +208,7 @@ export default {
           }
 
           ctx.fillText(
-            this.monthNames[new Date(`${l} 00:00:00`).getMonth()],
+            this.monthNames[new Date(l).getMonth()],
             x,
             yAxis.bottom + 29,
           );
