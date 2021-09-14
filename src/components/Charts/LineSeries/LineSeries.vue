@@ -184,15 +184,11 @@ export default {
     },
   },
 
-  created() {
-    this.options.scales.xAxes[0].ticks.min = new Date(this.dataChart.labels[0]);
-    this.options.scales.xAxes[0].ticks.max = new Date(
-      this.dataChart.labels[this.dataChart.labels.length - 1],
-    );
-  },
-
   beforeMount() {
     this.setData();
+    const currentDate = this.dataChart.labels[0].split('T')[0];
+    this.options.scales.xAxes[0].ticks.min = `${currentDate} 01:00`;
+    this.options.scales.xAxes[0].ticks.max = `${currentDate} 23:00`;
   },
 
   mounted() {
@@ -206,23 +202,16 @@ export default {
         ctx.font = '22px Lato, sans-serif';
 
         for (let i = 1; i < 24; i = i + 2) {
-          const oldHours = `${chart.data.labels[0].split(' ')[0]} ${this.pad(
+          const oldHours = `${chart.data.labels[0].split('T')[0]} ${this.pad(
             i,
           )}:00:00`;
           const x = xAxis.getPixelForValue(oldHours);
 
-          ctx.fillStyle = '#FFB600';
-
-          chart.data.labels.map((item) => {
-            const hour = item.split(' ')[1];
-
-            if (hour === `${this.pad(i)}:00:00`) {
-              ctx.fillStyle = '#4CD89D';
-              if (chart.data.datasets[0].data[i] === 0) {
-                ctx.fillStyle = '#FF7771';
-              }
-            }
-          });
+          ctx.fillStyle = {
+            online: '#4CD89D',
+            offline: '#FFB600',
+            disconnected: '#FF7771',
+          }[this.dataChart.status[i]];
 
           ctx.fillText('•', x, yAxis.bottom + 36);
         }
