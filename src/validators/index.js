@@ -12,4 +12,4 @@ export default {
   hasLetters: (value) => /^([^a-zA-Z]*)$/.test(value),
   hasAtLeastOneUpperCase: (value) => /[A-Z]+/.test(value),
   hasAtLeastOneSymbol: (value) => /[!@#$%^&*)(+=._-]+/.test(value),
-}
+};
