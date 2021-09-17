@@ -20,6 +20,7 @@ module.exports = {
         '@components': path.join(__dirname, './src/components'),
         '@directives': path.join(__dirname, './src/directives'),
         '@filters': path.join(__dirname, './src/filters'),
+        '@validators': path.join(__dirname, './src/validators'),
       },
     },
   },

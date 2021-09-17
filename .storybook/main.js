@@ -18,6 +18,7 @@ module.exports = {
       '@components': path.resolve(__dirname, '../src/components'),
       '@directives': path.resolve(__dirname, '../src/directives'),
       '@filters': path.resolve(__dirname, '../src/filters'),
+      '@validators': path.join(__dirname, './src/validators'),
       '~': path.resolve(__dirname, '../node_modules'),
     };
 
