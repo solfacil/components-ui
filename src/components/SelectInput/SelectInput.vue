@@ -62,6 +62,7 @@
         <li
           v-for="item in searchItems(searchString)"
           :key="item.value"
+          :class="['', 'select-item'][Number(isItemSelected(item.value))]"
           @click="selectItem(item)"
         >
           {{ item.name }}
@@ -150,7 +151,7 @@ export default {
 
     /** Specify the value of the input - v-model */
     value: {
-      type: [String, Number],
+      type: [String, Number, Array],
       default: null,
     },
 
@@ -196,28 +197,38 @@ export default {
       this.showOptions = false;
     },
 
-    selectItem(option) {
-      if (this.multiselect) {
-        console.log(this.selected);
-        if (this.selected.some((item) => item.value === option.value)) {
+    isItemSelected(value) {
+      return this.selected.some((item) => item.value === value);
+    },
+
+    selectMultiItem(option) {
+      const action = [
+        () => {
+          this.selected.push(option);
+        },
+        () => {
           const filter = this.selected.filter(
-            (item) => item.value === option.value,
+            (item) => item.value !== option.value,
           );
           this.selected = filter;
-        } else {
-          this.selected.push(option);
-        }
+        },
+      ][Number(this.isItemSelected(option.value))];
+      action();
+      this.$emit('input', this.selected);
+      this.$emit('change', this.selected);
+    },
 
-        this.$emit('input', this.selected);
-        this.$emit('change', this.selected);
-
-        return;
-      }
-
-      this.selected = option;
-      this.$emit('input', option.value);
-      this.$emit('change', option.value);
-      this.toggleSelect();
+    selectItem(option) {
+      const action = [
+        () => {
+          this.selected = option;
+          this.$emit('input', option.value);
+          this.$emit('change', option.value);
+          this.toggleSelect();
+        },
+        this.selectMultiItem,
+      ][Number(this.multiselect)];
+      action(option);
     },
 
     searchItems(searchString) {
