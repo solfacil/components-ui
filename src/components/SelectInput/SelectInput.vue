@@ -159,6 +159,11 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    multiselect: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data: () => ({
@@ -179,6 +184,7 @@ export default {
         if (item.value === this.value) this.selected = item;
       });
     }
+    this.selected = []
   },
 
   methods: {
@@ -191,6 +197,21 @@ export default {
     },
 
     selectItem(option) {
+      if (this.multiselect){
+        console.log(this.selected)
+        if(this.selected.some(item => item.value === option.value)) {
+          const filter = this.selected.filter(item => item.value === option.value)
+          this.selected = filter;
+        } else {
+          this.selected.push(option)
+        }
+
+        this.$emit('input', this.selected);
+        this.$emit('change', this.selected);
+
+        return
+      }
+
       this.selected = option;
       this.$emit('input', option.value);
       this.$emit('change', option.value);

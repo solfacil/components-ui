@@ -45,5 +45,6 @@ Default.args = {
   position: 'bottom',
   id: 'select',
   searchable: true,
+  multiselect: true,
   placeholder: 'Selecione',
 };
