@@ -16,5 +16,6 @@
   'approved',
   'message',
   'message-line',
+  'removed',
 ];
 ```
