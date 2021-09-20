@@ -18,6 +18,18 @@
     }
   }
 
+  &.removed {
+    @apply bg-red3 text-white;
+
+    &:before {
+      @apply h-2 block mr-2 rounded-initial;
+
+      width: 10px;
+      background: url(~@img/icon/icon-removed.svg) no-repeat center center/cover;
+      content: '';
+    }
+  }
+
   &.denied {
     @apply bg-red1;
 

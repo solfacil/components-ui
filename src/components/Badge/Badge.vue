@@ -34,6 +34,7 @@ export default {
           'approved',
           'message',
           'message-line',
+          'removed',
         ].includes(value.toLowerCase()),
     },
   },
