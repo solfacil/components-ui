@@ -15,6 +15,7 @@ export default {
           'approved',
           'message',
           'message-line',
+          'removed',
         ],
       },
       defaultValue: 'message-line',
@@ -79,4 +80,11 @@ MessageLine.args = {
   label: 'Message Line',
   variant: 'message-line',
   id: 'done-7',
+};
+
+export const Removed = Template.bind({});
+Removed.args = {
+  label: 'Removed',
+  variant: 'removed',
+  id: 'removed-8',
 };
