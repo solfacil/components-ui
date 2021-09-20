@@ -184,7 +184,7 @@ export default {
         if (item.value === this.value) this.selected = item;
       });
     }
-    this.selected = []
+    this.selected = [];
   },
 
   methods: {
@@ -197,19 +197,21 @@ export default {
     },
 
     selectItem(option) {
-      if (this.multiselect){
-        console.log(this.selected)
-        if(this.selected.some(item => item.value === option.value)) {
-          const filter = this.selected.filter(item => item.value === option.value)
+      if (this.multiselect) {
+        console.log(this.selected);
+        if (this.selected.some((item) => item.value === option.value)) {
+          const filter = this.selected.filter(
+            (item) => item.value === option.value,
+          );
           this.selected = filter;
         } else {
-          this.selected.push(option)
+          this.selected.push(option);
         }
 
         this.$emit('input', this.selected);
         this.$emit('change', this.selected);
 
-        return
+        return;
       }
 
       this.selected = option;
