@@ -69,7 +69,7 @@ export default {
 
     /** Specify the value - v-model */
     value: {
-      type: [String, Array],
+      type: [String, Array, Object, Date],
       default: null,
     },
 
