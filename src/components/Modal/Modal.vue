@@ -92,6 +92,11 @@ export default {
       default: false,
       type: Boolean,
     },
+
+    customCloseAction: {
+      default: () => {},
+      type: Function,
+    },
   },
 
   computed: {
@@ -118,7 +123,7 @@ export default {
     },
 
     closeSelf() {
-      if (!this.selfClose) return;
+      if (!this.selfClose) this.customCloseAction();
 
       this.close();
     },

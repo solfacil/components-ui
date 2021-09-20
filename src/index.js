@@ -29,3 +29,6 @@ export { default as Directives } from '@directives/index';
 
 // Export filters
 export { default as Filters } from '@filters/index';
+
+// Export validators
+export { default as Validators } from '@validators/index';
