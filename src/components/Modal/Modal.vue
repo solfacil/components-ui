@@ -81,18 +81,19 @@ export default {
       default: true,
     },
 
-    /** set max width LG / 600px  */
+    /** Set max width LG / 600px  */
     sizeLg: {
       default: false,
       type: Boolean,
     },
 
-    /** desabled scroll content  */
+    /** Disable scroll content  */
     noScroll: {
       default: false,
       type: Boolean,
     },
 
+    /** Set callback function if selfClose is false */
     customCloseAction: {
       default: () => {},
       type: Function,
@@ -123,7 +124,7 @@ export default {
     },
 
     closeSelf() {
-      if (!this.selfClose) this.customCloseAction();
+      if (!this.selfClose) return this.customCloseAction();
 
       this.close();
     },
