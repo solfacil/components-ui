@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import clickOutside from '@directives/clickOutside.js';
+import clickOutside from '/src/directives/clickOutside.js';
 
 export default {
   name: 'SelectInput',
