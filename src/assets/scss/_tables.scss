@@ -38,6 +38,12 @@ table {
   }
 
   tr {
+    @apply relative z-0;
+
+    &:hover {
+      @apply z-10;
+    }
+
     th {
       @apply bg-gray3 align-middle text-left font-rubik text-small p-4 border-b border-solid border-orangePrimary;
 

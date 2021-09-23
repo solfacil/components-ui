@@ -55,7 +55,7 @@ const Template = (args, { argTypes }) => ({
           visibled: true,
           tooltip: {
             position: 'left',
-            message: 'Produção do sistema sobre a produção estimada',
+            message: 'Produção do sistema',
           },
         },
         { key: 'valor_aquisicao', title: 'Valor de aquisição', sortable: true },
