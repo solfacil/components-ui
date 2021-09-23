@@ -13,14 +13,16 @@ beforeEach(() => {
     },
     propsData: {
       id: 'select-input',
-      options: [{
-        value: '1',
-        name: 'Sou um cliente e quero tirar dúvidas',
-      },
-      {
-        value: '2',
-        name: 'Sou um integrador e quero tirar dúvidas',
-      },],
+      options: [
+        {
+          value: '1',
+          name: 'Sou um cliente e quero tirar dúvidas',
+        },
+        {
+          value: '2',
+          name: 'Sou um integrador e quero tirar dúvidas',
+        },
+      ],
       multiselect: false,
     },
   });
@@ -37,5 +39,4 @@ describe('SelectInput - Unit', () => {
     expect(wrapper.props().id).toBe('select-input');
     expect(container.attributes().id).toBe('select-input');
   });
-
 });

@@ -77,12 +77,12 @@
 </template>
 
 <script>
-import clickOutside from '@/directives/clickOutside.js';
+import clickOutside from '@directives/clickOutside.js';
 
 export default {
   name: 'SelectInput',
 
-   directives: {
+  directives: {
     clickOutside,
   },
 
@@ -173,6 +173,12 @@ export default {
     searchString: '',
   }),
 
+  computed: {
+    isSelectMulti: function () {
+      return Array.isArray(this.selected);
+    },
+  },
+
   watch: {
     options() {
       this.selected = null;
@@ -188,12 +194,6 @@ export default {
     this.selected = [];
   },
 
-  computed: {
-    isSelectMulti: function() {
-      return Array.isArray(this.selected)
-    },
-  },
-
   methods: {
     toggleSelect() {
       this.showOptions = !this.showOptions;
@@ -206,11 +206,12 @@ export default {
     isItemSelected(value) {
       const action = [
         () => {
-          return this.selected === value
-        }, () => {
+          return this.selected === value;
+        },
+        () => {
           return this.selected.some((item) => item.value === value);
-        }
-      ][Number(this.isSelectMulti)]
+        },
+      ][Number(this.isSelectMulti)];
       return action();
     },
 
@@ -223,9 +224,9 @@ export default {
             },
             () => {
               this.selected.push(option);
-            }
-          ][Number(this.isSelectMulti)]
-          isArray()
+            },
+          ][Number(this.isSelectMulti)];
+          isArray();
         },
         () => {
           const filter = this.selected.filter(
