@@ -81,14 +81,16 @@ describe('SelectInput - Unit', () => {
           value: '1',
           name: 'Sou um cliente e quero tirar dúvidas',
         },
-      ]
+      ],
     });
     await wrapper.find('[data-testid="select"]').trigger('click');
     await wrapper.findAll('li').at(0).trigger('click');
-    expect(wrapper.props().options).toStrictEqual([{
-      value: '1',
-      name: 'Sou um cliente e quero tirar dúvidas',
-    }]);
+    expect(wrapper.props().options).toStrictEqual([
+      {
+        value: '1',
+        name: 'Sou um cliente e quero tirar dúvidas',
+      },
+    ]);
   });
 
   it('should selection of multiple item', async () => {
@@ -103,19 +105,20 @@ describe('SelectInput - Unit', () => {
           value: '2',
           name: 'Sou um integrador e quero tirar dúvidas',
         },
-      ]
+      ],
     });
 
     await wrapper.find('[data-testid="select"]').trigger('click');
     await wrapper.findAll('li').at(0).trigger('click');
-    expect(wrapper.props().options).toStrictEqual([{
-      value: '1',
-      name: 'Sou um cliente e quero tirar dúvidas',
-    },
-    {
-      value: '2',
-      name: 'Sou um integrador e quero tirar dúvidas',
-    },]);
+    expect(wrapper.props().options).toStrictEqual([
+      {
+        value: '1',
+        name: 'Sou um cliente e quero tirar dúvidas',
+      },
+      {
+        value: '2',
+        name: 'Sou um integrador e quero tirar dúvidas',
+      },
+    ]);
   });
-
 });
