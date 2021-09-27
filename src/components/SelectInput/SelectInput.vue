@@ -171,6 +171,12 @@ export default {
     options() {
       this.selected = null;
     },
+
+    value() {
+      this.options.map((item) => {
+        if (item.value === this.value) this.selected = item;
+      });
+    },
   },
 
   created() {
