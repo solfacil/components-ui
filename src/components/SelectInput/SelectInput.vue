@@ -169,23 +169,22 @@ export default {
 
   watch: {
     options() {
-      if (!this.value) this.selected = null;
+      const action = [
+        this.assignSelectedFromOptions,
+        () => (this.selected = null),
+      ][Number(!this.value)];
+
+      action();
     },
 
     value() {
-      const selectedValue = this.options.find(
-        (item) => item.value === this.value,
-      );
-      if (selectedValue) this.selected = selectedValue;
+      this.assignSelectedFromOptions();
     },
   },
 
   created() {
     if (this.value) {
-      const selectedValue = this.options.find(
-        (item) => item.value === this.value,
-      );
-      if (selectedValue) this.selected = selectedValue;
+      this.assignSelectedFromOptions();
     }
   },
 
@@ -222,6 +221,13 @@ export default {
           return name.includes(searchQuery);
         });
       } else return this.options;
+    },
+
+    assignSelectedFromOptions() {
+      const selectedValue = this.options.find(
+        (item) => item.value === this.value,
+      );
+      if (selectedValue) this.selected = selectedValue;
     },
   },
 };
