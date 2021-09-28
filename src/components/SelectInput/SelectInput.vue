@@ -176,7 +176,7 @@ export default {
       const selectedValue = this.options.find(
         (item) => item.value === this.value,
       );
-      this.selected = [null, selectedValue][Number(selectedValue)];
+      if (selectedValue) this.selected = selectedValue;
     },
   },
 
@@ -185,7 +185,7 @@ export default {
       const selectedValue = this.options.find(
         (item) => item.value === this.value,
       );
-      this.selected = [null, selectedValue][Number(selectedValue)];
+      if (selectedValue) this.selected = selectedValue;
     }
   },
 
