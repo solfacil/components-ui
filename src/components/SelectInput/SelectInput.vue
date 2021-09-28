@@ -169,21 +169,23 @@ export default {
 
   watch: {
     options() {
-      this.selected = null;
+      if (!this.value) this.selected = null;
     },
 
     value() {
-      this.options.map((item) => {
-        if (item.value === this.value) this.selected = item;
-      });
+      const selectedValue = this.options.find(
+        (item) => item.value === this.value,
+      );
+      this.selected = [null, selectedValue][Number(selectedValue)];
     },
   },
 
   created() {
     if (this.value) {
-      this.options.map((item) => {
-        if (item.value === this.value) this.selected = item;
-      });
+      const selectedValue = this.options.find(
+        (item) => item.value === this.value,
+      );
+      this.selected = [null, selectedValue][Number(selectedValue)];
     }
   },
 
