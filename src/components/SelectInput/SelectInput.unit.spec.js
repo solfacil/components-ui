@@ -71,6 +71,11 @@ describe('SelectInput - Unit', () => {
 
     expect(wrapper.emitted().input.length).toBe(2);
     expect(wrapper.emitted().change.length).toBe(2);
+
+    await wrapper.findAll('li').at(1).trigger('click');
+
+    expect(wrapper.emitted().input.length).toBe(3);
+    expect(wrapper.emitted().change.length).toBe(3);
   });
 
   it('should selection of item', async () => {
@@ -121,4 +126,13 @@ describe('SelectInput - Unit', () => {
       },
     ]);
   });
+
+  it('should close component', async () => {
+    await wrapper.setProps({
+      showOptions: true,
+    });
+    await wrapper.vm.closeSelect();
+    expect(wrapper.vm.showOptions).toBe(false);
+  });
+
 });
