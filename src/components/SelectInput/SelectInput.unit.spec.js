@@ -134,5 +134,4 @@ describe('SelectInput - Unit', () => {
     await wrapper.vm.closeSelect();
     expect(wrapper.vm.showOptions).toBe(false);
   });
-
 });
