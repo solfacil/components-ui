@@ -27,6 +27,7 @@ beforeEach(() => {
     },
     data: () => ({
       showOptions: false,
+      searchString: '',
     }),
   });
 });
@@ -133,5 +134,85 @@ describe('SelectInput - Unit', () => {
     });
     await wrapper.vm.closeSelect();
     expect(wrapper.vm.showOptions).toBe(false);
+  });
+
+  it('should update select on new options', async () => {
+    await wrapper.setProps({
+      value: '1',
+      options: [
+        {
+          name: '',
+          value: '',
+        },
+      ],
+    });
+
+    expect(wrapper.vm.selected).toStrictEqual([]);
+    await wrapper.setProps({
+      options: [
+        {
+          value: '1',
+          name: 'Sou um cliente e quero tirar dúvidas',
+        },
+      ],
+    });
+
+    expect(wrapper.vm.selected).toStrictEqual({
+      name: 'Sou um cliente e quero tirar dúvidas',
+      value: '1',
+    });
+  });
+
+  it('should call asigned selected if have value', async () => {
+    const assignSelectedFromOptions = jest.spyOn(
+      SelectInput.methods,
+      'assignSelectedFromOptions',
+    );
+    // declared new wrapper to have value on created
+    const _wrapper = shallowMount(SelectInput, {
+      propsData: {
+        id: 'select-input-temporary',
+        value: '1',
+        options: [
+          {
+            value: '1',
+            name: 'Sou um cliente e quero tirar dúvidas',
+          },
+          {
+            value: '2',
+            name: 'Sou um integrador e quero tirar dúvidas',
+          },
+        ],
+        multiselect: false,
+      },
+    });
+
+    expect(assignSelectedFromOptions).toHaveBeenCalled();
+  });
+
+  it('should remove special caracteres', async () => {
+    expect(wrapper.vm.removeSpecialCharacters('nômade')).toBe('nomade');
+  });
+
+  it('should return all options', async () => {
+    expect(wrapper.vm.searchItems('')).toStrictEqual([
+      {
+        value: '1',
+        name: 'Sou um cliente e quero tirar dúvidas',
+      },
+      {
+        value: '2',
+        name: 'Sou um integrador e quero tirar dúvidas',
+      },
+    ]);
+  });
+
+  it('should return filtered options', async () => {
+    expect(wrapper.vm.searchItems('cliente')).toStrictEqual([
+      {
+        value: '1',
+        name: 'Sou um cliente e quero tirar dúvidas',
+      },
+    ]);
   });
 });
