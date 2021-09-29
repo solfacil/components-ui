@@ -1,5 +1,6 @@
 <script>
 import { Bar } from 'vue-chartjs';
+import moment from 'moment';
 
 export default {
   name: 'Bar',
@@ -60,7 +61,7 @@ export default {
       layout: {
         padding: {
           bottom: 29,
-          top: 24,
+          top: 0,
         },
       },
       maintainAspectRatio: false,
@@ -115,31 +116,63 @@ export default {
       tooltips: {
         yAlign: 'bottom',
         xAlign: 'center',
-        borderWidth: 1,
-        borderColor: '#E0E0E0',
-        backgroundColor: 'rgba(255, 255, 255, 1)',
-        bodyAlign: 'center',
-        bodyFontColor: '#666',
-        bodyFontSize: 14,
-        bodyFontStyle: '600',
-        bodyFontFamily: 'Lato, sans-serif',
-        displayColors: false,
-        titleFontSize: 10,
-        titleAlign: 'center',
-        titleFontColor: '#666',
-        titleFontFamily: 'Lato, sans-serif',
-        titleFontStyle: '400',
-        footerFontSize: 10,
-        footerFontColor: '#30B4FF',
-        footerFontFamily: 'Lato, sans-serif',
-        footerFontStyle: '600',
-        footerTextAlign: 'center',
-        yPadding: 8,
-        xPadding: 16,
-        custom: function (tooltip) {
-          if (!tooltip) return;
-          tooltip.displayColors = false;
+        position: 'nearest',
+        enabled: false,
+
+        custom: function (tooltipModel) {
+          // Tooltip Element
+          var tooltipEl = document.getElementById('chartjs-tooltip');
+
+          // Create element on first render
+          if (!tooltipEl) {
+            tooltipEl = document.createElement('div');
+            tooltipEl.id = 'chartjs-tooltip';
+            document.body.appendChild(tooltipEl);
+          }
+
+          // Hide if no tooltip
+          if (tooltipModel.opacity === 0) {
+            tooltipEl.classList.add('disabled');
+            return;
+          }
+
+          // Set caret Position
+          tooltipEl.classList.add('chartjs-tooltip');
+          tooltipEl.classList.remove('top');
+
+          // Set Text
+          if (tooltipModel.body) {
+            const title = tooltipModel.title || [];
+            const body = tooltipModel.body.map((item) => item.lines);
+            const footer = tooltipModel.footer || [];
+            let innerHtml = '';
+
+            title.map((title) => {
+              innerHtml += `<span>${title}</span>`;
+            });
+
+            body.map((body) => {
+              innerHtml += `<strong>${body}</strong>`;
+            });
+
+            footer.map((footer) => {
+              innerHtml += `<span class="footer">${footer}</span>`;
+            });
+
+            tooltipEl.innerHTML = innerHtml;
+          }
+
+          // `this` will be the overall tooltip
+          var position = this._chart.canvas.getBoundingClientRect();
+
+          tooltipEl.style = '';
+          tooltipEl.style.left =
+            position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+          tooltipEl.style.top =
+            position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+          tooltipEl.classList.remove('disabled');
         },
+
         callbacks: {
           label: function (tooltipItem, data) {
             return `${data.datasets[0].data[tooltipItem['index']]} kwh`;
@@ -149,16 +182,11 @@ export default {
 
             return `EST. ${data.datasets[1].data[tooltipItem[0].index]} KWH`;
           },
-          title: function (tooltipItem, data) {
-            if (window.viewChart === 'month') {
-              const newDate = new Date(data.labels[tooltipItem[0]['index']]);
-
-              return new Intl.DateTimeFormat('pt-BR', {
-                timeZone: 'America/Sao_Paulo',
-              }).format(newDate);
-            }
-
-            return window.monthNames[new Date(tooltipItem[0].label).getMonth()];
+          title: function (tooltipItem) {
+            return [
+              window.monthNames[moment(tooltipItem[0]['label']).format('M')],
+              moment(tooltipItem[0]['label']).format('DD/MM/YYYY'),
+            ][Number(window.viewChart === 'month')];
           },
         },
       },
@@ -271,3 +299,48 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.chartjs-tooltip {
+  @apply bg-white flex flex-col font-rubik items-center rounded border border-solid border-gray3 absolute duration-200 ease-linear transition-all py-2 px-4;
+  width: 98px;
+  transform: translate(-50%, calc(-50% - 36px));
+
+  &:before,
+  &:after {
+    @apply w-0 h-0 absolute pointer-events-none border-solid border-transparent;
+    top: 100%;
+    left: 50%;
+    content: '';
+    transform: translateX(-50%);
+  }
+
+  &:after {
+    border-top-color: #fff;
+    border-width: 6px;
+  }
+
+  &:before {
+    border-top-color: #e0e0e0;
+    border-width: 7px;
+  }
+
+  &.disabled {
+    @apply opacity-0;
+    visibility: hidden;
+    transform: translate(-50%, calc(-50% - 26px));
+  }
+
+  span {
+    @apply text-tiny font-normal uppercase text-grayPrimary leading-tight;
+
+    &.footer {
+      @apply text-blue3;
+    }
+  }
+
+  strong {
+    @apply font-medium text-small;
+  }
+}
+</style>
