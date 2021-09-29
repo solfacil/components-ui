@@ -186,6 +186,7 @@ describe('SelectInput - Unit', () => {
         multiselect: false,
       },
     });
+    await _wrapper;
 
     expect(assignSelectedFromOptions).toHaveBeenCalled();
   });
