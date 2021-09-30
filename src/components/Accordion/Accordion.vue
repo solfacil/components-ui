@@ -134,10 +134,10 @@ export default {
       const handleArray = () => {
         if (this.startOpen.length > 0 && this.openMulti)
           this.openItems = this.startOpen.reduce((arr, cur) => {
-            const agoravai = this.headers.findIndex((e, i) => {
+            const headerIndex = this.headers.findIndex((e, i) => {
               return i === cur;
             });
-            arr = [...arr, agoravai];
+            arr = [...arr, headerIndex];
             return arr;
           }, []);
       };
