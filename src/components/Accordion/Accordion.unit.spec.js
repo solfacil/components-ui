@@ -17,7 +17,7 @@ beforeEach(() => {
     propsData: {
       id: 'accordion-test',
       headers: ['Example 1', 'Example 2'],
-      startOpen: [],
+      startOpen: -1,
       openMulti: false,
     },
     data() {
@@ -41,7 +41,7 @@ describe('Accordion - Unit', () => {
       propsData: {
         id: 'accordion-test',
         headers: ['Example 1', 'Example 2'],
-        startOpen: [0],
+        startOpen: 0,
       },
       data() {
         return {
@@ -51,6 +51,25 @@ describe('Accordion - Unit', () => {
     });
 
     expect(_wrapper.vm.openItems).toHaveLength(1);
+  });
+
+  it('Should enter component with first two elements open', async () => {
+
+    const _wrapper = shallowMount(Accordion, {
+      propsData: {
+        id: 'accordion-test',
+        headers: ['Example 1', 'Example 2'],
+        startOpen: [0, 1],
+        openMulti: true
+      },
+      data() {
+        return {
+          openItems: [],
+        };
+      },
+    });
+
+    expect(_wrapper.vm.openItems).toHaveLength(2);
   });
 
   it('Should apply size prop', async () => {
