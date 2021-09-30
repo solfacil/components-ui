@@ -53,6 +53,24 @@ describe('Accordion - Unit', () => {
     expect(_wrapper.vm.openItems).toHaveLength(1);
   });
 
+  it('Should enter component with first two elements open', async () => {
+    const _wrapper = shallowMount(Accordion, {
+      propsData: {
+        id: 'accordion-test',
+        headers: ['Example 1', 'Example 2'],
+        startOpen: [0, 1],
+        openMulti: true,
+      },
+      data() {
+        return {
+          openItems: [],
+        };
+      },
+    });
+
+    expect(_wrapper.vm.openItems).toHaveLength(2);
+  });
+
   it('Should apply size prop', async () => {
     await wrapper.setProps({ small: true });
     const firstTitle = wrapper.find('dt');
