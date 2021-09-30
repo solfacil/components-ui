@@ -54,13 +54,12 @@ describe('Accordion - Unit', () => {
   });
 
   it('Should enter component with first two elements open', async () => {
-
     const _wrapper = shallowMount(Accordion, {
       propsData: {
         id: 'accordion-test',
         headers: ['Example 1', 'Example 2'],
         startOpen: [0, 1],
-        openMulti: true
+        openMulti: true,
       },
       data() {
         return {
