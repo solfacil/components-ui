@@ -62,9 +62,9 @@ export default {
       required: true,
     },
 
-    /** Specify which if any components initialize open. Elements indexes begins at 0.*/
+    /** Specify which if any components initialize open. Elements indexes begins at 0. Can be a number or an array. */
     startOpen: {
-      type: Number,
+      type: [Number, Array],
       default: -1,
     },
 
@@ -99,8 +99,7 @@ export default {
   },
 
   mounted() {
-    if (this.startOpen > -1 && this.headers.length > this.startOpen - 1)
-      this.openItems = [...this.openItems, this.startOpen];
+    this.handleStartOpen();
   },
 
   methods: {
@@ -125,6 +124,29 @@ export default {
 
     showContent(index) {
       return this.openItems.includes(index);
+    },
+
+    handleStartOpen() {
+      const handleNumber = () => {
+        if (this.startOpen >= 0 && this.startOpen < this.headers.length)
+          this.openItems = [...this.openItems, this.startOpen];
+      };
+      const handleArray = () => {
+        if (this.startOpen.length > 0 && this.openMulti)
+          this.openItems = this.startOpen.reduce((arr, cur) => {
+            const agoravai = this.headers.findIndex((e, i) => {
+              return i === cur;
+            });
+            arr = [...arr, agoravai];
+            return arr;
+          }, []);
+      };
+
+      const handleType = [handleNumber, handleArray][
+        Number(typeof this.startOpen !== 'number')
+      ];
+
+      handleType();
     },
   },
 };

@@ -17,7 +17,7 @@ beforeEach(() => {
     propsData: {
       id: 'accordion-test',
       headers: ['Example 1', 'Example 2'],
-      startOpen: -1,
+      startOpen: [],
       openMulti: false,
     },
     data() {
@@ -41,7 +41,7 @@ describe('Accordion - Unit', () => {
       propsData: {
         id: 'accordion-test',
         headers: ['Example 1', 'Example 2'],
-        startOpen: 0,
+        startOpen: [0],
       },
       data() {
         return {
