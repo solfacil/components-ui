@@ -9,10 +9,6 @@
     @apply border border-red2;
   }
 
-  &:hover {
-    @apply bg-gray1;
-  }
-
   label {
     span.required {
       @apply text-red3;
