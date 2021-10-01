@@ -14,5 +14,6 @@ export default {
   phone: (value) => /\+\d{2} \(\d{2}\) \d{4,5}-\d{4}/.test(value),
   hasLetters: (value) => /^([^a-zA-Z]*)$/.test(value),
   hasAtLeastOneUpperCase: (value) => /[A-Z]+/.test(value),
+  hasAtLeastOneLowerCase: (value) => /[a-z]+/.test(value),
   hasAtLeastOneSymbol: (value) => /[!@#$%^&*)(+=._-]+/.test(value),
 };
