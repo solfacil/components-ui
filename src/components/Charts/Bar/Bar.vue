@@ -302,8 +302,7 @@ export default {
 
 <style lang="scss">
 .chartjs-tooltip {
-  @apply bg-white flex flex-col font-rubik items-center rounded border border-solid border-gray3 absolute duration-200 ease-linear transition-all py-2 px-4;
-  width: 98px;
+  @apply bg-white inline-flex flex-col font-rubik items-center rounded border border-solid border-gray3 absolute duration-200 ease-linear transition-all py-2 px-4;
   transform: translate(-50%, calc(-50% - 36px));
 
   &:before,
