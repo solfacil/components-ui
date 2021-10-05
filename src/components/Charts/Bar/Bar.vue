@@ -61,7 +61,7 @@ export default {
       layout: {
         padding: {
           bottom: 29,
-          top: 0,
+          top: 16,
         },
       },
       maintainAspectRatio: false,
