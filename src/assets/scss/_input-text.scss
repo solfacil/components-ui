@@ -13,6 +13,10 @@
     &.search {
       @apply shadow-none;
     }
+
+    &.hasIconVisibility {
+      @apply pr-8;
+    }
   }
 
   .icon {
