@@ -60,6 +60,10 @@ export default {
     },
 
     options: {
+      hover: {
+        animationDuration: 0,
+      },
+      responsiveAnimationDuration: 0,
       responsive: true,
       legend: {
         display: false,
@@ -228,16 +232,17 @@ export default {
         ctx.font = '22px Lato, sans-serif';
 
         for (let i = 1; i < 24; i = i + 2) {
-          const oldHours = `${chart.data.labels[0].split('T')[0]} ${this.pad(
+          const oldHours = `${chart.data.labels[0].split('T')[0]}T${this.pad(
             i,
           )}:00:00`;
           const x = xAxis.getPixelForValue(oldHours);
+          const index = chart.data.labels.indexOf(oldHours);
 
           ctx.fillStyle = {
             online: '#4CD89D',
             offline: '#FFB600',
             disconnected: '#FF7771',
-          }[this.dataChart.status[i]];
+          }[this.dataChart.status[index]];
 
           ctx.fillText('•', x, yAxis.bottom + 36);
         }
