@@ -1,2 +1,11 @@
 .textarea {
+  textarea {
+    @apply py-3 resize-none h-full;
+  }
+
+  label {
+    span.required {
+      @apply text-red3;
+    }
+  }
 }

@@ -9,6 +9,8 @@ beforeEach(() => {
   wrapper = shallowMount(Textarea, {
     propsData: {
       id: 'textarea',
+      disabled: false,
+      label: 'Textarea',
     },
   });
 });

@@ -11,7 +11,7 @@
         :class="{
           invalid,
         }"
-        rows="8"
+        :rows="rows"
         data-testid="textarea"
         :disabled="disabled"
         :name="name"
@@ -85,6 +85,12 @@ export default {
     isRequired: {
       type: Boolean,
       default: false,
+    },
+
+    /** Number of rows */
+    rows: {
+      type: Number,
+      default: 8,
     },
   },
 

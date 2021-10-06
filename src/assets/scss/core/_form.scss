@@ -65,10 +65,6 @@ input[type='url'] {
   }
 }
 
-textarea {
-  @apply py-3 resize-none;
-}
-
 label {
   @apply text-small leading-tight font-rubik block mb-1 text-grayPrimary;
 }
