@@ -16,6 +16,7 @@
           invalid,
           'is-icon': $slots['icon'],
           search: inputType === 'search',
+          hasIconVisibility: controlVisibility,
         }"
         data-testid="input"
         :disabled="disabled"
