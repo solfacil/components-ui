@@ -16,6 +16,7 @@
         'bg-gray1 rounded-t': showOptions,
         'error-input': invalid,
         disabled,
+        multiselect,
       }"
       @click="toggleSelect"
     >
@@ -24,10 +25,24 @@
         <slot name="icon"></slot>
       </span>
 
-      <span :class="{ placeholder: !selected, 'is-icon': !!$slots['icon'] }">
-        {{ selected ? selected.name : placeholder }}
+      <span
+        v-if="placeholder && !selected"
+        :class="{ placeholder: true, 'is-icon': !!$slots['icon'] }"
+      >
+        {{ placeholder }}
       </span>
-
+      <span v-else-if="!multiselect">{{ selected.name }}</span>
+      <div v-else class="selected-wrapper">
+        <template v-for="(item, index) in selected">
+          <span :key="index" class="tag">
+            {{ item.name }}
+            <img
+              src="@img/icon/icon-close-black.svg"
+              @click.prevent="removeSelected(index)"
+            />
+          </span>
+        </template>
+      </div>
       <svg
         width="24"
         height="24"
@@ -63,7 +78,6 @@
         <li
           v-for="item in searchItems(searchString)"
           :key="item.value"
-          :class="['', 'select-item'][Number(isItemSelected(item.value))]"
           @click="selectItem(item)"
         >
           {{ item.name }}
@@ -243,6 +257,21 @@ export default {
           this.selected = filter;
         },
       ][Number(this.isItemSelected(option.value))];
+      action();
+      this.$emit('input', this.selected);
+      this.$emit('change', this.selected);
+      this.toggleSelect();
+    },
+
+    removeSelected(index) {
+      const action = [
+        () => {
+          this.selected = null;
+        },
+        () => {
+          this.selected.splice(index, 1);
+        },
+      ][Number(this.isSelectMulti)];
       action();
       this.$emit('input', this.selected);
       this.$emit('change', this.selected);
