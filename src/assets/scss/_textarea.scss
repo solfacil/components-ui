@@ -1,6 +1,13 @@
 .textarea {
+  .large {
+    @apply text-modest;
+  }
   textarea {
-    @apply py-3 resize-none h-full;
+    @apply py-3 h-full;
+
+    &.hide-resize {
+      resize: none;
+    }
   }
 
   label {

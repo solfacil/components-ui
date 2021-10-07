@@ -1,6 +1,6 @@
 <template>
   <div class="textarea">
-    <label v-if="label" :for="id">
+    <label v-if="label" :for="id" :class="sizeClass">
       {{ label }} <span v-if="isRequired" class="required">*</span>
     </label>
 
@@ -8,9 +8,13 @@
       <textarea
         :id="id"
         ref="solTextarea"
-        :class="{
-          invalid,
-        }"
+        :class="[
+          {
+            invalid,
+          },
+          sizeClass,
+          hideResize,
+        ]"
         :rows="rows"
         data-testid="textarea"
         :disabled="disabled"
@@ -90,12 +94,36 @@ export default {
     /** Number of rows */
     rows: {
       type: Number,
-      default: 8,
+      default: 6,
+    },
+
+    /** Is resizable? default:false */
+    resizable: {
+      type: Boolean,
+      default: false,
+    },
+
+    /** Large variation, 16px text */
+    large: {
+      type: Boolean,
+      default: false,
     },
   },
 
   data() {
     return {};
+  },
+
+  computed: {
+    /** set large class for large prop */
+    sizeClass() {
+      return this.large ? 'large' : '';
+    },
+
+    /** set hide-resize class for resize prop false */
+    hideResize() {
+      return !this.resizable ? 'hide-resize' : '';
+    },
   },
 
   methods: {
