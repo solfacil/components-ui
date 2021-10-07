@@ -99,12 +99,6 @@ export default {
   },
 
   methods: {
-    reset() {
-      this.$emit('input', '');
-
-      this.$emit('eventHandler', '');
-    },
-
     handleEvent(value) {
       if (!value && value !== '') return;
 
