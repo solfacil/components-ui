@@ -25,5 +25,4 @@ export const Default = Template.bind({});
 Default.args = {
   id: 'textarea',
   label: 'Textarea',
-  large: true,
 };
