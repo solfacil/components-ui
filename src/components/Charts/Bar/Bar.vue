@@ -302,6 +302,8 @@ export default {
     },
 
     handle(_, i) {
+      if (!i.length) return;
+
       const e = i[0];
       var x_value = this.chartdata.labels[e._index];
 
