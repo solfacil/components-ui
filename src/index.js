@@ -20,6 +20,7 @@ export { default as SelectInput } from '@components/SelectInput/SelectInput';
 export { default as SortedTable } from '@components/SortedTable/SortedTable';
 export { default as Tabs } from '@components/Tabs/Tabs';
 export { default as TagsFilter } from '@components/TagsFilter/TagsFilter';
+export { default as Textarea } from '@components/Textarea/Textarea';
 export { default as Toaster } from '@components/Toaster';
 export { default as ToggleSwitch } from '@components/ToggleSwitch/ToggleSwitch';
 export { default as Tooltip } from '@components/Tooltip/Tooltip';
