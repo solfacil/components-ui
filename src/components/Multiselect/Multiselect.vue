@@ -35,7 +35,7 @@
             {{ tag.name }}
             <img
               src="@img/icon/icon-close.svg"
-              @click.prevent="removeSelectedIndex(index)"
+              @click.stop.prevent="removeSelectedIndex(index)"
             />
           </span>
         </template>
