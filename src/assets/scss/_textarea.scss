@@ -1,0 +1,18 @@
+.textarea {
+  .large {
+    @apply text-modest;
+  }
+  textarea {
+    @apply py-3 h-full;
+
+    &.hide-resize {
+      resize: none;
+    }
+  }
+
+  label {
+    span.required {
+      @apply text-red3;
+    }
+  }
+}

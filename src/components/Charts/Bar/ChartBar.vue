@@ -1,6 +1,11 @@
 <template>
   <div :id="id" ref="bar" class="chart-bar">
-    <Bar :data-bar="dataBar" :data-line="dataLine" :view="view" />
+    <Bar
+      :data-bar="dataBar"
+      :data-line="dataLine"
+      :view="view"
+      @handle="handle"
+    />
 
     <div class="flex justify-between mt-6">
       <ul class="legend">
@@ -69,6 +74,10 @@ export default {
         }.jpeg`;
         link.click();
       });
+    },
+
+    handle(val) {
+      this.$emit('handle', val);
     },
   },
 };

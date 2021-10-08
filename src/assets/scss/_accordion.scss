@@ -60,7 +60,7 @@
 
     dd,
     dd.small {
-      @apply my-2 block overflow-hidden;
+      @apply mt-2 block overflow-hidden;
     }
   }
 
@@ -71,7 +71,7 @@
       }
 
       dd {
-        @apply my-4;
+        @apply mt-4;
       }
     }
   }

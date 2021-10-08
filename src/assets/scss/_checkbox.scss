@@ -8,8 +8,9 @@
 .title-label {
   @apply text-small;
 }
+
 label {
-  @apply select-none inline-flex items-center gap-2 text-small cursor-pointer font-normal;
+  @apply select-none inline-flex items-center gap-2 text-small cursor-pointer font-normal m-0;
 
   &.rtl {
     @apply flex-row-reverse;
@@ -19,26 +20,31 @@ label {
     // hide the default browser checkbox, but keep with a size for accessibility
     @apply opacity-0 w-1 h-1 absolute;
   }
-  .custom-checkbox {
-    @apply inline-grid place-items-center border border-gray3 rounded shadow-sm bg-white duration-200 ease-linear transition-all;
-    min-width: 22px;
-    min-height: 22px;
 
-    &.checked {
-      @apply bg-orangePrimary;
+  span {
+    @apply leading-normal;
+
+    &.custom-checkbox {
+      @apply inline-grid place-items-center border border-gray3 rounded shadow-sm bg-white duration-200 ease-linear transition-all;
+      min-width: 22px;
+      min-height: 22px;
+
+      &.checked {
+        @apply bg-orangePrimary;
+      }
+
+      &.disabled {
+        @apply bg-gray2;
+      }
+
+      &.invalid {
+        @apply border-red2;
+      }
     }
 
     &.disabled {
-      @apply bg-gray2;
+      @apply text-gray4;
     }
-
-    &.invalid {
-      @apply border-red2;
-    }
-  }
-
-  span.disabled {
-    @apply text-gray4;
   }
 
   input:hover + .custom-checkbox:not(.checked):not(.disabled) {

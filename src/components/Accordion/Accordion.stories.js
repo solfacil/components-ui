@@ -44,6 +44,5 @@ Default.parameters = {
 
 Default.args = {
   id: 'accordion-example',
-  open: 0,
   headers: ['Example 1', 'Example 2'],
 };
