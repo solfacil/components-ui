@@ -266,6 +266,10 @@ export default {
       },
     });
 
+    this.options.onClick = this.handle;
+
+    // onClick: this.handle,
+
     this.renderChart(this.chartdata, this.options);
   },
 
@@ -295,6 +299,13 @@ export default {
       this.chartdata.datasets[0].maxBarThickness =
         this.view === 'month' ? 16 : 32;
       this.options.layout.padding.bottom = this.view === 'month' ? 29 : 19;
+    },
+
+    handle(_, i) {
+      const e = i[0];
+      var x_value = this.chartdata.labels[e._index];
+
+      this.$emit('handle', x_value);
     },
   },
 };
