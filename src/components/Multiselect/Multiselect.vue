@@ -34,7 +34,7 @@
           <span :key="index" class="tag">
             {{ tag.name }}
             <img
-              src="@img/icon/icon-close-black.svg"
+              src="@img/icon/icon-close.svg"
               @click.prevent="removeSelectedIndex(index)"
             />
           </span>

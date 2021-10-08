@@ -137,10 +137,18 @@
   }
 
   .tag {
-    @apply bg-gray1 px-2 py-1 rounded text-grayPrimary text-slight flex gap-3 items-center;
+    @apply bg-gray2 px-2 py-1 rounded text-grayPrimary text-slight flex gap-3 items-center transition-all duration-200 ease-linear;
 
     img {
-      @apply p-1 h-4 rounded cursor-pointer bg-gray3;
+      @apply p-1 h-4 w-4 rounded cursor-pointer bg-gray3 transition-all duration-200 ease-linear;
+    }
+
+    &:hover {
+      @apply bg-gray3;
+
+      img {
+        @apply bg-gray4;
+      }
     }
   }
 }

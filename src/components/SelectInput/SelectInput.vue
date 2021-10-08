@@ -11,12 +11,10 @@
 
     <div
       class="select-main"
-      data-testid="select"
       :class="{
         'bg-gray1 rounded-t': showOptions,
         'error-input': invalid,
         disabled,
-        multiselect,
       }"
       @click="toggleSelect"
     >
@@ -25,24 +23,10 @@
         <slot name="icon"></slot>
       </span>
 
-      <span
-        v-if="placeholder && !selected"
-        :class="{ placeholder: true, 'is-icon': !!$slots['icon'] }"
-      >
-        {{ placeholder }}
+      <span :class="{ placeholder: !selected, 'is-icon': !!$slots['icon'] }">
+        {{ selected ? selected.name : placeholder }}
       </span>
-      <span v-else-if="!multiselect">{{ selected.name }}</span>
-      <div v-else class="selected-wrapper">
-        <template v-for="(item, index) in selected">
-          <span :key="index" class="tag">
-            {{ item.name }}
-            <img
-              src="@img/icon/icon-close-black.svg"
-              @click.prevent="removeSelected(index)"
-            />
-          </span>
-        </template>
-      </div>
+
       <svg
         width="24"
         height="24"
@@ -166,17 +150,12 @@ export default {
 
     /** Specify the value of the input - v-model */
     value: {
-      type: [String, Number, Array],
+      type: [String, Number],
       default: null,
     },
 
     /** Specify whether to show a red * at the end of the label or not */
     isRequired: {
-      type: Boolean,
-      default: false,
-    },
-
-    multiselect: {
       type: Boolean,
       default: false,
     },
@@ -188,18 +167,12 @@ export default {
     searchString: '',
   }),
 
-  computed: {
-    isSelectMulti: function () {
-      return Array.isArray(this.selected);
-    },
-  },
-
   watch: {
     options() {
       const action = [
-        () => (this.selected = null),
         this.assignSelectedFromOptions,
-      ][Number(!!this.value)];
+        () => (this.selected = null),
+      ][Number(!this.value)];
 
       action();
     },
@@ -213,7 +186,6 @@ export default {
     if (this.value) {
       this.assignSelectedFromOptions();
     }
-    this.selected = [];
   },
 
   methods: {
@@ -225,84 +197,26 @@ export default {
       this.showOptions = false;
     },
 
-    isItemSelected(value) {
-      const action = [
-        () => {
-          return this.selected === value;
-        },
-        () => {
-          return this.selected.some((item) => item.value === value);
-        },
-      ][Number(this.isSelectMulti)];
-      return action();
-    },
-
-    selectMultiItem(option) {
-      const action = [
-        () => {
-          const isArray = [
-            () => {
-              this.selected = [option];
-            },
-            () => {
-              this.selected.push(option);
-            },
-          ][Number(this.isSelectMulti)];
-          isArray();
-        },
-        () => {
-          const filter = this.selected.filter(
-            (item) => item.value !== option.value,
-          );
-          this.selected = filter;
-        },
-      ][Number(this.isItemSelected(option.value))];
-      action();
-      this.$emit('input', this.selected);
-      this.$emit('change', this.selected);
-      this.toggleSelect();
-    },
-
-    removeSelected(index) {
-      const action = [
-        () => {
-          this.selected = null;
-        },
-        () => {
-          this.selected.splice(index, 1);
-        },
-      ][Number(this.isSelectMulti)];
-      action();
-      this.$emit('input', this.selected);
-      this.$emit('change', this.selected);
-    },
-
     selectItem(option) {
-      const action = [
-        () => {
-          this.selected = option;
-          this.$emit('input', option.value);
-          this.$emit('change', option.value);
-          this.toggleSelect();
-        },
-        this.selectMultiItem,
-      ][Number(this.multiselect)];
-      action(option);
-    },
-
-    removeSpecialCharacters(v) {
-      return v
-        .normalize('NFD')
-        .replace(/[^\w\d\s]/gu, '')
-        .toLowerCase();
+      this.selected = option;
+      this.$emit('input', option.value);
+      this.$emit('change', option.value);
+      this.toggleSelect();
     },
 
     searchItems(searchString) {
       if (searchString) {
-        const searchQuery = this.removeSpecialCharacters(searchString);
+        const specialCharacters = (v) => {
+          return v
+            .normalize('NFD')
+            .replace(/[^\w\d\s]/gu, '')
+            .toLowerCase();
+        };
+
+        const searchQuery = specialCharacters(searchString);
 
         return this.options.filter((item) => {
-          const name = this.removeSpecialCharacters(item.name);
+          const name = specialCharacters(item.name);
 
           return name.includes(searchQuery);
         });

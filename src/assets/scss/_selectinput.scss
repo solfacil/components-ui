@@ -9,6 +9,10 @@
     @apply border border-red2;
   }
 
+  &:hover {
+    @apply bg-gray1;
+  }
+
   label {
     span.required {
       @apply text-red3;
@@ -16,15 +20,10 @@
   }
 
   .select-main {
-    /* @apply bg-white flex p-2 items-center border border-gray3 duration-200 ease-linear transition-all min-h-8 rounded;
-
-    .selected-wrapper {
-      @apply flex flex-wrap gap-2;
-    } */
     @apply shadow-sm bg-white flex pr-3 items-center border border-gray3 duration-200 ease-linear transition-all h-8 rounded;
 
-    & > span {
-      @apply text-small overflow-hidden whitespace-no-wrap;
+    span {
+      @apply text-small overflow-hidden whitespace-no-wrap pl-4;
       text-overflow: ellipsis;
       max-width: calc(100% - 32px);
 
@@ -44,7 +43,6 @@
 
     svg {
       @apply stroke-current text-grayPrimary w-6 h-6 ml-auto;
-      min-width: 24px;
       transition: all 200ms;
       transition-timing-function: linear;
 
@@ -62,7 +60,7 @@
       @apply border-red2;
     }
 
-    &:not(.multiselect):hover {
+    &:hover {
       @apply bg-gray1;
     }
 
@@ -132,26 +130,6 @@
         &:hover {
           @apply bg-gray2 text-gray7;
         }
-      }
-    }
-  }
-
-  .select-item {
-    @apply bg-gray2;
-  }
-
-  .tag {
-    @apply bg-gray1 px-2 py-1 rounded text-grayPrimary text-slight flex gap-3 items-center duration-200 ease-linear transition-all;
-
-    img {
-      @apply p-1 h-4 rounded cursor-pointer bg-gray3 duration-200 ease-linear transition-all;
-    }
-
-    &:hover {
-      @apply bg-gray3;
-
-      img {
-        @apply bg-gray4;
       }
     }
   }
