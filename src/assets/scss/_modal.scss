@@ -20,6 +20,7 @@
   .wrapper {
     @apply w-full mx-auto bg-white rounded  z-10;
     width: calc(100vw - 32px);
+    max-width: 600px;
 
     &.size-lg {
       max-width: 600px;
@@ -92,7 +93,7 @@
     }
 
     .wrapper {
-      max-width: 600px;
+      max-width: 900px;
 
       main {
         .overflow {
@@ -115,7 +116,7 @@
     }
 
     .wrapper {
-      max-width: 900px;
+      // max-width: 900px;
 
       main {
         .overflow {
