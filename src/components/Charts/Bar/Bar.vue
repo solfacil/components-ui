@@ -76,7 +76,7 @@ export default {
             },
             ticks: {
               display: false,
-              beginAtZero: false,
+              beginAtZero: true,
               fontColor: '#666',
               fontSize: '12',
               fontFamily: 'Lato, sans-serif',

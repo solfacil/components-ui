@@ -62,16 +62,20 @@ export default {
       type: String,
       validator: (value) => ['month', 'year'].includes(value.toLowerCase()),
     },
+
+    /** Name image download */
+    nameImage: {
+      type: String,
+      default: 'grafico',
+    },
   },
 
   methods: {
     print() {
-      html2canvas(this.$refs.bar).then(function (canvas) {
+      html2canvas(this.$refs.bar).then((canvas) => {
         var link = document.createElement('a');
         link.href = canvas.toDataURL('image/jpeg');
-        link.download = `producao-${
-          window.viewChart === 'month' ? 'mes' : 'ano'
-        }.jpeg`;
+        link.download = `${this.nameImage}.jpeg`;
         link.click();
       });
     },
