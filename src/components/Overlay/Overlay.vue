@@ -1,11 +1,9 @@
 <template>
-  <transition name="fade-shrink-in">
-    <div :id="id" :class="{ relative: show, 'overflow-hidden': show }">
-      <slot />
+  <div :id="id" :class="{ relative: show, 'overflow-hidden': show }">
+    <slot />
 
-      <div v-if="show" class="sol-overlay" />
-    </div>
-  </transition>
+    <div v-if="show" class="sol-overlay" />
+  </div>
 </template>
 
 <script>
