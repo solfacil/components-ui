@@ -75,8 +75,8 @@ export default {
       },
       layout: {
         padding: {
-          bottom: 28,
-          top: 24,
+          bottom: 0,
+          top: 0,
         },
       },
       maintainAspectRatio: false,
@@ -101,6 +101,7 @@ export default {
               beginAtZero: false,
               fontColor: '#666',
               fontSize: '12',
+              padding: 6,
               fontFamily: 'Lato, sans-serif',
             },
           },
@@ -126,16 +127,15 @@ export default {
             gridLines: {
               drawBorder: false,
             },
-            // id: 'A',
           },
           {
             position: 'right',
             afterFit: function (scale) {
-              scale.width = 80;
+              scale.width = 70;
             },
             scaleLabel: {
               display: true,
-              labelString: 'TENSÃO (V)',
+              labelString: 'CORRENTE (A)',
               fontFamily: 'Lato, sans-serif',
               fontSize: '10',
               fontColor: '#999',
@@ -151,7 +151,6 @@ export default {
               display: false,
               drawBorder: false,
             },
-            // id: 'B',
           },
         ],
       },

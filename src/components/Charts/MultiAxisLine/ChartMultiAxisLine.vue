@@ -1,8 +1,8 @@
 <template>
   <div :id="id" ref="line" class="multi-axis-line">
-    <MultiAxisLine v-model="data" :data-chart="chartdata" />
+    <MultiAxisLine v-model="data" :height="height" :data-chart="chartdata" />
 
-    <div class="flex justify-end">
+    <div class="flex justify-end mt-4">
       <span class="print" @click="print">Salvar imagem</span>
     </div>
   </div>
@@ -33,6 +33,12 @@ export default {
       validator: function (obj) {
         return 'labels' in obj && 'datasets' in obj;
       },
+    },
+
+    /** Set height chart */
+    height: {
+      type: [Number, String],
+      default: 400,
     },
   },
 
