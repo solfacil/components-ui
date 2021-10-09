@@ -36,6 +36,20 @@ Default.parameters = {
       <p>Example</p>
       <p>Description.</p>
     </template>
+    <template #description-2>
+      <p>This</p>
+      <p>Is</p>
+      <p>Another</p>
+      <p>Example</p>
+      <p>Description.</p>
+    </template>
+    <template #description-3>
+      <p>This</p>
+      <p>Is</p>
+      <p>Another</p>
+      <p>Example</p>
+      <p>Description.</p>
+    </template>
   </Accordion>
       `,
     },
@@ -44,5 +58,5 @@ Default.parameters = {
 
 Default.args = {
   id: 'accordion-example',
-  headers: ['Example 1', 'Example 2'],
+  headers: ['Example 1', 'Example 2', 'Example 3', 'Example 4'],
 };
