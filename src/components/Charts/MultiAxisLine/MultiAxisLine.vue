@@ -202,6 +202,9 @@ export default {
               ...obj,
               ...tooltip.labelColors[i],
               curve: this.dataChart.type ? this.dataChart.type[i] : '',
+              inverter: this.dataChart.inverter
+                ? this.dataChart.inverter[i]
+                : [],
             };
           });
 

@@ -204,5 +204,7 @@ Default.args = {
       { name: 'current', unit: 'A' },
       { name: 'power', unit: 'W' },
     ],
+
+    inverter: ['test 1', 'test 2', 'test 3'],
   },
 };
