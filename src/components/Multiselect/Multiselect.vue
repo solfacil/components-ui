@@ -86,7 +86,17 @@
         </li>
       </ul>
     </div>
-
+    <div v-if="showList" class="multiselect-container">
+      <ul class="multiselect-list">
+        <li v-for="(item, index) in selected" :key="index">
+          {{ item.name }}
+          <img
+            src="@img/icon/icon-close.svg"
+            @click.stop.prevent="removeSelectedIndex(index)"
+          />
+        </li>
+      </ul>
+    </div>
     <small v-if="invalid && msgInvalid" class="msg-error">
       {{ msgInvalid }}
     </small>
@@ -184,6 +194,12 @@ export default {
 
     /** Hide the selection chips */
     hideChips: {
+      type: Boolean,
+      default: false,
+    },
+
+    /** show the selection list */
+    showList: {
       type: Boolean,
       default: false,
     },
