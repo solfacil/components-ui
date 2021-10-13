@@ -13,7 +13,7 @@
     "prepare": "husky install && vue-cli-service build --target lib --name solfacil ./src/index.js",
     "proxy": "ngrok http 6006",
     "start": "vue-cli-service serve",
-    "storybook": "start-storybook -p 6006 -s public",
+    "storybook": "start-storybook -p 6006 -s public --ci",
     "test": "vue-cli-service test:unit",
     "test:coverage": "vue-cli-service test:unit --coverage && cd coverage/lcov-report && live-server",
     "test:watch": "vue-cli-service test:unit --watch"
@@ -75,6 +75,7 @@
     "vue-cli-plugin-webpack-bundle-analyzer": "~4.0.0",
     "vue-jest": "^3.0.7",
     "vue-loader": "^15.9.8",
+    "vue-svg-loader": "^0.16.0",
     "vue-template-compiler": "^2.6.14"
   },
   "homepage": "http://solfacil.github.io/components-ui",

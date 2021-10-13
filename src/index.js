@@ -1,4 +1,6 @@
 // Export components
+
+export { default as Chip } from '@components/Chip/Chip';
 export { default as Accordion } from '@components/Accordion/Accordion';
 export { default as Alert } from '@components/Alert/Alert';
 export { default as Badge } from '@components/Badge/Badge';

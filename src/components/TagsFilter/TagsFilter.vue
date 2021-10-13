@@ -1,17 +1,23 @@
 <template>
   <div v-if="tags.length" :id="id" class="tags-filter">
-    <template v-for="(tag, index) in tags">
-      <span :key="index">
-        {{ tag }}
-        <img src="@img/icon/icon-close-black.svg" @click="deleteTag(index)" />
-      </span>
-    </template>
+    <Chip
+      v-for="(tag, index) in tags"
+      :key="index"
+      :label="tag"
+      :small="small"
+      @close="deleteTag(index)"
+    />
   </div>
 </template>
 
 <script>
+import Chip from '@components/Chip/Chip';
 export default {
   name: 'TagsFilter',
+
+  components: {
+    Chip,
+  },
 
   props: {
     /** Specify a custom id */
@@ -25,6 +31,12 @@ export default {
       type: Array,
       required: true,
       default: () => [],
+    },
+
+    /** small chips variation */
+    small: {
+      type: Boolean,
+      default: false,
     },
   },
 

@@ -30,8 +30,10 @@ module.exports = {
     svgRule.uses.clear();
 
     svgRule
-      .test(/\.svg$/)
-      .use('svg-url-loader')
-      .loader('svg-url-loader');
+      .use('vue-loader')
+      .loader('vue-loader')
+      .end()
+      .use('vue-svg-loader')
+      .loader('vue-svg-loader');
   },
 };

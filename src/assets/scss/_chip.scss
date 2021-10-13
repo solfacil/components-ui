@@ -1,0 +1,27 @@
+.chip {
+  @apply bg-gray1 rounded px-4 text-grayPrimary text-slight h-7 flex gap-2 items-center transition-all duration-200 ease-linear;
+
+  .svg-wrapper {
+    @apply cursor-pointer h-6 w-6 transition-all duration-200 ease-linear text-gray7;
+    padding: 6px;
+    svg {
+      @apply fill-current;
+    }
+  }
+
+  &.small {
+    @apply bg-gray2 px-2 py-1 h-auto;
+
+    .svg-wrapper {
+      @apply p-1 h-4 w-4 m-0 rounded bg-gray3 text-gray4;
+    }
+
+    &:hover {
+      @apply bg-gray3;
+
+      .svg-wrapper {
+        @apply bg-gray4 text-gray2;
+      }
+    }
+  }
+}
