@@ -1,4 +1,5 @@
 const path = require('path');
+const loader = require('sass-loader');
 
 module.exports = {
   css: { extract: false },
@@ -35,6 +36,23 @@ module.exports = {
     const svgRule = config.module.rule('svg');
     svgRule.uses.clear();
 
-    svgRule.use('vue-svg-loader').loader('vue-svg-loader');
+    svgRule
+      .oneOf('url')
+      .resourceQuery(/url/)
+      .use('svg-url-loader')
+      .loader('svg-url-loader')
+      .end()
+      .end()
+      .oneOf('component')
+      .resourceQuery(/component/)
+      .use('vue-svg-loader')
+      .loader('vue-svg-loader')
+      .end()
+      .end()
+      .oneOf('default')
+      .use('vue-svg-loader')
+      .loader('vue-svg-loader')
+      .end()
+      .end();
   },
 };

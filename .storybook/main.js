@@ -44,7 +44,19 @@ module.exports = {
     config.module.rules.push(
       {
           test: /\.svg$/,
-          use: ['vue-svg-loader']
+          oneOf:[
+            {
+              resourceQuery: /url/,
+              loader:'svg-url-loader'
+            },
+            {
+              resourceQuery: /component/,
+              loader: 'vue-svg-loader'
+            },
+            {
+              loader:'vue-svg-loader'
+            }
+          ]
       }
     );
 

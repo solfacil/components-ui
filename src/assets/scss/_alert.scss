@@ -8,7 +8,7 @@
   }
 
   .alert-close {
-    background: url(~@img/icon/icon-close-black.svg) no-repeat center
+    background: url(~@img/icon/icon-close-black.svg?url) no-repeat center
       center/12px 12px;
     @apply rounded w-6 h-6 block ml-auto flex-none bg-gray4 cursor-pointer;
 
@@ -20,7 +20,7 @@
   &.alert-icon {
     &:before {
       @apply w-6 h-6 block mr-4 flex-none;
-      background: url(~@img/icon/icon-info-line.svg) no-repeat center center;
+      background: url(~@img/icon/icon-info-line.svg?url) no-repeat center center;
       content: '';
     }
   }
@@ -29,7 +29,7 @@
     @apply bg-green2 text-gray7;
 
     &:before {
-      background: url(~@img/icon/icon-success.svg) no-repeat center center;
+      background: url(~@img/icon/icon-success.svg?url) no-repeat center center;
     }
 
     .alert-close {
@@ -41,7 +41,7 @@
     @apply bg-red2 text-gray7;
 
     &:before {
-      background: url(~@img/icon/icon-error.svg) no-repeat center center;
+      background: url(~@img/icon/icon-error.svg?url) no-repeat center center;
     }
 
     .alert-close {
@@ -53,7 +53,7 @@
     @apply bg-orangePrimary text-gray7;
 
     &:before {
-      background: url(~@img/icon/icon-warning.svg) no-repeat center center;
+      background: url(~@img/icon/icon-warning.svg?url) no-repeat center center;
     }
 
     .alert-close {
@@ -65,7 +65,7 @@
     @apply bg-grayPrimary text-white;
 
     &:before {
-      background: url(~@img/icon/icon-info.svg) no-repeat center center;
+      background: url(~@img/icon/icon-info.svg?url) no-repeat center center;
     }
 
     i {

@@ -36,17 +36,17 @@
     left: calc(100% - 40px);
 
     &.close {
-      background: url(~@img/icon/icon-close.svg) no-repeat center center;
+      background: url(~@img/icon/icon-close.svg?url) no-repeat center center;
       left: calc(100% - 72px);
     }
     &.search {
-      background: url(~@img/icon/icon-search.svg) no-repeat center center;
+      background: url(~@img/icon/icon-search.svg?url) no-repeat center center;
     }
     &.show {
-      background: url(~@img/icon/icon-show.svg) no-repeat center center;
+      background: url(~@img/icon/icon-show.svg?url) no-repeat center center;
     }
     &.hide {
-      background: url(~@img/icon/icon-hide.svg) no-repeat center center;
+      background: url(~@img/icon/icon-hide.svg?url) no-repeat center center;
     }
   }
 }

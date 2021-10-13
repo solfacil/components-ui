@@ -42,7 +42,7 @@
       @apply bg-grayPrimary text-white;
 
       .close {
-        background-image: url(~@img/icon/icon-close-white.svg);
+        background-image: url(~@img/icon/icon-close-white.svg?url);
         @apply bg-gray4 text-white;
       }
 
@@ -62,7 +62,8 @@
     span {
       &.close {
         @apply w-6 h-6 rounded overflow-hidden cursor-pointer;
-        background: url(~@img/icon/icon-close-black.svg) no-repeat center center;
+        background: url(~@img/icon/icon-close-black.svg?url) no-repeat center
+          center;
         text-indent: -99em;
       }
 

@@ -13,7 +13,7 @@
     &:before {
       @apply h-2 block mr-2 rounded-initial;
       width: 10px;
-      background: url(~@img/icon/icon-ok.svg) no-repeat center center/cover;
+      background: url(~@img/icon/icon-ok.svg?url) no-repeat center center/cover;
       content: '';
     }
   }
@@ -25,7 +25,8 @@
       @apply h-2 block mr-2 rounded-initial;
 
       width: 10px;
-      background: url(~@img/icon/icon-removed.svg) no-repeat center center/cover;
+      background: url(~@img/icon/icon-removed.svg?url) no-repeat center
+        center/cover;
       content: '';
     }
   }
