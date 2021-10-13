@@ -1,5 +1,4 @@
 const path = require('path');
-const loader = require('sass-loader');
 
 module.exports = {
   css: { extract: false },
