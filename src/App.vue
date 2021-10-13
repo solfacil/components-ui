@@ -9,13 +9,26 @@
         />
       </div>
     </header>
+    <!-- Sandbox para teste fora do ambiente do storybook -->
+    <div class="sandbox">
+      <Chip small label="test" />
+    </div>
   </div>
 </template>
 
 <script>
+import Chip from '@components/Chip/Chip';
 export default {
   name: 'App',
+  components: { Chip },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.sandbox {
+  height: 500px;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+}
+</style>
