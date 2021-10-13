@@ -205,19 +205,19 @@ export default {
       this.toggleSelect();
     },
 
+    removeSpecialCharacters(v) {
+      return v
+        .normalize('NFD')
+        .replace(/[^\w\d\s]/gu, '')
+        .toLowerCase();
+    },
+
     searchItems(searchString) {
       if (searchString) {
-        const specialCharacters = (v) => {
-          return v
-            .normalize('NFD')
-            .replace(/[^\w\d\s]/gu, '')
-            .toLowerCase();
-        };
-
-        const searchQuery = specialCharacters(searchString);
+        const searchQuery = this.removeSpecialCharacters(searchString);
 
         return this.options.filter((item) => {
-          const name = specialCharacters(item.name);
+          const name = this.removeSpecialCharacters(item.name);
 
           return name.includes(searchQuery);
         });
