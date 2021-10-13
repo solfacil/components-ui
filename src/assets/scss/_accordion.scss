@@ -36,7 +36,7 @@
   dl {
     dt,
     dt.small {
-      @apply flex items-center justify-between cursor-pointer font-medium font-rubik text-modest text-grayPrimary leading-tight pt-4 mt-2 border-t border-gray3 border-solid;
+      @apply flex items-center justify-between cursor-pointer font-medium font-rubik text-modest text-grayPrimary leading-tight pt-2 mt-2 border-t border-gray3 border-solid;
 
       &:first-of-type {
         @apply border-none pt-0 mt-0;
@@ -67,7 +67,7 @@
   @screen sm {
     dl {
       dt {
-        @apply text-medium pt-6 mt-4;
+        @apply text-medium pt-4 mt-4;
       }
 
       dd {

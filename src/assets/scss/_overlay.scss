@@ -1,0 +1,5 @@
+.sol-overlay {
+  @apply absolute w-full h-full z-10 top-0 left-0;
+  background: rgba(#fff, 0.9) url(~@img/loading-bg-white-medium.gif) no-repeat
+    center center;
+}

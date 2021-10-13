@@ -98,6 +98,12 @@ export default {
     };
   },
 
+  watch: {
+    startOpen() {
+      this.handleStartOpen();
+    },
+  },
+
   mounted() {
     this.handleStartOpen();
   },
