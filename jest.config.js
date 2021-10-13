@@ -7,7 +7,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '^@filters(.*)$': '<rootDir>/src/filters$1',
+    '^@components(.*)$': '<rootDir>/src/components$1',
     '^@directives(.*)$': '<rootDir>/src/directives$1',
     '^@validators(.*)$': '<rootDir>/src/validators$1',
   },

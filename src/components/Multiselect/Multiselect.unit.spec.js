@@ -77,4 +77,29 @@ describe('Multiselect - Unit', () => {
       },
     ]);
   });
+
+  it('should selection of item', async () => {
+    await wrapper.setProps({
+      options: [
+        {
+          value: '1',
+          name: 'Sou um cliente e quero tirar dúvidas',
+        },
+      ],
+    });
+    expect(wrapper.props().options).toStrictEqual([
+      {
+        value: '1',
+        name: 'Sou um cliente e quero tirar dúvidas',
+      },
+    ]);
+  });
+
+  it('should close component', async () => {
+    await wrapper.setProps({
+      showOptions: true,
+    });
+    await wrapper.vm.closeSelect();
+    expect(wrapper.vm.showOptions).toBe(false);
+  });
 });

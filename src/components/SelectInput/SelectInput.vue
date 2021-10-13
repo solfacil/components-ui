@@ -11,6 +11,7 @@
 
     <div
       class="select-main"
+      data-testid="select"
       :class="{
         'bg-gray1 rounded-t': showOptions,
         'error-input': invalid,
