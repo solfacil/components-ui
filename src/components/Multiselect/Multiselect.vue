@@ -31,13 +31,12 @@
       </span>
       <div v-else class="selected-wrapper">
         <template v-for="(tag, index) in selected">
-          <span :key="index" class="tag">
-            {{ tag.name }}
-            <img
-              src="@img/icon/icon-close.svg"
-              @click.stop.prevent="removeSelectedIndex(index)"
-            />
-          </span>
+          <Chip
+            :key="index"
+            :label="tag.name"
+            small
+            @close="removeSelectedIndex(index)"
+          />
         </template>
       </div>
 
@@ -90,10 +89,7 @@
       <ul class="multiselect-list">
         <li v-for="(item, index) in selected" :key="index">
           {{ item.name }}
-          <img
-            src="@img/icon/icon-close.svg"
-            @click.stop.prevent="removeSelectedIndex(index)"
-          />
+          <IconClose @click.stop.prevent="removeSelectedIndex(index)" />
         </li>
       </ul>
     </div>
@@ -106,11 +102,15 @@
 <script>
 import clickOutside from '@directives/clickOutside.js';
 import Checkbox from '@components/Checkbox/Checkbox.vue';
+import Chip from '@components/Chip/Chip.vue';
+import IconClose from '@img/icon/icon-close.svg';
 export default {
   name: 'MultiSelect',
 
   components: {
     Checkbox,
+    Chip,
+    IconClose,
   },
 
   directives: {

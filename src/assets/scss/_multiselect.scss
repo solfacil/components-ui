@@ -88,8 +88,8 @@
 
     input {
       @apply text-small pr-8;
-      background: url('~@img/icon/icon-search.svg') no-repeat calc(100% - 16px)
-        center;
+      background: url('~@img/icon/icon-search.svg?url') no-repeat
+        calc(100% - 16px) center;
     }
 
     .options-list {
@@ -136,22 +136,6 @@
     }
   }
 
-  .tag {
-    @apply bg-gray2 px-2 py-1 rounded text-grayPrimary text-slight flex gap-3 items-center transition-all duration-200 ease-linear;
-
-    img {
-      @apply p-1 h-4 w-4 rounded cursor-pointer bg-gray3 transition-all duration-200 ease-linear;
-    }
-
-    &:hover {
-      @apply bg-gray3;
-
-      img {
-        @apply bg-gray4;
-      }
-    }
-  }
-
   .multiselect-container {
     @apply absolute w-full left-0 z-10 rounded flex justify-between;
 
@@ -163,8 +147,8 @@
       top: 100%;
     }
 
-    img {
-      @apply p-1 h-4 w-4 rounded cursor-pointer bg-gray3 transition-all duration-200 ease-linear;
+    svg {
+      @apply p-1 h-4 w-4 rounded cursor-pointer bg-gray3 transition-all duration-200 ease-linear fill-current;
     }
 
     .multiselect-list {
@@ -210,5 +194,4 @@
       }
     }
   }
-
 }
