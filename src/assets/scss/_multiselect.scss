@@ -19,6 +19,7 @@
     }
   }
 
+
   .select-main {
     @apply bg-white flex p-2 items-center border border-gray3 duration-200 ease-linear transition-all min-h-8 rounded;
 
@@ -190,6 +191,10 @@
 
         &:hover {
           @apply bg-gray2 text-gray7;
+
+          svg {
+            @apply bg-gray4 text-gray1;
+          }
         }
       }
     }
