@@ -47,7 +47,7 @@
     &:before {
       content: '';
       @apply w-6 h-6 block mr-1;
-      background: url(~@img/icon/print-image.svg) no-repeat center center;
+      background: url(~@img/icon/print-image.svg?url) no-repeat center center;
     }
   }
 }

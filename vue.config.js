@@ -36,8 +36,22 @@ module.exports = {
     svgRule.uses.clear();
 
     svgRule
-      .test(/\.svg$/)
+      .oneOf('url')
+      .resourceQuery(/url/)
       .use('svg-url-loader')
-      .loader('svg-url-loader');
+      .loader('svg-url-loader')
+      .end()
+      .end()
+      .oneOf('component')
+      .resourceQuery(/component/)
+      .use('vue-svg-loader')
+      .loader('vue-svg-loader')
+      .end()
+      .end()
+      .oneOf('default')
+      .use('vue-svg-loader')
+      .loader('vue-svg-loader')
+      .end()
+      .end();
   },
 };

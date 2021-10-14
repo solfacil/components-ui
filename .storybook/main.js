@@ -28,6 +28,38 @@ module.exports = {
       include: path.resolve(__dirname, '../'),
     });
 
+
+    /** Following code is from a very specific topic on stackoverflow about loading svg on vue with storybook
+     * src: https://stackoverflow.com/questions/56971513/storybook-does-not-load-svgs-in-components-of-vue-project
+     */
+    let rule = config.module.rules.find(r =>
+      // it can be another rule with file loader
+      // we should get only svg related
+      r.test && r.test.toString().includes('svg') &&
+      // file-loader might be resolved to js file path so "endsWith" is not reliable enough
+      r.loader && r.loader.includes('file-loader')
+    );
+    rule.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/;
+
+    config.module.rules.push(
+      {
+          test: /\.svg$/,
+          oneOf:[
+            {
+              resourceQuery: /url/,
+              loader:'svg-url-loader'
+            },
+            {
+              resourceQuery: /component/,
+              loader: 'vue-svg-loader'
+            },
+            {
+              loader:'vue-svg-loader'
+            }
+          ]
+      }
+    );
+
     // config.module.rules.push({
     //   test: /\.(png|jpg|gif|svg)$/,
     //   use: ['file-loader', 'url-loader', 'svg-url-loader'],
