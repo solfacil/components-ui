@@ -59,25 +59,6 @@ Optional / style component
 @import '~@solfacil/components-ui/src/assets/scss/radio-button';
 ```
 
-## Developing for components-ui
-The boilerplate for a new component can be generated with
-```sh
-yarn generate
-```
-Remember to always test new components!
-
-### Importing `.svg`
-You can import a `.svg` as a full component using
-```js
-import SampleIcon from '@img/icon/sample-icon.svg'
-```
-This supports changing sizes, colors, transitions, etc.
-
-If you want to import from css (using as background for example), you **must** use `?url` as a query string on your import, such as
-```css
-background: url(@img/icon/sample-icon.svg?url) no-repeat center
-```
-
 ## License <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/buefy.svg?logo=github" /></a>
 
 Released under the MIT [License](https://opensource.org/licenses/MIT). Copyright (c) Solfácil.
