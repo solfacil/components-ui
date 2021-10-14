@@ -102,4 +102,26 @@ describe('Multiselect - Unit', () => {
     await wrapper.vm.closeSelect();
     expect(wrapper.vm.showOptions).toBe(false);
   });
+
+  it('should remove options from the selected array', async () => {
+    await wrapper.setData({
+      selected: [
+        {
+          value: '1',
+          name: 'Sou um cliente e quero tirar dúvidas',
+        },
+        {
+          value: '2',
+          name: 'Sou um integrador e quero tirar dúvidas',
+        },
+      ],
+    });
+    await wrapper.vm.removeSelectedIndex();
+    expect(wrapper.vm.selected).toStrictEqual([
+      {
+        value: '2',
+        name: 'Sou um integrador e quero tirar dúvidas',
+      },
+    ]);
+  });
 });
