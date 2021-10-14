@@ -5,7 +5,7 @@
 
   .icon-close {
     @apply ml-auto;
-    background: url(~@img/icon/icon-close.svg) no-repeat center center;
+    background: url(~@img/icon/icon-close.svg?url) no-repeat center center;
     height: 28px;
     width: 28px;
     cursor: pointer;

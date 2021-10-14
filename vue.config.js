@@ -26,12 +26,32 @@ module.exports = {
   },
 
   chainWebpack: (config) => {
+    config.module
+      .rule('images')
+      .use('url-loader')
+      .loader('url-loader')
+      .tap((options) => Object.assign(options, { limit: Infinity }));
+
     const svgRule = config.module.rule('svg');
     svgRule.uses.clear();
 
     svgRule
-      .test(/\.svg$/)
+      .oneOf('url')
+      .resourceQuery(/url/)
       .use('svg-url-loader')
-      .loader('svg-url-loader');
+      .loader('svg-url-loader')
+      .end()
+      .end()
+      .oneOf('component')
+      .resourceQuery(/component/)
+      .use('vue-svg-loader')
+      .loader('vue-svg-loader')
+      .end()
+      .end()
+      .oneOf('default')
+      .use('vue-svg-loader')
+      .loader('vue-svg-loader')
+      .end()
+      .end();
   },
 };

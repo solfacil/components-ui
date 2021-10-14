@@ -10,6 +10,7 @@ module.exports = {
     '^@components(.*)$': '<rootDir>/src/components$1',
     '^@directives(.*)$': '<rootDir>/src/directives$1',
     '^@validators(.*)$': '<rootDir>/src/validators$1',
+    '^@img/(.*)$': '<rootDir>/src/assets/img/$1',
   },
   testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
 };

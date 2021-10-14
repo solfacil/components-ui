@@ -41,14 +41,20 @@ export default {
         return 'labels' in obj && 'datasets' in obj;
       },
     },
+
+    /** Name image download */
+    nameImage: {
+      type: String,
+      default: 'grafico',
+    },
   },
 
   methods: {
     print() {
-      html2canvas(this.$refs.line).then(function (canvas) {
+      html2canvas(this.$refs.line).then((canvas) => {
         const link = document.createElement('a');
         link.href = canvas.toDataURL('image/jpeg');
-        link.download = 'producao-dia.jpeg';
+        link.download = `${this.nameImage}.jpeg`;
         link.click();
       });
     },

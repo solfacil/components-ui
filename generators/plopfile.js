@@ -30,6 +30,13 @@ module.exports = function (plop) {
         path: `../src/assets/scss/_{{lowerCase name}}.scss`,
         templateFile: 'templates/style.scss.hbs',
       },
+      {
+        type: 'append',
+        path: '../src/index.js',
+        pattern: /(\/\/\sExport\scomponents\s)/g,
+        template:
+          "export { default as {{pascalCase name}} } from '@components/{{pascalCase name}}/{{pascalCase name}}';\n",
+      },
     ],
   });
 };

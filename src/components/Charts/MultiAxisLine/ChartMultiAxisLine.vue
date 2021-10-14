@@ -2,7 +2,7 @@
   <div :id="id" ref="line" class="multi-axis-line">
     <MultiAxisLine v-model="data" :data-chart="chartdata" />
 
-    <div class="flex justify-end">
+    <div class="flex justify-end mt-4">
       <span class="print" @click="print">Salvar imagem</span>
     </div>
   </div>
@@ -34,6 +34,12 @@ export default {
         return 'labels' in obj && 'datasets' in obj;
       },
     },
+
+    /** Name image download */
+    nameImage: {
+      type: String,
+      default: 'grafico',
+    },
   },
 
   data() {
@@ -50,10 +56,10 @@ export default {
 
   methods: {
     print() {
-      html2canvas(this.$refs.line).then(function (canvas) {
+      html2canvas(this.$refs.line).then((canvas) => {
         const link = document.createElement('a');
         link.href = canvas.toDataURL('image/jpeg');
-        link.download = 'producao-dia.jpeg';
+        link.download = `${this.nameImage}.jpeg`;
         link.click();
       });
     },

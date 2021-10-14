@@ -1,4 +1,7 @@
 // Export components
+
+export { default as Chip } from '@components/Chip/Chip';
+export { default as Overlay } from '@components/Overlay/Overlay';
 export { default as Accordion } from '@components/Accordion/Accordion';
 export { default as Alert } from '@components/Alert/Alert';
 export { default as Badge } from '@components/Badge/Badge';
@@ -20,6 +23,7 @@ export { default as SelectInput } from '@components/SelectInput/SelectInput';
 export { default as SortedTable } from '@components/SortedTable/SortedTable';
 export { default as Tabs } from '@components/Tabs/Tabs';
 export { default as TagsFilter } from '@components/TagsFilter/TagsFilter';
+export { default as Textarea } from '@components/Textarea/Textarea';
 export { default as Toaster } from '@components/Toaster';
 export { default as ToggleSwitch } from '@components/ToggleSwitch/ToggleSwitch';
 export { default as Tooltip } from '@components/Tooltip/Tooltip';

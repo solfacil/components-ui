@@ -76,7 +76,7 @@ export default {
             },
             ticks: {
               display: false,
-              beginAtZero: false,
+              beginAtZero: true,
               fontColor: '#666',
               fontSize: '12',
               fontFamily: 'Lato, sans-serif',
@@ -302,6 +302,8 @@ export default {
     },
 
     handle(_, i) {
+      if (!i.length) return;
+
       const e = i[0];
       var x_value = this.chartdata.labels[e._index];
 
