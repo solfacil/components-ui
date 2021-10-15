@@ -29,15 +29,19 @@
     }
   }
 
-  i {
+  i,
+  .close {
     @apply h-6 w-6 block absolute z-10 cursor-pointer;
     top: 50%;
     transform: translateY(-50%);
     left: calc(100% - 40px);
 
     &.close {
-      background: url(~@img/icon/icon-close.svg?url) no-repeat center center;
+      @apply grid place-items-center;
       left: calc(100% - 72px);
+      svg {
+        @apply h-3 w-3 fill-current text-gray4;
+      }
     }
     &.search {
       background: url(~@img/icon/icon-search.svg?url) no-repeat center center;

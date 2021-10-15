@@ -11,7 +11,7 @@
         <header>
           {{ title }}
 
-          <span class="icon-close" @click="close"></span>
+          <IconClose class="icon-close" @click="close" />
         </header>
 
         <main>
@@ -38,12 +38,14 @@
 
 <script>
 import Button from '@components/Button/Button';
+import IconClose from '@img/icon/icon-close.svg';
 
 export default {
   name: 'Modal',
 
   components: {
     Button,
+    IconClose,
   },
 
   props: {
