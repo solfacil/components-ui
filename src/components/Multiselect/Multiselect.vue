@@ -3,7 +3,7 @@
     :id="id"
     ref="root"
     v-click-outside="closeSelect"
-    class="sol-select-input"
+    class="sol-multi-select-input"
   >
     <label v-if="label">
       {{ label }}<span v-if="isRequired" class="required">*</span>
@@ -23,10 +23,22 @@
         <!-- @slot Use this slot icon AddOns -->
         <slot name="icon"></slot>
       </span>
-
-      <span :class="{ placeholder: !selected, 'is-icon': !!$slots['icon'] }">
-        {{ selected ? selected.name : placeholder }}
+      <span
+        v-if="(placeholder && selected.length === 0) || hideChips"
+        class="placeholder"
+      >
+        {{ placeholder }}
       </span>
+      <div v-else class="selected-wrapper">
+        <template v-for="(tag, index) in selected">
+          <Chip
+            :key="index"
+            :label="tag.name"
+            small
+            @close="removeSelectedIndex(index)"
+          />
+        </template>
+      </div>
 
       <svg
         width="24"
@@ -61,15 +73,26 @@
       />
       <ul class="options-list">
         <li
-          v-for="item in searchItems(searchString)"
+          v-for="(item, index) in searchItems(searchString)"
           :key="item.value"
-          @click="selectItem(item)"
+          @click.prevent="selectItem(item)"
         >
-          {{ item.name }}
+          <Checkbox
+            :id="`list-${index}`"
+            :text="item.name"
+            :value="isItemSelected(item)"
+          />
         </li>
       </ul>
     </div>
-
+    <div v-if="showList" class="multiselect-container">
+      <ul class="multiselect-list">
+        <li v-for="(item, index) in selected" :key="index">
+          {{ item.name }}
+          <IconClose @click.stop.prevent="removeSelectedIndex(index)" />
+        </li>
+      </ul>
+    </div>
     <small v-if="invalid && msgInvalid" class="msg-error">
       {{ msgInvalid }}
     </small>
@@ -78,9 +101,17 @@
 
 <script>
 import clickOutside from '@directives/clickOutside.js';
-
+import Checkbox from '@components/Checkbox/Checkbox.vue';
+import Chip from '@components/Chip/Chip.vue';
+import IconClose from '@img/icon/icon-close.svg';
 export default {
-  name: 'SelectInput',
+  name: 'MultiSelect',
+
+  components: {
+    Checkbox,
+    Chip,
+    IconClose,
+  },
 
   directives: {
     clickOutside,
@@ -151,8 +182,8 @@ export default {
 
     /** Specify the value of the input - v-model */
     value: {
-      type: [String, Number],
-      default: null,
+      type: Array,
+      default: () => [],
     },
 
     /** Specify whether to show a red * at the end of the label or not */
@@ -160,32 +191,37 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    /** Hide the selection chips */
+    hideChips: {
+      type: Boolean,
+      default: false,
+    },
+
+    /** show the selection list */
+    showList: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data: () => ({
     showOptions: false,
-    selected: null,
     searchString: '',
+    selected: [],
   }),
 
   watch: {
     options() {
-      const action = [
-        this.assignSelectedFromOptions,
-        () => (this.selected = null),
-      ][Number(!this.value)];
-
-      action();
-    },
-
-    value() {
-      this.assignSelectedFromOptions();
+      this.selected = null;
     },
   },
 
   created() {
     if (this.value) {
-      this.assignSelectedFromOptions();
+      this.options.map((item) => {
+        if (item.value === this.value) this.selected = [...this.selected, item];
+      });
     }
   },
 
@@ -198,11 +234,31 @@ export default {
       this.showOptions = false;
     },
 
+    removeSelectedIndex(index) {
+      this.selected.splice(index, 1);
+    },
+
     selectItem(option) {
-      this.selected = option;
-      this.$emit('input', option.value);
-      this.$emit('change', option.value);
-      this.toggleSelect();
+      // Check if option is already selected and delete if it is
+      if (this.selected.find((item) => item.value === option.value)) {
+        this.selected = this.selected.filter(
+          (item) => item.value !== option.value,
+        );
+      }
+
+      // Add option to selected if not
+      else {
+        this.selected = [...this.selected, option];
+      }
+
+      this.$emit('input', this.selected);
+      this.$emit('change', this.selected);
+    },
+
+    isItemSelected(item) {
+      return !!this.selected.find(
+        (selectedItem) => selectedItem.value === item.value,
+      );
     },
 
     removeSpecialCharacters(v) {
@@ -223,17 +279,10 @@ export default {
         });
       } else return this.options;
     },
-
-    assignSelectedFromOptions() {
-      const selectedValue = this.options.find(
-        (item) => item.value === this.value,
-      );
-      if (selectedValue) this.selected = selectedValue;
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '@scss/_selectinput';
+@import '@scss/_multiselect';
 </style>

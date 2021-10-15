@@ -1,16 +1,12 @@
 .tags-filter {
   @apply bg-gray1 border-t border-gray3 rounded-b p-4 flex items-center flex-wrap;
-
+  gap: 8px;
   span {
     @apply bg-gray2 rounded px-4 text-grayPrimary text-slight h-7 flex items-center;
 
     img {
       @apply ml-2 cursor-pointer;
       padding: 6px;
-    }
-
-    + span {
-      @apply ml-2;
     }
   }
 }
