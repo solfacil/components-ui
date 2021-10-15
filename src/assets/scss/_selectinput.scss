@@ -86,8 +86,8 @@
 
     input {
       @apply text-small pr-8;
-      background: url('~@img/icon/icon-search.svg') no-repeat calc(100% - 16px)
-        center;
+      background: url('~@img/icon/icon-search.svg?url') no-repeat
+        calc(100% - 16px) center;
     }
 
     .options-list {
