@@ -4,11 +4,7 @@
   z-index: 9999;
 
   .icon-close {
-    @apply ml-auto;
-    background: url(~@img/icon/icon-close.svg?url) no-repeat center center;
-    height: 28px;
-    width: 28px;
-    cursor: pointer;
+    @apply ml-auto fill-current text-gray4 cursor-pointer h-3 w-3;
   }
 
   header,
