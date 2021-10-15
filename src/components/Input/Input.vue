@@ -30,12 +30,14 @@
 
       <template v-if="inputType === 'search'">
         <i class="search" @click="handleEvent(value)" />
-        <i
+        <span
           v-if="value"
           class="close"
           data-testid="search_clear_icon"
           @click="reset"
-        />
+        >
+          <IconClose />
+        </span>
       </template>
 
       <template v-if="controlVisibility">
@@ -62,8 +64,13 @@
 </template>
 
 <script>
+import IconClose from '@img/icon/icon-close.svg';
 export default {
   name: 'InputText',
+
+  components: {
+    IconClose,
+  },
 
   props: {
     /** Specify whether the control is disabled */
