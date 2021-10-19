@@ -105,7 +105,7 @@ import Checkbox from '@components/Checkbox/Checkbox.vue';
 import Chip from '@components/Chip/Chip.vue';
 import IconClose from '@img/icon/icon-close.svg';
 export default {
-  name: 'MultiSelect',
+  name: 'Multiselect',
 
   components: {
     Checkbox,

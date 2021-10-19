@@ -15,6 +15,7 @@ export { default as Checkbox } from '@components/Checkbox/Checkbox';
 export { default as Input } from '@components/Input/Input';
 export { default as List } from '@components/List/List';
 export { default as Modal } from '@components/Modal/Modal';
+export { default as Multiselect } from '@components/Multiselect/Multiselect';
 export { default as PageSize } from '@components/PageSize/PageSize';
 export { default as Pagination } from '@components/Pagination/Pagination';
 export { default as Popover } from '@components/Popover/Popover';
