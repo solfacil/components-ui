@@ -1,4 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
+
 import Input from './Input.vue';
 
 // Initializing wrapper variable
@@ -31,6 +32,18 @@ beforeEach(() => {
 describe('Input - Unit', () => {
   it('should mount the component', () => {
     expect(wrapper.vm).toBeDefined();
+  });
+
+  it('should apply telephone mask', async () => {
+    expect(wrapper.vm.pattern).toBe('');
+
+    await wrapper.setProps({ mask: true });
+
+    expect(wrapper.vm.pattern).toBe('');
+
+    await wrapper.setProps({ type: 'tel' });
+
+    expect(wrapper.vm.pattern).toBe('(##) #####-####');
   });
 
   it('should clear input value', async () => {

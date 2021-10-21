@@ -65,14 +65,14 @@
 </template>
 
 <script>
-import Directives from '@directives';
+import vueMask from '@directives/vueMask.js';
 
 import IconClose from '@img/icon/icon-close.svg';
 
 export default {
   name: 'InputText',
 
-  directives: { ...Directives },
+  directives: { vueMask },
 
   components: {
     IconClose,
