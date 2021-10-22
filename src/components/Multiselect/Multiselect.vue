@@ -213,7 +213,7 @@ export default {
 
   watch: {
     options() {
-      this.selected = null;
+      this.selected = [];
     },
   },
 
