@@ -26,6 +26,7 @@
     "*.json",
     "*.js"
   ],
+  "setupFiles": ["<rootDir>/.jest/register-context.js"],
   "dependencies": {
     "chart.js": "2.9.4",
     "core-js": "^3.16.4",
@@ -33,6 +34,7 @@
     "install": "^0.13.0",
     "lodash": "^4.17.21",
     "tailwindcss": "^1.9.6",
+    "v-mask": "^2.3.0",
     "vue": "^2.6.14",
     "vue-chartjs": "^3.5.1",
     "vue2-datepicker": "^3.10.1"
@@ -58,7 +60,6 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-require-context-hook": "^1.0.0",
-    "babel-plugin-transform-require-context": "^0.1.1",
     "eslint": "^7.32.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-prettier-vue": "^3.1.0",

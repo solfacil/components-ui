@@ -12,6 +12,7 @@
       <input
         :id="id"
         ref="solInput"
+        v-mask="pattern"
         :class="{
           invalid,
           'is-icon': $slots['icon'],
@@ -64,9 +65,14 @@
 </template>
 
 <script>
+import vueMask from '@directives/vueMask.js';
+
 import IconClose from '@img/icon/icon-close.svg';
+
 export default {
   name: 'InputText',
+
+  directives: { vueMask },
 
   components: {
     IconClose,
@@ -75,6 +81,12 @@ export default {
   props: {
     /** Specify whether the control is disabled */
     disabled: {
+      type: Boolean,
+      default: false,
+    },
+
+    /** Provide a mask for the specified type  */
+    mask: {
       type: Boolean,
       default: false,
     },
@@ -155,6 +167,18 @@ export default {
   data: (instance) => ({
     inputType: instance.type,
   }),
+
+  computed: {
+    pattern() {
+      const { type, mask } = this;
+
+      if (!mask) return '';
+
+      if (type === 'tel') return '(##) #####-####';
+
+      return '';
+    },
+  },
 
   methods: {
     reset() {

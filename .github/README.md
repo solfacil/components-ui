@@ -10,6 +10,12 @@ Component library based on Vue and Tailwind
 
 For full documentation, visit [Documentation](https://solfacil.github.io/components-ui/?path=/story/getting-started-installation--page).
 
+## Libraries
+
+The following libraries are being used in this project.
+
+- [Vue input mask](https://www.npmjs.com/package/v-mask)
+
 ## Bumb version
 
 #### Given a version number MAJOR.MINOR.PATCH, increment the:
