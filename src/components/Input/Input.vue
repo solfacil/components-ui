@@ -21,7 +21,7 @@
         }"
         data-testid="input"
         :disabled="disabled"
-        :name="name"
+        :name="name || type"
         :placeholder="placeholder"
         :type="inputType"
         :value="value"
