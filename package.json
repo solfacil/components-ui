@@ -1,6 +1,6 @@
 {
   "name": "@solfacil/components-ui",
-  "version": "1.41.3",
+  "version": "1.42.0",
   "private": false,
   "description": "Component library based on Vue and Tailwind",
   "author": "Solfacil - Fernando Jesus",
@@ -26,7 +26,9 @@
     "*.json",
     "*.js"
   ],
-  "setupFiles": ["<rootDir>/.jest/register-context.js"],
+  "setupFiles": [
+    "<rootDir>/.jest/register-context.js"
+  ],
   "dependencies": {
     "chart.js": "2.9.4",
     "core-js": "^3.16.4",
