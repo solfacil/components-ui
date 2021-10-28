@@ -1,6 +1,7 @@
 .sol-badge {
   @apply inline-flex items-center rounded font-rubik font-bold text-tiny uppercase h-5 px-2;
   line-height: 1.4;
+  white-space: nowrap;
 
   &:before {
     @apply w-2 h-2 rounded-full block mr-2;
