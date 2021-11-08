@@ -85,10 +85,10 @@ export default {
       default: false,
     },
 
-    /** Provide a mask for the specified type  */
-    mask: {
-      type: Boolean,
-      default: false,
+    /** Overwrite or create a mask for any type  */
+    customMask: {
+      type: String,
+      default: null,
     },
 
     /** Specify whether the control is currently invalid */
@@ -170,9 +170,9 @@ export default {
 
   computed: {
     pattern() {
-      const { type, mask } = this;
+      const { type, customMask } = this;
 
-      if (!mask) return '';
+      if (customMask !== null) return customMask;
 
       if (type === 'tel') return '(##) #####-####';
 
