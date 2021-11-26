@@ -222,7 +222,7 @@ export default {
           ctx.font = '12px Lato, sans-serif';
 
           if (this.view === 'month') {
-            ctx.fillText(i + 1, x, yAxis.bottom + 29);
+            ctx.fillText(moment(l).format('D'), x, yAxis.bottom + 29);
 
             ctx.fillStyle = {
               online: '#4CD89D',
@@ -267,8 +267,6 @@ export default {
     });
 
     this.options.onClick = this.handle;
-
-    // onClick: this.handle,
 
     this.renderChart(this.chartdata, this.options);
   },
