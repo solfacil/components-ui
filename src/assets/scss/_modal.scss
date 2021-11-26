@@ -16,6 +16,7 @@
   .wrapper {
     @apply w-full mx-auto bg-white rounded  z-10;
     width: calc(100vw - 32px);
+    height: calc(100vh - 32px);
     max-width: 600px;
 
     &.size-lg {
@@ -24,10 +25,11 @@
 
     main {
       @apply text-small text-grayPrimary;
+      height: calc(100vh - 192px);
 
       .overflow {
         @apply pr-2 overflow-hidden overflow-y-auto;
-        max-height: calc(100vh - 286px);
+        max-height: calc(100vh - 241px);
 
         &.no-croll {
           overflow: initial;
@@ -66,7 +68,7 @@
   }
 
   footer {
-    @apply flex items-center bg-gray2 rounded;
+    @apply flex flex-row-reverse items-center bg-gray2 rounded;
     box-shadow: 0px -1px 0px #e0e0e0;
 
     .btn,
@@ -89,9 +91,11 @@
     }
 
     .wrapper {
+      height: fit-content;
       max-width: 900px;
 
       main {
+        height: fit-content;
         .overflow {
           max-height: calc(100vh - 334px);
         }
