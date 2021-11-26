@@ -29,7 +29,7 @@
 
       .overflow {
         @apply pr-2 overflow-hidden overflow-y-auto;
-        max-height: calc(100vh - 224px);
+        max-height: calc(100vh - 240px);
 
         &.no-croll {
           overflow: initial;
