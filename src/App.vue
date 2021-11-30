@@ -3,7 +3,7 @@
     <header class="bg-gray7 px-4">
       <div class="container flex items-center justify-center py-11">
         <img
-          :src="require('@/assets/img/logo-solfacil-white.png')"
+          :src="require('@img/logo-solfacil-white.svg?url')"
           class="w-32 h-8 w-auto"
           alt="Solfácil"
         />
