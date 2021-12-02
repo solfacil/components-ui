@@ -11,7 +11,7 @@
           <i v-if="item.iconNumber">{{ item.iconNumber }}</i>
           <img
             v-else
-            :src="`@img/icon/icon-${item.theme}.svg?url`"
+            :src="require(`@img/icon/icon-${item.theme}.svg?url`)"
             class="inline"
             :alt="item.message"
           />
