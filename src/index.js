@@ -1,9 +1,4 @@
 // Export components
-
-export { default as InputMinusPlus } from '@components/InputMinusPlus/InputMinusPlus';
-
-export { default as Chip } from '@components/Chip/Chip';
-export { default as Overlay } from '@components/Overlay/Overlay';
 export { default as Accordion } from '@components/Accordion/Accordion';
 export { default as Alert } from '@components/Alert/Alert';
 export { default as Badge } from '@components/Badge/Badge';
@@ -14,10 +9,13 @@ export { default as ChartCircle } from '@components/Charts/Circle/ChartCircle';
 export { default as ChartLineSeries } from '@components/Charts/LineSeries/ChartLineSeries';
 export { default as ChartMultiAxisLine } from '@components/Charts/MultiAxisLine/ChartMultiAxisLine';
 export { default as Checkbox } from '@components/Checkbox/Checkbox';
+export { default as Chip } from '@components/Chip/Chip';
 export { default as Input } from '@components/Input/Input';
+export { default as InputMinusPlus } from '@components/InputMinusPlus/InputMinusPlus';
 export { default as List } from '@components/List/List';
 export { default as Modal } from '@components/Modal/Modal';
 export { default as Multiselect } from '@components/Multiselect/Multiselect';
+export { default as Overlay } from '@components/Overlay/Overlay';
 export { default as PageSize } from '@components/PageSize/PageSize';
 export { default as Pagination } from '@components/Pagination/Pagination';
 export { default as Popover } from '@components/Popover/Popover';
