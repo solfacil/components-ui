@@ -8,7 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out Git repository
+      - name: Configure git
+        env:
+          TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: git config --global url."https://${TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
         uses: actions/checkout@v2
 
       - name: Set up Node.js
@@ -30,6 +33,7 @@ jobs:
         run: yarn test:coverage
 
       - name: Code Coverage
-        uses: coverallsapp/github-action@master
+      uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.TOKEN_ACTION }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: coverage/lcov.info
