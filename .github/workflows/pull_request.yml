@@ -33,7 +33,7 @@ jobs:
         run: yarn test:coverage
 
       - name: Code Coverage
-      - uses: coverallsapp/github-action@master
+        uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: coverage/lcov.info
