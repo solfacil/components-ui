@@ -30,7 +30,6 @@ jobs:
         run: yarn test:coverage
 
       - name: Code Coverage
-        uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
+        uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.TOKEN_ACTION }}
-          threshold: 80
