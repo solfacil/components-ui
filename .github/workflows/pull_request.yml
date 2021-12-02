@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Configure git
         env:
-          TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          TOKEN: ${{ secrets.TOKEN_ACTION }}
         run: git config --global url."https://${TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
       - uses: actions/checkout@v2
 
@@ -35,5 +35,4 @@ jobs:
       - name: Code Coverage
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: coverage/lcov.info
+          github-token: ${{ secrets.TOKEN_ACTION }}
