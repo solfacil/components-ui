@@ -4,15 +4,20 @@ on: pull_request
 
 jobs:
  run-linters:
-    name: Run linters
+    name: linters
     runs-on: ubuntu-latest
 
     steps:
       - name: Configure git
-        env:
-          TOKEN: ${{ secrets.TOKEN_ACTION }}
-        run: git config --global url."https://${TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.TOKEN_ACTION }}
+
+      - name: cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: node_modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -32,7 +37,20 @@ jobs:
       - name: Run tests
         run: yarn test:coverage
 
-      - name: Code Coverage
-        uses: coverallsapp/github-action@master
+      - name: Validate coverage
+        uses: devmasx/coverage-check-action@v1.2.0
         with:
-          github-token: ${{ secrets.TOKEN_ACTION }}
+          type: lcov
+          result_path: coverage/lcov.info
+          min_coverage: 90
+          token: ${{ secrets.TOKEN_ACTION }}
+
+      - name: Display coverage
+        uses: ewjoachim/coverage-comment-action@v1
+        with:
+          GITHUB_TOKEN: ${{ github.token }}
+          COVERAGE_FILE: coverage/clover.xml
+          BADGE_ENABLED: true
+          BADGE_FILENAME: coverage-final.json
+          MINIMUM_GREEN: 100
+          MINIMUM_ORANGE: 90

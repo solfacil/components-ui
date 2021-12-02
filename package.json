@@ -15,7 +15,7 @@
     "start": "vue-cli-service serve",
     "storybook": "start-storybook -p 6006 -s public --ci",
     "test": "vue-cli-service test:unit",
-    "test:coverage": "vue-cli-service test:unit --coverage --coverageReporters='text' --coverageReporters='text-summary'",
+    "test:coverage": "vue-cli-service test:unit --coverage",
     "test:watch": "vue-cli-service test:unit --watch"
   },
   "main": "./dist/solfacil.common.js",
