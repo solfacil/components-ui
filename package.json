@@ -15,7 +15,7 @@
     "start": "vue-cli-service serve",
     "storybook": "start-storybook -p 6006 -s public --ci",
     "test": "vue-cli-service test:unit",
-    "test:coverage": "vue-cli-service test:unit --coverage && cd coverage/lcov-report && live-server",
+    "test:coverage": "vue-cli-service test:unit --coverage --coverageReporters='text' --coverageReporters='text-summary'",
     "test:watch": "vue-cli-service test:unit --watch"
   },
   "main": "./dist/solfacil.common.js",
@@ -69,7 +69,6 @@
     "eslint-plugin-vue": "^7.17.0",
     "gh-pages": "^3.2.3",
     "husky": "^7.0.4",
-    "live-server": "^1.2.1",
     "ngrok": "^4.2.2",
     "node-sass": "4.14.1",
     "plop": "3.0.1",

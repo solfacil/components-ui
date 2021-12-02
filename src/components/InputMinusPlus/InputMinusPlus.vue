@@ -1,8 +1,8 @@
 <template>
-  <div :id="id" class="sol-inputminusplus">
-    <button @click="decrement">-</button>
-    <input id="" v-model="newValue" type="number" disabled />
-    <button @click="increment">+</button>
+  <div :id="id" class="sol-inputminusplus" :class="{ small }">
+    <button :disabled="newValue === min" @click="decrement">-</button>
+    <input v-model="newValue" type="number" disabled />
+    <button :disabled="newValue === max" @click="increment">+</button>
   </div>
 </template>
 
@@ -34,6 +34,12 @@ export default {
       type: Number,
       required: true,
     },
+
+    /** Specify whether the Button should be a small */
+    small: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -43,15 +49,17 @@ export default {
   },
 
   watch: {
-    value: {
-      handler: function (newVal) {
-        this.newValue = newVal;
-      },
+    value: function (newVal) {
+      this.newValue = newVal;
     },
   },
 
   created: function () {
-    this.newValue = this.value ? this.value : this.min;
+    this.newValue = this.value
+      ? this.value <= this.max
+        ? this.value
+        : this.max
+      : this.min;
   },
 
   methods: {
@@ -73,5 +81,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@scss/_inputminusplus';
+@import '@scss/_input-minus-plus';
 </style>

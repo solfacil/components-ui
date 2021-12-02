@@ -27,4 +27,10 @@ jobs:
           prettier: true
 
       - name: Run tests
-        run: yarn test
+        run: yarn test:coverage
+
+      - name: Code Coverage
+        - uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
+          with:
+            github-token: ${{ secrets.TOKEN_ACTION }}
+            threshold: 80
