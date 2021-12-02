@@ -3,7 +3,7 @@ name: Lint/Prettier Code Base
 on: pull_request
 
 jobs:
-  run-linters:
+ run-linters:
     name: Run linters
     runs-on: ubuntu-latest
 
@@ -12,7 +12,7 @@ jobs:
         env:
           TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: git config --global url."https://${TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -33,7 +33,7 @@ jobs:
         run: yarn test:coverage
 
       - name: Code Coverage
-      uses: coverallsapp/github-action@master
+      - uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: coverage/lcov.info
