@@ -4,12 +4,12 @@ on: pull_request
 
 jobs:
  run-linters:
-    name: linters
+    name: Run linters
     runs-on: ubuntu-latest
 
     steps:
       - name: Configure git
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
         with:
           token: ${{ secrets.TOKEN_ACTION }}
 
@@ -48,7 +48,7 @@ jobs:
       - name: Display coverage
         uses: ewjoachim/coverage-comment-action@v1
         with:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN_ACTION }}
           COVERAGE_FILE: coverage/clover.xml
           BADGE_ENABLED: true
           BADGE_FILENAME: coverage-final.json
