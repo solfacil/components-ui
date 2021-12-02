@@ -35,22 +35,4 @@ jobs:
           prettier: true
 
       - name: Run tests
-        run: yarn test:coverage
-
-      - name: Validate coverage
-        uses: devmasx/coverage-check-action@v1.2.0
-        with:
-          type: lcov
-          result_path: coverage/lcov.info
-          min_coverage: 90
-          token: ${{ secrets.TOKEN_ACTION }}
-
-      - name: Display coverage
-        uses: ewjoachim/coverage-comment-action@v1
-        with:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_ACTION }}
-          COVERAGE_FILE: coverage/clover.xml
-          BADGE_ENABLED: true
-          BADGE_FILENAME: coverage-final.json
-          MINIMUM_GREEN: 100
-          MINIMUM_ORANGE: 90
+        run: yarn test
