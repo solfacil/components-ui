@@ -13,11 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Git repo
+      - name: Configure git
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.TOKEN_ACTION }}
-          persist-credentials: false
+
+      - name: cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: node_modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
