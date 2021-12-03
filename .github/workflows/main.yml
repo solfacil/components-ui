@@ -19,6 +19,12 @@ jobs:
           token: ${{ secrets.TOKEN_ACTION }}
           persist-credentials: false
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+
       - name: Conventional Changelog Action
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
@@ -52,12 +58,6 @@ jobs:
 
       - name: Checkout Git repo/update
         run: git pull origin main
-
-      - name: Install depends
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          registry-url: https://registry.npmjs.org/
 
       - name: Deploy NPM
         run: npm publish --access public
