@@ -13,6 +13,8 @@ module.exports = {
     '^@img/(.*)$': '<rootDir>/src/assets/img/$1',
   },
   testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+  testPathIgnorePatterns: ['<rootDir>/generators/'],
+  watchPathIgnorePatterns: ['<rootDir>/generators/'],
   transform: {
     '^.+\\.svg$': '<rootDir>/transforms/svgTransform.js',
   },
