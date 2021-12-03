@@ -3,21 +3,13 @@ name: Lint/Prettier Code Base
 on: pull_request
 
 jobs:
- run-linters:
+  run-linters:
     name: Run linters
     runs-on: ubuntu-latest
 
     steps:
-      - name: Configure git
+      - name: Check out Git repository
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.TOKEN_ACTION }}
-
-      - name: cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: node_modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
