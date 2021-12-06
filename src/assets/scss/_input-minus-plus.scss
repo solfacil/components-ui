@@ -17,7 +17,7 @@
   }
 
   button {
-    @apply bg-white w-8 h-8 text-center overflow-hidden relative duration-200 ease-linear transition-all;
+    @apply bg-white w-8 h-8 text-center overflow-hidden relative duration-200 ease-linear transition-all border-none p-0;
     text-indent: -999em;
 
     &:focus {
