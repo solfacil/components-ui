@@ -14,20 +14,17 @@
   }
 
   .wrapper {
-    @apply w-full mx-auto bg-white rounded  z-10;
+    @apply grid mx-auto bg-white rounded z-10;
+    grid-template-rows: auto 1fr auto;
+    height: calc(100vh - 32px);
     width: calc(100vw - 32px);
-    max-width: 600px;
-
-    &.size-lg {
-      max-width: 600px;
-    }
 
     main {
       @apply text-small text-grayPrimary;
 
       .overflow {
         @apply pr-2 overflow-hidden overflow-y-auto;
-        max-height: calc(100vh - 286px);
+        max-height: calc(100vh - 240px);
 
         &.no-croll {
           overflow: initial;
@@ -66,9 +63,9 @@
   }
 
   footer {
-    @apply flex items-center bg-gray2 rounded;
+    @apply flex flex-row-reverse items-center bg-gray2 rounded;
+    height: 88px;
     box-shadow: 0px -1px 0px #e0e0e0;
-
     .btn,
     button {
       @apply ml-2;
@@ -80,7 +77,7 @@
   }
 }
 
-@screen lg {
+@screen md {
   .sol-modal {
     header,
     footer,
@@ -89,9 +86,15 @@
     }
 
     .wrapper {
+      @apply relative h-auto;
       max-width: 900px;
 
+      &.size-lg {
+        max-width: 600px;
+      }
+
       main {
+        height: fit-content;
         .overflow {
           max-height: calc(100vh - 334px);
         }
