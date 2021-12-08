@@ -1,7 +1,7 @@
 <template>
   <table v-if="items.length" :id="id" class="sol-table-list">
     <tr v-for="(item, index) in items" :key="index">
-      <th :class="{ 'th-width': thWidth }">{{ item.title }}</th>
+      <th :class="{ 'th-width': minWidthTitle }">{{ item.title }}</th>
       <td>{{ item.description }}</td>
     </tr>
   </table>
@@ -35,8 +35,8 @@ export default {
         return ListProperties.length === 0;
       },
     },
-    /** Set header cell, th tag, min width MD / 150px  */
-    thWidth: {
+    /** Sets min width for header cell (Title) to MD / 150px  */
+    minWidthTitle: {
       default: true,
       type: Boolean,
     },
