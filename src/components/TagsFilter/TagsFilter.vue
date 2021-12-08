@@ -49,7 +49,6 @@ export default {
   watch: {
     tags(n) {
       this.$emit('input', n);
-      this.$emit('delete');
     },
 
     value() {
@@ -60,6 +59,8 @@ export default {
   methods: {
     deleteTag(index) {
       this.tags.splice(index, 1);
+
+      this.$emit('delete');
     },
   },
 };
