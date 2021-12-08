@@ -69,16 +69,16 @@ Info.args = {
   id: 'alert-4',
 };
 
-export const infoNeutral = Template.bind({});
-infoNeutral.args = {
+export const InfoNeutral = Template.bind({});
+InfoNeutral.args = {
   icon: true,
   label: 'Info Neutral',
   variant: 'info-neutral',
   id: 'alert-5',
 };
 
-export const infoLine = Template.bind({});
-infoLine.args = {
+export const InfoLine = Template.bind({});
+InfoLine.args = {
   icon: true,
   label: 'Info Line',
   variant: 'info-line',
