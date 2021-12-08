@@ -38,7 +38,9 @@
         background: linear-gradient(90deg, #eee 0%, #fff 100%);
         box-shadow: 0px 1px 0px #eee;
         border-radius: 4px 0px 0px 4px;
-        min-width: 150px;
+        &.th-width {
+          min-width: 150px;
+        }
       }
 
       td {
