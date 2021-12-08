@@ -90,6 +90,10 @@
       height: auto;
       max-width: 900px;
 
+      &.size-lg {
+        max-width: 600px;
+      }
+
       main {
         height: fit-content;
         .overflow {
