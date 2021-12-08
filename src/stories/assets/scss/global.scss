@@ -22,3 +22,7 @@ body {
 .content-component {
   @apply p-8 bg-white rounded;
 }
+
+.docs-story #root {
+  @apply block;
+}

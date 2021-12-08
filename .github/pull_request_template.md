@@ -4,7 +4,7 @@ Descrição do que é esperado deste PR
 
 ## Stories relacionadas (clubhouse)
 
-- [ch-xxx]
+- [sc-xxxx]
 
 ## Pontos para atenção
 
@@ -14,7 +14,3 @@ Descrição do que é esperado deste PR
 ## Possui novas configurações?
 
 - Descrever as configurações alteradas ou novas
-
-## Possui migrations?
-
-- Se a feature adicionou alguma _migration_ e como faz para rodar
