@@ -86,8 +86,7 @@
     }
 
     .wrapper {
-      @apply relative;
-      height: auto;
+      @apply relative h-auto;
       max-width: 900px;
 
       &.size-lg {
