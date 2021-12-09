@@ -21,6 +21,8 @@ const Template = (args, { argTypes }) => ({
         {
           title: 'Lorem ipsum dolor',
           description: 'Vivamus luctus ipsum sed sapien tristique',
+          titleClass: 'text-red2',
+          descriptionClass: 'text-green2',
         },
         {
           title: 'Lorem ipsum dolor',
