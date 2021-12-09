@@ -74,10 +74,10 @@ export default {
       type: Array,
       validator: (obj) => {
         if (!(obj && obj.constructor === Array)) return false;
-        const accordionProperties = ['title'].filter(
+        const tableProperties = ['title'].filter(
           (property) => !Object.prototype.hasOwnProperty.call(obj[0], property),
         );
-        return accordionProperties.length === 0;
+        return tableProperties.length === 0;
       },
     },
 
@@ -106,11 +106,19 @@ export default {
     },
 
     /**
-     * desabled hover line
+     * Desabled hover line
      */
     noHover: {
       type: Boolean,
       default: false,
+    },
+
+    /**
+     * Set initial key active sortable arrow
+     */
+    keyActive: {
+      type: String,
+      default: null,
     },
   },
 
@@ -118,6 +126,10 @@ export default {
     return {
       activeItem: null,
     };
+  },
+
+  created() {
+    this.activeItem = this.keyActive;
   },
 
   methods: {
