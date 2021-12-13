@@ -45,7 +45,7 @@ table {
     }
 
     th {
-      @apply bg-gray3 align-middle text-left font-rubik text-small p-4 border-b border-solid border-orangePrimary;
+      @apply bg-gray3 align-middle text-left font-rubik text-small p-4;
 
       strong {
         @apply inline-flex items-center font-medium whitespace-no-wrap;
