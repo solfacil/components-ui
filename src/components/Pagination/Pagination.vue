@@ -101,6 +101,13 @@ export default {
     pageSize() {
       this.initialData();
     },
+
+    data: {
+      deep: true,
+      handler() {
+        this.initialData();
+      },
+    },
   },
 
   mounted() {
