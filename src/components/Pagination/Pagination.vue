@@ -104,8 +104,8 @@ export default {
 
     'data.count': {
       deep: true,
-      handler() {
-        this.initialData();
+      handler(val, oldVal) {
+        if (val !== oldVal) this.initialData();
       },
     },
   },
