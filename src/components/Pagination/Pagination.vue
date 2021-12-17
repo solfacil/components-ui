@@ -102,7 +102,7 @@ export default {
       this.initialData();
     },
 
-    data: {
+    'data.count': {
       deep: true,
       handler() {
         this.initialData();

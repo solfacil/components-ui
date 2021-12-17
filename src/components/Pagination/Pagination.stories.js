@@ -16,7 +16,7 @@ const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { Pagination },
   template:
-    '<div><Pagination v-bind="$props" :data="paginator" id="pagination" @clickHandler="triggerFunction"/><button @click="change">teste</button></div>',
+    '<Pagination v-bind="$props" :data="paginator" id="pagination" @clickHandler="triggerFunction"/>',
   data() {
     return {
       paginator: {
@@ -31,9 +31,6 @@ const Template = (args, { argTypes }) => ({
 
   methods: {
     triggerFunction: action('clicked'),
-    change() {
-      this.paginator.count = 9;
-    },
   },
 });
 
