@@ -10,7 +10,9 @@
   }
 
   &:hover {
-    @apply bg-gray1;
+    .select-main {
+      @apply bg-gray1;
+    }
   }
 
   label {
