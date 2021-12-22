@@ -26,6 +26,7 @@
         :type="inputType"
         :value="value"
         @input="$emit('input', $event.target.value)"
+        @change="$emit('change', $event.target.value)"
         @keyup.enter="handleEvent($event.target.value)"
       />
 
