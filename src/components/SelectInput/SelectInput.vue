@@ -14,7 +14,7 @@
       data-testid="select"
       :class="{
         'bg-gray1 rounded-t': showOptions,
-        'rounded': !showOptions,
+        rounded: !showOptions,
         'error-input': invalid,
         disabled,
       }"
