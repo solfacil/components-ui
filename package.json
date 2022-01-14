@@ -4,6 +4,9 @@
   "private": false,
   "description": "Component library based on Vue and Tailwind",
   "author": "Solfacil - Fernando Jesus",
+  "engines": {
+    "node": "^14"
+  },
   "scripts": {
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
