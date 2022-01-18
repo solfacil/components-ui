@@ -22,7 +22,7 @@
   }
 
   .select-main {
-    @apply shadow-sm bg-white flex pr-3 items-center border border-gray3 duration-200 ease-linear transition-all h-8 rounded;
+    @apply shadow-sm bg-white flex pr-3 items-center border border-gray3 duration-200 ease-linear transition-all h-8;
 
     span {
       @apply text-small overflow-hidden whitespace-no-wrap pl-4;
@@ -76,7 +76,7 @@
   }
 
   .options-container {
-    @apply p-3 absolute w-full left-0 bg-white border border-gray3 z-50 shadow-sm rounded;
+    @apply p-4 absolute w-full left-0 bg-white border border-gray3 z-50 shadow-sm rounded-b;
 
     &.top {
       bottom: 100%;
