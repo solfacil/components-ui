@@ -7,10 +7,9 @@
     >
       <thead role="rowgroup">
         <tr role="row">
-          <template v-for="(field, index) in fields">
+          <template v-for="(field, index) in fields" :key="index">
             <th
               v-if="field.hasOwnProperty('visibled') ? field.visibled : true"
-              :key="index"
               role="columnheader"
             >
               <strong

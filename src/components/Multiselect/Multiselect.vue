@@ -30,13 +30,8 @@
         {{ placeholder }}
       </span>
       <div v-else class="selected-wrapper">
-        <template v-for="(tag, index) in selected">
-          <Chip
-            :key="index"
-            :label="tag.name"
-            small
-            @close="removeSelectedIndex(index)"
-          />
+        <template v-for="(tag, index) in selected" :key="index">
+          <Chip small :label="tag.name" @close="removeSelectedIndex(index)" />
         </template>
       </div>
 

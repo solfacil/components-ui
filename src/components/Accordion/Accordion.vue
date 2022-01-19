@@ -1,12 +1,8 @@
 <template>
   <div :id="id" class="accordion">
     <dl>
-      <template v-for="(item, index) in headers">
-        <dt
-          :key="`title-${index}`"
-          :class="{ small }"
-          @click="handleItem(index)"
-        >
+      <template v-for="(item, index) in headers" :key="`title-${index}`">
+        <dt :class="{ small }" @click="handleItem(index)">
           {{ item }}
 
           <span
