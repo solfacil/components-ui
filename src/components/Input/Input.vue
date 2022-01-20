@@ -28,6 +28,7 @@
         @input="$emit('input', $event.target.value)"
         @change="$emit('change', $event.target.value)"
         @keyup.enter="handleEvent($event.target.value)"
+        @blur="$emit('blur', $event.target.value)"
       />
 
       <template v-if="inputType === 'search'">
