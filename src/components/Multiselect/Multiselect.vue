@@ -6,7 +6,8 @@
     class="sol-multi-select-input"
   >
     <label v-if="label">
-      {{ label }}<span v-if="isRequired" class="required">*</span>
+      {{ label }}
+      <span v-if="isRequired" class="required">*</span>
     </label>
 
     <div
@@ -26,9 +27,8 @@
       <span
         v-if="(placeholder && selected.length === 0) || hideChips"
         class="placeholder"
+        >{{ placeholder }}</span
       >
-        {{ placeholder }}
-      </span>
       <div v-else class="selected-wrapper">
         <template v-for="(tag, index) in selected" :key="index">
           <Chip small :label="tag.name" @close="removeSelectedIndex(index)" />
@@ -84,7 +84,10 @@
       <ul class="multiselect-list">
         <li v-for="(item, index) in selected" :key="index">
           {{ item.name }}
-          <IconClose @click.stop.prevent="removeSelectedIndex(index)" />
+          <img
+            :src="'@img/icon/icon-close.svg'"
+            @click.stop.prevent="removeSelectedIndex(index)"
+          />
         </li>
       </ul>
     </div>
@@ -98,14 +101,15 @@
 import clickOutside from '@directives/clickOutside.js';
 import Checkbox from '@components/Checkbox/Checkbox.vue';
 import Chip from '@components/Chip/Chip.vue';
-import IconClose from '@img/icon/icon-close.svg';
+// import IconClose from '@img/icon/icon-close.svg';
+
+import { watch, getCurrentInstance } from 'vue';
 export default {
   name: 'Multiselect',
 
   components: {
     Checkbox,
     Chip,
-    IconClose,
   },
 
   directives: {
@@ -200,17 +204,21 @@ export default {
     },
   },
 
+  setup(props) {
+    const instance = getCurrentInstance();
+    watch(
+      () => props.options,
+      () => {
+        instance.data.selected = [];
+      },
+    );
+  },
+
   data: () => ({
     showOptions: false,
     searchString: '',
     selected: [],
   }),
-
-  watch: {
-    options() {
-      this.selected = [];
-    },
-  },
 
   created() {
     if (this.value) {
@@ -248,6 +256,7 @@ export default {
 
       this.$emit('input', this.selected);
       this.$emit('change', this.selected);
+      this.$emit('update:value', this.selected);
     },
 
     isItemSelected(item) {
