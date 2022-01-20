@@ -1,14 +1,7 @@
-const vueJest = require('vue-jest/lib/template-compiler');
+const path = require('path');
 
 module.exports = {
-  process(content) {
-    const { render } = vueJest({
-      content,
-      attrs: {
-        functional: false,
-      },
-    });
-
-    return `module.exports = { render: ${render} }`;
+  process(src, filename) {
+    return 'module.exports = ' + JSON.stringify(path.basename(filename)) + ';';
   },
 };
