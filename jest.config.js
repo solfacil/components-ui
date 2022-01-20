@@ -1,5 +1,6 @@
 module.exports = {
   preset: '@vue/cli-plugin-unit-jest',
+
   collectCoverageFrom: [
     'src/components/**/*.{js,vue}',
     '!src/**/*.stories.js',
@@ -16,6 +17,7 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/generators/'],
   watchPathIgnorePatterns: ['<rootDir>/generators/'],
   transform: {
+    '^.+\\.vue$': 'vue-jest',
     '^.+\\.svg$': '<rootDir>/transforms/svgTransform.js',
   },
 };
