@@ -63,7 +63,7 @@
   }
 
   footer {
-    @apply flex flex-row-reverse items-center bg-gray2 rounded;
+    @apply flex flex-row items-center bg-gray2 rounded;
     height: 104px;
     box-shadow: 0px -1px 0px #e0e0e0;
     .btn,
