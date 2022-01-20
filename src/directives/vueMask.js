@@ -1,5 +1,3 @@
-import Vue from 'vue';
+import { maska as mask } from 'maska';
 
-import { VueMaskDirective } from 'v-mask';
-
-export default Vue.directive('mask', VueMaskDirective);
+export default mask;
