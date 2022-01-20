@@ -1,7 +1,8 @@
 <template>
   <div class="sol-input">
     <label v-if="label" :for="id">
-      {{ label }} <span v-if="isRequired" class="required">*</span>
+      {{ label }}
+      <span v-if="isRequired" class="required">*</span>
     </label>
     <div class="wrapper-input">
       <span v-if="!!$slots['icon']" class="icon">
@@ -38,7 +39,7 @@
           data-testid="search_clear_icon"
           @click="reset"
         >
-          <IconClose />
+          <img src="@img/icon/icon-close.svg" />
         </span>
       </template>
 
@@ -66,18 +67,12 @@
 </template>
 
 <script>
-import vueMask from '@directives/vueMask.js';
-
-import IconClose from '@img/icon/icon-close.svg';
+import mask from '@directives/vueMask.js';
 
 export default {
   name: 'InputText',
 
-  directives: { vueMask },
-
-  components: {
-    IconClose,
-  },
+  directives: { mask },
 
   props: {
     /** Specify whether the control is disabled */
