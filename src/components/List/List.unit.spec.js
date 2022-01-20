@@ -7,7 +7,7 @@ let wrapper = null;
 // Mount the component to make a wrapper before each test
 beforeEach(() => {
   wrapper = shallowMount(List, {
-    propsData: {
+    props: {
       id: 'list',
 
       items: [
@@ -51,7 +51,7 @@ describe('List - Unit', () => {
 
   it('should load item using slot', () => {
     const _wrapper = shallowMount(List, {
-      propsData: {
+      props: {
         id: 'list-with-slot',
       },
 

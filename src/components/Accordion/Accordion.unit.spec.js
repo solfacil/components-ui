@@ -14,7 +14,7 @@ const transitionStub = () => ({
 // Mount the component to make a wrapper before each test
 beforeEach(() => {
   wrapper = shallowMount(Accordion, {
-    propsData: {
+    props: {
       id: 'accordion-test',
       headers: ['Example 1', 'Example 2'],
       startOpen: -1,
@@ -38,7 +38,7 @@ describe('Accordion - Unit', () => {
 
   it('Should enter component with first element open', async () => {
     const _wrapper = shallowMount(Accordion, {
-      propsData: {
+      props: {
         id: 'accordion-test',
         headers: ['Example 1', 'Example 2'],
         startOpen: 0,
@@ -55,7 +55,7 @@ describe('Accordion - Unit', () => {
 
   it('Should enter component with first two elements open', async () => {
     const _wrapper = shallowMount(Accordion, {
-      propsData: {
+      props: {
         id: 'accordion-test',
         headers: ['Example 1', 'Example 2'],
         startOpen: [0, 1],

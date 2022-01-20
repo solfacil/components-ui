@@ -11,7 +11,7 @@ beforeEach(() => {
     directives: {
       clickOutside,
     },
-    propsData: {
+    props: {
       id: 'select-input',
       options: [
         {
@@ -152,7 +152,7 @@ describe('SelectInput - Unit', () => {
     );
     // declared new wrapper to have value on created
     const _wrapper = shallowMount(SelectInput, {
-      propsData: {
+      props: {
         id: 'select-input-temporary',
         value: '1',
         options: [

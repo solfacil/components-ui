@@ -7,7 +7,7 @@ let wrapper = null;
 // Mount the component to make a wrapper before each test
 beforeEach(() => {
   wrapper = shallowMount(Textarea, {
-    propsData: {
+    props: {
       id: 'textarea',
       disabled: false,
       label: 'Textarea',

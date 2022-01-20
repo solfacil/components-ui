@@ -8,7 +8,7 @@ let wrapper = null;
 // Mount the component to make a wrapper before each test
 beforeEach(() => {
   wrapper = shallowMount(Input, {
-    propsData: {
+    props: {
       disabled: false,
       invalid: false,
       label: null,

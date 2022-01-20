@@ -7,7 +7,7 @@ let wrapper = null;
 // Mount the component to make a wrapper before each test
 beforeEach(() => {
   wrapper = shallowMount(Chip, {
-    propsData: {
+    props: {
       label: 'Sample text',
     },
   });
