@@ -26,32 +26,27 @@ module.exports = {
   },
 
   chainWebpack: (config) => {
+    config.resolve.alias.set('vue', '@vue/compat');
+
     config.module
-      .rule('images')
-      .use('url-loader')
-      .loader('url-loader')
-      .tap((options) => Object.assign(options, { limit: Infinity }));
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          compilerOptions: {
+            MODE: 3,
+            COMPONENT_V_MODEL: false,
+            CUSTOM_DIR: true,
+            WATCH_ARRAY: false,
+          },
+        },
+      }));
 
-    const svgRule = config.module.rule('svg');
-    svgRule.uses.clear();
-
-    svgRule
-      .oneOf('url')
-      .resourceQuery(/url/)
-      .use('svg-url-loader')
-      .loader('svg-url-loader')
-      .end()
-      .end()
-      .oneOf('component')
-      .resourceQuery(/component/)
-      .use('vue-svg-loader')
-      .loader('vue-svg-loader')
-      .end()
-      .end()
-      .oneOf('default')
-      .use('vue-svg-loader')
-      .loader('vue-svg-loader')
-      .end()
-      .end();
+    // config.module
+    //   .rule('images')
+    //   .use('url-loader')
+    //   .loader('url-loader')
+    //   .tap((options) => Object.assign(options, { limit: Infinity }));
   },
 };
