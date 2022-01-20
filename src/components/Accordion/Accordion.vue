@@ -29,11 +29,7 @@
           </span>
         </dt>
 
-        <transition
-          :key="`transition-${index}`"
-          mode="out-in"
-          name="accordion-content"
-        >
+        <transition mode="out-in" name="accordion-content">
           <dd
             v-show="showContent(index)"
             :key="`description-${index}`"
