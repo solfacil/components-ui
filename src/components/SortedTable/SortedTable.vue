@@ -54,6 +54,7 @@
 
 <script>
 import Tooltip from '@components/Tooltip/Tooltip';
+import debounce from 'lodash/debounce';
 
 export default {
   name: 'SortedTable',
@@ -134,8 +135,12 @@ export default {
       if (!sortable || !key) return;
 
       this.activeItem = key;
-      this.$emit('sort', key);
+      this.emitSort();
     },
+
+    emitSort: debounce(function sortDebounce() {
+      this.$emit('sort', this.activeItem);
+    }, 300),
 
     isActiveAsc(key) {
       return this.activeItem === key && this.orderBy.toLowerCase() === 'asc';

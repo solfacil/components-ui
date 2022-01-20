@@ -10,6 +10,8 @@ export { default as ChartLineSeries } from '@components/Charts/LineSeries/ChartL
 export { default as ChartMultiAxisLine } from '@components/Charts/MultiAxisLine/ChartMultiAxisLine';
 export { default as Checkbox } from '@components/Checkbox/Checkbox';
 export { default as Chip } from '@components/Chip/Chip';
+export { default as FilterSelectList } from '@components/FilterComponent/FilterSelectList/FilterSelectList';
+export { default as FilterComponent } from '@components/FilterComponent/FilterComponent';
 export { default as Input } from '@components/Input/Input';
 export { default as InputMinusPlus } from '@components/InputMinusPlus/InputMinusPlus';
 export { default as List } from '@components/List/List';

@@ -1,0 +1,218 @@
+.sol-dropdown-filter {
+  @apply relative z-20;
+
+  @keyframes menuAnimation {
+    0% {
+      max-height: 100%;
+      opacity: 0;
+    }
+
+    50% {
+      max-height: 100%;
+      opacity: 0.5;
+    }
+
+    100% {
+      max-height: 100%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes accordeonAnimation {
+    0% {
+      max-height: 0;
+      opacity: 0;
+    }
+
+    25% {
+      max-height: 25%;
+    }
+
+    50% {
+      max-height: 50%;
+    }
+
+    75% {
+      max-height: 75%;
+    }
+
+    100% {
+      max-height: none;
+      opacity: 1;
+    }
+  }
+
+  .dropdown-content-mobile {
+    @apply bg-white flex flex-wrap shadow rounded overflow-hidden opacity-0 invisible duration-200 ease-linear transition-all absolute left-0;
+    width: 276px;
+    top: 100%;
+
+    &.open {
+      @apply opacity-100 visible;
+      top: calc(100% + 16px);
+    }
+
+    .accordion-content {
+      &-enter-active {
+        animation: accordeonAnimation 0.3s ease-in;
+      }
+      &-leave-active {
+        animation: accordeonAnimation 0.2s ease-in;
+        animation-direction: reverse;
+      }
+    }
+
+    dl {
+      @apply pt-0 pb-4;
+      width: 100%;
+
+      dt {
+        @apply flex items-center justify-between cursor-pointer font-normal font-rubik text-modest text-grayPrimary leading-tight p-4 border-t border-gray3 border-solid;
+
+        &:first-of-type {
+          @apply border-none;
+        }
+
+        &.active {
+          @apply bg-gray1;
+        }
+
+        &.selected {
+          @apply pl-2 justify-start;
+
+          &::before {
+            @apply block mr-2 w-2 h-2 rounded-full bg-orangePrimary;
+            content: '';
+          }
+        }
+      }
+
+      dd {
+        @apply block overflow-hidden p-4;
+        &.active {
+          @apply bg-gray1;
+        }
+      }
+    }
+
+    footer {
+      @apply bg-gray2 flex justify-end p-4 gap-2 w-full;
+    }
+  }
+
+  .dropdown-trigger {
+    @apply bg-white inline-flex items-center gap-4 text-grayPrimary text-small leading-tight font-normal rounded px-4 h-8 border-solid border border-gray3 font-rubik cursor-pointer duration-200 ease-linear transition-all;
+    padding-top: 2px;
+
+    &.open,
+    &.count {
+      @apply border-grayPrimary relative;
+    }
+
+    span {
+      @apply w-6 h-6 rounded-full text-center border border-solid bg-orangePrimary font-rubik text-slight font-normal text-gray6 absolute;
+      border-color: darken(#ffb600, 25%);
+      line-height: 23px;
+      right: -12px;
+      top: -12px;
+    }
+
+    .icon-count {
+      filter: brightness(0.6) contrast(1.4);
+    }
+  }
+
+  .dropdown-content {
+    @apply bg-white flex flex-wrap shadow rounded overflow-hidden opacity-0 invisible duration-200 ease-linear transition-all absolute left-0;
+    width: 570px;
+    top: 100%;
+
+    &.open {
+      @apply opacity-100 visible;
+      top: calc(100% + 16px);
+    }
+
+    nav {
+      width: 200px;
+
+      ul {
+        li {
+          @apply bg-white flex items-center justify-between p-4 font-rubik text-small text-grayPrimary font-normal border-t border-gray3 border-solid cursor-pointer duration-200 ease-linear transition-all gap-2;
+          line-height: 1.7;
+
+          &.active {
+            @apply bg-gray1 cursor-default;
+          }
+
+          &.selected {
+            @apply pl-2 justify-start;
+
+            &::before {
+              @apply block w-2 h-2 rounded-full bg-orangePrimary;
+              content: '';
+            }
+          }
+
+          &:first-child {
+            @apply border-none;
+          }
+        }
+      }
+    }
+
+    .dropown-main-content {
+      &-enter-active {
+        animation: menuAnimation 0.3s ease-in;
+      }
+    }
+
+    .dropdown-main {
+      @apply p-4 border-l border-gray3 border-solid;
+      width: 370px;
+      height: 386px;
+
+      ul {
+        @apply overflow-hidden overflow-y-auto;
+        height: 376px;
+
+        // custom scroll
+        &::-webkit-scrollbar {
+          @apply w-2;
+          right: 16px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+          @apply bg-gray2;
+          border-radius: 25px;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          @apply bg-gray3;
+          border-radius: 25px;
+
+          &:hover {
+            @apply bg-gray4;
+          }
+        }
+
+        li {
+          @apply flex justify-between p-2 pl-4 border-t border-solid border-gray3;
+
+          &:first-child {
+            @apply border-none;
+          }
+        }
+      }
+
+      .sol-input + ul {
+        height: 164px;
+      }
+    }
+
+    footer {
+      @apply bg-gray2 flex justify-end p-4 gap-2 w-full;
+    }
+  }
+}

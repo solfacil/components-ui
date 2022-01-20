@@ -1,0 +1,30 @@
+.sol-filterselectlist {
+  grid-area: filter;
+
+  .filter-searchbar {
+    @apply mb-4;
+  }
+
+  .list {
+    @apply overflow-auto h-auto;
+    max-height: 288px;
+
+    &.non-searchable {
+      max-height: 344px;
+    }
+
+    .list-item {
+      @apply w-full flex items-center justify-between p-2 border-b border-gray3 font-rubik text-small leading-normal text-grayPrimary cursor-pointer;
+    }
+  }
+
+  @screen md {
+    .list {
+      height: 288px;
+
+      &.non-searchable {
+        height: 344px;
+      }
+    }
+  }
+}
