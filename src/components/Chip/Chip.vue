@@ -2,19 +2,14 @@
   <span :class="['chip', { small }]">
     {{ label }}
     <div class="svg-wrapper" @click="handleClick()">
-      <CloseIcon :class="{ small }" />
+      <img src="@img/icon/icon-close-black.svg" :class="{ small }" />
     </div>
   </span>
 </template>
 
 <script>
-import CloseIcon from '@img/icon/icon-close.svg';
 export default {
   name: 'Chip',
-
-  components: {
-    CloseIcon,
-  },
 
   props: {
     label: {

@@ -32,7 +32,7 @@
                   class="ml-2"
                   :position="field.tooltip.position"
                 >
-                  <IconQuestion />
+                  <img src="@img/icon/icon-question.svg" />
                   <template slot="tooltip">{{
                     field.tooltip.message
                   }}</template>
@@ -54,14 +54,12 @@
 
 <script>
 import Tooltip from '@components/Tooltip/Tooltip';
-import IconQuestion from '@img/icon/icon-question.svg';
 
 export default {
   name: 'SortedTable',
 
   components: {
     Tooltip,
-    IconQuestion,
   },
 
   props: {

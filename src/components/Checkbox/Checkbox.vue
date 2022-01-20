@@ -17,7 +17,7 @@
           invalid: invalid,
         }"
       >
-        <IconCheck v-if="value && !disabled" />
+        <img v-if="value && !disabled" src="@img/icon/icon-check.svg" />
       </span>
 
       <span
@@ -33,13 +33,8 @@
 </template>
 
 <script>
-import IconCheck from '@img/icon/icon-check.svg';
 export default {
   name: 'CheckBox',
-
-  components: {
-    IconCheck,
-  },
 
   props: {
     /** Error message which appears only if invalid is true */

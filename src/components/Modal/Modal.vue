@@ -11,7 +11,12 @@
         <header>
           {{ title }}
 
-          <IconClose v-if="!disableClose" class="icon-close" @click="close" />
+          <img
+            v-if="!disableClose"
+            src="@img/icon/icon-close.svg"
+            class="icon-close"
+            @click="close"
+          />
         </header>
 
         <main>
@@ -38,14 +43,12 @@
 
 <script>
 import Button from '@components/Button/Button';
-import IconClose from '@img/icon/icon-close.svg';
 
 export default {
   name: 'Modal',
 
   components: {
     Button,
-    IconClose,
   },
 
   props: {

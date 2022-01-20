@@ -18,11 +18,11 @@
       @change="handleChange"
     >
       <template #icon-calendar>
-        <IconCalendar />
+        <img src="@img/icon/icon-calendar.svg" />
       </template>
 
       <template #icon-clear>
-        <IconClose />
+        <img src="@img/icon/icon-close.svg" />
       </template>
 
       <template #footer>
@@ -51,8 +51,6 @@
 <script>
 import Button from '@components/Button/Button';
 import DatePicker from 'vue2-datepicker';
-import IconCalendar from '@img/icon/icon-calendar.svg';
-import IconClose from '@img/icon/icon-close.svg';
 
 export default {
   name: 'Calendar',
@@ -60,8 +58,6 @@ export default {
   components: {
     Button,
     DatePicker,
-    IconCalendar,
-    IconClose,
   },
 
   props: {
