@@ -53,4 +53,10 @@
       background: url(~@img/icon/icon-hide.svg?url) no-repeat center center;
     }
   }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
