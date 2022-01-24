@@ -18,6 +18,7 @@
           'is-icon': $slots['icon'],
           search: inputType === 'search',
           hasIconVisibility: controlVisibility,
+          'no-arrows': noArrows,
         }"
         data-testid="input"
         :disabled="disabled"
@@ -161,6 +162,14 @@ export default {
 
     /** Specify whether to show a red * at the end of the label or not */
     isRequired: {
+      type: Boolean,
+      default: false,
+    },
+
+    /** Remove arrows of input number
+        https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-inner-spin-button#changing_the_cursor_in_the_spin_controls
+    **/
+    noArrows: {
       type: Boolean,
       default: false,
     },
