@@ -17,6 +17,14 @@
     &.hasIconVisibility {
       @apply pr-8;
     }
+
+    &.no-arrows[type='number'] {
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
   }
 
   .icon {
@@ -52,11 +60,5 @@
     &.hide {
       background: url(~@img/icon/icon-hide.svg?url) no-repeat center center;
     }
-  }
-
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
   }
 }
