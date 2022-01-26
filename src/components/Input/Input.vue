@@ -19,6 +19,7 @@
           search: inputType === 'search',
           hasIconVisibility: controlVisibility,
           'no-arrows': noArrows,
+          valid: validOutline,
         }"
         data-testid="input"
         :disabled="disabled"
@@ -134,6 +135,12 @@ export default {
     placeholder: {
       type: String,
       default: null,
+    },
+
+    /** Provides a green "valid" border to the input */
+    validOutline: {
+      type: Boolean,
+      default: false,
     },
 
     /** Specify the type of the Input: <br/> "date" | "email" | "password"  | "search"  | "tel"  | "text"  | "time" | "url" | "number" */
