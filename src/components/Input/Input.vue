@@ -19,7 +19,7 @@
           search: inputType === 'search',
           hasIconVisibility: controlVisibility,
           'no-arrows': noArrows,
-          valid: validOutline,
+          valid: [false, isFieldValid][Number(validOutline)],
         }"
         data-testid="input"
         :disabled="disabled"
@@ -137,7 +137,7 @@ export default {
       default: null,
     },
 
-    /** Provides a green "valid" border to the input */
+    /** Specifies whether the field should display a green outline on valid state*/
     validOutline: {
       type: Boolean,
       default: false,
@@ -195,6 +195,10 @@ export default {
       if (type === 'tel') return '(##) #####-####';
 
       return '';
+    },
+
+    isFieldValid() {
+      return !this.$props.invalid && this.$props.value;
     },
   },
 
