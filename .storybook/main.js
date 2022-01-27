@@ -1,13 +1,8 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
 
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-postcss',
-  ],
 
   webpackFinal: async (config) => {
     config.resolve.alias = {
@@ -20,13 +15,13 @@ module.exports = {
       '@filters': path.resolve(__dirname, '../src/filters'),
       '@validators': path.join(__dirname, './src/validators'),
       '~': path.resolve(__dirname, '../node_modules'),
-    };
+    }
 
     config.module.rules.push({
       test: /\.scss$/,
       use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       include: path.resolve(__dirname, '../'),
-    });
+    })
 
 
     /** Following code is from a very specific topic on stackoverflow about loading svg on vue with storybook
@@ -38,27 +33,27 @@ module.exports = {
       r.test && r.test.toString().includes('svg') &&
       // file-loader might be resolved to js file path so "endsWith" is not reliable enough
       r.loader && r.loader.includes('file-loader')
-    );
-    rule.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/;
+    )
+    rule.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/
 
     config.module.rules.push(
       {
-          test: /\.svg$/,
-          oneOf:[
-            {
-              resourceQuery: /url/,
-              loader:'svg-url-loader'
-            },
-            {
-              resourceQuery: /component/,
-              loader: 'vue-svg-loader'
-            },
-            {
-              loader:'vue-svg-loader'
-            }
-          ]
+        test: /\.svg$/,
+        oneOf: [
+          {
+            resourceQuery: /url/,
+            loader: 'svg-url-loader'
+          },
+          // {
+          //   resourceQuery: /component/,
+          //   loader: 'vue-svg-loader'
+          // },
+          // {
+          //   loader: 'vue-svg-loader'
+          // }
+        ]
       }
-    );
+    )
 
     // config.module.rules.push({
     //   test: /\.(png|jpg|gif|svg)$/,
@@ -82,6 +77,14 @@ module.exports = {
     // //   include: path.resolve(__dirname, '../'),
     // // });
 
-    return config;
+    return config
   },
-};
+
+
+
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-postcss',
+  ],
+}

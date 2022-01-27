@@ -35,10 +35,7 @@ module.exports = {
         ...options,
         compilerOptions: {
           compilerOptions: {
-            MODE: 3,
-            COMPONENT_V_MODEL: false,
-            CUSTOM_DIR: true,
-            WATCH_ARRAY: false,
+            MODE: 2,
           },
         },
       }));
