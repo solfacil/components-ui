@@ -4,8 +4,8 @@ export default {
   hasAtLeastOneNumber: (value) => /\d+/.test(value),
   emailSolfacil: (condition) => (value) => {
     return [
-      /[a-zA-Z0-9.]+@solfacil.com.br/.test(value),
-      /[a-zA-Z0-9.]+@example.com/.test(value),
+      /\w+([.-]?\w+)*@solfacil.com.br/.test(value),
+      /\w+([.-]?\w+)*@example.com/.test(value),
     ][Number(condition === 'development')];
   },
   emailHasBrDomain: (condition) => (value) => {
