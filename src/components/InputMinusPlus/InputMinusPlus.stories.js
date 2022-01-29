@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import InputMinusPlus from './InputMinusPlus.vue';
 
 export default {
@@ -10,15 +11,13 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { InputMinusPlus },
-  data: () => {
-    return {
-      num: 0,
-    };
+  setup() {
+    const num = ref(0);
+    return { args, num };
   },
-  template: '<InputMinusPlus v-model="num" v-bind="$props"/>',
+  template: '<InputMinusPlus v-model="num" v-bind="num"/>',
 });
 
 export const Default = Template.bind({});

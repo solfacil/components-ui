@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import Textarea from './Textarea.vue';
 
 export default {
@@ -10,15 +11,13 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Textarea },
-  data() {
-    return {
-      inputModel: null,
-    };
+  setup() {
+    const inputModel = ref(null);
+    return { args, inputModel };
   },
-  template: '<Textarea v-bind="$props" v-model="inputModel"></Textarea>',
+  template: '<Textarea v-bind="args" v-model="inputModel"></Textarea>',
 });
 
 export const Default = Template.bind({});

@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import RadioButton from './RadioButton.vue';
 
 export default {
@@ -11,15 +12,13 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { RadioButton },
-  template: '<RadioButton v-bind="$props" v-model="check" />',
-  data() {
-    return {
-      check: null,
-    };
+  setup() {
+    const check = ref(null);
+    return { args, check };
   },
+  template: '<RadioButton v-bind="args" v-model="check" />',
 });
 
 export const Basic = Template.bind({});

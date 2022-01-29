@@ -9,10 +9,12 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Chip },
-  template: '<Chip v-bind="$props"></Chip>',
+  setup() {
+    return { args };
+  },
+  template: '<Chip v-bind="args"></Chip>',
 });
 
 export const Default = Template.bind({});
@@ -20,10 +22,12 @@ Default.args = {
   label: 'Sample text',
 };
 
-const SmallTemplate = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const SmallTemplate = (args) => ({
   components: { Chip },
-  template: `<Chip v-bind="$props" small></Chip>`,
+  setup() {
+    return { args };
+  },
+  template: `<Chip v-bind="args" small></Chip>`,
 });
 export const Small = SmallTemplate.bind({});
 Small.args = {

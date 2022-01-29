@@ -32,14 +32,16 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Popover, Button },
+  setup() {
+    return { args };
+  },
   template: `
-    <Popover v-bind="$props">
+    <Popover v-bind="args">
       <Button id="popover">Hover Popover</Button>
 
-      <template slot="popover">
+      <template #popover>
         Vivamus sagittis lacus vel augue laoreet rutrum faucibus.
       </template>
     </Popover>`,

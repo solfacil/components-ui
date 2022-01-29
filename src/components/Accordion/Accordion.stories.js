@@ -11,11 +11,13 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Accordion },
+  setup() {
+    return { args };
+  },
   template:
-    '<Accordion v-bind="$props"><template #description-0>Example Description.</template><template #description-1><p>This</p><p>Is</p><p>Another</p><p>Example</p><p>Description.</p></template></Accordion>',
+    '<Accordion v-bind="args"><template #description-0>Example Description.</template><template #description-1><p>This</p><p>Is</p><p>Another</p><p>Example</p><p>Description.</p></template></Accordion>',
 });
 
 export const Default = Template.bind({});

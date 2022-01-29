@@ -1,4 +1,5 @@
 import { action } from '@storybook/addon-actions';
+import { ref } from 'vue';
 import Tabs from './Tabs.vue';
 
 export default {
@@ -12,40 +13,39 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Tabs },
+  setup() {
+    const currentTab = ref('formalizacao');
+    const itemsTabs = ref([
+      {
+        name: 'upload',
+        label: 'Upload',
+      },
+      {
+        name: 'formalizacao',
+        label: 'Formalização',
+      },
+      {
+        name: 'cancelar_aprovar',
+        label: 'Cancelar/Aprovar',
+        disabled: true, //optional
+      },
+    ]);
+
+    function getDataTab() {
+      action('Tab');
+    }
+    return { args, itemsTabs, currentTab, getDataTab };
+  },
   template: `
     <Tabs
-      v-bind="$props"
+      v-bind="args"
       :items="itemsTabs"
       @changed="getDataTab"
       v-model="currentTab"
       id="tab-1"
     />`,
-  data() {
-    return {
-      currentTab: 'formalizacao',
-      itemsTabs: [
-        {
-          name: 'upload',
-          label: 'Upload',
-        },
-        {
-          name: 'formalizacao',
-          label: 'Formalização',
-        },
-        {
-          name: 'cancelar_aprovar',
-          label: 'Cancelar/Aprovar',
-          disabled: true, //optional
-        },
-      ],
-    };
-  },
-  methods: {
-    getDataTab: action('Tab'),
-  },
 });
 
 Template.bind({});

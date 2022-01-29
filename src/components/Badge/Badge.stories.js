@@ -27,10 +27,12 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Badge },
-  template: '<Badge v-bind="$props">{{label}}</Badge>',
+  setup() {
+    return { args };
+  },
+  template: '<Badge v-bind="args">{{args.label}}</Badge>',
 });
 
 export const Done = Template.bind({});

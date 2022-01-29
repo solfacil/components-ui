@@ -31,10 +31,12 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Alert },
-  template: '<Alert v-bind="$props">{{label}}</Alert>',
+  setup() {
+    return { args };
+  },
+  template: '<Alert v-bind="args">{{args.label}}</Alert>',
 });
 
 export const Success = Template.bind({});

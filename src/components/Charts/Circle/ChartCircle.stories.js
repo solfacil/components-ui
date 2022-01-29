@@ -10,10 +10,12 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { ChartCircle },
-  template: '<ChartCircle v-bind="$props" />',
+  setup() {
+    return { args };
+  },
+  template: '<ChartCircle v-bind="args" />',
 });
 
 export const Total = Template.bind({});

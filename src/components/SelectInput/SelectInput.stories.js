@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import SelectInput from './SelectInput.vue';
 
 export default {
@@ -18,26 +19,25 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { SelectInput },
-  data() {
-    return {
-      subjectTypes: [
-        {
-          value: '1',
-          name: 'Sou um cliente e quero tirar dúvidas',
-        },
-        {
-          value: '2',
-          name: 'Sou um integrador e quero tirar dúvidas',
-        },
-      ],
-      inputModel: '2',
-    };
+  setup() {
+    const subjectTypes = ref([
+      {
+        value: '1',
+        name: 'Sou um cliente e quero tirar dúvidas',
+      },
+      {
+        value: '2',
+        name: 'Sou um integrador e quero tirar dúvidas',
+      },
+    ]);
+
+    const inputModel = ref('2');
+    return { args, inputModel, subjectTypes };
   },
   template:
-    '<div style="width:300px; min-height: 200px"><SelectInput v-bind="$props" :options="subjectTypes" v-model="inputModel" /></div>',
+    '<div style="width:300px; min-height: 200px"><SelectInput v-bind="args" :options="subjectTypes" v-model="inputModel" /></div>',
 });
 
 export const Default = Template.bind({});

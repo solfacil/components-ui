@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import Checkbox from './Checkbox.vue';
 
 export default {
@@ -11,15 +12,13 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Checkbox },
-  template: '<Checkbox v-bind="$props" v-model="check" />',
-  data() {
-    return {
-      check: null,
-    };
+  setup() {
+    const check = ref(null);
+    return { args, check };
   },
+  template: '<Checkbox v-bind="args" v-model="check" />',
 });
 
 export const Basic = Template.bind({});

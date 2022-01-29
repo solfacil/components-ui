@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import Input from './Input.vue';
 
 export default {
@@ -28,15 +29,18 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Input },
-  data() {
+
+  setup() {
+    const inputModel = ref('');
+
     return {
-      inputModel: null,
+      args,
+      inputModel,
     };
   },
-  template: '<Input v-bind="$props" v-model="inputModel" />',
+  template: '<Input v-bind="args" v-model="inputModel" />',
 });
 
 Template.bind({});

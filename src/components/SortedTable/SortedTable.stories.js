@@ -1,4 +1,5 @@
 import { action } from '@storybook/addon-actions';
+import { ref } from 'vue';
 import SortedTable from './SortedTable.vue';
 
 export default {
@@ -12,11 +13,35 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { SortedTable },
+  setup() {
+    const titleTHead = ref([
+      {
+        key: 'nome_cliente',
+        title: 'Nome do cliente',
+        sortable: true,
+      },
+      { key: 'valor_financiado', title: 'Valor financiado', sortable: true },
+      {
+        key: 'valor_bruto',
+        title: 'Valor bruto',
+        sortable: true,
+        visibled: true,
+        tooltip: {
+          position: 'left',
+          message: 'Produção do sistema',
+        },
+      },
+      { key: 'valor_aquisicao', title: 'Valor de aquisição', sortable: true },
+    ]);
+    function sortBy() {
+      action('Update');
+    }
+    return { args, titleTHead, sortBy };
+  },
   template: `
-    <SortedTable v-bind="$props" :fields="titleTHead" keyActive="nome_cliente" order-by="asc" @sort="sortBy" id="table-1">
+    <SortedTable v-bind="args" :fields="titleTHead" keyActive="nome_cliente" order-by="asc" @sort="sortBy" id="table-1">
       <template #thead-th>
         <th><strong>Last</strong></th>
       </template>
@@ -39,32 +64,6 @@ const Template = (args, { argTypes }) => ({
         </tr>
       </template>
     </SortedTable>`,
-  data() {
-    return {
-      titleTHead: [
-        {
-          key: 'nome_cliente',
-          title: 'Nome do cliente',
-          sortable: true,
-        },
-        { key: 'valor_financiado', title: 'Valor financiado', sortable: true },
-        {
-          key: 'valor_bruto',
-          title: 'Valor bruto',
-          sortable: true,
-          visibled: true,
-          tooltip: {
-            position: 'left',
-            message: 'Produção do sistema',
-          },
-        },
-        { key: 'valor_aquisicao', title: 'Valor de aquisição', sortable: true },
-      ],
-    };
-  },
-  methods: {
-    sortBy: action('Update'),
-  },
 });
 
 Template.bind({});

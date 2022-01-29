@@ -32,13 +32,15 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Tooltip, Button },
+  setup() {
+    return { args };
+  },
   template: `
-    <Tooltip v-bind="$props" id="tip-1">
+    <Tooltip v-bind="args" id="tip-1">
       <Button id="button">Hover Tooltip</Button>
-      <template slot="tooltip">Lorem ipsum</template>
+      <template #tooltip>Lorem ipsum</template>
     </Tooltip>`,
 });
 

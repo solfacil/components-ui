@@ -1,5 +1,6 @@
 import Modal from './Modal.vue';
 import Button from '@components/Button/Button';
+import { ref } from 'vue';
 
 export default {
   title: 'Components/UI Elements/Modal',
@@ -19,21 +20,20 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Modal, Button },
-  data() {
-    return {
-      show: false,
-    };
+  setup() {
+    const show = ref(false);
+
+    function showModal() {
+      show.value = true;
+    }
+
+    return { args, show, showModal };
   },
-  methods: {
-    showModal() {
-      this.show = true;
-    },
-  },
+
   template:
-    '<div><Button id="show-modal" @click="showModal">Show modal</button><Modal v-bind="$props" v-model="show"><p>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal</p><template v-slot:footer></template></Modal></div>',
+    '<div><Button id="show-modal" @click="showModal">Show modal</button><Modal v-bind="args" v-model="show"><p>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal</p><template v-slot:footer></template></Modal></div>',
 });
 
 export const Default = Template.bind({});

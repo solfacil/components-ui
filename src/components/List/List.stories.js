@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import List from './List.vue';
 
 export default {
@@ -11,30 +12,29 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { List },
-  template: '<List v-bind="$props" :items="itemsList" id="list-1" />',
-  data() {
-    return {
-      itemsList: [
-        {
-          title: 'Lorem ipsum dolor',
-          description: 'Vivamus luctus ipsum sed sapien tristique',
-          titleClass: 'text-red2',
-          descriptionClass: 'text-green2',
-        },
-        {
-          title: 'Lorem ipsum dolor',
-          description: 'Vivamus luctus ipsum sed sapien tristique',
-        },
-        {
-          title: 'Lorem ipsum dolor',
-          description: 'Vivamus luctus ipsum sed sapien tristique',
-        },
-      ],
-    };
+  setup() {
+    const itemsList = ref([
+      {
+        title: 'Lorem ipsum dolor',
+        description: 'Vivamus luctus ipsum sed sapien tristique',
+        titleClass: 'text-red2',
+        descriptionClass: 'text-green2',
+      },
+      {
+        title: 'Lorem ipsum dolor',
+        description: 'Vivamus luctus ipsum sed sapien tristique',
+      },
+      {
+        title: 'Lorem ipsum dolor',
+        description: 'Vivamus luctus ipsum sed sapien tristique',
+      },
+    ]);
+
+    return { args, itemsList };
   },
+  template: '<List v-bind="args" :items="itemsList" id="list-1" />',
 });
 
 Template.bind({});

@@ -36,13 +36,17 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Button },
-  template: '<Button v-bind="$props" @click="someMethod">{{label}}</Button>',
-  methods: {
-    someMethod: action('clicked'),
+
+  setup() {
+    function someMethod() {
+      action('Clicked!');
+    }
+
+    return { args, someMethod };
   },
+  template: '<Button v-bind="args" @click="someMethod">{{args.label}}</Button>',
 });
 
 export const Basic = Template.bind({});

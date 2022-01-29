@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import Multiselect from './Multiselect.vue';
 
 export default {
@@ -8,23 +9,22 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Multiselect },
-  data() {
-    return {
-      subjectTypes: new Array(10).fill('').map((item, index) => {
-        return {
-          value: `${index}`,
-          name: `Opção ${index}`,
-        };
-      }),
+  setup() {
+    const subjectTypes = ref(
+      new Array(10).fill('').map((item, index) => ({
+        value: `${index}`,
+        name: `Opção ${index}`,
+      })),
+    );
 
-      inputModel: [],
-    };
+    const inputModel = ref([]);
+
+    return { args, subjectTypes, inputModel };
   },
   template:
-    '<div style="width:500px; min-height: 200px"><Multiselect v-bind="$props" :options="subjectTypes" v-model="inputModel" /></div>',
+    '<div style="width:500px; min-height: 200px"><Multiselect v-bind="args" :options="subjectTypes" v-model="inputModel" /></div>',
 });
 
 export const Default = Template.bind({});

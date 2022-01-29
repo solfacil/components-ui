@@ -1,4 +1,5 @@
 import { action } from '@storybook/addon-actions';
+import { ref } from 'vue';
 import Pagination from './Pagination.vue';
 
 export default {
@@ -12,26 +13,23 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Pagination },
-  template:
-    '<Pagination v-bind="$props" :data="paginator" id="pagination" @clickHandler="triggerFunction"/>',
-  data() {
-    return {
-      paginator: {
-        afterCursor: 'g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls',
-        beforeCursor:
-          'g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls',
-        count: 37,
-        size: 10,
-      },
-    };
-  },
+  setup() {
+    const paginator = ref({
+      afterCursor: 'g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls',
+      beforeCursor: 'g3QAAAACZAAQZmluYW5jaWFtZW50b19pZGQAA25pbGQAAmlkZAADbmls',
+      count: 37,
+      size: 10,
+    });
 
-  methods: {
-    triggerFunction: action('clicked'),
+    function triggerFunction() {
+      action('clicked');
+    }
+    return { args, paginator, triggerFunction };
   },
+  template:
+    '<Pagination v-bind="args" :data="paginator" id="pagination" @clickHandler="triggerFunction"/>',
 });
 
 Template.bind({});

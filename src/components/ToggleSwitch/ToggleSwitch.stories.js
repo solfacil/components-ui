@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import ToggleSwitch from './ToggleSwitch.vue';
 
 export default {
@@ -11,15 +12,13 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { ToggleSwitch },
-  template: '<ToggleSwitch v-bind="$props" v-model="check" />',
-  data() {
-    return {
-      check: null,
-    };
+  setup() {
+    const check = ref(null);
+    return { args, check };
   },
+  template: '<ToggleSwitch v-bind="args" v-model="check" />',
 });
 
 export const Basic = Template.bind({});

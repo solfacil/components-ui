@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import ChartMultiAxisLine from './ChartMultiAxisLine';
 
 export default {
@@ -10,16 +11,15 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { ChartMultiAxisLine },
-  data() {
-    return {
-      currentData: null,
-    };
+  setup() {
+    const currentData = ref(null);
+    return { args, currentData };
   },
+
   template:
-    '<div style="width: 900px;"><ChartMultiAxisLine v-model="currentData" v-bind="$props" /></div>',
+    '<div style="width: 900px;"><ChartMultiAxisLine v-model="currentData" v-bind="args" /></div>',
 });
 
 export const Default = Template.bind({});

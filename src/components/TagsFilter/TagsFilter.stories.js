@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 import TagsFilter from './TagsFilter.vue';
 
 export default {
@@ -9,15 +10,13 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { TagsFilter },
-  data() {
-    return {
-      tags: ['teste', 'old teste'],
-    };
+  setup() {
+    const tags = ref(['teste', 'old teste']);
+    return { args, tags };
   },
-  template: '<TagsFilter v-bind="$props" v-model="tags" />',
+  template: '<TagsFilter v-bind="tags" v-model="tags" />',
 });
 
 export const Default = Template.bind({});
