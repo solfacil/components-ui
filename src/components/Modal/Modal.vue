@@ -11,7 +11,11 @@
         <header>
           {{ title }}
 
-          <IconClose v-if="!disableClose" class="icon-close" @click="close" />
+          <IconClose
+            v-if="!disableClose"
+            class="icon-close"
+            @click="[customCloseAction, close][Number(selfClose)]"
+          />
         </header>
 
         <main>
