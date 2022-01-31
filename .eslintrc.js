@@ -11,7 +11,6 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:vue/recommended',
     'prettier/vue',
-    'plugin:storybook/recommended',
   ],
   parserOptions: {
     parser: 'babel-eslint',
