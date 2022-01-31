@@ -16,7 +16,7 @@ const Template = (args) => ({
     const tags = ref(['teste', 'old teste']);
     return { args, tags };
   },
-  template: '<TagsFilter v-bind="tags" v-model="tags" />',
+  template: '<TagsFilter v-bind="args" v-model:value="tags" />',
 });
 
 export const Default = Template.bind({});

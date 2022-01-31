@@ -17,7 +17,7 @@ const Template = (args) => ({
     const num = ref(0);
     return { args, num };
   },
-  template: '<InputMinusPlus v-model="num" v-bind="num"/>',
+  template: '<InputMinusPlus v-model="num" v-bind="args"/>',
 });
 
 export const Default = Template.bind({});

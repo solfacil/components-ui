@@ -33,7 +33,7 @@ const Template = (args) => ({
   },
 
   template:
-    '<div><Button id="show-modal" @click="showModal">Show modal</button><Modal v-bind="args" v-model="show"><p>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal</p><template v-slot:footer></template></Modal></div>',
+    '<div><Button id="show-modal" @click="showModal">Show modal</button><Modal v-bind="args" v-model:value="show"><p>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal</p><template v-slot:footer></template></Modal></div>',
 });
 
 export const Default = Template.bind({});

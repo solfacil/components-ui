@@ -15,10 +15,11 @@ export default {
 const Template = (args) => ({
   components: { Checkbox },
   setup() {
-    const check = ref(null);
+    const check = ref(false);
+
     return { args, check };
   },
-  template: '<Checkbox v-bind="args" v-model="check" />',
+  template: '<Checkbox v-bind="args" v-model:value="check" />',
 });
 
 export const Basic = Template.bind({});
