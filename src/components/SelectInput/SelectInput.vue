@@ -179,15 +179,14 @@ export default {
       action();
     },
 
-    value() {
-      this.assignSelectedFromOptions();
+    value: {
+      immediate: true,
+      handler(value) {
+        if (value) {
+          this.assignSelectedFromOptions();
+        }
+      },
     },
-  },
-
-  created() {
-    if (this.value) {
-      this.assignSelectedFromOptions();
-    }
   },
 
   methods: {
@@ -201,6 +200,8 @@ export default {
 
     selectItem(option) {
       this.selected = option;
+      this.$emit('update:value', option.value);
+
       this.$emit('input', option.value);
       this.$emit('change', option.value);
       this.toggleSelect();

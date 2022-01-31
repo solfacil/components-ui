@@ -1,23 +1,29 @@
 <template>
-  <component
-    :is="tag"
+  <a
+    v-if="tag === 'a'"
     :id="id"
     :href="to"
     :disabled="disabled"
-    :class="[
-      variantSize,
-      variantClass,
-      { btn: tag === 'a' },
-      { disabled: disabled && tag === 'a' },
-    ]"
+    :class="[variantSize, variantClass, { disabled: disabled }]"
     :type="type"
     :target="target"
+    class="sol-button btn"
+    v-on="$listeners"
+  >
+    <slot>Button</slot>
+  </a>
+  <button
+    v-else
+    :id="id"
+    :href="to"
+    :disabled="disabled"
+    :class="[variantSize, variantClass, { disabled: disabled && tag === 'a' }]"
+    :type="type"
     class="sol-button"
     v-on="$listeners"
   >
-    <!-- slot -->
     <slot>Button</slot>
-  </component>
+  </button>
 </template>
 
 <script>

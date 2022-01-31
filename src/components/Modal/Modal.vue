@@ -131,6 +131,7 @@ export default {
     close() {
       document.body.classList.remove('overflow-hidden');
       this.$emit('input', false);
+      this.$emit('update:value', false);
       this.$emit('closeModal');
     },
 

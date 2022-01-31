@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import Checkbox from './Checkbox.vue';
 
 export default {
@@ -12,14 +12,19 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template = ({ value, ...args }) => ({
   components: { Checkbox },
   setup() {
     const check = ref(false);
 
+    watchEffect(() => {
+      check.value = value;
+    });
+
     return { args, check };
   },
-  template: '<Checkbox v-bind="args" v-model:value="check" />',
+  template:
+    '<Checkbox v-bind="args" :value="check"  @update:value="check = $event" />',
 });
 
 export const Basic = Template.bind({});

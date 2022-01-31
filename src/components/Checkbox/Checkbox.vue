@@ -7,7 +7,7 @@
         :name="name"
         :disabled="disabled"
         :checked="value"
-        @input="handleToggle"
+        @change="handleToggle"
       />
       <span
         :class="{
@@ -95,6 +95,7 @@ export default {
   methods: {
     handleToggle(e) {
       this.$emit('input', e.target.checked);
+      this.$emit('update:value', e.target.checked);
     },
   },
 };

@@ -1,6 +1,6 @@
 import Modal from './Modal.vue';
 import Button from '@components/Button/Button';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 
 export default {
   title: 'Components/UI Elements/Modal',
@@ -20,10 +20,14 @@ export default {
   },
 };
 
-const Template = (args) => ({
+const Template = ({ value, ...args }) => ({
   components: { Modal, Button },
   setup() {
     const show = ref(false);
+
+    watchEffect(() => {
+      show.value = value;
+    });
 
     function showModal() {
       show.value = true;
@@ -32,8 +36,20 @@ const Template = (args) => ({
     return { args, show, showModal };
   },
 
-  template:
-    '<div><Button id="show-modal" @click="showModal">Show modal</button><Modal v-bind="args" v-model:value="show"><p>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal<br>Main modal</p><template v-slot:footer></template></Modal></div>',
+  template: `
+    <div>
+      <Button id="show-modal" @click="showModal">
+        Show modal
+      </button>
+
+      <Modal v-bind="args" v-model:value="show">
+        <p>
+          Main modal <br> Main modal <br> Main modal <br> Main modal <br> Main modal <br> Main modal <br> Main modal
+        </p>
+        <template v-slot:footer></template>
+      </Modal>
+    </div>
+  `,
 });
 
 export const Default = Template.bind({});
