@@ -1,7 +1,7 @@
 import '../src/assets/scss/core/index.scss';
 import '../src/stories/assets/scss/global.scss';
 
-import { addDecorator, addParameters } from '@storybook/vue';
+import { addDecorator, addParameters } from '@storybook/vue3';
 
 addDecorator(() => ({
   template: '<div class="content-component"><story/></div>',

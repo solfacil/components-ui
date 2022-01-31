@@ -8,7 +8,7 @@
     :type="type"
     :target="target"
     class="sol-button btn"
-    v-on="$listeners"
+    v-bind="$attrs"
   >
     <slot>Button</slot>
   </a>
@@ -20,7 +20,7 @@
     :class="[variantSize, variantClass, { disabled: disabled && tag === 'a' }]"
     :type="type"
     class="sol-button"
-    v-on="$listeners"
+    v-bind="$attrs"
   >
     <slot>Button</slot>
   </button>
