@@ -26,8 +26,8 @@
         :placeholder="placeholder"
         :type="inputType"
         :value="value"
-        @input="$emit('input', $event.target.value)"
-        @change="$emit('change', $event.target.value)"
+        @input="emitInputValue"
+        @change="emitInputValue"
         @keyup.enter="handleEvent($event.target.value)"
       />
 
@@ -179,6 +179,7 @@ export default {
   methods: {
     reset() {
       this.$emit('input', '');
+      this.$emit('update:value', '');
 
       this.$emit('eventHandler', '');
     },
@@ -193,6 +194,12 @@ export default {
       const _type = ['password', 'text'][Number(this.inputType === 'password')];
 
       this.inputType = _type;
+    },
+
+    emitInputValue(event) {
+      this.$emit('input', event.target.value);
+      this.$emit('change', event.target.value);
+      this.$emit('update:value', event.target.value);
     },
   },
 };

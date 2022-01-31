@@ -87,6 +87,7 @@ export default {
   methods: {
     hiddenAlert() {
       this.$emit('input', false);
+      this.$emit('update:value', false);
     },
   },
 };

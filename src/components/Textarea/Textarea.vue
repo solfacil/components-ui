@@ -21,7 +21,7 @@
         :name="name"
         :placeholder="placeholder"
         :value="value"
-        @input="$emit('input', $event.target.value)"
+        @input="emitInputValue"
         @keyup.enter="handleEvent($event.target.value)"
       />
     </div>
@@ -131,6 +131,10 @@ export default {
       if (!value && value !== '') return;
 
       this.$emit('eventHandler', value);
+    },
+    emitInputValue(event) {
+      this.$emit('input', event.target.value);
+      this.$emit('update:value', event.target.value);
     },
   },
 };

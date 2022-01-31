@@ -67,6 +67,7 @@ export default {
       if (this.newValue < this.max) {
         this.newValue++;
         this.$emit('input', this.newValue);
+        this.$emit('update:value', this.newValue);
       }
     },
 
@@ -74,6 +75,7 @@ export default {
       if (this.newValue > this.min) {
         this.newValue--;
         this.$emit('input', this.newValue);
+        this.$emit('update:value', this.newValue);
       }
     },
   },

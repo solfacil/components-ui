@@ -73,6 +73,7 @@ export default {
     changeValue(val) {
       this.$emit('change', val);
       this.$emit('input', val);
+      this.$emit('update:value', val);
     },
   },
 };

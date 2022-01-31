@@ -49,6 +49,7 @@ export default {
   watch: {
     tags(n) {
       this.$emit('input', n);
+      this.$emit('update:value', n);
     },
 
     value() {

@@ -74,6 +74,7 @@ export default {
       this.activeItem = item.name;
       this.$emit('input', item.name);
       this.$emit('changed', item.name);
+      this.$emit('update:value', item.name);
     },
 
     setActiveLoad() {
