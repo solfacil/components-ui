@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" class="sol-toaster" :class="[itemPosition]">
+  <div :id="idLocal" class="sol-toaster" :class="[itemPosition]">
     <transition-group name="sol-toast">
       <div
         v-for="item in items"
@@ -24,7 +24,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent, ref, getCurrentInstance } from 'vue';
+
+export default defineComponent({
   name: 'Toaster',
 
   props: {
@@ -69,88 +71,105 @@ export default {
     },
   },
 
-  data() {
-    return {
-      items: [],
-      itemPosition: null,
-    };
-  },
+  setup(props) {
+    const instance = getCurrentInstance();
 
-  methods: {
-    success(message, option = {}) {
-      this.add(message, {
+    const items = ref([]);
+    const itemPosition = ref(null);
+    const idLocal = ref(props.id || 'toaster');
+
+    function success(message, option = {}) {
+      add(message, {
         theme: 'success',
-        autoHideDelay: option.autoHideDelay,
-        noAutoHide: option.noAutoHide,
-        id: option.id,
-        position: option.position || this.position,
-        iconNumber: option.iconNumber,
+        autoHideDelay: option.autoHideDelay || props.autoHideDelay,
+        noAutoHide: option.noAutoHide || props.noAutoHide,
+        id: option.id || props.id,
+        position: option.position || props.position,
+        iconNumber: option.iconNumber || props.iconNumber,
       });
-    },
+    }
 
-    info(message, option = {}) {
-      this.add(message, {
+    function info(message, option = {}) {
+      add(message, {
         theme: 'info',
         autoHideDelay: option.autoHideDelay,
         noAutoHide: option.noAutoHide,
-        id: option.id,
-        position: option.position || this.position,
+        id: option.id || props.id,
+        position: option.position || props.position,
         iconNumber: option.iconNumber,
       });
-    },
+    }
 
-    warning(message, option = {}) {
-      this.add(message, {
+    function warning(message, option = {}) {
+      add(message, {
         theme: 'warning',
         autoHideDelay: option.autoHideDelay,
         noAutoHide: option.noAutoHide,
-        id: option.id,
-        position: option.position || this.position,
+        id: option.id || props.id,
+        position: option.position || props.position,
         iconNumber: option.iconNumber,
       });
-    },
+    }
 
-    error(message, option = {}) {
-      this.add(message, {
+    function error(message, option = {}) {
+      add(message, {
         theme: 'error',
         autoHideDelay: option.autoHideDelay,
         noAutoHide: option.noAutoHide,
-        id: option.id,
-        position: option.position || this.position,
+        id: option.id || props.id,
+        position: option.position || props.position,
         iconNumber: option.iconNumber,
       });
-    },
+    }
 
-    add(
+    function add(
       message,
       { theme, autoHideDelay, noAutoHide = false, id, position, iconNumber },
     ) {
-      this.itemPosition = position;
+      idLocal.value = id;
+      itemPosition.value = position;
 
-      if (!this.$parent) {
-        this.$mount();
-        document.body.appendChild(this.$el);
+      if (!instance.parent) {
+        document.body.appendChild(instance.$el);
       }
 
       let item = { message, theme, id, position, iconNumber };
-      this.items.push(item);
+      items.value.push(item);
 
       if (!noAutoHide) {
-        setTimeout(
-          () => this.remove(item),
-          autoHideDelay || this.autoHideDelay,
-        );
+        setTimeout(() => remove(item), autoHideDelay || props.autoHideDelay);
       }
-    },
+    }
 
-    remove(item) {
-      let i = this.items.indexOf(item);
+    function remove(item) {
+      let i = items.value.indexOf(item);
       if (i >= 0) {
-        this.items.splice(i, 1);
+        items.value.splice(i, 1);
       }
-    },
+    }
+
+    instance.appContext.config.globalProperties.$toaster = {
+      remove,
+      add,
+      error,
+      warning,
+      success,
+      info,
+    };
+
+    return {
+      idLocal,
+      items,
+      itemPosition,
+      remove,
+      add,
+      error,
+      warning,
+      success,
+      info,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
