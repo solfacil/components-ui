@@ -14,7 +14,7 @@
           <IconClose
             v-if="!disableClose"
             class="icon-close"
-            @click="[closeSelf(), close()][selfClose]"
+            @click="closeSelf"
           />
         </header>
 
