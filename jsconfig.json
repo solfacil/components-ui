@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@mixins/*": ["src/mixins/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

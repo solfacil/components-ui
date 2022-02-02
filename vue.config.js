@@ -21,6 +21,7 @@ module.exports = {
         '@directives': path.join(__dirname, './src/directives'),
         '@filters': path.join(__dirname, './src/filters'),
         '@validators': path.join(__dirname, './src/validators'),
+        '@mixins': path.join(__dirname, './src/mixins'),
       },
     },
   },

@@ -20,6 +20,7 @@ module.exports = {
       '@filters': path.resolve(__dirname, '../src/filters'),
       '@validators': path.join(__dirname, './src/validators'),
       '~': path.resolve(__dirname, '../node_modules'),
+      '@mixins': path.resolve(__dirname, '../src/mixins'),
     }
 
     config.module.rules.push({
