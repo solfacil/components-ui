@@ -1,48 +1,57 @@
 <template>
   <div :id="id" class="calendar">
     <DatePicker
+      ref="datepicker"
       v-model="dateTime"
-      :lang="lang"
       :format="format"
-      :type="viewType"
+      :month-picker="viewType === 'month'"
+      :time-picker="viewType === 'timer'"
       :inline="inline"
       :range="range"
-      :multiple="false"
       range-separator=" - "
-      :disabled-date="disabledDate"
       :open="openCalendar"
       :placeholder="placeholder"
-      @click.native="initDate = null"
+      :enable-time-picker="false"
+      locale="pt-BR"
+      :clearable="true"
+      :month-name-format="viewType === 'month' ? 'short' : 'long'"
+      hide-offset-dates
+      week-start="0"
       @open="open"
       @clear="clear"
-      @change="handleChange"
+      @internalModelChange="selectTemporallyDate"
     >
-      <template #icon-calendar>
-        <img src="@img/icon/icon-calendar.svg" />
+      <template #calendar-header="{ index }">{{ lang.days[index] }}</template>
+
+      <template #input-icon>
+        <div class="input-icon">
+          <img height="16" width="16" src="@img/icon/icon-calendar.svg" />
+        </div>
       </template>
 
-      <template #icon-clear>
-        <img src="@img/icon/icon-close.svg" />
+      <template #clear-icon>
+        <img height="16" width="16" src="@img/icon/icon-close-black.svg" />
       </template>
 
-      <template #footer>
-        <Button
-          id="select-date"
-          size="small"
-          :disabled="!dateTime || disabledButton"
-          @click="select"
-        >
-          Ok
-        </Button>
+      <template #action-select>
+        <div class="flex w-full">
+          <Button
+            id="select-date"
+            size="small"
+            :disabled="disableSelectButton"
+            @click="select"
+          >
+            Ok
+          </Button>
 
-        <Button
-          id="cancel-date"
-          size="small"
-          variant="secondary"
-          @click="clear"
-        >
-          Cancelar
-        </Button>
+          <Button
+            id="cancel-date"
+            size="small"
+            variant="secondary"
+            @click="clear"
+            >Cancelar</Button
+          >
+        </div>
       </template>
     </DatePicker>
   </div>
@@ -50,9 +59,13 @@
 
 <script>
 import Button from '@components/Button/Button';
-import DatePicker from 'vue2-datepicker';
+import { defineComponent, ref, computed } from 'vue';
+// import DatePicker from 'vue3-datepicker';
 
-export default {
+import DatePicker from 'vue3-date-time-picker';
+import 'vue3-date-time-picker/dist/main.css';
+
+export default defineComponent({
   name: 'Calendar',
 
   components: {
@@ -94,7 +107,7 @@ export default {
     /** Set format date */
     format: {
       type: String,
-      default: 'DD/MM/YYYY',
+      default: 'dd/MM/yyyy',
     },
 
     /** Specify the kind of Calendar you want to create: <br/> date" | "month" | "year" */
@@ -118,134 +131,173 @@ export default {
     },
   },
 
-  data() {
-    return {
-      dateTime: null,
-      initDate: null,
-      openCalendar: null,
-      limitRangeTop: null,
-      disabledButton: true,
-      lang: {
-        formatLocale: {
-          monthsShort: [
-            'Janeiro',
-            'Fevereiro',
-            'Março',
-            'Abril',
-            'Maio',
-            'Junho',
-            'Julho',
-            'Agosto',
-            'Setembro',
-            'Outubro',
-            'Novembro',
-            'Dezembro',
-          ],
-        },
-        days: ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'],
-        months: [
-          'JAN',
-          'FEV',
-          'MAR',
-          'ABR',
-          'MAI',
-          'JUN',
-          'JUL',
-          'AGO',
-          'SET',
-          'OUT',
-          'NOV',
-          'DEZ',
+  setup(props, { emit }) {
+    const datepicker = ref(null);
+
+    const initDate = ref(null);
+    const dateTime = ref(props.value);
+    const openCalendar = ref(null);
+    const limitRangeTop = ref(null);
+    const disabledButton = ref(true);
+
+    const temporallyDate = ref(null);
+
+    const viewType = computed(() => props.view);
+
+    const disableSelectButton = computed(
+      () => !(dateTime.value || temporallyDate.value),
+    );
+
+    const lang = {
+      formatLocale: {
+        monthsShort: [
+          'Janeiro',
+          'Fevereiro',
+          'Março',
+          'Abril',
+          'Maio',
+          'Junho',
+          'Julho',
+          'Agosto',
+          'Setembro',
+          'Outubro',
+          'Novembro',
+          'Dezembro',
         ],
-        pickers: [
-          'next 7 days',
-          'next 30 days',
-          'previous 7 days',
-          'previous 30 days',
-        ],
-        placeholder: {
-          date: 'Select Date',
-          dateRange: 'Select Date Range',
-        },
+      },
+      days: ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'],
+      months: [
+        'JAN',
+        'FEV',
+        'MAR',
+        'ABR',
+        'MAI',
+        'JUN',
+        'JUL',
+        'AGO',
+        'SET',
+        'OUT',
+        'NOV',
+        'DEZ',
+      ],
+      pickers: [
+        'next 7 days',
+        'next 30 days',
+        'previous 7 days',
+        'previous 30 days',
+      ],
+      placeholder: {
+        date: 'Select Date',
+        dateRange: 'Select Date Range',
       },
     };
-  },
 
-  computed: {
-    viewType() {
-      return this.view;
-    },
-  },
+    function hoi(a) {
+      console.log('@@@ ', a);
+    }
 
-  mounted() {
-    this.dateTime = this.value;
-  },
+    function selectTemporallyDate(date) {
+      temporallyDate.value = date;
+    }
 
-  methods: {
-    handleChange() {
-      this.disabledButton = false;
-    },
+    function handleChange() {
+      disabledButton.value = false;
+    }
 
-    select() {
-      this.$emit('input', this.dateTime);
-      this.$emit('confirm', this.dateTime);
-      this.openCalendar = null;
-    },
+    function select() {
+      // datepicker.value.selectDate();
+      dateTime.value = temporallyDate.value;
 
-    clear() {
-      this.dateTime = this.value;
-      this.openCalendar = false;
-      this.$emit('clear');
-    },
+      emit('input', dateTime.value);
+      emit('confirm', dateTime.value);
 
-    open() {
-      this.openCalendar = true;
-    },
+      emit('update:value', dateTime.value);
+      openCalendar.value = false;
+      datepicker.value.closeMenu();
+    }
 
-    disabledDate(cellDate, selectedDate) {
-      if ((!this.disabledBefore && !this.range) || selectedDate.length !== 1) {
+    function clear() {
+      dateTime.value = props.value;
+      temporallyDate.value = null;
+      openCalendar.value = false;
+      datepicker.value.closeMenu();
+
+      emit('clear');
+    }
+
+    function open() {
+      openCalendar.value = true;
+    }
+
+    function disabledDate(cellDate, selectedDate) {
+      if (
+        (!props.disabledBefore && !props.range) ||
+        selectedDate.length !== 1
+      ) {
         return;
       }
 
       let limitRangeTop;
       let limitRangeDown;
 
-      if (this.range && selectedDate.length === 1) {
-        if (!this.initDate && selectedDate[0]) {
-          this.initDate = new Date(selectedDate[0]);
+      if (props.range && selectedDate.length === 1) {
+        if (!initDate.value && selectedDate[0]) {
+          initDate.value = new Date(selectedDate[0]);
         }
 
-        if (this.view === 'date') {
+        if (props.view === 'date') {
           limitRangeTop = new Date(
-            this.initDate.getTime() + (this.rangeLimit - 1) * 24 * 3600 * 1000,
+            initDate.value.getTime() +
+              (props.rangeLimit - 1) * 24 * 3600 * 1000,
           );
 
           limitRangeDown = new Date(
-            this.initDate.getTime() - (this.rangeLimit - 1) * 24 * 3600 * 1000,
+            initDate.value.getTime() -
+              (props.rangeLimit - 1) * 24 * 3600 * 1000,
           );
         }
 
-        if (this.view !== 'date') {
-          limitRangeTop = new Date(this.initDate).setMonth(
-            this.initDate.getMonth() + this.rangeLimit - 1,
+        if (props.view !== 'date') {
+          limitRangeTop.value = new Date(initDate.value).setMonth(
+            initDate.value.getMonth() + props.rangeLimit - 1,
           );
 
-          limitRangeDown = new Date(this.initDate).setMonth(
-            this.initDate.getMonth() - this.rangeLimit - 1,
+          limitRangeDown = new Date(initDate.value).setMonth(
+            initDate.value.getMonth() - props.rangeLimit - 1,
           );
         }
       }
 
       return (
-        (this.disabledBefore && cellDate < this.disabledBefore) ||
+        (props.disabledBefore && cellDate < props.disabledBefore) ||
         (limitRangeDown && cellDate < limitRangeDown) ||
         (limitRangeTop && cellDate > limitRangeTop)
       );
-    },
+    }
+
+    return {
+      datepicker,
+      lang,
+      viewType,
+      initDate,
+      dateTime,
+      openCalendar,
+      limitRangeTop,
+      disabledButton,
+      disableSelectButton,
+      temporallyDate,
+      hoi,
+      selectTemporallyDate,
+      handleChange,
+      select,
+      clear,
+      open,
+      disabledDate,
+    };
   },
-};
+});
 </script>
 
 <style lang="scss">
-@import '@scss/_calendar';
+@import '@scss/_calendar.scss';
 </style>

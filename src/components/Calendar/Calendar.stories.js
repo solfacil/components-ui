@@ -19,20 +19,33 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
+const Template = (args) => ({
   components: { Calendar },
-  data() {
+  setup() {
+    const data = [new Date(2021, 8, 2), new Date(2021, 8, 30)];
+    function confirmMethod() {
+      action('OK');
+      console.log('ok');
+    }
+
+    function clearMethod() {
+      action('CANCELAR');
+      console.log('cancel');
+    }
+
     return {
-      data: [new Date(2021, 8, 2), new Date(2021, 8, 30)],
+      data,
+      action,
+      confirmMethod,
+      clearMethod,
+      args,
     };
   },
-  template:
-    '<Calendar v-bind="$props" v-model="data" @confirm="confirmMethod" @clear="clearMethod" />',
-  methods: {
-    confirmMethod: action('OK'),
-    clearMethod: action('CANCELAR'),
-  },
+  template: `
+  <div style="height: 300px">
+    <Calendar v-bind="args" v-model="data" @confirm="() => action('OK', 'ha')" @clear="clearMethod" />
+  </div>
+    `,
 });
 
 export const Default = Template.bind({});
