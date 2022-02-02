@@ -25,15 +25,15 @@ export { default as SortedTable } from '@components/SortedTable/SortedTable';
 export { default as Tabs } from '@components/Tabs/Tabs';
 export { default as TagsFilter } from '@components/TagsFilter/TagsFilter';
 export { default as Textarea } from '@components/Textarea/Textarea';
-export { default as Toaster } from '@components/Toaster';
+export { default as Toaster } from '@components/Toaster/Toaster';
 export { default as ToggleSwitch } from '@components/ToggleSwitch/ToggleSwitch';
 export { default as Tooltip } from '@components/Tooltip/Tooltip';
 
 // Export directives
 export { default as Directives } from '@directives/index';
 
-// Export filters
-export { default as Filters } from '@filters/index';
+// Export mixins
+export { default as Mixins } from '@mixins/index';
 
 // Export validators
 export { default as Validators } from '@validators/index';

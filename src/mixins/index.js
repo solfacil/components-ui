@@ -1,7 +1,9 @@
 import camelCase from 'lodash/camelCase';
 
 const requireModule = require.context('.', false, /\.js$/);
-const modules = {};
+const modules = {
+  methods: {},
+};
 
 requireModule.keys().forEach((fileName) => {
   // Avoid the index.js file
@@ -9,7 +11,7 @@ requireModule.keys().forEach((fileName) => {
     return;
   }
   const moduleName = camelCase(fileName.replace(/(\.\/|\.js)/g, ''));
-  modules[moduleName] = requireModule(fileName).default;
+  modules.methods[moduleName] = requireModule(fileName).default;
 });
 
 export default modules;

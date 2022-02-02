@@ -1,6 +1,4 @@
-import Vue from 'vue';
-
-export default Vue.filter('date', (value, variant) => {
+export default function date(value, variant) {
   const data = new Date(value);
 
   const options = {
@@ -19,4 +17,4 @@ export default Vue.filter('date', (value, variant) => {
   };
 
   return new Intl.DateTimeFormat('pt-BR', options).format(data);
-});
+}
