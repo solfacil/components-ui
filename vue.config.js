@@ -1,4 +1,5 @@
 const path = require('path');
+const projectRootDir = path.resolve(__dirname);
 
 module.exports = {
   css: { extract: false },
@@ -14,19 +15,20 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '@': path.join(__dirname, './src'),
-        '@img': path.join(__dirname, './src/assets/img'),
-        '@scss': path.join(__dirname, './src/assets/scss'),
-        '@components': path.join(__dirname, './src/components'),
-        '@directives': path.join(__dirname, './src/directives'),
-        '@filters': path.join(__dirname, './src/filters'),
-        '@validators': path.join(__dirname, './src/validators'),
-        '@mixins': path.join(__dirname, './src/mixins'),
+        '@': path.resolve(projectRootDir, 'src'),
+        '@img': path.resolve(projectRootDir, './src/assets/img'),
+        '@scss': path.resolve(projectRootDir, './src/assets/scss'),
+        '@components': path.resolve(projectRootDir, './src/components'),
+        '@directives': path.resolve(projectRootDir, './src/directives'),
+        '@filters': path.resolve(projectRootDir, './src/filters'),
+        '@validators': path.resolve(projectRootDir, './src/validators'),
+        '@mixins': path.resolve(projectRootDir, './src/mixins'),
       },
     },
   },
 
   chainWebpack: (config) => {
+    config.resolve.symlinks(false);
     config.resolve.alias.set('vue', '@vue/compat');
 
     config.module
