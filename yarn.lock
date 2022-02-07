@@ -3757,11 +3757,6 @@
     semver "^6.1.0"
     strip-ansi "^6.0.0"
 
-"@vue/compat@^3.2.29":
-  version "3.2.29"
-  resolved "https://registry.yarnpkg.com/@vue/compat/-/compat-3.2.29.tgz#0c846e96f86a5d696d8c75793d1be4ba29e87242"
-  integrity sha512-7HV6bkKsdOkvLcyEGpKU62CDanB/OJC/dJcKunUVT4ge/LeAl0eNQdiWDHrxvjJq9UBnaMeid/UxzT6kLOpc6w==
-
 "@vue/compiler-core@3.2.29":
   version "3.2.29"
   resolved "https://registry.yarnpkg.com/@vue/compiler-core/-/compiler-core-3.2.29.tgz#b06097ab8ff0493177c68c5ea5b63d379a061097"

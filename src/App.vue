@@ -14,15 +14,24 @@
       <Chip small label="test" />
       <Badge id="badge" variant="done" label="sample text">Sample text</Badge>
     </div>
+
+    <Button primary @click="log">Botão</Button>
   </div>
 </template>
 
 <script>
 import Chip from '@components/Chip/Chip';
 import Badge from '@components/Badge/Badge';
+import Button from './components/Button/Button.vue';
+
 export default {
   name: 'App',
-  components: { Chip, Badge },
+  components: { Chip, Badge, Button },
+  methods: {
+    log() {
+      console.log('Hello click!');
+    },
+  },
 };
 </script>
 

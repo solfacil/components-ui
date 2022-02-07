@@ -28,9 +28,6 @@ module.exports = {
   },
 
   chainWebpack: (config) => {
-    config.resolve.symlinks(false);
-    config.resolve.alias.set('vue', '@vue/compat');
-
     config.module
       .rule('vue')
       .use('vue-loader')
