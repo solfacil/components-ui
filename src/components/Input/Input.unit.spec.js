@@ -71,6 +71,16 @@ describe('Input - Unit', () => {
     expect(wrapper.emitted().eventHandler[0]).toEqual(['Sample value']);
   });
 
+  it('should trigger event on blur', async () => {
+    await wrapper.setProps({
+      value: 'Sample value',
+    });
+    const input = wrapper.find('[data-testid="input"]');
+    input.trigger('blur');
+
+    expect(wrapper.emitted().blur[0]).toEqual(['Sample value']);
+  });
+
   it('should toggle password visibility', async () => {
     await wrapper.setProps({
       type: 'password',

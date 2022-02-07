@@ -83,11 +83,7 @@ export default {
   },
 
   beforeMount() {
-    this.value = this.checked;
-  },
-
-  mounted() {
-    this.$emit('input', this.value);
+    if (this.checked) this.value = this.checked;
   },
 };
 </script>
