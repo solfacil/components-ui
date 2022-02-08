@@ -1,0 +1,101 @@
+.filter-btn {
+  @apply flex items-center justify-center gap-4 bg-white border border-gray3 rounded px-4 py-3 text-gray4 text-small select-none cursor-pointer relative h-8;
+  &.active {
+    @apply border-grayPrimary text-grayPrimary;
+  }
+
+  &:hover {
+    @apply border-gray4 text-gray4;
+  }
+}
+
+.filter-overlay {
+  @apply rounded shadow absolute z-50 mt-4 visible opacity-100;
+  animation: fade 0.5s;
+
+  &.hidden {
+    @apply invisible opacity-0 transition-opacity duration-500;
+  }
+
+  @keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+  }
+}
+
+.filter-overlay-content {
+  @apply bg-white rounded grid shadow;
+
+  min-width: 550px; // REMOVE BEFORE COMMIT
+  grid-template:
+    'menu filter'
+    'footer footer' 64px / 200px auto;
+}
+.filter-menu {
+  @apply border-r border-gray3;
+  grid-area: menu;
+
+  .item {
+    @apply p-4 flex items-center border-b border-gray3 gap-2;
+
+    &.binary {
+      @apply justify-between;
+      .label {
+        @apply flex gap-2 items-center;
+      }
+    }
+
+    &.select-multiple {
+      @apply cursor-pointer;
+    }
+
+    &.active {
+      @apply bg-gray1;
+    }
+
+    &.has-applied-filter {
+      @apply px-2;
+      .active-mark {
+        @apply bg-orangePrimary h-2 w-2 rounded-full inline-block;
+      }
+    }
+  }
+}
+
+.filter-footer {
+  @apply flex gap-2 items-center justify-end p-4 bg-gray2 rounded-b;
+  grid-area: footer;
+}
+
+.filter-counter-token {
+  @apply bg-orangePrimary rounded-full absolute p-1 text-gray6 text-slight h-6 w-6 grid place-items-center;
+  top: -10px;
+  right: -10px;
+}
+
+// custom scroll
+-webkit-scrollbar {
+  @apply w-2;
+  right: 16px;
+}
+
+/* Track */
+-webkit-scrollbar-track {
+  @apply bg-gray2;
+  border-radius: 25px;
+}
+
+/* Handle */
+-webkit-scrollbar-thumb {
+  @apply bg-gray3;
+  border-radius: 25px;
+
+  &:hover {
+    @apply bg-gray4;
+  }
+}
