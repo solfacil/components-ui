@@ -17,6 +17,18 @@
     &.hasIconVisibility {
       @apply pr-8;
     }
+
+    &.no-arrows[type='number'] {
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    &.valid {
+      @apply border-green2;
+    }
   }
 
   .icon {

@@ -10,21 +10,10 @@
 }
 
 .filter-overlay {
-  @apply rounded shadow absolute z-50 mt-4 visible opacity-100;
-  animation: fade 0.5s;
+  @apply rounded shadow absolute z-50 mt-4 visible opacity-100 transition-all duration-200 ease-linear;
 
-  &.hidden {
-    @apply invisible opacity-0 transition-opacity duration-500;
-  }
-
-  @keyframes fade {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+  &.display-hidden {
+    @apply invisible opacity-0;
   }
 }
 
@@ -36,15 +25,20 @@
     'menu filter'
     'footer footer' 64px / 200px auto;
 }
+
+.filter-select {
+  height: 376px;
+}
+
 .filter-menu {
   @apply border-r border-gray3;
   grid-area: menu;
 
   .item {
-    @apply p-4 flex items-center border-b border-gray3 gap-2;
+    @apply p-4 flex items-center border-b border-gray3 gap-2 cursor-pointer;
 
     &.binary {
-      @apply justify-between;
+      @apply justify-between cursor-default;
       .label {
         @apply flex gap-2 items-center;
       }
@@ -55,7 +49,11 @@
     }
 
     &.active {
-      @apply bg-gray1;
+      @apply bg-gray1 cursor-default;
+    }
+
+    .active-mark {
+      @apply hidden;
     }
 
     &.has-applied-filter {

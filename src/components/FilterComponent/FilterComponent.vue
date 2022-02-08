@@ -11,7 +11,7 @@
         {{ countFilters() }}
       </div>
     </div>
-    <div :class="['filter-overlay', { hidden: !showFilters }]">
+    <div :class="['filter-overlay', { 'display-hidden': !showFilters }]">
       <div class="filter-overlay-content">
         <div class="filter-menu">
           <div

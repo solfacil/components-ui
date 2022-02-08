@@ -4,12 +4,12 @@ export default {
   hasAtLeastOneNumber: (value) => /\d+/.test(value),
   emailSolfacil: (condition) => (value) => {
     return [
-      /[a-zA-Z]+@solfacil.com.br/.test(value),
-      /[a-zA-Z]+@example.com/.test(value),
+      /\w+([.-]?\w+)*@solfacil.com.br/.test(value),
+      /\w+([.-]?\w+)*@example.com/.test(value),
     ][Number(condition === 'development')];
   },
   emailHasBrDomain: (condition) => (value) => {
-    return [/.br/.test(value), true][Number(condition === 'development')];
+    return [/.br$/.test(value), true][Number(condition === 'development')];
   },
   cpf: (value) => /^\d{3}\.\d{3}\.\d{3}\55\d{2}$/.test(value),
   cnpj: (value) => /^\d{2}\.\d{3}\.\d{3}\/\d{4}\55\d{2}$/.test(value),

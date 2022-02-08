@@ -10,9 +10,47 @@ const filters = [
         name: 'Teste01',
         value: 1,
       },
+    ],
+  },
+  {
+    name: 'Scroll',
+    type: 'list',
+    items: [
+      {
+        name: 'Teste01',
+        value: 1,
+      },
       {
         name: 'Teste02',
         value: 2,
+      },
+      {
+        name: 'Teste03',
+        value: 3,
+      },
+      {
+        name: 'Teste05',
+        value: 5,
+      },
+      {
+        name: 'Teste05',
+        value: 5,
+      },
+      {
+        name: 'Teste06',
+        value: 6,
+      },
+      {
+        name: 'Teste07',
+        value: 7,
+      },
+      {
+        name: 'Teste08',
+        value: 8,
+      },
+      {
+        name: 'Teste09',
+        value: 9,
       },
     ],
   },

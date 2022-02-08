@@ -11,7 +11,7 @@
 
     <div
       ref="filterSelectlist"
-      :class="['list', { 'non-searchable': !isSearchable }]"
+      :class="['list', { 'non-searchable': !hasScrolling }]"
     >
       <div
         v-for="item in items"
@@ -84,9 +84,6 @@ export default {
             .toLowerCase(),
         );
       });
-    },
-    isSearchable() {
-      return false;
     },
   },
   watch: {

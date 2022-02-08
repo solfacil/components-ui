@@ -11,7 +11,11 @@
         <header>
           {{ title }}
 
-          <IconClose class="icon-close" @click="close" />
+          <IconClose
+            v-if="!disableClose"
+            class="icon-close"
+            @click="closeSelf"
+          />
         </header>
 
         <main>
@@ -99,6 +103,12 @@ export default {
     customCloseAction: {
       default: () => {},
       type: Function,
+    },
+
+    /** Disable close button */
+    disableClose: {
+      default: false,
+      type: Boolean,
     },
   },
 

@@ -18,6 +18,8 @@
           'is-icon': $slots['icon'],
           search: inputType === 'search',
           hasIconVisibility: controlVisibility,
+          'no-arrows': noArrows,
+          valid: [false, isFieldValid][Number(validOutline)],
         }"
         data-testid="input"
         :disabled="disabled"
@@ -28,6 +30,7 @@
         @input="$emit('input', $event.target.value)"
         @change="$emit('change', $event.target.value)"
         @keyup.enter="handleEvent($event.target.value)"
+        @blur="$emit('blur', $event.target.value)"
       />
 
       <template v-if="inputType === 'search'">
@@ -134,6 +137,12 @@ export default {
       default: null,
     },
 
+    /** Specifies whether the field should display a green outline on valid state*/
+    validOutline: {
+      type: Boolean,
+      default: false,
+    },
+
     /** Specify the type of the Input: <br/> "date" | "email" | "password"  | "search"  | "tel"  | "text"  | "time" | "url" | "number" */
     type: {
       default: 'text',
@@ -163,6 +172,14 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    /** Remove arrows of input number
+        https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-inner-spin-button#changing_the_cursor_in_the_spin_controls
+    **/
+    noArrows: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data: (instance) => ({
@@ -178,6 +195,10 @@ export default {
       if (type === 'tel') return '(##) #####-####';
 
       return '';
+    },
+
+    isFieldValid() {
+      return !this.$props.invalid && this.$props.value;
     },
   },
 

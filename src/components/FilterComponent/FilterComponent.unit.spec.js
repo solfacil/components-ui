@@ -136,13 +136,13 @@ describe('FilterComponent - Unit', () => {
       const { wrapper } = makeSut();
       jest.spyOn(wrapper.vm, '$emit');
 
-      expect(wrapper.find('.hidden').exists()).toBe(true);
+      expect(wrapper.find('.display-hidden').exists()).toBe(true);
 
       wrapper.find('.filter-btn').trigger('click');
 
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.find('.hidden').exists()).toBe(false);
+      expect(wrapper.find('.display-hidden').exists()).toBe(false);
     });
   });
 });
