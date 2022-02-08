@@ -75,6 +75,7 @@
 
 <script>
 import FilterSelectList from '@components/FilterComponent/FilterSelectList/FilterSelectList';
+import FilterRange from '@components/FilterComponent/FilterRange/FilterRange';
 import ClickOutside from '@directives/clickOutside';
 import Button from '@components/Button/Button';
 import ToggleSwitch from '@components/ToggleSwitch/ToggleSwitch';
@@ -87,6 +88,7 @@ export default {
     Button,
     ToggleSwitch,
     FilterSelectList,
+    FilterRange,
     IconFilter,
   },
 
@@ -129,6 +131,8 @@ export default {
       switch (this.activeFilter.type) {
         case 'list':
           return 'FilterSelectList';
+        case 'range':
+          return 'FilterRange';
         case 'custom':
           return this.activeFilter.component;
         default:

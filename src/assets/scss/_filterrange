@@ -1,0 +1,36 @@
+.sol-filterrange {
+  @apply p-4;
+  grid-area: filter;
+
+  p {
+    @apply font-rubik text-grayPrimary text-small leading-tight mb-4;
+  }
+
+  .vue-slider {
+    @apply py-1 relative #{!important};
+
+    &::before {
+      @apply bg-gray2 h-2 w-full absolute left-0 rounded-full;
+      content: '';
+      top: 4px;
+    }
+
+    .vue-slider-rail {
+      @apply bg-gray2;
+    }
+
+    .vue-slider-process,
+    .vue-slider-dot-handle {
+      @apply bg-orangePrimary shadow-none;
+    }
+  }
+
+  .interval {
+    @apply flex justify-between mt-2;
+
+    span {
+      @apply flex justify-center items-center bg-gray2 w-13 h-5 rounded font-rubik font-medium text-slight leading-tight;
+      padding-top: 3px;
+    }
+  }
+}

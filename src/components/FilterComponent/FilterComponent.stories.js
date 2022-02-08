@@ -29,8 +29,8 @@ const filters = [
         value: 3,
       },
       {
-        name: 'Teste05',
-        value: 5,
+        name: 'Teste04',
+        value: 4,
       },
       {
         name: 'Teste05',
@@ -53,6 +53,13 @@ const filters = [
         value: 9,
       },
     ],
+  },
+  {
+    name: 'Range',
+    type: 'range',
+    title: 'Modifique o minímo e máximo.',
+    min: 0,
+    max: 10,
   },
   {
     name: 'Custom',

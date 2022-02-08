@@ -1,10 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
-import FilterComponent from './FilterComponent.vue';
 import FilterSelectList from './FilterSelectList/FilterSelectList.vue';
 import Button from '@components/Button/Button.vue';
 import Input from '@components/Input/Input.vue';
 
 const makeSut = ({ customProps = {} } = {}) => {
+  jest.doMock('vue-slider-component/theme/default.css', () => {});
+  const FilterComponent = require('./FilterComponent.vue').default;
+
   const wrapper = shallowMount(FilterComponent, {
     propsData: {
       id: 'filter-component',
