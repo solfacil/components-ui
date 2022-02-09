@@ -6,7 +6,7 @@
       v-model="val"
       :dot-size="16"
       :height="8"
-      :interval="1.0"
+      :interval="interval"
       :min="min"
       :max="max"
       :tooltip="'none'"
@@ -15,8 +15,8 @@
     />
 
     <div class="interval">
-      <span>{{ val[0] }}</span>
-      <span>{{ val[1] }}</span>
+      <span>{{ prepend }} {{ val[0] }} {{ append }}</span>
+      <span>{{ prepend }} {{ val[1] }} {{ append }}</span>
     </div>
   </div>
 </template>
@@ -63,6 +63,15 @@ export default {
     },
     max() {
       return this.filter.max || 0;
+    },
+    append() {
+      return this.filter.append || '';
+    },
+    prepend() {
+      return this.filter.prepend || '';
+    },
+    interval() {
+      return this.filter.interval || 1.0;
     },
   },
 

@@ -1,99 +1,214 @@
-.filter-btn {
-  @apply flex items-center justify-center gap-4 bg-white border border-gray3 rounded px-4 py-3 text-gray4 text-small select-none cursor-pointer relative h-8;
-  &.active {
-    @apply border-grayPrimary text-grayPrimary;
+.sol-filter {
+  @keyframes accordeonAnimation {
+    0% {
+      max-height: 0;
+      opacity: 0;
+    }
+
+    25% {
+      max-height: 25%;
+    }
+
+    50% {
+      max-height: 50%;
+    }
+
+    75% {
+      max-height: 75%;
+    }
+
+    100% {
+      max-height: none;
+      opacity: 1;
+    }
   }
 
-  &:hover {
-    @apply border-gray4 text-gray4;
+  @keyframes menuAnimation {
+    0% {
+      max-height: 100%;
+      opacity: 0;
+    }
+
+    50% {
+      max-height: 100%;
+      opacity: 0.50;
+    }
+
+    100% {
+      max-height: 100%;
+      opacity: 1;
+    }
   }
-}
 
-.filter-overlay {
-  @apply rounded shadow absolute z-50 mt-4 visible opacity-100 transition-all duration-200 ease-linear;
-
-  &.display-hidden {
-    @apply invisible opacity-0;
+  .accordion-content {
+    &-enter-active {
+      animation: accordeonAnimation 0.3s ease-in;
+    }
+    &-leave-active {
+      animation: accordeonAnimation 0.3s ease-in;
+      animation-direction: reverse;
+    }
   }
-}
 
-.filter-overlay-content {
-  @apply bg-white rounded grid shadow;
+  .accordion-menu-content {
+    &-enter-active {
+      animation: menuAnimation 0.3s ease-in;
+    }
+  }
 
-  min-width: 550px; // REMOVE BEFORE COMMIT
-  grid-template:
-    'menu filter'
-    'footer footer' 64px / 200px auto;
-}
+  dl {
+    dt {
+      @apply flex items-center justify-between cursor-pointer font-normal font-rubik text-modest text-grayPrimary leading-tight pt-2 border-t border-gray3 border-solid;
 
-.filter-select {
-  height: 376px;
-}
+      &:first-of-type {
+        @apply border-none pt-0 mt-0;
+      }
 
-.filter-menu {
-  @apply border-r border-gray3;
-  grid-area: menu;
+      .arrow {
+        @apply flex items-center justify-center w-6 h-6 border-2 border-solid border-grayPrimary rounded-full duration-200 ease-linear transition-all ml-6;
 
-  .item {
-    @apply p-4 flex items-center border-b border-gray3 gap-2 cursor-pointer;
+        &.arrow_down {
+          @apply bg-grayPrimary;
+          transform: rotate(180deg);
 
-    &.binary {
-      @apply justify-between cursor-default;
-      .label {
-        @apply flex gap-2 items-center;
+          svg {
+            path {
+              stroke: #fff;
+            }
+          }
+        }
       }
     }
 
-    &.select-multiple {
-      @apply cursor-pointer;
+    dd.active {
+      @apply bg-gray1;
     }
 
+    dd {
+      @apply block overflow-hidden;
+    }
+  }
+
+  .filter-btn {
+    @apply flex items-center justify-center gap-4 bg-white border border-gray3 rounded px-4 py-3 text-gray4 text-small select-none cursor-pointer relative h-8;
     &.active {
-      @apply bg-gray1 cursor-default;
+      @apply border-grayPrimary text-grayPrimary;
     }
 
-    .active-mark {
-      @apply hidden;
+    &:hover {
+      @apply border-gray4 text-gray4;
     }
+  }
 
-    &.has-applied-filter {
-      @apply px-2;
+  .filter-overlay {
+    @apply rounded shadow absolute z-50 mt-4 visible opacity-100 transition-all duration-200 ease-linear;
+
+    &.display-hidden {
+      @apply invisible opacity-0;
+    }
+  }
+
+  .filter-overlay-content {
+    @apply bg-white rounded grid shadow;
+    min-width: 0;
+    grid-template:
+      'menu'
+      'footer' 64px / 300px auto
+  }
+
+  .filter-select {
+    height: 376px;
+  }
+
+
+  .filter-menu {
+    @apply border-r border-gray3;
+    grid-area: menu;
+
+    .item {
+      @apply p-4 flex items-center border-b border-gray3 gap-2 cursor-pointer;
+
+      &.binary {
+        @apply justify-between cursor-default;
+        .label {
+          @apply flex gap-2 items-center;
+        }
+      }
+
+      &.select-multiple {
+        @apply cursor-pointer;
+      }
+
+      &.active {
+        @apply bg-gray1 cursor-default;
+      }
+
       .active-mark {
-        @apply bg-orangePrimary h-2 w-2 rounded-full inline-block;
+        @apply hidden;
+      }
+
+      &.has-applied-filter {
+        @apply px-2;
+        .active-mark {
+          @apply bg-orangePrimary h-2 w-2 rounded-full inline-block;
+        }
+      }
+    }
+  }
+
+  .filter-footer {
+    @apply flex gap-2 items-center justify-end p-4 bg-gray2 rounded-b;
+    grid-area: footer;
+  }
+
+  .filter-counter-token {
+    @apply bg-orangePrimary rounded-full absolute p-1 text-gray6 text-slight h-6 w-6 grid place-items-center;
+    top: -10px;
+    right: -10px;
+  }
+
+  // custom scroll
+  -webkit-scrollbar {
+    @apply w-2;
+    right: 16px;
+  }
+
+  /* Track */
+  -webkit-scrollbar-track {
+    @apply bg-gray2;
+    border-radius: 25px;
+  }
+
+  /* Handle */
+  -webkit-scrollbar-thumb {
+    @apply bg-gray3;
+    border-radius: 25px;
+
+    &:hover {
+      @apply bg-gray4;
+    }
+  }
+
+  @screen md {
+    .filter-overlay-content {
+      min-width: 550px;
+      grid-template:
+        'menu filter'
+        'footer footer' 64px / 200px auto;
+    }
+  }
+
+  @screen sm {
+    dl {
+      dt {
+        @apply text-medium pt-4 mt-4;
+      }
+
+      dd {
+        @apply mt-4;
       }
     }
   }
 }
 
-.filter-footer {
-  @apply flex gap-2 items-center justify-end p-4 bg-gray2 rounded-b;
-  grid-area: footer;
-}
 
-.filter-counter-token {
-  @apply bg-orangePrimary rounded-full absolute p-1 text-gray6 text-slight h-6 w-6 grid place-items-center;
-  top: -10px;
-  right: -10px;
-}
-
-// custom scroll
--webkit-scrollbar {
-  @apply w-2;
-  right: 16px;
-}
-
-/* Track */
--webkit-scrollbar-track {
-  @apply bg-gray2;
-  border-radius: 25px;
-}
-
-/* Handle */
--webkit-scrollbar-thumb {
-  @apply bg-gray3;
-  border-radius: 25px;
-
-  &:hover {
-    @apply bg-gray4;
-  }
-}

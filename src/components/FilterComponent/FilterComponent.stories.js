@@ -60,6 +60,8 @@ const filters = [
     title: 'Modifique o minímo e máximo.',
     min: 0,
     max: 10,
+    append: '(kW)',
+    interval: 0.1,
   },
   {
     name: 'Custom',

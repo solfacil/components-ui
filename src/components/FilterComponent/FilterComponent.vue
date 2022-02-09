@@ -13,20 +13,78 @@
     </div>
     <div :class="['filter-overlay', { 'display-hidden': !showFilters }]">
       <div class="filter-overlay-content">
-        <div class="filter-menu">
+        <dl v-if="isMobile" class="filter-menu">
+          <template v-for="(item, index) in filters">
+            <dt
+              :key="`title-${index}`"
+              :class="[
+                'item',
+                item.type,
+                {
+                  active: isActiveItem(index),
+                  'has-applied-filter':
+                    item.type !== 'binary' &&
+                    filterApplied[item.name].length > 0,
+                },
+              ]"
+              @click="handleClickMenuItem({ item, index })"
+            >
+              <template v-if="item.type === 'binary'">
+                <div class="label">
+                  {{ item.name }}
+                </div>
+                <ToggleSwitch
+                  id="toggle-inativos"
+                  v-model="binaryStates[item.name]"
+                  :checked="binaryStates[item.name]"
+                  @input="(value) => handleSwitch(value, item.name)"
+                />
+              </template>
+              <template v-else>
+                <div class="active-mark"></div>
+                <span>{{ item.name }}</span>
+              </template>
+            </dt>
+
+            <transition
+              :key="`transition-${index}`"
+              mode="out-in"
+              name="accordion-content"
+            >
+              <dd
+                v-if="isActiveItem(index) && hasActiveIndex"
+                :key="`description-${index}`"
+                class="item-content"
+                :class="{
+                  active: isActiveItem(index),
+                }"
+              >
+                <component
+                  :is="getComponentItem(item)"
+                  :id="`filter-body-active-${index}`"
+                  :value="filtersSelected[activeFilter.name]"
+                  :filter="item"
+                  @change="handleChangeFilterModel"
+                />
+              </dd>
+            </transition>
+          </template>
+        </dl>
+
+        <div v-else class="filter-menu">
           <div
-            v-for="item in filters"
-            :key="item.name"
+            v-for="(item, index) in filters"
+            :key="index"
             :class="[
               'item',
               item.type,
               {
-                active: isActiveItem(item.name),
+                active: isActiveItem(index),
                 'has-applied-filter':
                   item.type !== 'binary' && filterApplied[item.name].length > 0,
               },
             ]"
-            @click="handleClickMenuItem(item)"
+            @click="handleClickMenuItem({ index, item })"
           >
             <template v-if="item.type === 'binary'">
               <div class="label">
@@ -46,14 +104,22 @@
           </div>
         </div>
 
-        <div v-if="hasActiveFilterSelected" class="filter-select">
-          <component
-            :is="activeFilterComponent"
-            id="filter-body-active"
-            :value="filtersSelected[activeFilter.name]"
-            :filter="activeFilter"
-            @change="handleChangeFilterModel"
-          />
+        <div v-if="!isMobile && hasActiveIndex" class="filter-select">
+          <transition
+            v-for="(item, index) in filters"
+            :key="`transition-desktop-${index}`"
+            mode="out-in"
+            name="accordion-menu-content"
+          >
+            <component
+              :is="getComponentItem(item)"
+              v-if="isActiveItem(index)"
+              :id="`filter-body-active-${index}`"
+              :value="filtersSelected[activeFilter.name]"
+              :filter="item"
+              @change="handleChangeFilterModel"
+            />
+          </transition>
         </div>
 
         <div class="filter-footer">
@@ -80,6 +146,7 @@ import ClickOutside from '@directives/clickOutside';
 import Button from '@components/Button/Button';
 import ToggleSwitch from '@components/ToggleSwitch/ToggleSwitch';
 import IconFilter from '@img/icon/icon-filter.svg';
+import { breakpointable } from './../../mixins/index';
 
 export default {
   name: 'FilterComponent',
@@ -93,6 +160,7 @@ export default {
   },
 
   directives: { ClickOutside },
+  mixins: [breakpointable],
   props: {
     /** Specify a custom id */
     id: {
@@ -112,32 +180,16 @@ export default {
       filtersSelected: {},
       filterApplied: {},
       binaryStates: {},
+      activeIndex: null,
     };
   },
 
   computed: {
-    hasActiveFilterSelected() {
-      if (!this.filtersSelected || !this.activeFilter) {
-        return false;
-      }
-
-      return true;
+    hasActiveIndex() {
+      return this.activeIndex !== null;
     },
-    activeFilterComponent() {
-      if (!this.hasActiveFilterSelected) {
-        return '';
-      }
-
-      switch (this.activeFilter.type) {
-        case 'list':
-          return 'FilterSelectList';
-        case 'range':
-          return 'FilterRange';
-        case 'custom':
-          return this.activeFilter.component;
-        default:
-          return '';
-      }
+    isMobile() {
+      return ['xs', 'sm'].includes(this.breakpoint);
     },
   },
 
@@ -145,13 +197,6 @@ export default {
     filters: {
       handler: function () {
         this.setupFilters();
-        const filtersForActive = this.filters.filter(
-          (item) => item.type !== 'binary',
-        );
-
-        if (filtersForActive && filtersForActive.length > 0) {
-          this.activeFilter = { ...filtersForActive[0] };
-        }
       },
       deep: true,
     },
@@ -164,12 +209,25 @@ export default {
 
     if (filtersForActive && filtersForActive.length > 0) {
       this.activeFilter = { ...filtersForActive[0] };
+      this.activeIndex = 0;
     }
 
     this.setupBinaryFilters();
     this.setupFilters();
   },
   methods: {
+    getComponentItem(item) {
+      switch (item.type) {
+        case 'list':
+          return 'FilterSelectList';
+        case 'range':
+          return 'FilterRange';
+        case 'custom':
+          return item.component;
+        default:
+          throw new Error(`Type: ${item.type} not supported`);
+      }
+    },
     setupBinaryFilters() {
       let binaryStatesTemp = {};
       this.filters
@@ -189,12 +247,13 @@ export default {
     hideFilters() {
       this.showFilters = false;
     },
-    isActiveItem(name) {
-      return this.activeFilter?.name === name;
+    isActiveItem(index) {
+      return this.activeIndex === index;
     },
-    handleClickMenuItem(item) {
+    handleClickMenuItem({ item, index }) {
       if (item.type !== 'binary') {
-        this.activeFilter = { ...item };
+        this.activeFilter = this.filters[index];
+        this.activeIndex = index;
       }
     },
     handleSwitch(value, name) {
