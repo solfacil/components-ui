@@ -78,6 +78,14 @@ const filters = [
 export default {
   title: 'Components/UI Elements/FilterComponent',
   component: FilterComponent,
+  argTypes: {
+    filters: {
+      type: { name: 'array', required: true },
+      defaultValue: [],
+      description:
+        'Array of objects with type field, supported type: `custom | range | list`. In type `custom` is necessary event `@change` implemented in custom component',
+    },
+  },
   parameters: {
     componentSubtitle:
       'FilterComponent is used for filter results in data table.',
