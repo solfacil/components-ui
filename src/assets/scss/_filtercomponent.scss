@@ -9,7 +9,7 @@
 
     50% {
       max-height: 100%;
-      opacity: 0.50;
+      opacity: 0.5;
     }
 
     100% {
@@ -76,7 +76,6 @@
         &.active {
           @apply bg-gray1;
         }
-
       }
 
       dd {
@@ -91,7 +90,6 @@
       @apply bg-gray2 flex justify-end p-4 gap-2 w-full;
     }
   }
-
 
   .dropdown-trigger {
     @apply bg-white inline-flex items-center gap-4 text-grayPrimary text-small leading-tight font-normal rounded px-4 h-8 border-solid border border-gray3 font-rubik cursor-pointer duration-200 ease-linear transition-all;
@@ -209,5 +207,3 @@
     }
   }
 }
-
-
