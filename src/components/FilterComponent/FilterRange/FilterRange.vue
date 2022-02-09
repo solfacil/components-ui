@@ -87,6 +87,11 @@ export default {
   },
 
   created: function () {
+    if (this.value.length === 2) {
+      this.val = this.value.map((i) => Number(i));
+      return;
+    }
+
     this.val = [this.min, this.max];
   },
 
