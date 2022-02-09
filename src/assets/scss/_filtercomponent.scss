@@ -76,6 +76,15 @@
         &.active {
           @apply bg-gray1;
         }
+
+        &.selected {
+          @apply pl-2 justify-start;
+
+          &::before {
+            @apply block mr-2 w-2 h-2 rounded-full bg-orangePrimary;
+            content: '';
+          }
+        }
       }
 
       dd {
@@ -136,7 +145,7 @@
           }
 
           &.selected {
-            @apply pl-2;
+            @apply pl-2 justify-start;
 
             &::before {
               @apply block w-2 h-2 rounded-full bg-orangePrimary;
