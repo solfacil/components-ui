@@ -1,140 +1,142 @@
 <template>
-  <div v-click-outside="hideFilters" class="sol-filter">
-    <div
-      :class="['filter-btn dropdown-trigger', { active: countFilters() > 0 }]"
+  <div
+    v-if="filters.length"
+    v-click-outside="hideFilters"
+    class="sol-dropdown-filter"
+    data-element="dropdown"
+  >
+    <span
+      class="dropdown-trigger"
+      :class="{ count, open: showFilters }"
       @click="toggleShowFilters"
     >
-      <span class="dropdown-trigger">Filtro</span>
-      <IconFilter class="dropdown-trigger" />
+      <span v-if="count">{{ count }}</span>
+      Filtro
+      <IconFilter :class="{ 'icon-count': count || showFilters }" />
+    </span>
 
-      <div v-if="countFilters() > 0" class="filter-counter-token">
-        {{ countFilters() }}
-      </div>
-    </div>
-    <div :class="['filter-overlay', { 'display-hidden': !showFilters }]">
-      <div class="filter-overlay-content">
-        <dl v-if="isMobile" class="filter-menu">
-          <template v-for="(item, index) in filters">
-            <dt
-              :key="`title-${index}`"
-              :class="[
-                'item',
-                item.type,
-                {
-                  active: isActiveItem(index),
-                  'has-applied-filter':
-                    item.type !== 'binary' &&
-                    filterApplied[item.name].length > 0,
-                },
-              ]"
-              @click="handleClickMenuItem({ item, index })"
-            >
-              <template v-if="item.type === 'binary'">
-                <div class="label">
-                  {{ item.name }}
-                </div>
-                <ToggleSwitch
-                  id="toggle-inativos"
-                  v-model="binaryStates[item.name]"
-                  :checked="binaryStates[item.name]"
-                  @input="(value) => handleSwitch(value, item.name)"
-                />
-              </template>
-              <template v-else>
-                <div class="active-mark"></div>
-                <span>{{ item.name }}</span>
-              </template>
-            </dt>
-
-            <transition
-              :key="`transition-${index}`"
-              mode="out-in"
-              name="accordion-content"
-            >
-              <dd
-                v-if="isActiveItem(index) && hasActiveIndex"
-                :key="`description-${index}`"
-                class="item-content"
-                :class="{
-                  active: isActiveItem(index),
-                }"
-              >
-                <component
-                  :is="getComponentItem(item)"
-                  :id="`filter-body-active-${index}`"
-                  :value="filtersSelected[activeFilter.name]"
-                  :filter="item"
-                  @change="handleChangeFilterModel"
-                />
-              </dd>
-            </transition>
-          </template>
-        </dl>
-
-        <div v-else class="filter-menu">
-          <div
-            v-for="(item, index) in filters"
-            :key="index"
+    <div :class="[dropwnContentClass, { open: showFilters }]">
+      <dl v-if="isMobile" class="filter-menu">
+        <template v-for="(item, index) in filters">
+          <dt
+            :key="`title-${index}`"
             :class="[
               'item',
               item.type,
               {
                 active: isActiveItem(index),
-                'has-applied-filter':
+                selected:
                   item.type !== 'binary' && filterApplied[item.name].length > 0,
               },
             ]"
-            @click="handleClickMenuItem({ index, item })"
+            @click="handleClickMenuItem({ item, index })"
           >
             <template v-if="item.type === 'binary'">
               <div class="label">
                 {{ item.name }}
               </div>
               <ToggleSwitch
-                id="toggle-inativos"
+                :id="`toggle-binary-${index}`"
                 v-model="binaryStates[item.name]"
+                class="toggle-binary"
                 :checked="binaryStates[item.name]"
                 @input="(value) => handleSwitch(value, item.name)"
               />
             </template>
             <template v-else>
-              <div class="active-mark"></div>
               <span>{{ item.name }}</span>
             </template>
-          </div>
-        </div>
+          </dt>
 
-        <div v-if="!isMobile && hasActiveIndex" class="filter-select">
           <transition
-            v-for="(item, index) in filters"
-            :key="`transition-desktop-${index}`"
+            :key="`transition-${index}`"
             mode="out-in"
-            name="accordion-menu-content"
+            name="accordion-content"
           >
-            <component
-              :is="getComponentItem(item)"
-              v-if="isActiveItem(index)"
-              :id="`filter-body-active-${index}`"
-              :value="filtersSelected[activeFilter.name]"
-              :filter="item"
-              @change="handleChangeFilterModel"
-            />
+            <dd
+              v-if="isActiveItem(index) && hasActiveIndex"
+              :key="`description-${index}`"
+              class="item-content"
+              :class="{
+                active: isActiveItem(index),
+              }"
+            >
+              <component
+                :is="getComponentItem(item)"
+                :id="`filter-body-active-${index}`"
+                :value="filtersSelected[activeFilter.name]"
+                :filter="item"
+                @change="handleChangeFilterModel"
+              />
+            </dd>
           </transition>
-        </div>
+        </template>
+      </dl>
 
-        <div class="filter-footer">
-          <Button
-            id="btn-filter-limpar"
-            size="small"
-            variant="secondary"
-            @click="clearFilters"
-            >Limpar</Button
+      <nav v-if="!isMobile">
+        <ul>
+          <li
+            v-for="(item, index) in filters"
+            :key="index"
+            :class="{
+              active: isActiveItem(index),
+              selected:
+                item.type !== 'binary' && filterApplied[item.name].length > 0,
+            }"
+            @click="handleClickMenuItem({ item, index })"
           >
-          <Button id="btn-filter-apply" size="small" @click="applyFilters">
-            Aplicar
-          </Button>
-        </div>
+            <template v-if="item.type === 'binary'">
+              <div class="label">
+                {{ item.name }}
+              </div>
+              <ToggleSwitch
+                :id="`toggle-binary-${index}`"
+                v-model="binaryStates[item.name]"
+                class="toggle-binary"
+                :checked="binaryStates[item.name]"
+                @input="(value) => handleSwitch(value, item.name)"
+              />
+            </template>
+            <template v-else>
+              <span>{{ item.name }}</span>
+            </template>
+          </li>
+        </ul>
+      </nav>
+
+      <div v-if="!isMobile" class="dropdown-main">
+        <transition
+          v-for="(item, index) in filters"
+          :key="`transition-desktop-${index}`"
+          mode="out-in"
+          name="dropown-main-content"
+        >
+          <component
+            :is="getComponentItem(item)"
+            v-if="isActiveItem(index)"
+            :id="`filter-body-active-${index}`"
+            :key="index"
+            :value="filtersSelected[activeFilter.name]"
+            :filter="item"
+            @change="handleChangeFilterModel"
+          />
+        </transition>
       </div>
+
+      <footer class="filter-footer">
+        <Button
+          id="clear"
+          variant="secondary"
+          size="small"
+          @click="clearFilters"
+        >
+          Limpar
+        </Button>
+
+        <Button id="aplly" size="small" @click="applyFilters(true)">
+          Aplicar
+        </Button>
+      </footer>
     </div>
   </div>
 </template>
@@ -176,6 +178,7 @@ export default {
   data() {
     return {
       showFilters: false,
+      count: null,
       activeFilter: null,
       filtersSelected: {},
       filterApplied: {},
@@ -190,6 +193,9 @@ export default {
     },
     isMobile() {
       return ['xs', 'sm'].includes(this.breakpoint);
+    },
+    dropwnContentClass() {
+      return `dropdown-content${this.isMobile ? '-mobile' : ''}`;
     },
   },
 
@@ -283,13 +289,27 @@ export default {
     // Apply filters and emit them to parent component
     applyFilters() {
       const filterToApply = { ...this.filtersSelected };
+      this.count = 0;
       this.filters.forEach((filter) => {
         this.filterApplied[filter.name] = filterToApply[filter.name];
+        this.count = this.count + this.getCountByType(filter);
       });
+
       this.$emit('applyFilters', this.filterApplied);
+      this.toggleShowFilters();
       this.$forceUpdate();
     },
 
+    getCountByType(filter) {
+      switch (filter.type) {
+        case 'list':
+          return this.filtersSelected[filter.name].length;
+        case 'range':
+          return this.filtersSelected[filter.name].length > 1 ? 1 : 0;
+        default:
+          return this.filtersSelected[filter.name] ? 1 : 0;
+      }
+    },
     clearFilters() {
       this.setupFilters();
       this.applyFilters();
@@ -319,4 +339,16 @@ export default {
 
 <style lang="scss" scoped>
 @import '@scss/_filtercomponent';
+</style>
+
+<style lang="scss">
+.sol-dropdown-filter {
+  .input {
+    @apply mb-4;
+
+    input {
+      @apply h-9;
+    }
+  }
+}
 </style>

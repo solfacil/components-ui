@@ -39,6 +39,7 @@ const makeSut = ({ customProps = {}, customComputed = {} } = {}) => {
       ...customProps,
     },
     computed: {
+      isMobile: () => false,
       ...customComputed,
     },
   });
@@ -61,10 +62,9 @@ describe('FilterComponent - Unit', () => {
         const { wrapper } = makeSut();
 
         expect(wrapper.findAllComponents(FilterSelectList).length).toBe(1);
-        expect(wrapper.find('dt.item').exists()).toBe(false);
-        expect(wrapper.find('div.item').exists()).toBe(true);
-        expect(wrapper.find('.filter-select').exists()).toBe(true);
-        expect(wrapper.find('.filter-btn').text()).toContain('Filtro');
+        expect(wrapper.find('.dropdown-content').exists()).toBe(true);
+        expect(wrapper.find('.dropdown-content-mobile').exists()).toBe(false);
+        expect(wrapper.find('.dropdown-trigger').text()).toContain('Filtro');
         expect(wrapper.find('.filter-footer').text()).toContain('Limpar');
         expect(wrapper.find('.filter-footer').text()).toContain('Aplicar');
       });
@@ -113,10 +113,9 @@ describe('FilterComponent - Unit', () => {
         await wrapper.vm.$nextTick();
 
         expect(wrapper.findAllComponents(FilterSelectList).length).toBe(1);
-        expect(wrapper.find('dt.item').exists()).toBe(true);
-        expect(wrapper.find('div.item').exists()).toBe(false);
-        expect(wrapper.find('.filter-select').exists()).toBe(false);
-        expect(wrapper.find('.filter-btn').text()).toContain('Filtro');
+        expect(wrapper.find('.dropdown-content-mobile').exists()).toBe(true);
+        expect(wrapper.find('.dropdown-content').exists()).toBe(false);
+        expect(wrapper.find('.dropdown-trigger').text()).toContain('Filtro');
         expect(wrapper.find('.filter-footer').text()).toContain('Limpar');
         expect(wrapper.find('.filter-footer').text()).toContain('Aplicar');
       });
@@ -166,13 +165,13 @@ describe('FilterComponent - Unit', () => {
       const { wrapper } = makeSut();
       jest.spyOn(wrapper.vm, '$emit');
 
-      expect(wrapper.find('.display-hidden').exists()).toBe(true);
+      expect(wrapper.find('.open').exists()).toBe(false);
 
-      wrapper.find('.filter-btn').trigger('click');
+      wrapper.find('.dropdown-trigger').trigger('click');
 
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.find('.display-hidden').exists()).toBe(false);
+      expect(wrapper.find('.open').exists()).toBe(true);
     });
   });
 });
