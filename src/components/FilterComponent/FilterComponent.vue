@@ -30,7 +30,7 @@
             ]"
             @click="handleClickMenuItem({ item, index })"
           >
-            <template v-if="item.type === 'binary'">
+            <template v-if="itemIsBinary(item)">
               <div class="label">
                 {{ item.name }}
               </div>
@@ -83,7 +83,7 @@
             }"
             @click="handleClickMenuItem({ item, index })"
           >
-            <template v-if="item.type === 'binary'">
+            <template v-if="itemIsBinary(item)">
               <div class="label">
                 {{ item.name }}
               </div>
@@ -210,7 +210,7 @@ export default {
 
   created() {
     const filtersForActive = this.filters.filter(
-      (item) => item.type !== 'binary',
+      (item) => !this.itemIsBinary(item),
     );
 
     if (filtersForActive && Boolean(filtersForActive.length)) {
@@ -234,11 +234,9 @@ export default {
     },
     setupBinaryFilters() {
       let binaryStatesTemp = {};
-      this.filters
-        .filter((item) => item.type === 'binary')
-        .forEach((item) => {
-          binaryStatesTemp[item.name] = false;
-        });
+      this.filters.filter(this.itemIsBinary).forEach((item) => {
+        binaryStatesTemp[item.name] = false;
+      });
 
       this.binaryStates = binaryStatesTemp;
     },
@@ -256,11 +254,15 @@ export default {
     },
     itemIsSelected(item) {
       return (
-        item.type !== 'binary' && Boolean(this.filterApplied[item.name].length)
+        !this.itemIsBinary(item) &&
+        Boolean(this.filterApplied[item.name].length)
       );
     },
+    itemIsBinary(item) {
+      return item.type === 'binary';
+    },
     handleClickMenuItem({ item, index }) {
-      if (item.type !== 'binary') {
+      if (!this.itemIsBinary(item)) {
         this.activeFilter = this.filters[index];
         this.activeIndex = index;
       }
