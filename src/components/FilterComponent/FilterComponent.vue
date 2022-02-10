@@ -25,8 +25,7 @@
               item.type,
               {
                 active: isActiveItem(index),
-                selected:
-                  item.type !== 'binary' && filterApplied[item.name].length > 0,
+                selected: itemIsSelected(item),
               },
             ]"
             @click="handleClickMenuItem({ item, index })"
@@ -80,8 +79,7 @@
             :key="index"
             :class="{
               active: isActiveItem(index),
-              selected:
-                item.type !== 'binary' && filterApplied[item.name].length > 0,
+              selected: itemIsSelected(item),
             }"
             @click="handleClickMenuItem({ item, index })"
           >
@@ -149,6 +147,8 @@ import Button from '@components/Button/Button';
 import ToggleSwitch from '@components/ToggleSwitch/ToggleSwitch';
 import IconFilter from '@img/icon/icon-filter.svg';
 import { breakpointable } from './../../mixins/index';
+import mapValues from 'lodash/mapValues';
+import result from 'lodash/result';
 
 export default {
   name: 'FilterComponent',
@@ -213,7 +213,7 @@ export default {
       (item) => item.type !== 'binary',
     );
 
-    if (filtersForActive && filtersForActive.length > 0) {
+    if (filtersForActive && Boolean(filtersForActive.length)) {
       this.activeFilter = { ...filtersForActive[0] };
       this.activeIndex = 0;
     }
@@ -223,16 +223,14 @@ export default {
   },
   methods: {
     getComponentItem(item) {
-      switch (item.type) {
-        case 'list':
-          return 'FilterSelectList';
-        case 'range':
-          return 'FilterRange';
-        case 'custom':
-          return item.component;
-        default:
-          throw new Error(`Type: ${item.type} not supported`);
-      }
+      const componentsObject = {
+        list: 'FilterSelectList',
+        range: 'FilterRange',
+        custom: item.component,
+        default: '',
+      };
+
+      return componentsObject[item.type] || componentsObject.default;
     },
     setupBinaryFilters() {
       let binaryStatesTemp = {};
@@ -256,6 +254,11 @@ export default {
     isActiveItem(index) {
       return this.activeIndex === index;
     },
+    itemIsSelected(item) {
+      return (
+        item.type !== 'binary' && Boolean(this.filterApplied[item.name].length)
+      );
+    },
     handleClickMenuItem({ item, index }) {
       if (item.type !== 'binary') {
         this.activeFilter = this.filters[index];
@@ -267,24 +270,20 @@ export default {
     },
     setupFilters() {
       this.filters.forEach((filter) => {
-        let value = [];
-        switch (filter.type) {
-          case 'binary':
-            value = false;
-            break;
-          case 'custom':
-            value = filter.defaultValue;
-            break;
-          default:
-            value = [];
-        }
+        const value = result(
+          {
+            binary: false,
+            custom: filter.defaultValue,
+          },
+          filter.type,
+          [],
+        );
+
         this.filtersSelected[filter.name] = value;
         this.filterApplied[filter.name] = value;
       });
 
-      for (const item in this.binaryStates) {
-        this.binaryStates[item] = false;
-      }
+      this.binaryStates = mapValues(this.binaryStates, () => false);
     },
     // Apply filters and emit them to parent component
     applyFilters() {
@@ -301,14 +300,13 @@ export default {
     },
 
     getCountByType(filter) {
-      switch (filter.type) {
-        case 'list':
-          return this.filtersSelected[filter.name].length;
-        case 'range':
-          return this.filtersSelected[filter.name].length > 1 ? 1 : 0;
-        default:
-          return this.filtersSelected[filter.name] ? 1 : 0;
-      }
+      const countObject = {
+        list: this.filtersSelected[filter.name].length,
+        range: this.filtersSelected[filter.name].length > 1 ? 1 : 0,
+        default: this.filtersSelected[filter.name] ? 1 : 0,
+      };
+
+      return countObject[filter.type] || countObject.default;
     },
     clearFilters() {
       this.setupFilters();

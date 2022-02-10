@@ -92,7 +92,13 @@ export default {
     },
   },
   mounted() {
-    this.interval = setInterval(() => {
+    this.interval = setInterval(this.verifyScroll, 100);
+  },
+  destroyed() {
+    clearInterval(this.interval);
+  },
+  methods: {
+    verifyScroll() {
       if (!this.filterSelectlist) {
         this.hasScrolling = false;
         return;
@@ -104,16 +110,10 @@ export default {
 
       this.hasScrolling =
         this.filterSelectlist.scrollHeight > this.filterSelectlist.clientHeight;
-    }, 100);
-  },
-
-  destroyed() {
-    clearInterval(this.interval);
-  },
-  methods: {
+    },
     handleClickSelectItem(item) {
       this.isItemSelected(item)
-        ? this.deselectItem(item)
+        ? this.unselectItem(item)
         : this.selectItem(item);
 
       this.$emit('input', this.data);
@@ -127,7 +127,7 @@ export default {
       this.data.push(item.value);
     },
 
-    deselectItem(item) {
+    unselectItem(item) {
       const index = this.data.indexOf(item.value);
       this.data.splice(index, 1);
     },
