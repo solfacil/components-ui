@@ -1,4 +1,3 @@
-
 .dp__theme_light {
   --dp-background-color: #ffffff;
   --dp-text-color: #212121;
@@ -19,7 +18,7 @@
   --dp-icon-color: #959595;
   --dp-danger-color: #ff6f60;
 
-  font-family: Rubik, sans-serif!important; // Font size for the menu
+  font-family: Rubik, sans-serif !important; // Font size for the menu
   font-size: 0.75rem;
 
   @apply font-rubik shadow-sm border border-solid border-gray3 rounded overflow-hidden;
