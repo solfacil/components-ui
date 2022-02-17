@@ -13,6 +13,7 @@
     "build-storybook": "build-storybook -s public",
     "format": "prettier --write \"**/*.+(js|vue|jsx|json|scss|css|md)\"",
     "generate": "yarn plop --plopfile ./generators/plopfile.js",
+    "precommit": "./.husky/run-staged-tests.js",
     "prepare": "husky install && vue-cli-service build --target lib --name solfacil ./src/index.js",
     "proxy": "ngrok http 6006",
     "start": "vue-cli-service serve",
@@ -42,6 +43,7 @@
     "v-mask": "^2.3.0",
     "vue": "^2.6.14",
     "vue-chartjs": "^3.5.1",
+    "vue-slider-component": "^3.2.15",
     "vue2-datepicker": "3.10.4"
   },
   "devDependencies": {
@@ -67,6 +69,8 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-require-context-hook": "^1.0.0",
+    "cli-spinner": "^0.2.10",
+    "cowsay": "^1.5.0",
     "eslint": "^7.32.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-prettier-vue": "^3.1.0",
