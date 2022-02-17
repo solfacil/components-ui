@@ -308,30 +308,11 @@ export default {
         default: this.filtersSelected[filter.name] ? 1 : 0,
       };
 
-      return countObject[filter.type] || countObject.default;
+      return result(countObject, filter.type, countObject.default);
     },
     clearFilters() {
       this.setupFilters();
       this.applyFilters();
-    },
-    /**
-     * The following 'should' be a computed property
-     * but Vue's core can't detect the change in data for it to work
-     */
-    countFilters() {
-      const count = Object.keys(this.filterApplied).reduce((acc, key) => {
-        if (Array.isArray(this.filterApplied[key])) {
-          return acc + this.filterApplied[key].length;
-        }
-
-        if (this.filterApplied[key]) {
-          return acc + 1;
-        }
-
-        return acc;
-      }, 0);
-
-      return count.toLocaleString('pt-br', { minimumIntegerDigits: 2 });
     },
   },
 };
