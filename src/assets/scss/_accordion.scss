@@ -38,12 +38,20 @@
     dt.small {
       @apply flex items-center justify-between cursor-pointer font-medium font-rubik text-modest text-grayPrimary leading-tight pt-2 mt-2 border-t border-gray3 border-solid;
 
+      &.sidebar {
+        @apply font-normal text-medium text-gray6 leading-tight;
+      }
+
       &:first-of-type {
         @apply border-none pt-0 mt-0;
       }
 
       .arrow {
         @apply flex items-center justify-center w-6 h-6 border-2 border-solid border-grayPrimary rounded-full duration-200 ease-linear transition-all ml-6;
+
+        &.sidebar {
+          @apply border-none w-2 h-3;
+        }
 
         &.arrow_down {
           @apply bg-grayPrimary;
@@ -52,6 +60,15 @@
           svg {
             path {
               stroke: #fff;
+            }
+          }
+
+          &.sidebar {
+            @apply bg-transparent;
+            svg {
+              path {
+                stroke: #666;
+              }
             }
           }
         }
