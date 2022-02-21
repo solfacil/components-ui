@@ -4,7 +4,7 @@
       <template v-for="(item, index) in headers">
         <dt
           :key="`title-${index}`"
-          :class="{ small: small, sidebar: variant === 'sidebar' }"
+          :class="{ small: small, sidebar: isVariantSidebar }"
           @click="handleItem(index)"
         >
           {{ item }}
@@ -13,7 +13,7 @@
             class="arrow"
             :class="{
               arrow_down: showContent(index),
-              sidebar: variant === 'sidebar',
+              sidebar: isVariantSidebar,
             }"
           >
             <svg
@@ -42,7 +42,7 @@
           <dd
             v-show="showContent(index)"
             :key="`description-${index}`"
-            :class="{ small }"
+            :class="{ small: small, sidebar: isVariantSidebar }"
           >
             <slot :name="`description-${index}`"></slot>
           </dd>
@@ -117,6 +117,9 @@ export default {
         'M5 11M5 11L9 7.36364M5 11L1 7.36364',
         'M5 1L5 11M5 11L9 7.36364M5 11L1 7.36364',
       ][Number(this.variant === 'content')];
+    },
+    isVariantSidebar() {
+      return this.variant === 'sidebar';
     },
   },
 
