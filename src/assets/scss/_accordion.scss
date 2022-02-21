@@ -78,6 +78,10 @@
     dd,
     dd.small {
       @apply mt-2 block overflow-hidden;
+
+      &.sidebar {
+        @apply mt-4 mb-4;
+      }
     }
   }
 
@@ -89,6 +93,10 @@
 
       dd {
         @apply mt-4;
+
+        &.sidebar {
+          @apply mt-6 mb-6;
+        }
       }
     }
   }
