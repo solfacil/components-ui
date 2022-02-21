@@ -4,7 +4,7 @@
       <template v-for="(item, index) in headers">
         <dt
           :key="`title-${index}`"
-          :class="{ small }"
+          :class="{ small: small, sidebar: variant === 'sidebar' }"
           @click="handleItem(index)"
         >
           {{ item }}
@@ -13,17 +13,18 @@
             class="arrow"
             :class="{
               arrow_down: showContent(index),
+              sidebar: variant === 'sidebar',
             }"
           >
             <svg
               width="10"
               height="12"
-              viewBox="0 0 10 12"
+              :viewBox="svgViewBox"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M5 1L5 11M5 11L9 7.36364M5 11L1 7.36364"
+                :d="arrowSvgPath"
                 stroke="#666666"
                 stroke-width="2"
                 stroke-linecap="round"
@@ -90,12 +91,33 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    /** Specify which variant should be used */
+    variant: {
+      type: String,
+      default: 'content',
+      validator: (value) => {
+        ['content', 'sidebar'].includes(value.toLowerCase);
+      },
+    },
   },
 
   data() {
     return {
       openItems: [],
     };
+  },
+
+  computed: {
+    svgViewBox() {
+      return ['0 0 10 18', '0 0 10 12'][Number(this.variant === 'content')];
+    },
+    arrowSvgPath() {
+      return [
+        'M5 11M5 11L9 7.36364M5 11L1 7.36364',
+        'M5 1L5 11M5 11L9 7.36364M5 11L1 7.36364',
+      ][Number(this.variant === 'content')];
+    },
   },
 
   watch: {
