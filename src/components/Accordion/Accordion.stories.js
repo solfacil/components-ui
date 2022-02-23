@@ -22,6 +22,11 @@ const Template = (args) => ({
 
 export const Default = Template.bind({});
 
+Default.args = {
+  id: 'accordion-example',
+  headers: ['Example 1', 'Example 2'],
+};
+
 Default.parameters = {
   docs: {
     source: {
@@ -38,14 +43,30 @@ Default.parameters = {
       <p>Example</p>
       <p>Description.</p>
     </template>
-    <template #description-2>
-      <p>This</p>
-      <p>Is</p>
-      <p>Another</p>
-      <p>Example</p>
-      <p>Description.</p>
+  </Accordion>
+      `,
+    },
+  },
+};
+
+export const Sidebar = Template.bind({});
+
+Sidebar.args = {
+  id: 'accordion-example',
+  headers: ['Example 1', 'Example 2'],
+  variant: 'sidebar',
+};
+
+Sidebar.parameters = {
+  docs: {
+    source: {
+      code: `
+  <Accordion id="accordion-example" :headers="headers" :open="0">
+    <!-- for each header we have a template with slot name 'description-indexOfHeader' -->
+    <template #description-0>
+      Example Description.
     </template>
-    <template #description-3>
+    <template #description-1>
       <p>This</p>
       <p>Is</p>
       <p>Another</p>
@@ -56,9 +77,4 @@ Default.parameters = {
       `,
     },
   },
-};
-
-Default.args = {
-  id: 'accordion-example',
-  headers: ['Example 1', 'Example 2', 'Example 3', 'Example 4'],
 };
