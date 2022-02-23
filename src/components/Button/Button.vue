@@ -9,7 +9,6 @@
     :target="target"
     class="sol-button btn"
     v-bind="$attrs"
-    v-on="$listeners"
   >
     <slot>Button</slot>
   </a>
@@ -23,7 +22,6 @@
     :type="type"
     class="sol-button"
     v-bind="$attrs"
-    v-on="$listeners"
   >
     <slot>Button</slot>
   </button>
