@@ -312,7 +312,6 @@ export default {
       return result(countObject, filter.type, countObject.default);
     },
     getCountCustom(filterSelected) {
-      console.info('filterSelected', filterSelected);
       if (
         ['array', 'object'].includes(
           filterSelected?.constructor?.name?.toLowerCase(),
