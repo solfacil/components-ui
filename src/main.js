@@ -1,20 +1,15 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 
-import {
-  currency,
-  breakpointable,
-  capitalizeFirstLetter,
-  date,
-} from '@mixins/index.js';
+import { Mixins } from './index';
 
 import '@scss/core/index.scss';
 const app = createApp(App);
 
 app
-  .mixin(currency)
-  .mixin(breakpointable)
-  .mixin(capitalizeFirstLetter)
-  .mixin(date);
+  // .mixin(Mixins.currency)
+  .mixin(Mixins.breakpointable)
+  .mixin(Mixins.capitalizeFirstLetter)
+  .mixin(Mixins.date);
 
 app.mount('#app');

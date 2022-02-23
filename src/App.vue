@@ -9,6 +9,16 @@
         />
       </div>
     </header>
+
+    <p>
+      Local Mixin currency:
+      {{ currency(2948.2) }}
+    </p>
+
+    <p>
+      Global mixin date:
+      {{ date(new Date()) }}
+    </p>
     <!-- Sandbox para teste fora do ambiente do storybook -->
     <div class="sandbox">
       <Chip small label="test" />
@@ -24,9 +34,12 @@ import Chip from '@components/Chip/Chip';
 import Badge from '@components/Badge/Badge';
 import Button from './components/Button/Button.vue';
 
+import { Mixins } from './index';
+
 export default {
   name: 'App',
   components: { Chip, Badge, Button },
+  mixins: [Mixins.currency],
   methods: {
     log() {
       console.log('Hello click!');

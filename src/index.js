@@ -35,7 +35,6 @@ export { default as Tooltip } from '@components/Tooltip/Tooltip';
 export { default as Directives } from '@directives/index';
 
 // Export mixins
-export { default as Mixins } from '@mixins/index';
-
+export * as Mixins from '@mixins/index';
 // Export validators
 export { default as Validators } from '@validators/index';
