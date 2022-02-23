@@ -293,7 +293,6 @@ export default {
       this.count = 0;
       this.filters.forEach((filter) => {
         this.filterApplied[filter.name] = filterToApply[filter.name];
-        console.info(this.getCountByType(filter), filter.name);
         this.count = this.count + this.getCountByType(filter);
       });
 
