@@ -308,6 +308,7 @@ export default {
       this.count = 0;
       this.filters.forEach((filter) => {
         this.filterApplied[filter.name] = filterToApply[filter.name];
+        console.info(this.getCountByType(filter), filter.name);
         this.count = this.count + this.getCountByType(filter);
       });
 
@@ -317,13 +318,26 @@ export default {
     },
 
     getCountByType(filter) {
+      const filterSelected = this.filtersSelected[filter.name];
       const countObject = {
-        list: this.filtersSelected[filter.name].length,
-        range: this.filtersSelected[filter.name].length > 1 ? 1 : 0,
-        default: this.filtersSelected[filter.name] ? 1 : 0,
+        list: filterSelected?.length,
+        range: filterSelected?.length > 1 ? 1 : 0,
+        default: this.getCountCustom(filterSelected),
       };
 
       return result(countObject, filter.type, countObject.default);
+    },
+    getCountCustom(filterSelected) {
+      console.info('filterSelected', filterSelected);
+      if (
+        ['array', 'object'].includes(
+          filterSelected?.constructor?.name?.toLowerCase(),
+        )
+      ) {
+        return Object.keys(filterSelected).length;
+      }
+
+      return filterSelected ? 1 : 0;
     },
     clearFilters() {
       this.setupFilters();
