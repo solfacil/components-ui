@@ -1,10 +1,9 @@
-import { shallowMount } from '@vue/test-utils';
-import VueSlider from 'vue-slider-component';
+import { mount } from '@vue/test-utils';
 
 const makeSut = ({ customProps = {}, customFilterProps = {} } = {}) => {
   jest.doMock('vue-slider-component/theme/default.css', () => {});
   const FilterRange = require('./FilterRange.vue').default;
-  const wrapper = shallowMount(FilterRange, {
+  const wrapper = mount(FilterRange, {
     props: {
       id: 'filterRange',
       filter: {
@@ -17,7 +16,7 @@ const makeSut = ({ customProps = {}, customFilterProps = {} } = {}) => {
     },
   });
 
-  jest.spyOn(wrapper.vm, '$emit');
+  jest.spyOn(wrapper, 'emitted');
 
   return {
     wrapper,
@@ -30,9 +29,13 @@ describe('FilterRange - Unit', () => {
       const { wrapper } = makeSut();
 
       expect(wrapper.text()).toContain('Selecione de 0 a 10');
-      expect(wrapper.findComponent(VueSlider).exists()).toBe(true);
-      expect(wrapper.findComponent(VueSlider).props('min')).toBe(0);
-      expect(wrapper.findComponent(VueSlider).props('max')).toBe(10);
+      expect(wrapper.findComponent({ name: 'VueSlider' }).isVisible()).toBe(
+        true,
+      );
+      expect(wrapper.findComponent({ name: 'VueSlider' }).props('min')).toBe(0);
+      expect(wrapper.findComponent({ name: 'VueSlider' }).props('max')).toBe(
+        10,
+      );
       expect(wrapper.findAll('.interval span').at(0).text()).toBe('0');
       expect(wrapper.findAll('.interval span').at(1).text()).toBe('10');
     });
@@ -45,9 +48,11 @@ describe('FilterRange - Unit', () => {
       });
 
       expect(wrapper.text()).not.toContain('Selecione de 0 a 10');
-      expect(wrapper.findComponent(VueSlider).exists()).toBe(true);
-      expect(wrapper.findComponent(VueSlider).props('min')).toBe(0);
-      expect(wrapper.findComponent(VueSlider).props('max')).toBe(10);
+      expect(wrapper.findComponent({ name: 'VueSlider' }).exists()).toBe(true);
+      expect(wrapper.findComponent({ name: 'VueSlider' }).props('min')).toBe(0);
+      expect(wrapper.findComponent({ name: 'VueSlider' }).props('max')).toBe(
+        10,
+      );
       expect(wrapper.findAll('.interval span').at(0).text()).toBe('0');
       expect(wrapper.findAll('.interval span').at(1).text()).toBe('10');
     });
@@ -57,13 +62,14 @@ describe('FilterRange - Unit', () => {
     it('changes value in slider', async () => {
       const { wrapper } = makeSut();
 
-      wrapper.findComponent(VueSlider).vm.$emit('change', [2, 5]);
+      wrapper.findComponent({ name: 'VueSlider' }).vm.$emit('change', [2, 5]);
+      wrapper.findComponent({ name: 'VueSlider' }).vm.$emit('input', [2, 5]);
 
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
-      expect(wrapper.vm.$emit).toHaveBeenCalledWith('input', [2, 5]);
-      expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', [2, 5]);
+      expect(Object.values(wrapper.emitted())).toHaveLength(2);
+      expect(wrapper.emitted('input')[0][0]).toEqual([2, 5]);
+      expect(wrapper.emitted('change')[0][0]).toEqual([2, 5]);
     });
   });
 });

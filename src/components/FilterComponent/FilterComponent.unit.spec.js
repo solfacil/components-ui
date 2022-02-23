@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import FilterSelectList from './FilterSelectList/FilterSelectList.vue';
 import Button from '@components/Button/Button.vue';
 import Input from '@components/Input/Input.vue';
@@ -7,7 +7,7 @@ const makeSut = ({ customProps = {}, customComputed = {} } = {}) => {
   jest.doMock('vue-slider-component/theme/default.css', () => {});
   const FilterComponent = require('./FilterComponent.vue').default;
 
-  const wrapper = shallowMount(FilterComponent, {
+  const wrapper = mount(FilterComponent, {
     props: {
       id: 'filter-component',
       filters: [
@@ -39,6 +39,7 @@ const makeSut = ({ customProps = {}, customComputed = {} } = {}) => {
       ...customProps,
     },
     computed: {
+      ...FilterComponent.computed,
       isMobile: () => false,
       ...customComputed,
     },
@@ -48,6 +49,8 @@ const makeSut = ({ customProps = {}, customComputed = {} } = {}) => {
     new Promise((resolve) => {
       setTimeout(() => resolve(true), 100);
     });
+
+  jest.spyOn(wrapper, 'emitted');
 
   return {
     timeoutToInterval,
@@ -125,8 +128,10 @@ describe('FilterComponent - Unit', () => {
   describe('Behaviors', () => {
     it('selects and apply filters', async () => {
       const { wrapper } = makeSut();
-      jest.spyOn(wrapper.vm, '$emit');
-      wrapper.findComponent(FilterSelectList).vm.$emit('change', [1]);
+
+      wrapper
+        .findComponent({ name: 'FilterSelectList' })
+        .vm.$emit('change', [1]);
 
       await wrapper.vm.$nextTick();
 
@@ -134,8 +139,8 @@ describe('FilterComponent - Unit', () => {
 
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
-      expect(wrapper.vm.$emit).toHaveBeenCalledWith('applyFilters', {
+      expect(wrapper.emitted('applyFilters')).toHaveLength(1);
+      expect(wrapper.emitted('applyFilters')[0][0]).toEqual({
         Teste: [1],
         Binary: false,
         Custom: '',
@@ -144,7 +149,7 @@ describe('FilterComponent - Unit', () => {
 
     it('selects and clicks on reset button', async () => {
       const { wrapper } = makeSut();
-      jest.spyOn(wrapper.vm, '$emit');
+
       wrapper.findComponent(FilterSelectList).vm.$emit('change', [1]);
 
       await wrapper.vm.$nextTick();
@@ -153,8 +158,8 @@ describe('FilterComponent - Unit', () => {
 
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(1);
-      expect(wrapper.vm.$emit).toHaveBeenCalledWith('applyFilters', {
+      expect(wrapper.emitted('applyFilters')).toHaveLength(1);
+      expect(wrapper.emitted('applyFilters')[0][0]).toEqual({
         Teste: [],
         Binary: false,
         Custom: '',
@@ -163,7 +168,6 @@ describe('FilterComponent - Unit', () => {
 
     it('clicks on filter button and show filters', async () => {
       const { wrapper } = makeSut();
-      jest.spyOn(wrapper.vm, '$emit');
 
       expect(wrapper.find('.open').exists()).toBe(false);
 

@@ -1,10 +1,10 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import FilterSelectList from './FilterSelectList.vue';
-import Input from '@components/Input/Input';
+import Input from '../../Input/Input.vue';
 import Checkbox from '@components/Checkbox/Checkbox';
 
 const makeSut = ({ customProps = {}, customComputed = {} } = {}) => {
-  const wrapper = shallowMount(FilterSelectList, {
+  const wrapper = mount(FilterSelectList, {
     props: {
       id: 'filterselectlist',
       filter: {
@@ -22,6 +22,7 @@ const makeSut = ({ customProps = {}, customComputed = {} } = {}) => {
       ...customProps,
     },
     computed: {
+      ...FilterSelectList.computed,
       filterSelectlist: () => ({}),
       ...customComputed,
     },
@@ -43,7 +44,7 @@ describe('FilterSelectList - Unit', () => {
     it('Should match elements with items in filter', () => {
       const { wrapper } = makeSut();
 
-      expect(wrapper.findComponent(Input).exists()).toBe(false);
+      expect(wrapper.findComponent({ name: 'Input' }).exists()).toBe(false);
       expect(wrapper.findAllComponents(Checkbox).length).toBe(2);
       expect(wrapper.find('.list').text()).toContain('Teste01');
       expect(wrapper.find('.list').text()).toContain('Teste02');
@@ -75,7 +76,7 @@ describe('FilterSelectList - Unit', () => {
         },
       });
 
-      expect(wrapper.findComponent(Input).exists()).toBe(false);
+      expect(wrapper.findComponent({ name: 'Input' }).exists()).toBe(false);
       expect(wrapper.findAllComponents(Checkbox).length).toBe(0);
     });
   });
@@ -83,15 +84,15 @@ describe('FilterSelectList - Unit', () => {
   describe('Behaviors', () => {
     it('clicks on select item in list', async () => {
       const { wrapper } = makeSut();
-      jest.spyOn(wrapper.vm, '$emit');
+      jest.spyOn(wrapper, 'emitted');
 
       wrapper.find('.list-item').trigger('click');
 
       await wrapper.vm.$nextTick();
 
-      expect(wrapper.vm.$emit).toHaveBeenCalledTimes(2);
-      expect(wrapper.vm.$emit).toHaveBeenCalledWith('input', [1]);
-      expect(wrapper.vm.$emit).toHaveBeenCalledWith('change', [1]);
+      expect(Object.keys(wrapper.emitted())).toHaveLength(2);
+      expect(wrapper.emitted('input')[0][0]).toEqual([1]);
+      expect(wrapper.emitted('change')[0][0]).toEqual([1]);
     });
 
     it('filters items with input text on search input', async () => {
@@ -109,7 +110,7 @@ describe('FilterSelectList - Unit', () => {
 
       await timeoutToInterval();
 
-      wrapper.findComponent(Input).vm.$emit('input', '01');
+      wrapper.findComponent(Input).vm.$emit('update:modelValue', '01');
 
       await wrapper.vm.$nextTick();
 
