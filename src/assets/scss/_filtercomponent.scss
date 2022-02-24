@@ -69,6 +69,10 @@
       dt {
         @apply flex items-center justify-between cursor-pointer font-normal font-rubik text-modest text-grayPrimary leading-tight p-4 border-t border-gray3 border-solid;
 
+        &:empty {
+          @apply hidden;
+        }
+
         &:first-of-type {
           @apply border-none;
         }
@@ -93,6 +97,10 @@
           @apply bg-gray1;
         }
       }
+    }
+
+    &.hide-search-mobile > dl {
+      @apply pb-0;
     }
 
     footer {
@@ -130,6 +138,10 @@
     &.open {
       @apply opacity-100 visible;
       top: calc(100% + 16px);
+    }
+
+    &.hide-nav-filters {
+      @apply w-auto;
     }
 
     nav {

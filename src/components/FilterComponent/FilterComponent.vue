@@ -15,7 +15,16 @@
       <IconFilter :class="{ 'icon-count': count || showFilters }" />
     </span>
 
-    <div :class="[dropwnContentClass, { open: showFilters }]">
+    <div
+      :class="[
+        dropwnContentClass,
+        {
+          open: showFilters,
+          'hide-nav-filters': hideNavFilters,
+          'hide-search-mobile': hideSearch,
+        },
+      ]"
+    >
       <dl v-if="isMobile" class="filter-menu">
         <template v-for="(item, index) in filters">
           <dt
@@ -31,9 +40,7 @@
             @click="handleClickMenuItem({ item, index })"
           >
             <template v-if="itemIsBinary(item)">
-              <div class="label">
-                {{ item.name }}
-              </div>
+              <div class="label">{{ item.name }}</div>
               <ToggleSwitch
                 :id="`toggle-binary-${index}`"
                 v-model="binaryStates[item.name]"
@@ -42,9 +49,7 @@
                 @input="(value) => handleSwitch(value, item.name)"
               />
             </template>
-            <template v-else>
-              <span>{{ item.name }}</span>
-            </template>
+            <template v-else>{{ item.name }}</template>
           </dt>
 
           <transition
@@ -63,6 +68,7 @@
               <component
                 :is="getComponentItem(item)"
                 :id="`filter-body-active-${index}`"
+                :hide-search="hideSearch"
                 :value="filtersSelected[activeFilter.name]"
                 :filter="item"
                 @change="handleChangeFilterModel"
@@ -72,7 +78,7 @@
         </template>
       </dl>
 
-      <nav v-if="!isMobile">
+      <nav v-if="!isMobile && !hideNavFilters">
         <ul>
           <li
             v-for="(item, index) in filters"
@@ -84,9 +90,7 @@
             @click="handleClickMenuItem({ item, index })"
           >
             <template v-if="itemIsBinary(item)">
-              <div class="label">
-                {{ item.name }}
-              </div>
+              <div class="label">{{ item.name }}</div>
               <ToggleSwitch
                 :id="`toggle-binary-${index}`"
                 v-model="binaryStates[item.name]"
@@ -114,6 +118,7 @@
             v-if="isActiveItem(index)"
             :id="`filter-body-active-${index}`"
             :key="index"
+            :hide-search="hideSearch"
             :value="filtersSelected[activeFilter.name]"
             :filter="item"
             @change="handleChangeFilterModel"
@@ -127,13 +132,12 @@
           variant="secondary"
           size="small"
           @click="clearFilters"
+          >Limpar</Button
         >
-          Limpar
-        </Button>
 
-        <Button id="aplly" size="small" @click="applyFilters(true)">
-          Aplicar
-        </Button>
+        <Button id="aplly" size="small" @click="applyFilters(true)"
+          >Aplicar</Button
+        >
       </footer>
     </div>
   </div>
@@ -172,6 +176,17 @@ export default {
     filters: {
       type: Array,
       required: true,
+    },
+
+    /** Show left nav to navigate in different filters  */
+    hideNavFilters: {
+      type: Boolean,
+      default: () => false,
+    },
+
+    hideSearch: {
+      type: Boolean,
+      default: () => false,
     },
   },
 
