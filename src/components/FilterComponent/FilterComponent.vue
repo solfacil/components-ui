@@ -202,6 +202,7 @@ export default {
   watch: {
     filters: {
       handler: function () {
+        this.setupActiveFilter();
         this.setupFilters();
       },
       deep: true,
@@ -209,19 +210,21 @@ export default {
   },
 
   created() {
-    const filtersForActive = this.filters.filter(
-      (item) => !this.itemIsBinary(item),
-    );
-
-    if (filtersForActive && Boolean(filtersForActive.length)) {
-      this.activeFilter = { ...filtersForActive[0] };
-      this.activeIndex = 0;
-    }
-
+    this.setupActiveFilter();
     this.setupBinaryFilters();
     this.setupFilters();
   },
   methods: {
+    setupActiveFilter() {
+      const filtersForActive = this.filters.filter(
+        (item) => !this.itemIsBinary(item),
+      );
+
+      if (filtersForActive && Boolean(filtersForActive.length)) {
+        this.activeFilter = { ...filtersForActive[0] };
+        this.activeIndex = 0;
+      }
+    },
     getComponentItem(item) {
       const componentsObject = {
         list: 'FilterSelectList',
