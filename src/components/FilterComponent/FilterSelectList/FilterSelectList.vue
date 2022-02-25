@@ -77,12 +77,15 @@ export default {
           return true;
         }
 
-        return item.name.toLowerCase().includes(
-          this.searchString
-            .normalize('NFD')
-            .replace(/[^\w\d\s]/gu, '')
-            .toLowerCase(),
-        );
+        return item.name
+          .toString()
+          .toLowerCase()
+          .includes(
+            this.searchString
+              .normalize('NFD')
+              .replace(/[^\w\d\s]/gu, '')
+              .toLowerCase(),
+          );
       });
     },
   },
