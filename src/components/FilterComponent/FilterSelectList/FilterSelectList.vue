@@ -1,7 +1,7 @@
 <template>
   <div :id="id" class="sol-filterselectlist">
     <Input
-      v-if="hasScrolling"
+      v-if="hasScrolling && !hideSearch"
       id="filter-searchbar"
       v-model="searchString"
       class="filter-searchbar"
@@ -11,7 +11,7 @@
 
     <div
       ref="filterSelectlist"
-      :class="['list', { 'non-searchable': !hasScrolling }]"
+      :class="['list', { 'non-searchable': !hasScrolling || hideSearch }]"
     >
       <div
         v-for="item in items"
@@ -56,6 +56,11 @@ export default {
     placeholderSearch: {
       type: String,
       default: 'Busque aqui',
+    },
+
+    hideSearch: {
+      type: Boolean,
+      default: () => false,
     },
   },
 

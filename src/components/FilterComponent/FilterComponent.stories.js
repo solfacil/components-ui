@@ -106,3 +106,49 @@ Default.args = {
   id: 'filter-component',
   filters,
 };
+
+export const PaymentFilter = Template.bind({});
+PaymentFilter.args = {
+  id: 'filter-component',
+  hideNavFilters: true,
+  hideSearch: true,
+  filters: [
+    {
+      type: 'list',
+      items: [
+        {
+          name: 'Teste01',
+          value: 1,
+        },
+        {
+          name: 'Teste02',
+          value: 2,
+        },
+        {
+          name: 'Teste03',
+          value: 3,
+        },
+        {
+          name: 'Teste04',
+          value: 4,
+        },
+        {
+          name: 'Teste05',
+          value: 5,
+        },
+        {
+          name: 'Teste06',
+          value: 6,
+        },
+        {
+          name: 'Teste07',
+          value: 7,
+        },
+        {
+          name: 'Teste08',
+          value: 8,
+        },
+      ],
+    },
+  ],
+};
