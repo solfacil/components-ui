@@ -196,6 +196,7 @@ export default {
   watch: {
     filters: {
       handler: function () {
+        this.setupActiveFilter();
         this.setupFilters();
       },
       deep: true,
@@ -203,19 +204,21 @@ export default {
   },
 
   created() {
-    const filtersForActive = this.filters.filter(
-      (item) => !this.itemIsBinary(item),
-    );
-
-    if (filtersForActive && Boolean(filtersForActive.length)) {
-      this.activeFilter = { ...filtersForActive[0] };
-      this.activeIndex = 0;
-    }
-
+    this.setupActiveFilter();
     this.setupBinaryFilters();
     this.setupFilters();
   },
   methods: {
+    setupActiveFilter() {
+      const filtersForActive = this.filters.filter(
+        (item) => !this.itemIsBinary(item),
+      );
+
+      if (filtersForActive && Boolean(filtersForActive.length)) {
+        this.activeFilter = { ...filtersForActive[0] };
+        this.activeIndex = 0;
+      }
+    },
     getComponentItem(item) {
       const componentsObject = {
         list: 'FilterSelectList',
@@ -304,13 +307,25 @@ export default {
     },
 
     getCountByType(filter) {
+      const filterSelected = this.filtersSelected[filter.name];
       const countObject = {
-        list: this.filtersSelected[filter.name].length,
-        range: this.filtersSelected[filter.name].length > 1 ? 1 : 0,
-        default: this.filtersSelected[filter.name] ? 1 : 0,
+        list: filterSelected?.length,
+        range: filterSelected?.length > 1 ? 1 : 0,
+        default: this.getCountCustom(filterSelected),
       };
 
       return result(countObject, filter.type, countObject.default);
+    },
+    getCountCustom(filterSelected) {
+      if (
+        ['array', 'object'].includes(
+          filterSelected?.constructor?.name?.toLowerCase(),
+        )
+      ) {
+        return Object.keys(filterSelected).length;
+      }
+
+      return filterSelected ? 1 : 0;
     },
     clearFilters() {
       this.setupFilters();
