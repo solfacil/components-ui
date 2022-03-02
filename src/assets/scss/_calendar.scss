@@ -1,104 +1,70 @@
 .dp__theme_light {
-  --dp-background-color: #ffffff;
-  --dp-text-color: #212121;
-  --dp-hover-color: #f3f3f3;
-  --dp-hover-text-color: #212121;
-  --dp-hover-icon-color: #959595;
   --dp-primary-color: #ffb600;
-  --dp-primary-text-color: #f8f5f5;
-  --dp-secondary-color: #c0c4cc;
-  --dp-border-color: #ddd;
-  --dp-menu-border-color: #ddd;
-  --dp-border-color-hover: #aaaeb7;
-  --dp-disabled-color: #f6f6f6;
-  --dp-scroll-bar-background: #f3f3f3;
-  --dp-scroll-bar-color: #959595;
-  --dp-success-color: #76d275;
-  --dp-success-color-disabled: #a3d9b1;
-  --dp-icon-color: #959595;
-  --dp-danger-color: #ff6f60;
 
-  font-family: Rubik, sans-serif !important; // Font size for the menu
-  font-size: 0.75rem;
-
-  @apply font-rubik shadow-sm border border-solid border-gray3 rounded overflow-hidden;
+  @apply border border-gray3 rounded
+    overflow-hidden
+    font-rubik text-slight shadow-sm;
 
   .dp__calendar_header_separator {
-    display: none;
+    @apply hidden;
   }
 
   .dp__month_year_row {
-    color: #666666;
-    margin-top: 8px;
-    font-size: 1rem;
-    line-height: 1.185;
-    font-weight: 500;
-
-    padding: 0 16px;
+    @apply mt-2 px-4 py-0
+      text-grayPrimary text-modest leading-tight font-medium;
 
     .dp__month_year_select {
       &:nth-child(2) {
-        margin-left: 12px;
-        text-transform: capitalize;
+        @apply ml-3
+          capitalize;
       }
+
       &:nth-child(3) {
-        width: 40%;
-        margin-right: 12px;
+        @apply mr-3 w-2/5;
       }
 
       &:nth-child(3)::before {
+        @apply inline-block
+          w-5
+          text-medium;
+
         content: '/\00a0\00a0\00a0';
-        display: inline-block;
-        width: 20px;
-        font-size: 20px;
       }
     }
   }
 
   .dp__input_icon_pad {
-    padding-left: 50px;
+    @apply pl-9;
   }
 
   .dp__input_icon {
-    height: 100%;
+    @apply h-full;
   }
+
   .dp__clear_icon {
-    right: 16px;
+    @apply right-4;
     filter: opacity(0.6);
   }
 
   .input-icon {
-    @apply flex justify-center items-center;
-
-    width: 40px;
-    height: 100%;
-    border-right: 1px solid #666666;
+    @apply flex justify-center items-center
+      w-8 h-full border-r border-grayPrimary;
   }
 
   .dp__calendar_header_item {
-    color: #999999;
-    font-size: 0.75rem;
-    line-height: 1.185;
-    text-transform: uppercase;
-    font-weight: 400;
-    padding-top: 8px;
-    padding-bottom: 0px;
+    @apply pt-2 pb-0
+    text-gray4
+    text-slight font-normal leading-tight uppercase;
   }
 
   .dp__calendar {
     .dp__calendar_item {
-      height: 30px;
-      width: 34px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @apply flex justify-center items-center
+        h-7 w-7;
     }
 
     .dp__cell_inner {
-      width: 26px;
-      height: 22px;
-      padding: 4px;
-      border-radius: 0.25rem;
+      @apply h-5 w-6 px-1 py-1 rounded;
     }
 
     .dp__active_date {
@@ -106,23 +72,22 @@
     }
 
     .dp__range_between {
-      background-color: #ffd9ab;
-      color: #666666;
+      @apply bg-orange1 text-grayPrimary;
     }
   }
 
   .dp__instance_calendar {
     &::after {
+      @apply inline-block
+        w-11/12 mx-1/20 my-0
+        bg-gray3;
+
       content: '';
-      display: inline-block;
-      width: 90%;
       height: 1px;
-      margin: 0 5%;
-      background: #e0e0e0;
     }
 
     .dp__cell_offset {
-      display: none;
+      @apply hidden;
     }
   }
 
@@ -132,14 +97,14 @@
 
   .dp__action_row {
     .dp__selection_preview {
-      display: none;
+      @apply hidden;
     }
 
     .dp__action_buttons {
-      width: 100%;
+      @apply w-full;
 
       button:first-of-type {
-        margin-right: 16px;
+        @apply mr-4;
       }
     }
   }
