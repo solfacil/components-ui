@@ -192,10 +192,6 @@ export default defineComponent({
       },
     };
 
-    function hoi(a) {
-      console.log('@@@ ', a);
-    }
-
     function selectTemporallyDate(date) {
       temporallyDate.value = date;
     }
@@ -205,7 +201,6 @@ export default defineComponent({
     }
 
     function select() {
-      // datepicker.value.selectDate();
       dateTime.value = temporallyDate.value;
 
       emit('input', dateTime.value);
@@ -286,7 +281,6 @@ export default defineComponent({
       disabledButton,
       disableSelectButton,
       temporallyDate,
-      hoi,
       selectTemporallyDate,
       handleChange,
       select,
