@@ -266,8 +266,8 @@ export default {
     },
     handleClickMenuItem({ item, index }) {
       if (!this.itemIsBinary(item)) {
-        this.activeFilter = this.filters[index];
-        this.activeIndex = index;
+        this.$set(this, 'activeFilter', this.filters[index]);
+        this.$set(this, 'activeIndex', index);
       }
     },
     handleSwitch(value, name) {
