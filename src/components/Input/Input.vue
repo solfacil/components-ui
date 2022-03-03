@@ -29,7 +29,7 @@
         :type="inputType"
         :value="value"
         @input="emitInputValue"
-        @change="emitInputValue"
+        @change="$emit('change', $event.target.value)"
         @keyup.enter="handleEvent($event.target.value)"
         @blur="$emit('blur', $event.target.value)"
       />
@@ -219,7 +219,6 @@ export default {
 
     emitInputValue(event) {
       this.$emit('input', event.target.value);
-      this.$emit('change', event.target.value);
       this.$emit('update:value', event.target.value);
     },
   },
