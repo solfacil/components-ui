@@ -220,7 +220,11 @@ export default {
         (item) => !this.itemIsBinary(item),
       );
 
-      if (filtersForActive && Boolean(filtersForActive.length)) {
+      if (
+        filtersForActive &&
+        Boolean(filtersForActive.length) &&
+        !this.activeIndex
+      ) {
         this.activeFilter = { ...filtersForActive[0] };
         this.activeIndex = 0;
       }
@@ -266,8 +270,8 @@ export default {
     },
     handleClickMenuItem({ item, index }) {
       if (!this.itemIsBinary(item)) {
-        this.$set(this, 'activeFilter', this.filters[index]);
-        this.$set(this, 'activeIndex', index);
+        this.activeIndex = index;
+        this.activeFilter = { ...this.filters[index] };
       }
     },
     handleSwitch(value, name) {

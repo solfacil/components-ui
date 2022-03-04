@@ -64,7 +64,7 @@
         <li
           v-for="item in searchItems(searchString)"
           :key="item.value"
-          @click="selectItem(item)"
+          @click.stop="selectItem(item)"
         >
           {{ item.name }}
         </li>
