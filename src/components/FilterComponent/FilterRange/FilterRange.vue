@@ -15,8 +15,8 @@
     />
 
     <div class="interval">
-      <span>{{ prepend }} {{ val[0] }} {{ append }}</span>
-      <span>{{ prepend }} {{ val[1] }} {{ append }}</span>
+      <span>{{ getPrepend(val[0]) }} {{ val[0] }} {{ getAppend(val[0]) }}</span>
+      <span>{{ getPrepend(val[1]) }} {{ val[1] }} {{ getAppend(val[1]) }}</span>
     </div>
   </div>
 </template>
@@ -70,6 +70,12 @@ export default {
     prepend() {
       return this.filter.prepend || '';
     },
+    appendPlural() {
+      return this.filter.appendPlural || '';
+    },
+    prependPlural() {
+      return this.filter.prependPlural || '';
+    },
     interval() {
       return this.filter.interval || 1.0;
     },
@@ -96,6 +102,20 @@ export default {
   },
 
   methods: {
+    getAppend(val) {
+      if (!this.filter.appendPlural) {
+        return this.append;
+      }
+
+      return [this.append, this.appendPlural][Number(val > 1)];
+    },
+    getPrepend(val) {
+      if (!this.filter.prependPlural) {
+        return this.prepend;
+      }
+
+      return [this.prepend, this.prependPlural][Number(val > 1)];
+    },
     change(val) {
       this.$emit('input', val);
       this.$emit('change', val);

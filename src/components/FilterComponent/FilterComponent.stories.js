@@ -61,6 +61,7 @@ const filters = [
     min: 0,
     max: 10,
     append: '(kW)',
+    appendPlural: '(kws)',
     interval: 0.1,
   },
   {
