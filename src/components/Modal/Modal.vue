@@ -8,7 +8,7 @@
       @click.self="closeSelf"
     >
       <div class="wrapper" :class="{ 'size-lg': sizeLg }" @click.stop>
-        <header>
+        <header :class="headerCustomClass">
           {{ title }}
 
           <IconClose
@@ -18,13 +18,13 @@
           />
         </header>
 
-        <main>
+        <main :class="mainCustomClass">
           <div class="overflow" :class="{ 'no-croll': noScroll }">
             <slot></slot>
           </div>
         </main>
 
-        <footer>
+        <footer :class="footerCustomClass">
           <slot name="footer"></slot>
 
           <Button
@@ -64,6 +64,21 @@ export default {
       type: Boolean,
       default: false,
       required: true,
+    },
+
+    mainCustomClass: {
+      type: String,
+      default: '',
+    },
+
+    headerCustomClass: {
+      type: String,
+      default: '',
+    },
+
+    footerCustomClass: {
+      type: String,
+      default: '',
     },
 
     /** Modal title that is used in header */
