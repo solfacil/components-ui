@@ -124,4 +124,73 @@ describe('Multiselect - Unit', () => {
       },
     ]);
   });
+
+  it('should call asigned selected if have value', async () => {
+    const assignSelectedFromOptions = jest.spyOn(
+      Multiselect.methods,
+      'assignSelectedFromOptions',
+    );
+    // declared new wrapper to have value on created
+    const _wrapper = shallowMount(Multiselect, {
+      propsData: {
+        id: 'multi-select-input-temporary',
+        value: ['1'],
+        options: [
+          {
+            value: '1',
+            name: 'Sou um cliente e quero tirar dúvidas',
+          },
+          {
+            value: '2',
+            name: 'Sou um integrador e quero tirar dúvidas',
+          },
+        ],
+      },
+    });
+    await _wrapper;
+
+    expect(assignSelectedFromOptions).toHaveBeenCalled();
+    expect(_wrapper.vm.selected).toStrictEqual([
+      {
+        value: '1',
+        name: 'Sou um cliente e quero tirar dúvidas',
+      },
+    ]);
+  });
+
+  it('should be set to selected if it has value', async () => {
+    // declared new wrapper to have value on created
+    const _wrapper = shallowMount(Multiselect, {
+      propsData: {
+        id: 'multi-select-input-temporary',
+        value: ['1', '2'],
+        options: [
+          {
+            value: '1',
+            name: 'Sou um cliente e quero tirar dúvidas',
+          },
+          {
+            value: '2',
+            name: 'Sou um integrador e quero tirar dúvidas',
+          },
+          {
+            value: '3',
+            name: 'Sou um funcionario e quero tirar dúvidas',
+          },
+        ],
+      },
+    });
+    await _wrapper;
+
+    expect(_wrapper.vm.selected).toStrictEqual([
+      {
+        value: '1',
+        name: 'Sou um cliente e quero tirar dúvidas',
+      },
+      {
+        value: '2',
+        name: 'Sou um integrador e quero tirar dúvidas',
+      },
+    ]);
+  });
 });

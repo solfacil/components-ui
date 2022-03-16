@@ -24,7 +24,7 @@ const Template = (args, { argTypes }) => ({
     };
   },
   template:
-    '<div style="width:500px; min-height: 200px"><Multiselect v-bind="$props" :options="subjectTypes" v-model="inputModel" /></div>',
+    '<div style="width:500px; min-height: 200px"><Multiselect v-bind="$props" :options="subjectTypes" :value="inputModel" /></div>',
 });
 
 export const Default = Template.bind({});
