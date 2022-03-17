@@ -27,6 +27,7 @@
         :placeholder="placeholder"
         :type="inputType"
         :value="value"
+        :autocomplete="autocomplete ? 'on' : 'off'"
         @input="$emit('input', $event.target.value)"
         @change="$emit('change', $event.target.value)"
         @keyup.enter="handleEvent($event.target.value)"
@@ -179,6 +180,14 @@ export default {
     noArrows: {
       type: Boolean,
       default: false,
+    },
+
+    /**
+      toggle autocomplete
+    **/
+    autocomplete: {
+      type: Boolean,
+      default: true,
     },
   },
 
