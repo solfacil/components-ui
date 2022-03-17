@@ -243,6 +243,14 @@ export default {
 
     removeSelectedIndex(index) {
       this.selected.splice(index, 1);
+      this.$emit(
+        'input',
+        this.selected.map((select) => select.value),
+      );
+      this.$emit(
+        'change',
+        this.selected.map((select) => select.value),
+      );
     },
 
     selectItem(option) {
@@ -258,8 +266,14 @@ export default {
         this.selected = [...this.selected, option];
       }
 
-      this.$emit('input', this.selected);
-      this.$emit('change', this.selected);
+      this.$emit(
+        'input',
+        this.selected.map((select) => select.value),
+      );
+      this.$emit(
+        'change',
+        this.selected.map((select) => select.value),
+      );
     },
 
     isItemSelected(item) {
