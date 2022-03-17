@@ -213,15 +213,22 @@ export default {
 
   watch: {
     options() {
-      this.selected = [];
+      const action = [
+        this.assignSelectedFromOptions,
+        () => (this.selected = []),
+      ][Number(!this.value)];
+
+      action();
+    },
+
+    value() {
+      this.assignSelectedFromOptions();
     },
   },
 
   created() {
     if (this.value) {
-      this.options.map((item) => {
-        if (item.value === this.value) this.selected = [...this.selected, item];
-      });
+      this.assignSelectedFromOptions();
     }
   },
 
@@ -278,6 +285,15 @@ export default {
           return name.includes(searchQuery);
         });
       } else return this.options;
+    },
+    assignSelectedFromOptions() {
+      let selectedValue = [];
+      this.value.forEach((item) => {
+        this.options.forEach((option) => {
+          if (option.value === item) selectedValue.push(option);
+        });
+      });
+      if (selectedValue) this.selected = selectedValue;
     },
   },
 };
