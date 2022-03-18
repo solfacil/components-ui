@@ -43,6 +43,21 @@ export default {
         return 'labels' in obj && 'datasets' in obj;
       },
     },
+
+    leftLabelString: {
+      type: String,
+      required: true,
+    },
+
+    tooltipPrepend: {
+      type: String,
+      required: true,
+    },
+
+    tooltipAppend: {
+      type: String,
+      required: true,
+    },
   },
 
   data: () => ({
@@ -216,6 +231,13 @@ export default {
 
   beforeMount() {
     this.setData();
+
+    this.options.scales.yAxes[0].scaleLabel.labelString = this.leftLabelString;
+    this.options.tooltips.callbacks.label = (tooltipItem, data) =>
+      `${this.tooltipPrepend} ${data.datasets[0].data[tooltipItem['index']]} ${
+        this.tooltipAppend
+      }`;
+
     const currentDate = this.dataChart.labels[0].split('T')[0];
     this.options.scales.xAxes[0].ticks.min = `${currentDate} 01:00`;
     this.options.scales.xAxes[0].ticks.max = `${currentDate} 23:00`;
