@@ -46,20 +46,17 @@ export default {
 
     leftLabelString: {
       type: String,
-      default: 'WATTS',
-      required: false,
+      required: true,
     },
 
     tooltipPrepend: {
       type: String,
-      default: () => '',
-      required: false,
+      required: true,
     },
 
     tooltipAppend: {
       type: String,
-      default: () => 'W',
-      required: false,
+      required: true,
     },
   },
 
