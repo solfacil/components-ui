@@ -1,6 +1,11 @@
 <template>
   <div :id="id" ref="line" class="chart-line-series">
-    <LineSeries :data-chart="chartdata" />
+    <LineSeries
+      :data-chart="chartdata"
+      :left-label-string="leftLabelString"
+      :tooltip-append="tooltipAppend"
+      :tooltip-prepend="tooltipPrepend"
+    />
 
     <div class="flex justify-between">
       <ul class="legend">
@@ -46,6 +51,24 @@ export default {
     nameImage: {
       type: String,
       default: 'grafico',
+    },
+
+    leftLabelString: {
+      type: String,
+      default: 'WATTS',
+      required: false,
+    },
+
+    tooltipPrepend: {
+      type: String,
+      default: () => '',
+      required: false,
+    },
+
+    tooltipAppend: {
+      type: String,
+      default: () => 'W',
+      required: false,
     },
   },
 

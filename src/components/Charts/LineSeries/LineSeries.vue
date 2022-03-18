@@ -43,17 +43,23 @@ export default {
         return 'labels' in obj && 'datasets' in obj;
       },
     },
+
     leftLabelString: {
       type: String,
       default: 'WATTS',
+      required: false,
     },
+
     tooltipPrepend: {
       type: String,
-      default: 'W',
+      default: () => '',
+      required: false,
     },
+
     tooltipAppend: {
       type: String,
-      default: 'W',
+      default: () => 'W',
+      required: false,
     },
   },
 
@@ -119,7 +125,7 @@ export default {
             },
             scaleLabel: {
               display: true,
-              labelString: this.leftLabelString,
+              labelString: 'WATTS',
               fontFamily: 'Lato, sans-serif',
               fontSize: '10',
               fontColor: '#999',
@@ -212,9 +218,7 @@ export default {
             return `${newDate.getHours()}:${pad(newDate.getMinutes())}`;
           },
           label: function (tooltipItem, data) {
-            return `${this.tooltipPrepend} ${
-              data.datasets[0].data[tooltipItem['index']]
-            } ${this.tooltipAppend}`;
+            return `${data.datasets[0].data[tooltipItem['index']]} W`;
           },
         },
       },
@@ -230,6 +234,13 @@ export default {
 
   beforeMount() {
     this.setData();
+
+    this.options.scales.yAxes[0].scaleLabel.labelString = this.leftLabelString;
+    this.options.tooltips.callbacks.label = (tooltipItem, data) =>
+      `${this.tooltipPrepend} ${data.datasets[0].data[tooltipItem['index']]} ${
+        this.tooltipAppend
+      }`;
+
     const currentDate = this.dataChart.labels[0].split('T')[0];
     this.options.scales.xAxes[0].ticks.min = `${currentDate} 01:00`;
     this.options.scales.xAxes[0].ticks.max = `${currentDate} 23:00`;
