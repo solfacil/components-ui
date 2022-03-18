@@ -43,6 +43,18 @@ export default {
         return 'labels' in obj && 'datasets' in obj;
       },
     },
+    leftLabelString: {
+      type: String,
+      default: 'WATTS',
+    },
+    tooltipPrepend: {
+      type: String,
+      default: 'W',
+    },
+    tooltipAppend: {
+      type: String,
+      default: 'W',
+    },
   },
 
   data: () => ({
@@ -107,7 +119,7 @@ export default {
             },
             scaleLabel: {
               display: true,
-              labelString: 'WATTS',
+              labelString: this.leftLabelString,
               fontFamily: 'Lato, sans-serif',
               fontSize: '10',
               fontColor: '#999',
@@ -200,7 +212,9 @@ export default {
             return `${newDate.getHours()}:${pad(newDate.getMinutes())}`;
           },
           label: function (tooltipItem, data) {
-            return `${data.datasets[0].data[tooltipItem['index']]} W`;
+            return `${this.tooltipPrepend} ${
+              data.datasets[0].data[tooltipItem['index']]
+            } ${this.tooltipAppend}`;
           },
         },
       },
