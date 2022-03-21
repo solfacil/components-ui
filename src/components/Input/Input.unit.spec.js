@@ -35,15 +35,17 @@ describe('Input - Unit', () => {
   });
 
   it('should apply masks', async () => {
-    expect(wrapper.vm.pattern).toBe(''); // Considering input type as text.
+    expect(wrapper.vm.pattern()).toBe(''); // Considering input type as text.
 
     await wrapper.setProps({ type: 'tel' }); // Should apply mask automatically.
 
-    expect(wrapper.vm.pattern).toBe('(##) #####-####');
+    expect(wrapper.vm.pattern('(99) 99999-9999')).toBe('(##) #####-####');
+
+    expect(wrapper.vm.pattern('(99) 9999-9999')).toBe('(##) ####-#####');
 
     await wrapper.setProps({ customMask: '###.###.###-##' }); // Should overwrite.
 
-    expect(wrapper.vm.pattern).toBe('###.###.###-##');
+    expect(wrapper.vm.pattern()).toBe('###.###.###-##');
   });
 
   it('should clear input value', async () => {
