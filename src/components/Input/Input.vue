@@ -12,7 +12,7 @@
       <input
         :id="id"
         ref="solInput"
-        v-mask="pattern"
+        v-mask="pattern(value)"
         :class="{
           invalid,
           'is-icon': $slots['icon'],
@@ -196,16 +196,6 @@ export default {
   }),
 
   computed: {
-    pattern() {
-      const { type, customMask } = this;
-
-      if (customMask !== null) return customMask;
-
-      if (type === 'tel') return '(##) #####-####';
-
-      return '';
-    },
-
     isFieldValid() {
       return !this.$props.invalid && this.$props.value;
     },
@@ -228,6 +218,18 @@ export default {
       const _type = ['password', 'text'][Number(this.inputType === 'password')];
 
       this.inputType = _type;
+    },
+    pattern(e) {
+      const { type, customMask } = this;
+
+      if (customMask !== null) return customMask;
+
+      if (type === 'tel')
+        return ['(##) ####-#####', '(##) #####-####'][
+          Number(e && e.length == 15)
+        ];
+
+      return '';
     },
   },
 };
