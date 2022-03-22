@@ -1,7 +1,7 @@
 <template>
   <transition name="fade-shrink-in" appear>
     <div
-      v-show="isDisplay"
+      v-if="isDisplay"
       ref="modal"
       tabindex="-1"
       class="sol-modal"
