@@ -6,7 +6,7 @@
       @apply flex-row;
     }
 
-    &> .select {
+    & > .select {
       .select-main {
         border-radius: 0.25rem 0.25rem 0 0;
         border-bottom-width: 0;
@@ -24,7 +24,7 @@
       }
     }
 
-    &>.input {
+    & > .input {
       input {
         border-radius: 0 0 0.25rem 0.25rem;
       }
