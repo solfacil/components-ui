@@ -1,0 +1,42 @@
+.sol-input-search-component {
+  .wrapper {
+    @apply flex flex-col gap-0;
+
+    @screen md {
+      @apply flex-row;
+    }
+
+    &> .select {
+      .select-main {
+        border-radius: 0.25rem 0.25rem 0 0;
+        border-bottom-width: 0;
+      }
+
+      @screen md {
+        flex-basis: 0;
+        flex-grow: 2;
+
+        .select-main {
+          border-radius: 0.25rem 0 0 0.25rem;
+          border-right: 0;
+          border-bottom-width: 1px;
+        }
+      }
+    }
+
+    &>.input {
+      input {
+        border-radius: 0 0 0.25rem 0.25rem;
+      }
+
+      @screen md {
+        flex-basis: 0;
+        flex-grow: 3;
+
+        input {
+          border-radius: 0 0.25rem 0.25rem 0;
+        }
+      }
+    }
+  }
+}
