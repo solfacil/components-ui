@@ -30,6 +30,7 @@ export { default as Textarea } from '@components/Textarea/Textarea';
 export { default as Toaster } from '@components/Toaster';
 export { default as ToggleSwitch } from '@components/ToggleSwitch/ToggleSwitch';
 export { default as Tooltip } from '@components/Tooltip/Tooltip';
+export { default as SearchFilter } from '@components/SearchFilter/SearchFilter';
 
 // Export directives
 export { default as Directives } from '@directives/index';
