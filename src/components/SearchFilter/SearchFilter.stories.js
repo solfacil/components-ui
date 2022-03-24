@@ -41,4 +41,39 @@ Default.args = {
       name: 'Nome',
     },
   ],
+  disabled: false,
+};
+
+const TemplateDisabled = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { SearchFilter },
+  data() {
+    return {
+      subjectTypes: [
+        {
+          value: 'NAME',
+          name: 'Nome',
+        },
+        {
+          value: 'CITY',
+          name: 'Cidade',
+        },
+      ],
+      inputModel: {},
+    };
+  },
+  template:
+    '<div style="width:100%; min-height: 200px"><SearchFilter id="field" v-bind="$props" :disabled="true" :fields="subjectTypes" v-model="inputModel" /></div>',
+});
+
+export const Disabled = TemplateDisabled.bind({});
+Disabled.args = {
+  id: 'input-search',
+  fields: [
+    {
+      value: 'NAME',
+      name: 'Nome',
+    },
+  ],
+  disabled: true,
 };
