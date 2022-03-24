@@ -29,7 +29,7 @@ const Template = (args, { argTypes }) => ({
     };
   },
   template:
-    '<div style="width:300px; min-height: 200px"><SearchFilter id="field" v-bind="$props" :fields="subjectTypes" v-model="inputModel" /></div>',
+    '<div style="width:100%; min-height: 200px"><SearchFilter id="field" v-bind="$props" :fields="subjectTypes" v-model="inputModel" /></div>',
 });
 
 export const Default = Template.bind({});

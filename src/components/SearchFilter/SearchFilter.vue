@@ -1,5 +1,5 @@
 <template>
-  <div class="sol-input-search-component">
+  <div :id="id" class="sol-input-search-component">
     <div class="wrapper">
       <SelectInput
         id="select-search"

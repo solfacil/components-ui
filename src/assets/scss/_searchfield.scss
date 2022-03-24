@@ -1,4 +1,10 @@
 .sol-input-search-component {
+  @apply w-full;
+
+  @screen md {
+    width: 390px;
+  }
+
   .wrapper {
     @apply flex flex-col gap-0;
 
@@ -8,17 +14,25 @@
 
     & > .select {
       .select-main {
-        border-radius: 0.25rem 0.25rem 0 0;
-        border-bottom-width: 0;
+        @apply rounded-t rounded-b-initial border-gray3 shadow-none;
+      }
+
+
+      .options-container {
+        @apply relative border-gray3 rounded-initial shadow-none;
+        margin-top: 1px;
+        margin-bottom: 1px;
+
+        @screen md {
+          @apply absolute mt-0 mb-0 rounded-b rounded-t-initial;
+        }
       }
 
       @screen md {
-        flex-basis: 0;
-        flex-grow: 2;
+        width: 150px;
 
         .select-main {
-          border-radius: 0.25rem 0 0 0.25rem;
-          border-right: 0;
+          @apply rounded-l rounded-r-initial border-r-0;
           border-bottom-width: 1px;
         }
       }
@@ -26,15 +40,14 @@
 
     & > .input {
       input {
-        border-radius: 0 0 0.25rem 0.25rem;
+        @apply border-gray3 bg-white rounded-b rounded-t-initial;
       }
 
       @screen md {
-        flex-basis: 0;
-        flex-grow: 3;
+        width: 240px;
 
         input {
-          border-radius: 0 0.25rem 0.25rem 0;
+          @apply rounded-r rounded-l-initial;
         }
       }
     }
