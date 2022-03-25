@@ -16,6 +16,7 @@
         v-model="inputValue"
         class="input"
         type="search"
+        :placeholder="placeholderInput"
         :disabled="disabled"
         @input="inputEventValue()"
         @change="inputValueChange()"
@@ -45,6 +46,10 @@ export default {
     placeholder: {
       type: String,
       default: 'Selecione',
+    },
+    placeholderInput: {
+      type: String,
+      default: 'Busque aqui',
     },
     fields: {
       type: Array,
@@ -117,5 +122,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@scss/_searchfield';
+@import '@scss/_searchfilter';
 </style>
