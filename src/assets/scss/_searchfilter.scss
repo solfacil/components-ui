@@ -15,6 +15,10 @@
     & > .select {
       .select-main {
         @apply rounded-t rounded-b-initial border-gray3 shadow-none;
+
+        &:hover {
+          @apply shadow-sm;
+        }
       }
 
       .options-container {
@@ -39,7 +43,10 @@
 
     & > .input {
       input {
-        @apply border-gray3 bg-white rounded-b rounded-t-initial;
+        @apply border-gray3 bg-white rounded-b rounded-t-initial duration-200 ease-linear transition-all;
+        &:hover {
+          @apply bg-gray1;
+        }
       }
 
       @screen md {
