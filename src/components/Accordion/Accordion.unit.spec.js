@@ -76,7 +76,7 @@ describe('Accordion - Unit', () => {
     const firstTitle = wrapper.find('dt');
 
     expect(wrapper.props().small).toBe(true);
-    expect(firstTitle.attributes().class).toBe('small');
+    expect(firstTitle.attributes().class).toBe('small content');
   });
 
   it('Should allow multiple items to be open simultaneously', async () => {
