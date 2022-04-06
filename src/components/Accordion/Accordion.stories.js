@@ -47,15 +47,15 @@ Default.parameters = {
   },
 };
 
-export const Sidebar = Template.bind({});
+export const Navigator = Template.bind({});
 
-Sidebar.args = {
+Navigator.args = {
   id: 'accordion-example',
   headers: ['Example 1', 'Example 2'],
-  variant: 'sidebar',
+  variant: 'navigator',
 };
 
-Sidebar.parameters = {
+Navigator.parameters = {
   docs: {
     source: {
       code: `
