@@ -1,5 +1,5 @@
 export default {
-  hasTwoWordsOrMore: (value) => /([a-zA-Z]+\s?\b){2,}/.test(value),
+  hasTwoWordsOrMore: (value) => /^[A-zÀ-ú]+(\s[A-zÀ-ú]+){1,}$/.test(value),
   hasNumber: (value) => /^([^0-9]*)$/.test(value),
   hasAtLeastOneNumber: (value) => /\d+/.test(value),
   emailSolfacil: (condition) => (value) => {
