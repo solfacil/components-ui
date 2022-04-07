@@ -4,33 +4,18 @@
       <template v-for="(item, index) in headers">
         <dt
           :key="`title-${index}`"
-          :class="{ small: small, sidebar: isVariantSidebar }"
+          :class="[dynamicSmallClass, variant]"
           @click="handleItem(index)"
         >
           {{ item }}
 
           <span
             class="arrow"
-            :class="{
-              arrow_down: showContent(index),
-              sidebar: isVariantSidebar,
-            }"
+            :class="[dynamicArrowClass(index), variant]"
+            :index="index"
           >
-            <svg
-              width="10"
-              height="12"
-              :viewBox="svgViewBox"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                :d="arrowSvgPath"
-                stroke="#666666"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <ArrowDown v-if="variant === 'content'" />
+            <HalfArrowDown v-else />
           </span>
         </dt>
 
@@ -42,19 +27,28 @@
           <dd
             v-show="showContent(index)"
             :key="`description-${index}`"
-            :class="{ small: small, sidebar: isVariantSidebar }"
+            :class="[dynamicSmallClass, variant]"
           >
             <slot :name="`description-${index}`"></slot>
           </dd>
         </transition>
       </template>
     </dl>
+    <hr />
   </div>
 </template>
 
 <script>
+import HalfArrowDown from '@img/icon/half-arrow-down.svg';
+import ArrowDown from '@img/icon/arrow-down.svg';
+
 export default {
   name: 'Accordion',
+
+  components: {
+    HalfArrowDown,
+    ArrowDown,
+  },
 
   props: {
     /** Specify a custom id */
@@ -97,7 +91,7 @@ export default {
       type: String,
       default: 'content',
       validator: (value) => {
-        ['content', 'sidebar'].includes(value.toLowerCase);
+        return ['content', 'navigator'].includes(value.toLowerCase());
       },
     },
   },
@@ -109,17 +103,8 @@ export default {
   },
 
   computed: {
-    svgViewBox() {
-      return ['0 0 10 18', '0 0 10 12'][Number(this.variant === 'content')];
-    },
-    arrowSvgPath() {
-      return [
-        'M5 11M5 11L9 7.36364M5 11L1 7.36364',
-        'M5 1L5 11M5 11L9 7.36364M5 11L1 7.36364',
-      ][Number(this.variant === 'content')];
-    },
-    isVariantSidebar() {
-      return this.variant === 'sidebar';
+    dynamicSmallClass() {
+      return ['', 'small'][Number(this.small)];
     },
   },
 
@@ -178,6 +163,10 @@ export default {
       ];
 
       handleType();
+    },
+
+    dynamicArrowClass(el) {
+      return ['', 'arrow-down'][Number(this.showContent(el))];
     },
   },
 };
