@@ -25,7 +25,7 @@
         <IconClose />
       </template>
 
-      <template #footer>
+      <template v-if="!hideButtons" #footer>
         <Button
           id="select-date"
           size="small"
@@ -120,6 +120,11 @@ export default {
       type: [String, Object, Date],
       default: null,
     },
+    /** Disable buttons and return event after selecting dates */
+    hideButtons: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -186,8 +191,11 @@ export default {
   },
 
   methods: {
-    handleChange() {
-      this.disabledButton = false;
+    handleChange($value) {
+      if (this.hideButtons) {
+        this.dateTime = $value;
+        this.select();
+      } else this.disabledButton = false;
     },
 
     select() {
