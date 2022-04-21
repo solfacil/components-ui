@@ -14,8 +14,7 @@
   }
 
   .wrapper {
-    @apply grid mx-auto bg-white rounded z-10;
-    grid-template-rows: auto 1fr auto;
+    @apply mx-auto bg-white rounded z-10;
     height: calc(100vh - 32px);
     width: calc(100vw - 32px);
 
