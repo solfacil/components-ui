@@ -1,5 +1,5 @@
 .select-search {
-  @apply flex flex-col;
+  @apply flex flex-col shadow-sm;
   > .select {
     ::v-deep .select-main {
       @apply shadow-none rounded-b-initial;
