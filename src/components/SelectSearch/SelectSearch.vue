@@ -1,7 +1,7 @@
 <template>
   <div :id="id" class="select-search">
     <SelectInput
-      :id="'multiselect-' + id"
+      :id="`multiselect-${id}`"
       :options="options"
       :value="selectValue"
       :disabled="selectDisabled"
@@ -9,7 +9,7 @@
       class="select"
     />
     <Input
-      :id="'search-' + id"
+      :id="`search-${id}`"
       :value="inputValue"
       type="search"
       :disabled="inputDisabled"
