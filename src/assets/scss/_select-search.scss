@@ -1,0 +1,31 @@
+.select-search {
+  @apply flex flex-col;
+  > .select {
+    ::v-deep .select-main {
+      @apply shadow-none rounded-b-initial;
+      ~.options-container {
+        @apply relative shadow-none;
+      }
+    }
+  }
+  > .input {
+    ::v-deep input {
+      @apply rounded-t-initial  border-t-0;
+    }
+  }
+
+  @screen sm {
+    @apply flex flex-row;
+    .select {
+      ::v-deep .select-main {
+        @apply rounded-r-initial rounded-l-small shadow-none;
+      }
+      width: 150px;
+    }
+    > .input {
+      ::v-deep input {
+        @apply rounded-l-initial rounded-r-small border-t;
+      }
+    }
+  }
+}
