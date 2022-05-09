@@ -3,7 +3,7 @@
   > .select {
     ::v-deep .select-main {
       @apply shadow-none rounded-b-initial;
-      ~.options-container {
+      ~ .options-container {
         @apply relative shadow-none;
       }
     }
