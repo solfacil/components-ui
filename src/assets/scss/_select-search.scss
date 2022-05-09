@@ -19,6 +19,9 @@
     .select {
       ::v-deep .select-main {
         @apply rounded-r-initial rounded-l-small shadow-none;
+        ~ .options-container {
+          @apply absolute;
+        }
       }
       width: 150px;
     }
