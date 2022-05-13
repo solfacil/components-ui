@@ -59,7 +59,6 @@ export default {
   data() {
     return {
       currentValue: null,
-      currentOptions: [],
     };
   },
 
@@ -67,14 +66,10 @@ export default {
     value: function (value) {
       this.currentValue = value;
     },
-    options: function (options) {
-      this.currentOptions = options;
-    },
   },
 
   created() {
     this.currentValue = this.value;
-    this.currentOptions = this.options;
   },
 
   methods: {
