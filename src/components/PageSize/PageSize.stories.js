@@ -8,9 +8,7 @@ export default {
     value: {
       control: {
         type: 'select',
-        options: [10, 20, 50, 100],
       },
-      defaultValue: 10,
     },
   },
   parameters: {
@@ -24,13 +22,8 @@ const Template = (args, { argTypes }) => ({
   methods: {
     handleChange: action('size'),
   },
-  data() {
-    return {
-      value: 10,
-    };
-  },
   template:
-    '<PageSize id="page-size" v-model="value" @change="handleChange" />',
+    '<PageSize id="page-size" v-model="value" @change="handleChange" :options="options"/>',
 });
 
 Template.bind({});
@@ -39,4 +32,28 @@ export const Basic = Template.bind({});
 Basic.args = {
   id: 'pg-size-1',
   value: 10,
+};
+
+export const Variation = Template.bind({});
+Variation.args = {
+  id: 'pg-size-2',
+  value: 3,
+  options: [
+    {
+      value: 3,
+      name: '3',
+    },
+    {
+      value: 6,
+      name: '6',
+    },
+    {
+      value: 9,
+      name: '9',
+    },
+    {
+      value: 12,
+      name: '12',
+    },
+  ],
 };

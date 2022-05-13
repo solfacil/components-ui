@@ -27,18 +27,10 @@ export default {
       type: String,
       required: true,
     },
-    /** Specify a value */
-    value: {
-      type: Number,
-      default: 10,
-      validator: (value) => [10, 20, 50, 100].includes(value),
-    },
-  },
-
-  data() {
-    return {
-      currentValue: null,
-      options: [
+    /** Specify the options */
+    options: {
+      type: Array,
+      default: () => [
         {
           value: 10,
           name: '10',
@@ -56,6 +48,17 @@ export default {
           name: '100',
         },
       ],
+    },
+    /** Specify a value */
+    value: {
+      type: Number,
+      default: 10,
+    },
+  },
+
+  data() {
+    return {
+      currentValue: null,
     };
   },
 
