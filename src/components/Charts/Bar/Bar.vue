@@ -55,6 +55,11 @@ export default {
 
     options: {
       responsive: true,
+      hover: {
+        onHover: (event, chartElement) => {
+          event.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+        },
+      },
       legend: {
         display: false,
       },
@@ -184,7 +189,9 @@ export default {
           },
           title: function (tooltipItem) {
             return [
-              window.monthNames[moment(tooltipItem[0]['label']).format('M')],
+              window.monthNames[
+                moment(tooltipItem[0]['label']).format('M') - 1
+              ],
               moment(tooltipItem[0]['label']).format('DD/MM/YYYY'),
             ][Number(window.viewChart === 'month')];
           },
@@ -236,7 +243,7 @@ export default {
           }
 
           ctx.fillText(
-            this.monthNames[new Date(l).getMonth()],
+            this.monthNames[moment(l).format('M') - 1],
             x,
             yAxis.bottom + 29,
           );
