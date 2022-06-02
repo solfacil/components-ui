@@ -1,4 +1,5 @@
 import Alert from './Alert.vue';
+import Button from '../Button/Button.vue';
 
 export default {
   title: 'Components/UI Elements/Alerts',
@@ -19,10 +20,21 @@ export default {
         'success',
         'error',
         'warning',
+        'warning-neutral',
         'info',
         'info-neutral',
         'info-line',
       ],
+    },
+    actionButton: {
+      control: { type: 'boolean' },
+      defaultValue: false,
+      description:
+        'Just a demonstration of how the button is going through the action slot',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
     },
   },
   parameters: {
@@ -33,8 +45,19 @@ export default {
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
-  components: { Alert },
-  template: '<Alert v-bind="$props">{{label}}</Alert>',
+  components: { Alert, Button },
+  template: `
+  <Alert v-bind="$props">
+    {{label}}
+    <template v-if="$props.actionButton" #action>
+      <Button 
+        id="action-button"
+        variant="primary"
+      >
+        Baixar
+      </Button>
+    </template>
+  </Alert>`,
 });
 
 export const Success = Template.bind({});
@@ -61,12 +84,20 @@ Warning.args = {
   id: 'alert-3',
 };
 
+export const WarningNeutral = Template.bind({});
+WarningNeutral.args = {
+  icon: true,
+  label: 'Warning Neutral',
+  variant: 'warning-neutral',
+  id: 'alert-4',
+};
+
 export const Info = Template.bind({});
 Info.args = {
   icon: true,
   label: 'Info',
   variant: 'info',
-  id: 'alert-4',
+  id: 'alert-5',
 };
 
 export const InfoNeutral = Template.bind({});
@@ -74,7 +105,7 @@ InfoNeutral.args = {
   icon: true,
   label: 'Info Neutral',
   variant: 'info-neutral',
-  id: 'alert-5',
+  id: 'alert-6',
 };
 
 export const InfoLine = Template.bind({});
@@ -82,5 +113,14 @@ InfoLine.args = {
   icon: true,
   label: 'Info Line',
   variant: 'info-line',
-  id: 'alert-6',
+  id: 'alert-7',
+};
+
+export const ActionButton = Template.bind({});
+ActionButton.args = {
+  icon: true,
+  label: 'Baixe o CSV que disponibilizamos para ver e corrigir os problemas.',
+  variant: 'warning-neutral',
+  id: 'alert-8',
+  actionButton: true,
 };

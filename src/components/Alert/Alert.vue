@@ -16,6 +16,10 @@
         <slot />
       </span>
 
+      <div class="action-content">
+        <slot name="action" />
+      </div>
+
       <span v-if="close" class="alert-close" @click="hiddenAlert">
         <em>Fechar</em>
       </span>
@@ -77,6 +81,7 @@ export default {
           'success',
           'error',
           'warning',
+          'warning-neutral',
           'info',
           'info-neutral',
           'info-line',
