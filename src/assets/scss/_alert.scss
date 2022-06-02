@@ -61,6 +61,14 @@
     }
   }
 
+  &.warning-neutral {
+    @apply bg-gray2;
+
+    &:before {
+      background: url(~@img/icon/icon-warning-neutral.svg?url) no-repeat center center;
+    }
+  }
+
   &.info {
     @apply bg-grayPrimary text-white;
 
@@ -122,6 +130,14 @@
     &.extra-large {
       @apply p-8;
       min-height: 106px;
+    }
+  }
+
+  .action-content {
+    @apply ml-4;
+
+    &:empty {
+      @apply hidden;
     }
   }
 }

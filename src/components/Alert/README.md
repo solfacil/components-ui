@@ -12,7 +12,7 @@
 
 ```js
 size: ['sm', 'md', 'lg', 'xl'];
-variant: ['success', 'error', 'warning', 'info', 'info-neutral', 'info-line'];
+variant: ['success', 'error', 'warning', 'warning-neutral', 'info', 'info-neutral', 'info-line'];
 close;
 icon;
 iconNumber;

@@ -70,6 +70,7 @@ describe('Alert - Unit', () => {
       variantValidator('success') &&
         variantValidator('error') &&
         variantValidator('warning') &&
+        variantValidator('warning-neutral') &&
         variantValidator('info') &&
         variantValidator('info-neutral') &&
         variantValidator('info-line'),
