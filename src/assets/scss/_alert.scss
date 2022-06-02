@@ -65,7 +65,8 @@
     @apply bg-gray2;
 
     &:before {
-      background: url(~@img/icon/icon-warning-neutral.svg?url) no-repeat center center;
+      background: url(~@img/icon/icon-warning-neutral.svg?url) no-repeat center
+        center;
     }
   }
 
