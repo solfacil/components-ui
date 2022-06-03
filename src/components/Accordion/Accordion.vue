@@ -4,17 +4,18 @@
       <template v-for="(item, index) in headers">
         <dt
           :key="`title-${index}`"
-          :class="[dynamicSmallClass, variant]"
+          :class="[dynamicSmallClass, variant, darkThemeOn()]"
           @click="handleItem(index)"
         >
           {{ item }}
 
           <span
             class="arrow"
-            :class="[dynamicArrowClass(index), variant]"
+            :class="[dynamicArrowClass(index), variant, darkThemeOn()]"
             :index="index"
           >
-            <ArrowDown v-if="variant === 'content'" />
+            <ArrowDown v-if="variant === 'content' && !darkTheme" />
+            <ArrowDownWhite v-else-if="darkTheme" />
             <HalfArrowDown v-else />
           </span>
         </dt>
@@ -27,7 +28,7 @@
           <dd
             v-show="showContent(index)"
             :key="`description-${index}`"
-            :class="[dynamicSmallClass, variant]"
+            :class="[dynamicSmallClass, variant, darkThemeOn()]"
           >
             <slot :name="`description-${index}`"></slot>
           </dd>
@@ -41,6 +42,7 @@
 <script>
 import HalfArrowDown from '@img/icon/half-arrow-down.svg';
 import ArrowDown from '@img/icon/arrow-down.svg';
+import ArrowDownWhite from '@img/icon/arrow-down-white.svg';
 
 export default {
   name: 'Accordion',
@@ -48,6 +50,7 @@ export default {
   components: {
     HalfArrowDown,
     ArrowDown,
+    ArrowDownWhite,
   },
 
   props: {
@@ -82,6 +85,12 @@ export default {
 
     /** Specify if multiple elements can be opened simultaneously */
     openMulti: {
+      type: Boolean,
+      default: false,
+    },
+
+    /** Specify if the accordion will use the dark theme of components */
+    darkTheme: {
       type: Boolean,
       default: false,
     },
@@ -167,6 +176,10 @@ export default {
 
     dynamicArrowClass(el) {
       return ['', 'arrow-down'][Number(this.showContent(el))];
+    },
+
+    darkThemeOn() {
+      return ['', 'dark-theme'][Number(this.darkTheme)];
     },
   },
 };
