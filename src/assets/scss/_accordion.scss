@@ -50,8 +50,16 @@
         @apply border-none pt-0 mt-0;
       }
 
+      &.dark-theme {
+        @apply text-white;
+      }
+
       .arrow {
         @apply flex items-center justify-center w-6 h-6 border-2 border-solid border-grayPrimary rounded-full duration-200 ease-linear transition-all ml-6;
+
+        &.dark-theme {
+          @apply border-white;
+        }
 
         &.navigator {
           @apply border-none h-3;
@@ -64,6 +72,16 @@
           svg {
             path {
               stroke: #fff;
+            }
+          }
+
+          &.dark-theme {
+            @apply bg-white;
+
+            svg {
+              path {
+                stroke: #666;
+              }
             }
           }
 
@@ -85,6 +103,10 @@
 
       &.navigator {
         @apply mt-4 mb-4;
+      }
+
+      &.dark-theme {
+        @apply text-white;
       }
     }
   }
