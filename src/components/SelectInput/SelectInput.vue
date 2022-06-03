@@ -229,6 +229,7 @@ export default {
       const selectedValue = this.options.find(
         (item) => item.value === this.value,
       );
+      this.selected = { name: '', value: '' };
       if (selectedValue) this.selected = selectedValue;
     },
   },
