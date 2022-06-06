@@ -179,11 +179,11 @@ export default {
       action();
     },
 
-    value() {
+    value: function (newValue) {
       const action = [
         this.assignSelectedFromOptions,
         () => (this.selected = null),
-      ][Number(!this.value)];
+      ][Number(!newValue)];
 
       action();
     },
