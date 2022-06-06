@@ -179,8 +179,13 @@ export default {
       action();
     },
 
-    value() {
-      this.assignSelectedFromOptions();
+    value: function (newValue) {
+      const action = [
+        this.assignSelectedFromOptions,
+        () => (this.selected = null),
+      ][Number(!newValue)];
+
+      action();
     },
   },
 
@@ -229,6 +234,7 @@ export default {
       const selectedValue = this.options.find(
         (item) => item.value === this.value,
       );
+
       if (selectedValue) this.selected = selectedValue;
     },
   },
