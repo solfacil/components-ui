@@ -234,7 +234,7 @@ export default {
             ctx.fillStyle = {
               online: '#4CD89D',
               offline: '#FFB600',
-              disconnected: '#FF7771',
+              'no production': '#FF7771',
             }[this.dataBar.status[i]];
 
             ctx.font = '22px Lato, sans-serif';
