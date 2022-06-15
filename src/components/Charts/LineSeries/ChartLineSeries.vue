@@ -11,7 +11,7 @@
       <ul class="legend">
         <li class="online">Online</li>
         <li class="offline">Offine</li>
-        <li class="disconnected">Desconectado na rede</li>
+        <li class="no_production">Sem produção</li>
         <li class="production">Produção estimada</li>
       </ul>
 

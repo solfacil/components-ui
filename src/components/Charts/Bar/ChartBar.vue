@@ -11,9 +11,7 @@
       <ul class="legend">
         <li v-if="view === 'month'" class="online">Online</li>
         <li v-if="view === 'month'" class="offline">Offline</li>
-        <li v-if="view === 'month'" class="disconnected">
-          Desconectado na rede
-        </li>
+        <li v-if="view === 'month'" class="no_production">Sem produção</li>
         <li class="production">Produção estimada</li>
       </ul>
 
