@@ -19,7 +19,7 @@ describe('Icon - Unit', () => {
     expect(wrapper.vm).toBeDefined();
   });
 
-  it('should icon visibility using prop', async () => {
+  it('should receive the prop type remove', async () => {
     expect(wrapper.props().type).toBe('remove');
   });
 });
