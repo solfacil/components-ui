@@ -1,5 +1,5 @@
 <template>
-  <Component :is="dynamicIcon" @click="click" />
+  <Component :is="dynamicIcon" :id="id" @click="click" />
 </template>
 
 <script>

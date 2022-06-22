@@ -22,4 +22,18 @@ describe('Icon - Unit', () => {
   it('should receive the prop type remove', async () => {
     expect(wrapper.props().type).toBe('remove');
   });
+
+  it('should render correct component in template', async () => {
+    const IconRemove = await import('@img/icon/icon-remove.svg');
+    expect(wrapper.findComponent(IconRemove).exists()).toBeTruthy();
+  });
+
+  it('should emits click on click in icon', async () => {
+    jest.spyOn(wrapper.vm, '$emit');
+
+    const IconRemove = await import('@img/icon/icon-remove.svg');
+    wrapper.findComponent(IconRemove).vm.$emit('click');
+
+    expect(wrapper.vm.$emit).toHaveBeenCalledWith('click');
+  });
 });
