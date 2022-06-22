@@ -31,7 +31,7 @@ describe('Icon - Unit', () => {
   it('should emits click on click in icon', async () => {
     jest.spyOn(wrapper.vm, '$emit');
 
-    const IconRemove = await import('@img/icon/icon-remove.svg');
+    const IconRemove = await import('../../assets/img/icon/icon-remove.svg');
     wrapper.findComponent(IconRemove).vm.$emit('click');
 
     expect(wrapper.vm.$emit).toHaveBeenCalledWith('click');

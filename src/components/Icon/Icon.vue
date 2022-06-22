@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     dynamicIcon() {
-      return () => import(`@img/icon/icon-${this.type}.svg`);
+      return () => import(`../../assets/img/icon/icon-${this.type}.svg`);
     },
   },
   methods: {
