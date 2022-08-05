@@ -52,11 +52,11 @@
       transition-timing-function: linear;
 
       &.flip-arrow {
-        @apply text-orangePrimary;
+        @apply text-rebrandingPrimary;
         transform: rotate(180deg);
 
         path {
-          stroke: #ffb600;
+          stroke: #008859;
         }
       }
     }

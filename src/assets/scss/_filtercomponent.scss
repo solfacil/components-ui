@@ -110,8 +110,8 @@
     }
 
     span {
-      @apply w-6 h-6 rounded-full text-center border border-solid bg-orangePrimary font-rubik text-slight font-normal text-gray6 absolute;
-      border-color: darken(#ffb600, 25%);
+      @apply w-6 h-6 rounded-full text-center border border-solid bg-rebrandingPrimary font-rubik text-slight font-normal text-white absolute;
+      border-color: darken(#008859, 25%);
       line-height: 23px;
       right: -12px;
       top: -12px;
@@ -148,7 +148,7 @@
             @apply pl-2 justify-start;
 
             &::before {
-              @apply block w-2 h-2 rounded-full bg-orangePrimary;
+              @apply block w-2 h-2 rounded-full bg-rebrandingPrimary;
               content: '';
             }
           }

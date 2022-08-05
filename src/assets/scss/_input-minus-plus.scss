@@ -54,11 +54,11 @@
     }
 
     &:hover:not(:disabled) {
-      @apply bg-orangePrimary;
+      @apply bg-rebrandingPrimary;
 
       &:before,
       &:after {
-        @apply bg-gray6;
+        @apply bg-white;
       }
     }
   }

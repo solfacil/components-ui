@@ -105,7 +105,7 @@
 
             &:hover div,
             div {
-              @apply bg-orangePrimary text-gray7;
+              @apply bg-rebrandingPrimary text-white;
             }
           }
 
@@ -118,7 +118,7 @@
 
             &.active {
               div {
-                @apply bg-orangePrimary text-gray7;
+                @apply bg-rebrandingPrimary text-white;
               }
             }
           }
@@ -128,7 +128,7 @@
             @apply bg-transparent;
 
             div {
-              @apply bg-orange1;
+              @apply bg-rebrandingTertiary;
             }
           }
 
