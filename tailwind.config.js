@@ -35,6 +35,10 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      rebrandingPrimary: '#008859',
+      rebrandingSecondary: '#00B569',
+      rebrandingTertiary: '#EFFFC1',
+
       orange1: '#FFD9AB',
       orangePrimary: '#FFB600',
       orange3: '#FF8A00',

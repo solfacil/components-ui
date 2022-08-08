@@ -6,7 +6,7 @@
     @apply cursor-pointer border-b-2 border-solid border-gray3 flex-1 text-center duration-200 ease-linear transition-all p-4;
 
     &.active {
-      @apply border-orangePrimary text-orangePrimary cursor-default;
+      @apply border-rebrandingPrimary text-rebrandingPrimary cursor-default;
     }
 
     &.disabled {

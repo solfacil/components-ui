@@ -12,7 +12,7 @@
     }
 
     &:after {
-      @apply bg-orangePrimary absolute w-4 h-4 rounded-full duration-200 ease-linear transition-all opacity-0 z-10;
+      @apply bg-rebrandingPrimary absolute w-4 h-4 rounded-full duration-200 ease-linear transition-all opacity-0 z-10;
       content: '';
       left: 4px;
       top: 50%;

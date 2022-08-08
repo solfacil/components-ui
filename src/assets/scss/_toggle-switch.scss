@@ -59,7 +59,7 @@
     &:checked {
       & + span {
         &:before {
-          @apply bg-orangePrimary border-orangePrimary;
+          @apply bg-rebrandingPrimary border-rebrandingPrimary;
         }
 
         &:after {
