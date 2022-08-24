@@ -1,4 +1,6 @@
 .sol-overlay {
   @apply absolute w-full h-full z-10 top-0 left-0;
-  background: rgba(#fff, 0.9) url(https://cdn.solfacil.com.br/assets/img/loading-for-legacy.gif) no-repeat center center;
+  background: rgba(#fff, 0.9)
+    url(https://cdn.solfacil.com.br/assets/img/loading-for-legacy.gif) no-repeat
+    center center;
 }
