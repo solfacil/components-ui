@@ -162,7 +162,7 @@ export default {
       default: false,
     },
 
-    /** Specify whether show scroll or not */
+    /** Specify whether show scroll or not. It's necessary adjust height in "option-container" class when hasScroll = false.*/
     hasScroll: {
       type: Boolean,
       default: true,
