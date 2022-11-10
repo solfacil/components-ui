@@ -52,6 +52,10 @@ const Template = (args, { argTypes }) => ({
           value: '7',
           name: 'Sou um integrador e quero tirar dúvidas',
         },
+        {
+          value: '8',
+          name: 'Sou um integrador e quero tirar dúvidas',
+        },
       ],
       inputModel: '2',
     };
