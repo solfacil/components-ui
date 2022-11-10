@@ -60,7 +60,7 @@
         placeholder="Busque aqui"
         class="shadow-none"
       />
-      <ul class="options-list">
+      <ul class="options-list" :class="scrollClass">
         <li
           v-for="item in searchItems(searchString)"
           :key="item.value"
@@ -161,6 +161,12 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    /** Specify whether show scroll or not */
+    hasScroll: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   data: () => ({
@@ -168,6 +174,12 @@ export default {
     selected: null,
     searchString: '',
   }),
+
+  computed: {
+    scrollClass() {
+      return this.hasScroll ? 'overflow-y-auto' : 'overflow-hidden';
+    },
+  },
 
   watch: {
     options() {
