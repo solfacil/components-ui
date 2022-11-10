@@ -177,7 +177,7 @@ export default {
 
   computed: {
     scrollClass() {
-      return this.hasScroll ? 'overflow-y-auto' : 'overflow-hidden';
+      return this.hasScroll && 'overflow-y-auto';
     },
   },
 
