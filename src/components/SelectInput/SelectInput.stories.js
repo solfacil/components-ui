@@ -44,6 +44,6 @@ export const Default = Template.bind({});
 Default.args = {
   position: 'bottom',
   id: 'select',
-  searchable: true,
+  searchable: false,
   placeholder: 'Selecione',
 };
