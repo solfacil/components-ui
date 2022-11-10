@@ -11,7 +11,7 @@ jobs:
       - name: Configure git
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.TOKEN_ACTION }}
+          token: ${{ secrets.REGISTRY_PERSONAL_TOKEN }}
 
       - name: cache dependencies
         uses: actions/cache@v2

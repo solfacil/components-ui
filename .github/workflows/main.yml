@@ -16,7 +16,7 @@ jobs:
       - name: Configure git
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.TOKEN_ACTION }}
+          token: ${{ secrets.REGISTRY_PERSONAL_TOKEN }}
 
       - name: cache dependencies
         uses: actions/cache@v2
@@ -34,14 +34,14 @@ jobs:
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          github-token: ${{ secrets.TOKEN_ACTION }}
+          github-token: ${{ secrets.REGISTRY_PERSONAL_TOKEN }}
           output-file: "false"
 
       - name: Create Release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_ACTION }}
+          GITHUB_TOKEN: ${{ secrets.REGISTRY_PERSONAL_TOKEN }}
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
