@@ -60,7 +60,7 @@
         placeholder="Busque aqui"
         class="shadow-none"
       />
-      <ul :class="scrollClass">
+      <ul class="options-list" :class="scrollClass">
         <li
           v-for="item in searchItems(searchString)"
           :key="item.value"
@@ -177,7 +177,7 @@ export default {
 
   computed: {
     scrollClass() {
-      return this.hasScroll ? 'options-list-scroll' : 'options-list';
+      return this.hasScroll ? 'scroll-y' : 'no-scroll';
     },
   },
 
