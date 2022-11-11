@@ -137,10 +137,10 @@
   }
 
   .scroll-y {
-    @apply overflow-y-auto
+    @apply overflow-y-auto;
   }
 
   .no-scroll {
-    @apply overscroll-none
+    @apply overscroll-none;
   }
 }
