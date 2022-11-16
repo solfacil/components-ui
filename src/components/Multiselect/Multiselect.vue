@@ -27,7 +27,7 @@
       </span>
       <span
         v-if="(placeholder && selected.length === 0) || hideChips"
-        :class="changePlaceholder"
+        :class="changePlaceholderClass"
       >
         {{ placeholder }}
       </span>
@@ -225,7 +225,7 @@ export default {
   }),
 
   computed: {
-    changePlaceholder() {
+    changePlaceholderClass() {
       if (this.hideChips) {
         return this.hasGreenBackground
           ? 'white-placeholder'
