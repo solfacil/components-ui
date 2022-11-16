@@ -210,6 +210,8 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    /** allow green background */
     hasGreenBackground: {
       type: Boolean,
       default: false,
