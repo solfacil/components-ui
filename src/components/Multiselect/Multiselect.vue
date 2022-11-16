@@ -16,6 +16,8 @@
         'bg-gray1 rounded-t': showOptions,
         'error-input': invalid,
         disabled,
+        'bg-green-select-main': hasGreenBackground && hideChips,
+        'bg-white-select-main': !(hasGreenBackground && hideChips),
       }"
       @click="toggleSelect"
     >
@@ -25,7 +27,7 @@
       </span>
       <span
         v-if="(placeholder && selected.length === 0) || hideChips"
-        class="placeholder"
+        :class="changePlaceholder"
       >
         {{ placeholder }}
       </span>
@@ -45,7 +47,12 @@
         height="24"
         viewBox="0 0 24 24"
         fill="none"
-        :class="{ 'flip-arrow': showOptions && !disabled }"
+        :class="{
+          'flip-default-arrow': showOptions && !disabled && !hasGreenBackground,
+          'flip-white-arrow': showOptions && hasGreenBackground && hideChips,
+          'svg-white-color': hasGreenBackground && hideChips,
+          'svg-gray-color': !(hasGreenBackground && hideChips),
+        }"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -203,6 +210,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    hasGreenBackground: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data: () => ({
@@ -210,6 +221,17 @@ export default {
     searchString: '',
     selected: [],
   }),
+
+  computed: {
+    changePlaceholder() {
+      if (this.hideChips) {
+        return this.hasGreenBackground
+          ? 'white-placeholder'
+          : 'default-placeholder';
+      }
+      return '';
+    },
+  },
 
   watch: {
     options() {
