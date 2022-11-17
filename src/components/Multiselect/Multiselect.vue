@@ -16,8 +16,8 @@
         'bg-gray1 rounded-t': showOptions,
         'error-input': invalid,
         disabled,
-        'bg-green-select-main': hasGreenBackground && hideChips,
-        'bg-white-select-main': !(hasGreenBackground && hideChips),
+        'bg-green-select-main': checkBgGreenAndHideChipsProps,
+        'bg-white-select-main': !checkBgGreenAndHideChipsProps,
       }"
       @click="toggleSelect"
     >
@@ -26,7 +26,7 @@
         <slot name="icon"></slot>
       </span>
       <span
-        v-if="(placeholder && selected.length === 0) || hideChips"
+        v-if="allowPlaceholder || hideChips"
         :class="changePlaceholderClass"
       >
         {{ placeholder }}
@@ -49,9 +49,9 @@
         fill="none"
         :class="{
           'flip-default-arrow': showOptions && !disabled && !hasGreenBackground,
-          'flip-white-arrow': showOptions && hasGreenBackground && hideChips,
-          'svg-white-color': hasGreenBackground && hideChips,
-          'svg-gray-color': !(hasGreenBackground && hideChips),
+          'flip-white-arrow': showOptions && checkBgGreenAndHideChipsProps,
+          'svg-white-color': checkBgGreenAndHideChipsProps,
+          'svg-gray-color': !checkBgGreenAndHideChipsProps,
         }"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -226,12 +226,20 @@ export default {
 
   computed: {
     changePlaceholderClass() {
-      if (this.hideChips) {
-        return this.hasGreenBackground
-          ? 'white-placeholder'
-          : 'default-placeholder';
+      if (!this.hideChips) {
+        return;
       }
-      return '';
+      return this.hasGreenBackground
+        ? 'white-placeholder'
+        : 'default-placeholder';
+    },
+
+    checkBgGreenAndHideChipsProps() {
+      return this.hasGreenBackground && this.hideChips;
+    },
+
+    allowPlaceholder() {
+      return this.placeholder && !this.selected.length;
     },
   },
 
