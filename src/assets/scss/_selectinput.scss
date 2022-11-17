@@ -135,4 +135,12 @@
       }
     }
   }
+
+  .scroll-y {
+    @apply overflow-y-auto;
+  }
+
+  .no-scroll {
+    @apply overscroll-none;
+  }
 }
