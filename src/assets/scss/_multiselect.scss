@@ -16,14 +16,10 @@
   }
 
   .select-main {
-    @apply bg-white flex p-2 items-center border border-gray3 duration-200 ease-linear transition-all min-h-8 rounded;
+    @apply flex p-2 items-center border border-gray3 duration-200 ease-linear transition-all min-h-8 rounded;
 
     .selected-wrapper {
       @apply flex flex-wrap gap-2;
-    }
-
-    &:hover {
-      @apply bg-gray1;
     }
 
     & > span {
@@ -31,8 +27,12 @@
       text-overflow: ellipsis;
       max-width: calc(100% - 32px);
 
-      &.placeholder {
+      &.default-placeholder {
         @apply text-gray4;
+      }
+
+      &.white-placeholder {
+        @apply text-white font-normal text-small;
       }
 
       &.is-icon {
@@ -46,18 +46,39 @@
     }
 
     svg {
-      @apply stroke-current text-grayPrimary w-6 h-6 ml-auto;
+      @apply w-6 h-6 ml-auto;
       min-width: 24px;
       transition: all 200ms;
       transition-timing-function: linear;
 
-      &.flip-arrow {
+      &.flip-default-arrow {
         @apply text-rebrandingPrimary;
         transform: rotate(180deg);
 
         path {
           stroke: #008859;
         }
+      }
+
+      &.flip-white-arrow {
+        @apply text-white;
+        transform: rotate(180deg);
+
+        path {
+          stroke: white;
+        }
+      }
+    }
+
+    .svg-white-color {
+      path {
+        stroke: white;
+      }
+    }
+
+    .svg-gray-color {
+      path {
+        stroke: gray;
       }
     }
 
@@ -71,6 +92,20 @@
       &:hover {
         @apply bg-gray2;
       }
+    }
+  }
+
+  .bg-green-select-main {
+    @apply bg-rebrandingPrimary;
+    &:hover {
+      @apply bg-rebrandingPrimary;
+    }
+  }
+
+  .bg-white-select-main {
+    @apply bg-white;
+    &:hover {
+      @apply bg-gray1;
     }
   }
 

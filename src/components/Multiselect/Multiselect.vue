@@ -16,6 +16,8 @@
         'bg-gray1 rounded-t': showOptions,
         'error-input': invalid,
         disabled,
+        'bg-green-select-main': checkBgGreenAndHideChipsProps,
+        'bg-white-select-main': !checkBgGreenAndHideChipsProps,
       }"
       @click="toggleSelect"
     >
@@ -24,8 +26,8 @@
         <slot name="icon"></slot>
       </span>
       <span
-        v-if="(placeholder && selected.length === 0) || hideChips"
-        class="placeholder"
+        v-if="allowPlaceholder || hideChips"
+        :class="changePlaceholderClass"
       >
         {{ placeholder }}
       </span>
@@ -45,7 +47,12 @@
         height="24"
         viewBox="0 0 24 24"
         fill="none"
-        :class="{ 'flip-arrow': showOptions && !disabled }"
+        :class="{
+          'flip-default-arrow': showOptions && !disabled && !hasGreenBackground,
+          'flip-white-arrow': showOptions && checkBgGreenAndHideChipsProps,
+          'svg-white-color': checkBgGreenAndHideChipsProps,
+          'svg-gray-color': !checkBgGreenAndHideChipsProps,
+        }"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -207,6 +214,12 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    /** allow green background */
+    hasGreenBackground: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data: () => ({
@@ -214,6 +227,25 @@ export default {
     searchString: '',
     selected: [],
   }),
+
+  computed: {
+    changePlaceholderClass() {
+      if (!this.hideChips) {
+        return;
+      }
+      return this.hasGreenBackground
+        ? 'white-placeholder'
+        : 'default-placeholder';
+    },
+
+    checkBgGreenAndHideChipsProps() {
+      return this.hasGreenBackground && this.hideChips;
+    },
+
+    allowPlaceholder() {
+      return this.placeholder && !this.selected.length;
+    },
+  },
 
   watch: {
     options() {
