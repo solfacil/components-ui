@@ -91,6 +91,10 @@
           />
         </li>
       </ul>
+      <div class="box-btns">
+        <!-- @slot Use this slot to add buttons -->
+        <slot name="buttons"></slot>
+      </div>
     </div>
     <div v-if="showList" class="multiselect-container">
       <ul class="multiselect-list">

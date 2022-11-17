@@ -169,6 +169,9 @@
         }
       }
     }
+    .box-btns {
+      @apply flex justify-center items-center gap-2 mt-4;
+    }
   }
 
   .multiselect-container {
