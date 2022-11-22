@@ -1,18 +1,19 @@
 <template>
   <label :id="id" class="toggle-switch">
     <input
-      v-model="value"
-      type="checkbox"
-      :checked="checked"
+      :checked="isChecked"
+      :value="isChecked"
       :disabled="disabled"
       :name="name"
+      type="checkbox"
+      @change="toggleChecked"
     />
 
-    <span :class="{ error: invalid && !value }">
+    <span :class="{ error: invalid && !isChecked }">
       <span v-if="label">{{ label }}</span>
     </span>
 
-    <small v-if="invalid && invalidText && !value" class="error-label">
+    <small v-if="invalid && invalidText && !isChecked" class="error-label">
       {{ invalidText }}
     </small>
   </label>
@@ -25,6 +26,12 @@ export default {
   props: {
     /** Specify whether the is currently checked */
     checked: {
+      type: Boolean,
+      default: false,
+    },
+
+    /** Specify whether the is currently value checked */
+    value: {
       type: Boolean,
       default: false,
     },
@@ -66,24 +73,16 @@ export default {
     },
   },
 
-  data() {
-    return {
-      value: null,
-    };
-  },
-
-  watch: {
-    value(val) {
-      this.$emit('input', val);
-    },
-
-    checked(val) {
-      this.value = val;
+  computed: {
+    isChecked() {
+      return Boolean(this.checked) || Boolean(this.value);
     },
   },
 
-  beforeMount() {
-    if (this.checked) this.value = this.checked;
+  methods: {
+    toggleChecked({ target }) {
+      this.$emit('input', target.checked);
+    },
   },
 };
 </script>
