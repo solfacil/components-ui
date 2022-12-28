@@ -11,12 +11,11 @@
   }
 
   .chip-tooltip {
-    @apply opacity-0 bg-grayPrimary absolute text-small text-white font-rubik font-normal rounded z-10 py-2 px-4 duration-200 ease-linear transition-all leading-tight;
+    @apply opacity-0 bg-grayPrimary absolute text-small text-white font-rubik font-normal rounded z-10 py-2 px-4 duration-200 ease-linear transition-all leading-tight invisible;
     bottom: calc(100% + 10px);
     left: 50%;
     max-width: 320px;
     transform: translateX(-50%);
-    visibility: hidden;
     width: max-content;
 
     &::after {
@@ -48,8 +47,7 @@
 
   &:hover {
     .chip-tooltip {
-      @apply opacity-100;
-      visibility: visible;
+      @apply opacity-100 visible;
     }
   }
 }
