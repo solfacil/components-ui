@@ -4,6 +4,9 @@
     <div class="svg-wrapper" @click="handleClick()">
       <CloseIcon :class="{ small }" />
     </div>
+    <div v-if="tooltip" class="chip-tooltip">
+      {{ tooltip }}
+    </div>
   </span>
 </template>
 
@@ -25,6 +28,11 @@ export default {
     small: {
       type: Boolean,
       default: false,
+    },
+
+    tooltip: {
+      type: String,
+      default: '',
     },
   },
 
