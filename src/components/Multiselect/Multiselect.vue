@@ -222,6 +222,8 @@ export default {
     },
   },
 
+  emits: ['blur'],
+
   data: () => ({
     showOptions: false,
     searchString: '',
