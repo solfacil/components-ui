@@ -1,5 +1,5 @@
 .chip {
-  @apply bg-gray1 rounded px-4 text-grayPrimary text-slight h-7 flex gap-2 items-center transition-all duration-200 ease-linear;
+  @apply bg-gray1 rounded px-4 text-grayPrimary text-slight h-7 flex gap-2 items-center transition-all duration-200 ease-linear relative;
   width: fit-content;
 
   .svg-wrapper {
@@ -7,6 +7,25 @@
     padding: 6px;
     svg {
       @apply fill-current;
+    }
+  }
+
+  .chip-tooltip {
+    @apply opacity-0 bg-grayPrimary absolute text-small text-white font-rubik font-normal rounded z-10 py-2 px-4 duration-200 ease-linear transition-all leading-tight invisible;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    max-width: 320px;
+    transform: translateX(-50%);
+    width: max-content;
+
+    &::after {
+      @apply absolute border-solid;
+      border-color: #666 transparent transparent transparent;
+      border-width: 6px;
+      content: '';
+      left: 50%;
+      top: 100%;
+      transform: translateX(-50%);
     }
   }
 
@@ -23,6 +42,12 @@
       .svg-wrapper {
         @apply bg-gray4 text-gray2;
       }
+    }
+  }
+
+  &:hover {
+    .chip-tooltip {
+      @apply opacity-100 visible;
     }
   }
 }
