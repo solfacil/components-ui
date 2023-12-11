@@ -21,6 +21,8 @@
         :name="name"
         :placeholder="placeholder"
         :value="value"
+        :minlength="minlength"
+        :maxlength="maxlength"
         @input="$emit('input', $event.target.value)"
         @keyup.enter="handleEvent($event.target.value)"
       />
@@ -107,6 +109,18 @@ export default {
     large: {
       type: Boolean,
       default: false,
+    },
+
+    /** Specify a min length */
+    minlength: {
+      type: String,
+      default: null,
+    },
+
+    /** Specify a max length */
+    maxlength: {
+      type: String,
+      default: null,
     },
   },
 
