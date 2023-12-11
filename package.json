@@ -1,6 +1,6 @@
 {
   "name": "@solfacil/components-ui",
-  "version": "1.90.0",
+  "version": "1.91.0",
   "private": false,
   "description": "Component library based on Vue and Tailwind",
   "author": "Solfacil - Fernando Jesus",
