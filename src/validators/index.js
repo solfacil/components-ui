@@ -8,6 +8,12 @@ export default {
       /\w+([.-]?\w+)*@example.com/.test(value),
     ][Number(condition === 'development')];
   },
+  emailSolfacilComSubdominio: (condition) => (value) => {
+    return [
+      /\w+([.-]?\w+)*@(\w+([.-]\w)*\.)*solfacil\.com\.br/.test(value),
+      /\w+([.-]?\w+)*@example\.com/.test(value),
+    ][Number(condition === 'development')];
+  },
   emailHasBrDomain: (condition) => (value) => {
     return [/.br$/.test(value), true][Number(condition === 'development')];
   },
