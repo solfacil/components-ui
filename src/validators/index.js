@@ -10,7 +10,7 @@ export default {
   },
   emailSolfacilComSubdominio: (condition) => (value) => {
     return [
-      /\w+([.-]?\w+)*@(\w+([.-]\w)*\.)*solfacil\.com\.br/.test(value),
+      /\w+([.-]?\w+)*@(externo\.)?solfacil\.com\.br/.test(value),
       /\w+([.-]?\w+)*@example\.com/.test(value),
     ][Number(condition === 'development')];
   },
