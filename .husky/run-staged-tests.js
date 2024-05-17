@@ -2,7 +2,6 @@
 
 const partition = require('lodash/partition');
 const uniq = require('lodash/uniq');
-const { say } = require('cowsay');
 const { Spinner } = require('cli-spinner');
 const { exec } = require('child_process');
 const fs = require('fs');
@@ -15,7 +14,7 @@ const LINTER_CMD = 'yarn lint';
 const SPECS_LINTER_CMD = 'yarn lint';
 const TESTS_CMD = 'yarn test';
 
-log(say({ text: 'Calma aí, deixa eu ver se tá tudo certo.', f: 'cat2' }));
+log('Calma aí, deixa eu ver se tá tudo certo.');
 
 function execAsync(command, options = {}) {
   log(`Running: ${command}`);
@@ -78,7 +77,7 @@ async function main() {
     await runLinter(stagedSpecFiles, { isSpecs: true });
     await runTests(uniq(specFiles));
 
-    log(say({ text: 'Tudo certo!!', f: 'cat2' }));
+    log('Tudo certo!!');
   } catch (e) {
     log(e.message);
     process.exit(1);
