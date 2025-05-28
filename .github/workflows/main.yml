@@ -10,7 +10,7 @@ on:
 jobs:
   deploy-bump-version:
     name: Bump version and Deploy 🚀
-    runs-on: ubuntu-latest
+    runs-on: shd-eks-runners
 
     steps:
       - name: Configure git
