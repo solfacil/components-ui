@@ -3,9 +3,9 @@ name: Lint/Prettier Code Base
 on: pull_request
 
 jobs:
- run-linters:
+  run-linters:
     name: Run linters
-    runs-on: ubuntu-latest
+    runs-on: shd-eks-runners
 
     steps:
       - name: Configure git
